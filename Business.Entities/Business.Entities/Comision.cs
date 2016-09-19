@@ -13,42 +13,20 @@ namespace Business.Entities
 
         public int AnioEspecialidad
         {
-            get
-            {
-                return _anioEspecialidad;
-            }
-
-            set
-            {
-                _anioEspecialidad = value;
-            }
+            get { return _anioEspecialidad;  }
+            set { _anioEspecialidad = value; }
         }
 
         public string Descripcion
         {
-            get
-            {
-                return _descripcion;
-            }
-
-            set
-            {
-                _descripcion = value;
-
-            }
+            get { return _descripcion;  }
+            set { _descripcion = value; }
         }
 
         public int IDplan
         {
-            get
-            {
-                return _idPlan;
-            }
-
-            set
-            {
-                _idPlan = value;
-            }
+            get { return _idPlan;  }
+            set { _idPlan = value; }
         }
     }
 }
