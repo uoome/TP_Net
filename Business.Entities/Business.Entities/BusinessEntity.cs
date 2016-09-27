@@ -5,20 +5,20 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Business.Entities
-{
+{   //Esta clase contiene elementos básicos que compartiran las entidades de nuestro sistema, que heredarán de ella
     public class BusinessEntity
     {
+        private int _ID;
+        private States _State;
         public BusinessEntity()
         {
             this.State = States.New;
         }
-        private int _ID;
         public int ID 
         {  get {return _ID ; }
            set {_ID = value ;}
         }
 
-        private States _State;
         public States State
         {
             get { return _State; }

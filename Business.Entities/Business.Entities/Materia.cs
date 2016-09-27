@@ -7,62 +7,33 @@ namespace Business.Entities
 {
     public class Materia : BusinessEntity
     {
-        private string _descripcion;
-        private int _hsSemanales;
-        private int _hsTotales;
-        private int _idPlan;
+        private string _Descripcion;
+        private int _HSSemanales;
+        private int _HSTotales;
+        private int _IDPlan;
 
         public string Descripcion
         {
-            get
-            {
-                return _descripcion;
-            }
-
-            set
-            {
-                _descripcion = value;
-
-            }
+            get { return _Descripcion; }
+            set { _Descripcion = value; }
         }
 
         public int HSSemanales
         {
-            get
-            {
-                return _hsSemanales;
-            }
-
-            set
-            {
-                _hsSemanales = value;
-            }
+            get { return _HSSemanales; }
+            set { _HSSemanales = value; }
         }
 
         public int HSTotales
         {
-            get
-            {
-                return _hsTotales;
-            }
-
-            set
-            {
-                _hsTotales = value;
-            }
+            get { return _HSTotales; }
+            set { _HSTotales = value; }
         }
 
         public int IDplan
         {
-            get
-            {
-                return _idPlan;
-            }
-
-            set
-            {
-                _idPlan = value;
-            }
+            get { return _IDPlan; }
+            set { _IDPlan = value; }
         }
     }
 }

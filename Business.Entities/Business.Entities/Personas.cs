@@ -9,149 +9,65 @@ using System.Text;
     {  
 
         public enum TiposPersonas {Administrador = 1, Usuario=2,Docente =3} ;
-        
 
-        private string _legajo;
-
-        private string _apellido;
-        private string _nombre;
-        private string _email;
-        private string _telefono;
-        private string _direccion;
-        private DateTime _fechaDeNacimiento;
-        private int _idPlan;
-        private TiposPersonas _tipoDePersona;
+        private string _Legajo;
+        private string _Apellido;
+        private string _Nombre;
+        private string _Email;
+        private string _Telefono;
+        private string _Direccion;
+        private DateTime _FechaDeNacimiento;
+        private int _IdPlan;
+        private TiposPersonas _TipoDePersona;
 
         public string Direccion
         {
-            get
-            {
-                return _direccion; //if (TipoPersona == TiposPersonas.Administrador) if (TipoPersona = 1)
-            }
-
-            set
-            {
-                _direccion = value;
-
-            }
+            get { return _Direccion; }
+            set { _Direccion = value; }   
         }
 
         public string Email
         {
-            get
-            {
-                return _email;
-            }
-
-            set
-            {
-                _email = value;
-
-            }
+            get { return _Email; }
+            set { _Email = value; }
         }
-
         public string Nombre
         {
-            get
-            {
-                return _nombre;
-            }
-
-            set
-            {
-                _nombre = value;
-
-            }
+            get { return _Nombre; }
+            set { _Nombre = value; }
         }
 
         public string Apellido
         {
-            get
-            {
-                return _apellido;
-
-            }
-
-            set
-            {
-                _apellido = value;
-
-            }
+            get { return _Apellido; }
+            set { _Apellido = value; }
         }
 
         public string Legajo
         {
-            get
-            {
-                return _legajo;
-
-
-
-            }
-
-            set
-            {
-                _legajo = value;
-
-
-            }
+            get { return _Legajo; }
+            set { _Legajo = value; }
         }
-
-
         public int IDPlan
         {
-            get
-            {
-                return _idPlan;
-
-            }
-
-            set
-            {
-                _idPlan = value;
-
-            }
+            get { return _IdPlan; }
+            set { _IdPlan = value; }
         }
-
         public DateTime FechaDeNacimiento
         {
-            get
-            {
-                return _fechaDeNacimiento;
-            }
-
-            set
-            {
-                _fechaDeNacimiento = value;
-            }
+            get { return _FechaDeNacimiento; }
+            set { _FechaDeNacimiento = value; }
         }
-
         public string Telefono
         {
-            get
-            {
-                return _telefono;
-            }
-
-            set
-            {
-                _telefono = value;
-            }
+            get { return _Telefono; }
+            set { _Telefono = value; }
         }
 
         public TiposPersonas TipoPersona
         {
-            get
-            {
-                return _tipoDePersona;
-
-            }
-
-            set
-            {
-                _tipoDePersona = value;
-
-            }
+            get { return _TipoDePersona; }
+            set { _TipoDePersona = value; }
         }
     }
 }
