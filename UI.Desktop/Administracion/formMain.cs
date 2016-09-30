@@ -30,12 +30,6 @@ namespace UI.Desktop
                 this.Dispose();
             }
         }
-
-        private void formMain_Load(object sender, EventArgs e)
-        {
-
-        }
-
         
     }
 }

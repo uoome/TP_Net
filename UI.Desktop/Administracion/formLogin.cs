@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Business.Logic;
+using Business.Entities;
 
 namespace UI.Desktop
 {
@@ -19,13 +21,21 @@ namespace UI.Desktop
 
         private void btnIngresar_Click(object sender, EventArgs e)
         {
-            //la propiedad Text de los TextBox contiene el texto escrito en ellos
-            if (this.txtUsuario.Text == "Admin" && this.txtPass.Text == "admin")
+            UsuarioLogic usLogic = new UsuarioLogic();
+            Usuario usr;
+
+            //La propiedad Text de los TextBox contiene el texto escrito en ellos
+            if (usLogic.ExisteUs(this.txtUsuario.Text))
             {
-                this.DialogResult = DialogResult.OK;
-                Usuarios usr = new Usuarios();
-                usr.ShowDialog();
-                usr.Listar();
+                usr= usLogic.GetOne(this.txtUsuario.Text);
+                if (usr.Clave == this.txtPass.Text)
+                {
+                    this.DialogResult = DialogResult.OK;
+                    Usuarios users = new Usuarios();
+                    users.ShowDialog();
+                    users.Listar();
+                }
+
             }
             else
             {
@@ -41,10 +51,6 @@ namespace UI.Desktop
         MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
         }
-
-        private void formLogin_Load(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 }

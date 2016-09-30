@@ -30,6 +30,10 @@ namespace Business.Logic
         {
             return UsuarioData.GetOne(ID);
         }
+        public Usuario GetOne(string nombreUs)
+        {
+            return UsuarioData.GetOne(nombreUs);
+        }
 
         public void Delete (int ID)
         {
@@ -38,7 +42,12 @@ namespace Business.Logic
 
         public void Save(Business.Entities.Usuario usr)
         {
-            UsuarioData.Save (usr);
+            UsuarioData.Save(usr);
         }
+        public bool ExisteUs(string nombUs) //Este metodo llama al metodo de validacion de usuario de la capa de datos
+        {
+            return UsuarioData.ValidarUsuario(nombUs);
+        }
+
     }
 }
