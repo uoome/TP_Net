@@ -104,7 +104,6 @@ namespace Data.Database
             }
             return usr;
         }
-
         public Usuario GetOne(string nombre_us)
         {
             Usuario usr = new Usuario();
@@ -141,6 +140,7 @@ namespace Data.Database
             }
             return usr;
         }
+
         public void Delete(int ID)
         {
             try
@@ -192,7 +192,6 @@ namespace Data.Database
                 this.CloseConnection();
             }
         }
-
         protected void Insert(Usuario usuario)
         {
             try
@@ -225,7 +224,6 @@ namespace Data.Database
                 this.CloseConnection();
             }
         }
-
         public void Save(Usuario usuario)
         {
             if(usuario.State == BusinessEntity.States.Deleted)

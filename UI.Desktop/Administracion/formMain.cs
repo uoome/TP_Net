@@ -30,6 +30,13 @@ namespace UI.Desktop
                 this.Dispose();
             }
         }
-        
+
+        private void usuariosToolStripMenuItem_Click(object sender, EventArgs e) 
+        {
+            Usuarios grillaUs = new Usuarios();
+            grillaUs.ShowDialog();
+            grillaUs.Listar();
+            
+        }
     }
 }

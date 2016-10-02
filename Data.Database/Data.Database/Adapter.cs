@@ -7,7 +7,7 @@ using System.Configuration;
 
 namespace Data.Database
 {
-    public class Adapter
+    public class Adapter //Esta clase es común para todas las demas de esta capa, presenta las conexiones a la BD
     {
         //Clave por defecto a utlizar para la cadena de conexion
         const string consKeyDefaultCnnString = "ConnStringLocal";

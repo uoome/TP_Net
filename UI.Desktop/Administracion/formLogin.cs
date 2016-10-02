@@ -24,18 +24,13 @@ namespace UI.Desktop
             UsuarioLogic usLogic = new UsuarioLogic();
             Usuario usr;
 
-            //La propiedad Text de los TextBox contiene el texto escrito en ellos
             if (usLogic.ExisteUs(this.txtUsuario.Text))
             {
                 usr= usLogic.GetOne(this.txtUsuario.Text);
                 if (usr.Clave == this.txtPass.Text)
                 {
                     this.DialogResult = DialogResult.OK;
-                    Usuarios users = new Usuarios();
-                    users.ShowDialog();
-                    users.Listar();
                 }
-
             }
             else
             {

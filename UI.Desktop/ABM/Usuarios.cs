@@ -71,7 +71,6 @@ namespace UI.Desktop
             this.Listar();
         }
         #endregion
-
         private void dgvUsuarios_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
