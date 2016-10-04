@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Business.Entities
 {
-   public class Usuario : BusinessEntity
+   public class Usuario : BusinessEntity 
     {
        private string _Nombre;
        private string _NombreUsuario;
@@ -14,7 +14,8 @@ namespace Business.Entities
        private string _Clave;
        private bool _Habilitado;
        private string _Email;
-       public string Email
+        
+        public string Email
         {
             get { return _Email; }
             set { _Email = value; }
@@ -29,6 +30,7 @@ namespace Business.Entities
             get { return _Apellido ; }
             set { _Apellido = value; }
         }
+        
        public string NombreUsuario
         {
             get { return _NombreUsuario; }
@@ -44,6 +46,7 @@ namespace Business.Entities
             get { return _Habilitado; }
             set { _Habilitado = value; }
         }
+        
     }
    
 }

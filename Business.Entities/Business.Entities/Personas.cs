@@ -8,7 +8,7 @@ using System.Text;
     public class Personas : BusinessEntity
     {  
 
-        public enum TiposPersonas {Administrador = 1, Usuario=2,Docente =3} ;
+        public enum TiposPersonas {Administrador = 1, Usuario = 2,Docente = 3} ;
 
         private string _Legajo;
         private string _Apellido;

@@ -14,11 +14,11 @@ namespace Data.Database
         //Para SQL Express: const string consKeyDefaultCnnString = "ConnStringExpress";
         //Para usar el serverisi: const string consKeyDefaultCnnString = "ConnStringServerISI";
 
-        private SqlConnection sqlConnection;
+        private SqlConnection _sqlConnection;
         public SqlConnection sqlConn
         {
-            get { return sqlConnection; }
-            set { sqlConnection = value; }
+            get { return _sqlConnection; }
+            set { _sqlConnection = value; }
         }
 
         protected void OpenConnection()
