@@ -238,7 +238,7 @@ namespace Data.Database
             {
                 this.Update(usuario);
             }
-            usuario.State = BusinessEntity.States.Unmodified;
+            else usuario.State = BusinessEntity.States.Unmodified;
         }
 
         public bool ValidarUsuario(string nombUs) //Este metodo valida si existe el usuario en la BD

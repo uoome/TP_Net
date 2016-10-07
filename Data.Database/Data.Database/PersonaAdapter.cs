@@ -153,7 +153,7 @@ namespace Data.Database
             {
                 this.Update(pers);
             }
-            pers.State = BusinessEntity.States.Unmodified;
+            else pers.State = BusinessEntity.States.Unmodified;
         }
         public void Update(Personas pers)
         {
