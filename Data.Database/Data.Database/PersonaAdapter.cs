@@ -9,7 +9,7 @@ using Business.Entities;
 
 namespace Data.Database
 {
-    class PersonaAdapter : Adapter
+    public class PersonaAdapter : Adapter
     {
         public List<Personas> GetAll()
         {

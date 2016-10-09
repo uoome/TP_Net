@@ -36,5 +36,15 @@ namespace UI.Desktop.ABM
         {
 
         }
+
+        private void PersonasDesktop_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtFecha_nac_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
