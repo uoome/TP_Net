@@ -38,5 +38,12 @@ namespace UI.Desktop
             grillaUs.Listar();
             
         }
+
+        private void personasToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            GrillaPersonas grillaPers = new GrillaPersonas();
+            grillaPers.Show();
+            grillaPers.Listar();
+        }
     }
 }

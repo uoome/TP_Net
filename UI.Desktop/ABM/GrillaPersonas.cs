@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using Business.Entities;
 using Business.Logic;
 
-namespace UI.Desktop.ABM
+namespace UI.Desktop
 {
     public partial class GrillaPersonas : Form
     {
@@ -20,11 +20,42 @@ namespace UI.Desktop.ABM
             this.dgvPersonas.AutoGenerateColumns=false;
         }
 
-
+        public void Listar()
+        {
+            PersonaLogic pl = new PersonaLogic();
+            this.dgvPersonas.DataSource = pl.GetAll();
+        }
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
+            this.Close();
+        }
 
+        private void GrillaPersonas_Load(object sender, EventArgs e)
+        {
+            this.Listar();
+        }
+
+        private void btnActualizar_Click(object sender, EventArgs e)
+        {
+            this.Listar();
+        }
+        private void tsbNuevo_Click(object sender, EventArgs e)
+        {
+            /*
+            PersonasDesktop persDesk = new PersonasDesktop(ApplicationForm.ModoForm.Alta);
+            persDesk.ShowDialog();
+            this.Listar();
+            */
+        }
+
+        private void tsbModificar_Click(object sender, EventArgs e)
+        {
+            /*
+            PersonasDesktop persDesk = new PersonasDesktop(ApplicationForm.ModoForm.Modificacion);
+            persDesk.ShowDialog();
+            this.Listar();
+            */
         }
     }
 }

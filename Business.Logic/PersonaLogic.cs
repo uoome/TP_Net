@@ -8,7 +8,7 @@ using Data.Database;
 
 namespace Business.Logic
 {
-    class PersonaLogic : BusinessLogic
+    public class PersonaLogic : BusinessLogic
     {
         private Data.Database.PersonaAdapter _PersonaData;
 
@@ -17,5 +17,30 @@ namespace Business.Logic
             set { _PersonaData = value; }
             get { return _PersonaData; }
         }
+
+        public PersonaLogic()
+        {
+            PersonaData = new PersonaAdapter();
+        }
+
+        #region Metodos
+        public List<Personas> GetAll()
+        {
+            return PersonaData.GetAll();
+        }
+        public Personas GetOne(int ID)
+        {
+            return PersonaData.GetOne(ID);
+        }
+        public void Delete(int ID)
+        {
+            PersonaData.Delete(ID);
+        }
+        public void Save(Personas pers)
+        {
+            PersonaData.Save(pers);
+        }
+
+        #endregion
     }
 }

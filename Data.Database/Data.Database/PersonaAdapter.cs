@@ -89,6 +89,22 @@ namespace Data.Database
             }
             return persona;
         }
+        public void Save(Personas pers)
+        {
+            if (pers.State == BusinessEntity.States.Deleted)
+            {
+                this.Delete(pers.ID);
+            }
+            else if (pers.State == BusinessEntity.States.New)
+            {
+                this.Insert(pers);
+            }
+            else if (pers.State == BusinessEntity.States.Modified)
+            {
+                this.Update(pers);
+            }
+            else pers.State = BusinessEntity.States.Unmodified;
+        }
         public void Delete(int ID)
         {
             try
@@ -108,7 +124,7 @@ namespace Data.Database
                 this.CloseConnection();
             }
         }
-        public void Insert(Personas pers)
+        protected void Insert(Personas pers)
         {
             try
             {
@@ -139,23 +155,7 @@ namespace Data.Database
                 this.CloseConnection();
             }
         }
-        public void Save(Personas pers)
-        {
-            if (pers.State == BusinessEntity.States.Deleted)
-            {
-                this.Delete(pers.ID);
-            }
-            else if (pers.State == BusinessEntity.States.New)
-            {
-                this.Insert(pers);
-            }
-            else if (pers.State == BusinessEntity.States.Modified)
-            {
-                this.Update(pers);
-            }
-            else pers.State = BusinessEntity.States.Unmodified;
-        }
-        public void Update(Personas pers)
+        protected void Update(Personas pers)
         {
             try
             {

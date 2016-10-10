@@ -140,7 +140,6 @@ namespace Data.Database
             }
             return usr;
         }
-
         public void Delete(int ID)
         {
             try
@@ -240,7 +239,6 @@ namespace Data.Database
             }
             else usuario.State = BusinessEntity.States.Unmodified;
         }
-
         public bool ValidarUsuario(string nombUs) //Este metodo valida si existe el usuario en la BD
         {
             try
