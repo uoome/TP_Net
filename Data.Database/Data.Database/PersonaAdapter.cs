@@ -24,12 +24,13 @@ namespace Data.Database
                 while (drPersonas.Read())
                 {
                     Personas pers = new Personas();
+                    pers.ID = (int)drPersonas["id_persona"];
                     pers.Nombre = (string)drPersonas["nombre"];
                     pers.Apellido = (string)drPersonas["apellido"];
                     pers.Direccion = (string)drPersonas["direccion"];
                     pers.Email = (string)drPersonas["email"];
                     pers.Telefono = (string)drPersonas["telefono"];
-                    pers.Legajo = (string)drPersonas["legajo"];
+                    pers.Legajo = (int)drPersonas["legajo"];
                     // pers.TipoPersona = (TipoPersonas)drPersonas["tipo_persona"];
                     pers.IDPlan = (int)drPersonas["id_plan"];
                     pers.FechaDeNacimiento = (DateTime)drPersonas["fecha_nac"];
@@ -69,7 +70,7 @@ namespace Data.Database
                     persona.Direccion = (string)drPersona["direccion"];
                     persona.Email = (string)drPersona["email"];
                     persona.IDPlan = (int)drPersona["id_plan"];
-                    persona.Legajo = (string)drPersona["legajo"];
+                    persona.Legajo = (int)drPersona["legajo"];
                     persona.FechaDeNacimiento = (DateTime)drPersona["fecha_nac"];
                     //persona.TipoPersona = (TipoPersona)drPersona["tipo_persona"];
                     persona.ID = (int)drPersona["id_persona"];

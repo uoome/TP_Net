@@ -26,6 +26,8 @@ namespace UI.Desktop
             this.dgvPersonas.DataSource = pl.GetAll();
         }
 
+        #region Eventos 
+
         private void btnSalir_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -40,22 +42,30 @@ namespace UI.Desktop
         {
             this.Listar();
         }
+
         private void tsbNuevo_Click(object sender, EventArgs e)
         {
-            /*
             PersonasDesktop persDesk = new PersonasDesktop(ApplicationForm.ModoForm.Alta);
             persDesk.ShowDialog();
             this.Listar();
-            */
         }
 
         private void tsbModificar_Click(object sender, EventArgs e)
         {
-            /*
-            PersonasDesktop persDesk = new PersonasDesktop(ApplicationForm.ModoForm.Modificacion);
+            int ID = ((Personas)this.dgvPersonas.SelectedRows[0].DataBoundItem).ID;
+            PersonasDesktop persDesk = new PersonasDesktop(ApplicationForm.ModoForm.Modificacion,ID);
             persDesk.ShowDialog();
             this.Listar();
-            */
         }
+
+        private void tsbEliminar_Click(object sender, EventArgs e)
+        {
+            int ID = ((Personas)this.dgvPersonas.SelectedRows[0].DataBoundItem).ID;
+            PersonasDesktop persDesk = new PersonasDesktop(ApplicationForm.ModoForm.Eliminar, ID);
+            persDesk.ShowDialog();
+            this.Listar();
+        }
+
+        #endregion
     }
 }

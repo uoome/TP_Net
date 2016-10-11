@@ -47,7 +47,6 @@ namespace UI.Desktop
         public UsuarioDesktop(int ID, ModoForm modo) : this()
         {
             Modo = modo;
-            //this.btnAceptar.Text = "Aceptar";
             if (Modo == ModoForm.Alta || Modo == ModoForm.Modificacion)
             {
                 this.btnAceptar.Text = "Guardar";
@@ -113,7 +112,7 @@ namespace UI.Desktop
             usLogic.Save(UsuarioActual);
         }
 
-      public override bool Validar()
+        public override bool Validar()
         {
             string msj="";
 

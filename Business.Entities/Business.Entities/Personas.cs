@@ -10,7 +10,7 @@ using System.Text;
 
         public enum TiposPersonas {Administrador = 1, Usuario = 2,Docente = 3} ;
 
-        private string _Legajo;
+        private int _Legajo;
         private string _Apellido;
         private string _Nombre;
         private string _Email;
@@ -43,7 +43,7 @@ using System.Text;
             set { _Apellido = value; }
         }
 
-        public string Legajo
+        public int Legajo
         {
             get { return _Legajo; }
             set { _Legajo = value; }

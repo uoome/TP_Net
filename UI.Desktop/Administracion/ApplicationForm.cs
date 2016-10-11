@@ -16,7 +16,12 @@ namespace UI.Desktop
         {
             InitializeComponent();
         }
-        public enum ModoForm{Alta=1,Baja=2,Modificacion=3,Eliminar=4 }
+
+        public enum ModoForm
+        {
+            Alta =1, Baja=2, Modificacion=3, Eliminar=4
+        }
+
         private ModoForm _modo;
         public ModoForm Modo
         {

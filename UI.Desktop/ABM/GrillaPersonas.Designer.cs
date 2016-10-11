@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GrillaPersonas));
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.tablePanelPersonas = new System.Windows.Forms.TableLayoutPanel();
@@ -63,11 +63,11 @@
             // toolStripContainer1.ContentPanel
             // 
             this.toolStripContainer1.ContentPanel.Controls.Add(this.tablePanelPersonas);
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(871, 236);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(1046, 236);
             this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toolStripContainer1.Location = new System.Drawing.Point(0, 0);
             this.toolStripContainer1.Name = "toolStripContainer1";
-            this.toolStripContainer1.Size = new System.Drawing.Size(871, 261);
+            this.toolStripContainer1.Size = new System.Drawing.Size(1046, 261);
             this.toolStripContainer1.TabIndex = 0;
             this.toolStripContainer1.Text = "toolStripContainer1";
             // 
@@ -89,13 +89,13 @@
             this.tablePanelPersonas.RowCount = 2;
             this.tablePanelPersonas.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tablePanelPersonas.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tablePanelPersonas.Size = new System.Drawing.Size(871, 236);
+            this.tablePanelPersonas.Size = new System.Drawing.Size(1046, 236);
             this.tablePanelPersonas.TabIndex = 0;
             // 
             // dgvPersonas
             // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Silver;
-            this.dgvPersonas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Silver;
+            this.dgvPersonas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvPersonas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPersonas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id_persona,
@@ -111,82 +111,84 @@
             this.tablePanelPersonas.SetColumnSpan(this.dgvPersonas, 2);
             this.dgvPersonas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvPersonas.Location = new System.Drawing.Point(3, 3);
+            this.dgvPersonas.MultiSelect = false;
             this.dgvPersonas.Name = "dgvPersonas";
-            this.dgvPersonas.ReadOnly = true;
-            this.dgvPersonas.Size = new System.Drawing.Size(865, 201);
+            this.dgvPersonas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvPersonas.Size = new System.Drawing.Size(1040, 201);
             this.dgvPersonas.TabIndex = 0;
             // 
             // Id_persona
             // 
-            this.Id_persona.DataPropertyName = "Id_Persona";
+            this.Id_persona.DataPropertyName = "IDPlan";
             this.Id_persona.HeaderText = "Id Persona";
             this.Id_persona.Name = "Id_persona";
-            this.Id_persona.ReadOnly = true;
             // 
             // Legajo
             // 
             this.Legajo.DataPropertyName = "Legajo";
             this.Legajo.HeaderText = "Legajo";
             this.Legajo.Name = "Legajo";
-            this.Legajo.ReadOnly = true;
             // 
             // Apellido
             // 
             this.Apellido.DataPropertyName = "Apellido";
             this.Apellido.HeaderText = "Apellido";
             this.Apellido.Name = "Apellido";
-            this.Apellido.ReadOnly = true;
             // 
             // Nombre
             // 
             this.Nombre.DataPropertyName = "Nombre";
             this.Nombre.HeaderText = "Nombre";
             this.Nombre.Name = "Nombre";
-            this.Nombre.ReadOnly = true;
             // 
             // Fecha_nac
             // 
-            this.Fecha_nac.DataPropertyName = "Fecha_nac";
+            this.Fecha_nac.DataPropertyName = "FechaDeNacimiento";
             this.Fecha_nac.HeaderText = "Fecha de Nacimiento";
             this.Fecha_nac.Name = "Fecha_nac";
-            this.Fecha_nac.ReadOnly = true;
             // 
             // Direccion
             // 
             this.Direccion.DataPropertyName = "Direccion";
             this.Direccion.HeaderText = "Direccion";
             this.Direccion.Name = "Direccion";
-            this.Direccion.ReadOnly = true;
             // 
             // Telefono
             // 
             this.Telefono.DataPropertyName = "Telefono";
             this.Telefono.HeaderText = "Telefono";
             this.Telefono.Name = "Telefono";
-            this.Telefono.ReadOnly = true;
             // 
             // Email
             // 
             this.Email.DataPropertyName = "Email";
             this.Email.HeaderText = "Email";
             this.Email.Name = "Email";
-            this.Email.ReadOnly = true;
             // 
             // Id_Plan
             // 
             this.Id_Plan.HeaderText = "Id Plan";
+            this.Id_Plan.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6"});
             this.Id_Plan.Name = "Id_Plan";
-            this.Id_Plan.ReadOnly = true;
             // 
             // Tipo_persona
             // 
             this.Tipo_persona.HeaderText = "Tipo Persona";
+            this.Tipo_persona.Items.AddRange(new object[] {
+            "1 - Administrador",
+            "2 - Alumno",
+            "3 - Docente"});
             this.Tipo_persona.Name = "Tipo_persona";
-            this.Tipo_persona.ReadOnly = true;
             // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(793, 210);
+            this.btnSalir.Location = new System.Drawing.Point(968, 210);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(75, 23);
             this.btnSalir.TabIndex = 2;
@@ -197,7 +199,7 @@
             // btnActualizar
             // 
             this.btnActualizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnActualizar.Location = new System.Drawing.Point(712, 210);
+            this.btnActualizar.Location = new System.Drawing.Point(887, 210);
             this.btnActualizar.Name = "btnActualizar";
             this.btnActualizar.Size = new System.Drawing.Size(75, 23);
             this.btnActualizar.TabIndex = 1;
@@ -214,7 +216,7 @@
             this.tsbEliminar});
             this.toolStrip1.Location = new System.Drawing.Point(3, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(81, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(112, 25);
             this.toolStrip1.TabIndex = 0;
             // 
             // tsbNuevo
@@ -224,7 +226,7 @@
             this.tsbNuevo.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbNuevo.Name = "tsbNuevo";
             this.tsbNuevo.Size = new System.Drawing.Size(23, 22);
-            this.tsbNuevo.Text = "toolStripButton1";
+            this.tsbNuevo.Text = "Nuevo";
             this.tsbNuevo.Click += new System.EventHandler(this.tsbNuevo_Click);
             // 
             // tsbModificar
@@ -234,7 +236,7 @@
             this.tsbModificar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbModificar.Name = "tsbModificar";
             this.tsbModificar.Size = new System.Drawing.Size(23, 22);
-            this.tsbModificar.Text = "toolStripButton1";
+            this.tsbModificar.Text = "Modificar";
             this.tsbModificar.Click += new System.EventHandler(this.tsbModificar_Click);
             // 
             // tsbEliminar
@@ -244,15 +246,19 @@
             this.tsbEliminar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbEliminar.Name = "tsbEliminar";
             this.tsbEliminar.Size = new System.Drawing.Size(23, 22);
-            this.tsbEliminar.Text = "toolStripButton1";
+            this.tsbEliminar.Text = "Eliminar";
+            this.tsbEliminar.Click += new System.EventHandler(this.tsbEliminar_Click);
             // 
             // GrillaPersonas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(871, 261);
+            this.ClientSize = new System.Drawing.Size(1046, 261);
             this.Controls.Add(this.toolStripContainer1);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "GrillaPersonas";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "GrillaPersonas";
             this.Load += new System.EventHandler(this.GrillaPersonas_Load);
             this.toolStripContainer1.ContentPanel.ResumeLayout(false);
