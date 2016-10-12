@@ -49,6 +49,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ABM\EspecialidadDesktop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ABM\EspecialidadDesktop.designer.cs">
+      <DependentUpon>EspecialidadDesktop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ABM\Especialidades.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ABM\Especialidades.designer.cs">
+      <DependentUpon>Especialidades.cs</DependentUpon>
+    </Compile>
     <Compile Include="ABM\GrillaMaterias.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -99,6 +111,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ABM\EspecialidadDesktop.resx">
+      <DependentUpon>EspecialidadDesktop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABM\Especialidades.resx">
+      <DependentUpon>Especialidades.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ABM\GrillaMaterias.resx">
       <DependentUpon>GrillaMaterias.cs</DependentUpon>
     </EmbeddedResource>
