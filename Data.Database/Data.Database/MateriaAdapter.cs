@@ -10,7 +10,7 @@ using System.Data.SqlClient;
 namespace Data.Database
 
 {
-    class MateriaAdapter : Adapter
+    public class MateriaAdapter : Adapter
     {
         public List<Materia> GetAll()
         {
@@ -19,7 +19,7 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdMaterias = new SqlCommand("SELECT * FROM materias");
+                SqlCommand cmdMaterias = new SqlCommand("SELECT * FROM materias",sqlConn);
                 SqlDataReader drMaterias = cmdMaterias.ExecuteReader();
 
                 while (drMaterias.Read())
@@ -38,7 +38,7 @@ namespace Data.Database
             }
             catch (Exception ex)
             {
-                Exception ExManejada = new Exception("Error al traer la lista de usuarios", ex);
+                Exception ExManejada = new Exception("Error al traer la lista de materias", ex);
                 throw ExManejada;
             }
             finally

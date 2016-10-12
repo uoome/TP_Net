@@ -45,5 +45,12 @@ namespace UI.Desktop
             grillaPers.Show();
             grillaPers.Listar();
         }
+
+        private void materiasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            GrillaMaterias grillaMate = new GrillaMaterias();
+            grillaMate.Show();
+            grillaMate.Listar();
+        }
     }
 }

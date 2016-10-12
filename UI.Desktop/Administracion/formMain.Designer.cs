@@ -31,6 +31,7 @@
             this.mnsPrincipal = new System.Windows.Forms.MenuStrip();
             this.mnuArchivo = new System.Windows.Forms.ToolStripMenuItem();
             this.usuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.personasToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.personasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cursosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.materiasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -38,7 +39,6 @@
             this.comisionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.especialidadesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuSalir = new System.Windows.Forms.ToolStripMenuItem();
-            this.personasToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.mnsPrincipal.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -75,6 +75,13 @@
             this.usuariosToolStripMenuItem.Text = "Usuarios";
             this.usuariosToolStripMenuItem.Click += new System.EventHandler(this.usuariosToolStripMenuItem_Click);
             // 
+            // personasToolStripMenuItem1
+            // 
+            this.personasToolStripMenuItem1.Name = "personasToolStripMenuItem1";
+            this.personasToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.personasToolStripMenuItem1.Text = "Personas";
+            this.personasToolStripMenuItem1.Click += new System.EventHandler(this.personasToolStripMenuItem1_Click);
+            // 
             // personasToolStripMenuItem
             // 
             this.personasToolStripMenuItem.Name = "personasToolStripMenuItem";
@@ -92,6 +99,7 @@
             this.materiasToolStripMenuItem.Name = "materiasToolStripMenuItem";
             this.materiasToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.materiasToolStripMenuItem.Text = "Materias";
+            this.materiasToolStripMenuItem.Click += new System.EventHandler(this.materiasToolStripMenuItem_Click);
             // 
             // planToolStripMenuItem
             // 
@@ -117,13 +125,6 @@
             this.mnuSalir.Size = new System.Drawing.Size(152, 22);
             this.mnuSalir.Text = "Salir";
             this.mnuSalir.Click += new System.EventHandler(this.mnuSalir_Click);
-            // 
-            // personasToolStripMenuItem1
-            // 
-            this.personasToolStripMenuItem1.Name = "personasToolStripMenuItem1";
-            this.personasToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
-            this.personasToolStripMenuItem1.Text = "Personas";
-            this.personasToolStripMenuItem1.Click += new System.EventHandler(this.personasToolStripMenuItem1_Click);
             // 
             // formMain
             // 
