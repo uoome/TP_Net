@@ -57,12 +57,12 @@
             this.mnuArchivo.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.usuariosToolStripMenuItem,
             this.personasToolStripMenuItem1,
+            this.especialidadesToolStripMenuItem,
             this.personasToolStripMenuItem,
-            this.cursosToolStripMenuItem,
             this.materiasToolStripMenuItem,
+            this.cursosToolStripMenuItem,
             this.planToolStripMenuItem,
             this.comisionesToolStripMenuItem,
-            this.especialidadesToolStripMenuItem,
             this.mnuSalir});
             this.mnuArchivo.Name = "mnuArchivo";
             this.mnuArchivo.Size = new System.Drawing.Size(50, 20);
@@ -118,6 +118,7 @@
             this.especialidadesToolStripMenuItem.Name = "especialidadesToolStripMenuItem";
             this.especialidadesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.especialidadesToolStripMenuItem.Text = "Especialidades";
+            this.especialidadesToolStripMenuItem.Click += new System.EventHandler(this.especialidadesToolStripMenuItem_Click);
             // 
             // mnuSalir
             // 

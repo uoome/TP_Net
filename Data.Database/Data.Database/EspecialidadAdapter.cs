@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using Business.Entities;
 using System.Data;
 using System.Data.SqlClient;
-using Business.Entities;
 
 
 namespace Data.Database
@@ -20,16 +19,18 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand CmdEspecialidades = new SqlCommand("SELECT * from especialidades", sqlConn);
+                SqlCommand CmdEspecialidades = new SqlCommand("SELECT * FROM especialidades", sqlConn);
                 SqlDataReader drEspecialidad = CmdEspecialidades.ExecuteReader();
+
                 while (drEspecialidad.Read())
                 {
                     Especialidad esp = new Especialidad();
                     esp.ID = (int)drEspecialidad["id_especialidad"];
-                    esp.Descripcion = (string)drEspecialidad["descripcion"];
+                    esp.Descripcion = (string)drEspecialidad["desc_especialidad"];
                     especialidades.Add(esp);
                 }
-                this.CloseConnection(); 
+
+                drEspecialidad.Close(); 
             
             }
             catch (Exception ex)
@@ -42,6 +43,7 @@ namespace Data.Database
             {
                 this.CloseConnection();
             }
+
             return especialidades;
 
         }
@@ -51,23 +53,21 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand CmdEspecialidad = new SqlCommand("SELECT especialidad WHERE id_especialidad=@id", sqlConn);
+                SqlCommand CmdEspecialidad = new SqlCommand("SELECT * FROM especialidades WHERE id_especialidad=@id", sqlConn);
                CmdEspecialidad.Parameters.Add("@id", SqlDbType.Int).Value = ID;
                 SqlDataReader drEspecialidad = CmdEspecialidad.ExecuteReader();
 
                 if(drEspecialidad.Read())
                 {
                     esp.ID = (int)drEspecialidad["id_especialidad"];
-                    esp.Descripcion = (string)drEspecialidad["especialidad"];
+                    esp.Descripcion = (string)drEspecialidad["desc_especialidad"];
                 }
-                this.CloseConnection();
-
-
-
+                drEspecialidad.Close();
 
             }
             catch (Exception ex)
-            { Exception ExManejada = new Exception("Error al traer la especialidad", ex);
+            {
+                Exception ExManejada = new Exception("Error al traer la especialidad", ex);
                 throw ExManejada;
             }
             finally
@@ -76,7 +76,7 @@ namespace Data.Database
             }
             return esp;
 
-            }
+        }
         public void Delete(int ID)
         {
           try
@@ -86,13 +86,11 @@ namespace Data.Database
                 CmdDelete.Parameters.Add("@id", SqlDbType.Int).Value = ID;
                 CmdDelete.ExecuteNonQuery();
 
-                 
-
             }
             catch (Exception ex)
-            { Exception exManejada = new Exception("Error al eliminar la especialidad", ex );
+            {
+                Exception exManejada = new Exception("Error al eliminar la especialidad", ex );
                 throw exManejada;
-
             }
             finally
             {
@@ -106,20 +104,18 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand CmdUpdate = new SqlCommand("UPDATE especialidades " +
-                    "SET descripcion = @desc WHERE id_especialidad = @id", sqlConn);
+                SqlCommand CmdUpdate = new SqlCommand(
+                    "UPDATE especialidades " +
+                    "SET desc_especialidad=@desc WHERE id_especialidad=@id", sqlConn);
                 CmdUpdate.Parameters.Add("@id", SqlDbType.Int).Value = Esp.ID;
                 CmdUpdate.Parameters.Add("@desc", SqlDbType.VarChar, 50).Value = Esp.Descripcion;
-                CmdUpdate.ExecuteNonQuery();
-                 
 
+                CmdUpdate.ExecuteNonQuery();
             }
            catch(Exception ex)
             {
                 Exception ExManejada = new Exception("Error al actualizar especialidad", ex);
                 throw ExManejada;
-
-
             }
             finally
             {
@@ -132,8 +128,9 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand CmdInsert = new SqlCommand("INSERT into especialidades" +
-                              " (descripcion) VALUES (@descripcion) ", sqlConn);
+                SqlCommand CmdInsert = new SqlCommand(
+                    "INSERT INTO especialidades (desc_especialidad) "+
+                    "VALUES (@descripcion) ", sqlConn);
                 CmdInsert.Parameters.Add("@descripcion", SqlDbType.VarChar, 50).Value = Esp.Descripcion;
 
                 CmdInsert.ExecuteNonQuery();
@@ -142,12 +139,10 @@ namespace Data.Database
             {
                 Exception ExManejada = new Exception("Error al crear una especialidad", ex);
                 throw ExManejada;
-
             }
             finally
             {
                 this.CloseConnection();
-
             }
         }
         public void Save(Especialidad esp)
@@ -155,18 +150,15 @@ namespace Data.Database
             if(esp.State == BusinessEntity.States.Deleted )
             {
                 this.Delete(esp.ID);
-            } else
-            if(esp.State == BusinessEntity.States.New)
+            } else if(esp.State == BusinessEntity.States.New)
             {
                 this.Insert(esp);
 
-            } else
-                if(esp.State == BusinessEntity.States.Modified)
+            } else if(esp.State == BusinessEntity.States.Modified)
             {
                 this.Update(esp);
             }
-            else
-            { esp.State = BusinessEntity.States.Unmodified; }
+            else esp.State = BusinessEntity.States.Unmodified; 
 
         }
 

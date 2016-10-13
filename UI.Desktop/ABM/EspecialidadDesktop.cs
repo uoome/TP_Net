@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using Business.Entities;
 using Business.Logic;
 
-namespace UI.Desktop.ABM
+namespace UI.Desktop
 {
     public partial class EspecialidadDesktop : ApplicationForm 
         {
@@ -34,18 +34,26 @@ namespace UI.Desktop.ABM
             Modo = modo;
             if (ModoForm.Alta == modo)
             {
+                Modo = modo;
 
+                if (Modo == ModoForm.Alta || Modo == ModoForm.Modificacion)
+                {
+                    this.btnAceptar.Text = "Guardar";
+                }
             }
         }
         public EspecialidadDesktop(int ID, ModoForm modo):this()
         {
             Modo = modo;
             if (Modo == ModoForm.Alta || Modo == ModoForm.Modificacion)
-            { this.btnAceptar.Text = "Guardar"; }
+            {
+                this.btnAceptar.Text = "Guardar";
+            }
             else if (Modo == ModoForm.Eliminar)
             {
                 this.btnAceptar.Text = "Eliminar";
             }
+
             EspecialidadLogic espLog = new EspecialidadLogic();
             EspecialidadActual = espLog.GetOne(ID);
             MapearDeDatos();
@@ -55,7 +63,7 @@ namespace UI.Desktop.ABM
         #region Metodos
         public override void MapearDeDatos()
         {
-            txtID.Text = EspecialidadActual.ID.ToString();
+            txtID_Especialidad.Text = EspecialidadActual.ID.ToString();
             txtDescripcion.Text = EspecialidadActual.Descripcion;         
         }
         public override void MapearADatos()
@@ -72,7 +80,7 @@ namespace UI.Desktop.ABM
             }
             if (Modo == ModoForm.Modificacion)
             {
-                this.EspecialidadActual.ID = Convert.ToInt32(this.txtID.Text.Trim());
+                this.EspecialidadActual.ID = Convert.ToInt32(this.txtID_Especialidad.Text.Trim());
                 EspecialidadActual.State = Especialidad.States.Modified;
             }
             if (Modo == ModoForm.Eliminar)
@@ -86,13 +94,32 @@ namespace UI.Desktop.ABM
             EspecialidadLogic EspLog = new EspecialidadLogic();
             EspLog.Save(EspecialidadActual);
         }
-        public override bool Validar() { return false; }
-        public void Notificar(string titulo, string mensaje, MessageBoxButtons
+        public override bool Validar()
+        {
+            string msj = "";
+
+            if (txtDescripcion.Text.Trim().Equals(""))
+            {
+                msj += "La descripcion no puede estar vacía \n";
+            }
+
+            if (string.IsNullOrEmpty(msj))
+            {
+                return true;
+            }
+            else
+            {
+                this.Notificar(msj, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false; 
+            }
+
+        }
+        public new void Notificar(string titulo, string mensaje, MessageBoxButtons
         botones, MessageBoxIcon icono)
         {
             MessageBox.Show(mensaje, titulo, botones, icono);
         }
-        public void Notificar(string mensaje, MessageBoxButtons botones,
+        public new void Notificar(string mensaje, MessageBoxButtons botones,
         MessageBoxIcon icono)
         {
             this.Notificar(this.Text, mensaje, botones, icono);
@@ -101,19 +128,13 @@ namespace UI.Desktop.ABM
 
         #endregion
 
-
-
-
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            this.GuardarCambios();
-            this.Close();
+            if (this.Validar())
+            {
+                this.GuardarCambios();
+                this.Close();
+            }   
 
         }
 

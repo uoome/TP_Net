@@ -10,11 +10,11 @@ using System.Windows.Forms;
 using Business.Entities;
 using Business.Logic;
 
-namespace UI.Desktop.ABM
+namespace UI.Desktop
 {
-    public partial class Especialidades : Form
+    public partial class GrillaEspecialidades : ApplicationForm
     {
-        public Especialidades()
+        public GrillaEspecialidades()
         {
             InitializeComponent();
             this.dgvEspecialidades.AutoGenerateColumns = false;
@@ -44,9 +44,9 @@ namespace UI.Desktop.ABM
 
         private void tsbNuevo_Click(object sender, EventArgs e)
         {
-            EspecialidadDesktop EspDesk = new EspecialidadDesktop(ApplicationForm.ModoForm.Alta);
+           EspecialidadDesktop EspDesk = new EspecialidadDesktop(ApplicationForm.ModoForm.Alta);
            EspDesk.ShowDialog();
-            this.Listar();
+           this.Listar();
 
         }
 

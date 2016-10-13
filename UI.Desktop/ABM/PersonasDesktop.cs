@@ -64,6 +64,7 @@ namespace UI.Desktop
             this.txtID_Persona.Text = PersonaActual.ID.ToString();
             this.txtNombre.Text = PersonaActual.Nombre;
             this.txtApellido.Text = PersonaActual.Apellido;
+            this.txtLegajo.Text = PersonaActual.Legajo.ToString();
             this.txtDireccion.Text = PersonaActual.Direccion;
             this.txtTelefono.Text = PersonaActual.Telefono;
             this.txtFecha_nac.Text = PersonaActual.FechaDeNacimiento.ToString();
@@ -76,7 +77,6 @@ namespace UI.Desktop
             {
                 PersonaActual = new Personas();
                 PersonaActual.State = Personas.States.New;
-
             }
             if (Modo == ModoForm.Alta || Modo == ModoForm.Modificacion)
             {
@@ -85,13 +85,9 @@ namespace UI.Desktop
                 PersonaActual.Direccion = this.txtDireccion.Text;
                 PersonaActual.Email = this.txtEmail.Text;
                 PersonaActual.Telefono = this.txtTelefono.Text;
-
-                //Como convertir a enteros con string ? 
-                //PersonaActual.Legajo = this.txtLegajo.Text;
-                //PersonaActual.IDPlan = this.cbTipoPers.Text;
-
-                //Como pasar de string a DateTime
-                //PersonaActual.FechaDeNacimiento = this.txtFecha_nac;
+                PersonaActual.Legajo = Convert.ToInt32(this.txtLegajo.Text.Trim());
+                PersonaActual.IDPlan = Convert.ToInt32(this.cbTipoPers.Text.Trim());
+                PersonaActual.FechaDeNacimiento = Convert.ToDateTime(this.txtFecha_nac.Text);
 
                 //Siendo Alta no tiene ID inicial, por eso verificamos
                 if (Modo == ModoForm.Modificacion)

@@ -8,7 +8,7 @@ using Business.Entities;
 
 namespace Business.Logic
 {
-   public class EspecialidadLogic : EspecialidadLogic 
+   public class EspecialidadLogic : BusinessLogic 
     {
         private EspecialidadAdapter _especialidadData;
         public EspecialidadAdapter EspecialidadData

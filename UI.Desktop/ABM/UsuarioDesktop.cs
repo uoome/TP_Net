@@ -39,10 +39,6 @@ namespace UI.Desktop
                 this.btnAceptar.Text = "Eliminar";
             }
             
-            // this.btnAceptar.Text = "Guardar";
-            // Preguntar que conviene hacer con la validacion del modo, si hacerlo en cada constructor
-            // o validarlo antes y llamar a los construcotres en base al modo
-
         }
         public UsuarioDesktop(int ID, ModoForm modo) : this()
         {

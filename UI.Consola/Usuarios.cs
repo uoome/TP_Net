@@ -83,7 +83,7 @@ namespace UI.Consola
             catch (FormatException fe)
             {
                 Console.WriteLine();
-                Console.WriteLine("El ID ingresado debe ser un entero ");
+                Console.WriteLine("El ID ingresado debe ser un entero ",fe);
             }
 
             catch (Exception e)
@@ -124,7 +124,7 @@ namespace UI.Consola
             catch (FormatException fe)
             {
                 Console.WriteLine();
-                Console.WriteLine("El ID ingresado debe ser un numero ");
+                Console.WriteLine("El ID ingresado debe ser un numero ",fe);
 
 
 
@@ -180,7 +180,7 @@ namespace UI.Consola
             catch (FormatException fe)
             {
                 Console.WriteLine();
-                Console.WriteLine("El ID ingresado debe ser un numero ");
+                Console.WriteLine("El ID ingresado debe ser un numero ",fe);
                 
             }
             catch (Exception e)

@@ -108,7 +108,7 @@ namespace Data.Database
             {
                 this.OpenConnection();
                 SqlCommand cmdInsertMateria = new SqlCommand(
-                    "INSERT into materias (desc_materia,hs_semanales, hs_totales,id_plan) " +
+                    "INSERT INTO materias (desc_materia,hs_semanales, hs_totales,id_plan) " +
                     "VALUES(@id_materia, @desc_materia, @hs_sem, @hs_tot, @id_plan)",sqlConn);
                 cmdInsertMateria.Parameters.Add("@desc_materia", SqlDbType.VarChar,50).Value = materia.ID;
                 cmdInsertMateria.Parameters.Add("@hs_tot", SqlDbType.Int).Value = materia.HSTotales;
@@ -123,13 +123,10 @@ namespace Data.Database
             {
                 Exception ExManejada = new Exception("Error al crear nueva materia", ex);
                 throw ExManejada;
-
-
             }
             finally
             {
-                CloseConnection();
-
+                this.CloseConnection();
             }
 
         }
@@ -141,8 +138,8 @@ namespace Data.Database
                 this.OpenConnection();
                 SqlCommand cmdUpdateMateria = new SqlCommand(
                     "UPDATE materias " +
-                    "SET id_plan=@idplan, desc_materia=@desc, hs_totales=@hstot, hs_semanales=@hssem "
-                    + "WHERE id_materia=@id ", sqlConn);
+                    "SET id_plan=@idplan, desc_materia=@desc, hs_totales=@hstot, hs_semanales=@hssem "+
+                    "WHERE id_materia=@id", sqlConn);
                 cmdUpdateMateria.Parameters.Add("@id", SqlDbType.Int).Value = materia.ID;
                 cmdUpdateMateria.Parameters.Add("@desc", SqlDbType.VarChar,50).Value = materia.Descripcion;
                 cmdUpdateMateria.Parameters.Add("@hssem", SqlDbType.Int).Value = materia.HSSemanales;
@@ -155,13 +152,12 @@ namespace Data.Database
             }
             catch (Exception ex)
             {
-                Exception ExManejada = new Exception("Error al actualizar la materia, ex");
+                Exception ExManejada = new Exception("Error al actualizar la materia", ex);
                 throw ExManejada;
             }
             finally
             {
                 this.CloseConnection();
-
             }
         }
         

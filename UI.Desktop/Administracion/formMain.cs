@@ -52,5 +52,12 @@ namespace UI.Desktop
             grillaMate.Show();
             grillaMate.Listar();
         }
+
+        private void especialidadesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            GrillaEspecialidades grillaEspe = new GrillaEspecialidades();
+            grillaEspe.Show();
+            grillaEspe.Listar();
+        }
     }
 }

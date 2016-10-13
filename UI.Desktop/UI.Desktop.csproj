@@ -55,11 +55,11 @@
     <Compile Include="ABM\EspecialidadDesktop.designer.cs">
       <DependentUpon>EspecialidadDesktop.cs</DependentUpon>
     </Compile>
-    <Compile Include="ABM\Especialidades.cs">
+    <Compile Include="ABM\GrillaEspecialidades.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ABM\Especialidades.designer.cs">
-      <DependentUpon>Especialidades.cs</DependentUpon>
+    <Compile Include="ABM\GrillaEspecialidades.designer.cs">
+      <DependentUpon>GrillaEspecialidades.cs</DependentUpon>
     </Compile>
     <Compile Include="ABM\GrillaMaterias.cs">
       <SubType>Form</SubType>
@@ -72,6 +72,12 @@
     </Compile>
     <Compile Include="ABM\GrillaPersonas.Designer.cs">
       <DependentUpon>GrillaPersonas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ABM\MateriaDesktop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ABM\MateriaDesktop.Designer.cs">
+      <DependentUpon>MateriaDesktop.cs</DependentUpon>
     </Compile>
     <Compile Include="ABM\PersonasDesktop.cs">
       <SubType>Form</SubType>
@@ -114,14 +120,17 @@
     <EmbeddedResource Include="ABM\EspecialidadDesktop.resx">
       <DependentUpon>EspecialidadDesktop.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ABM\Especialidades.resx">
-      <DependentUpon>Especialidades.cs</DependentUpon>
+    <EmbeddedResource Include="ABM\GrillaEspecialidades.resx">
+      <DependentUpon>GrillaEspecialidades.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ABM\GrillaMaterias.resx">
       <DependentUpon>GrillaMaterias.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ABM\GrillaPersonas.resx">
       <DependentUpon>GrillaPersonas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABM\MateriaDesktop.resx">
+      <DependentUpon>MateriaDesktop.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ABM\PersonasDesktop.resx">
       <DependentUpon>PersonasDesktop.cs</DependentUpon>

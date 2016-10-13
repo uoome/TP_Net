@@ -105,9 +105,9 @@
             this.lblID_Persona.AutoSize = true;
             this.lblID_Persona.Location = new System.Drawing.Point(318, 17);
             this.lblID_Persona.Name = "lblID_Persona";
-            this.lblID_Persona.Size = new System.Drawing.Size(63, 13);
+            this.lblID_Persona.Size = new System.Drawing.Size(60, 13);
             this.lblID_Persona.TabIndex = 6;
-            this.lblID_Persona.Text = "ID_Persona";
+            this.lblID_Persona.Text = "ID Persona";
             this.lblID_Persona.Click += new System.EventHandler(this.label1_Click_2);
             // 
             // txtNombre
@@ -154,7 +154,8 @@
             this.txtID_Persona.Name = "txtID_Persona";
             this.txtID_Persona.ReadOnly = true;
             this.txtID_Persona.Size = new System.Drawing.Size(100, 20);
-            this.txtID_Persona.TabIndex = 7;
+            this.txtID_Persona.TabIndex = 100;
+            this.txtID_Persona.TabStop = false;
             // 
             // lblLegajo
             // 
@@ -170,9 +171,9 @@
             this.lblId_Plan.AutoSize = true;
             this.lblId_Plan.Location = new System.Drawing.Point(318, 70);
             this.lblId_Plan.Name = "lblId_Plan";
-            this.lblId_Plan.Size = new System.Drawing.Size(43, 13);
+            this.lblId_Plan.Size = new System.Drawing.Size(40, 13);
             this.lblId_Plan.TabIndex = 8;
-            this.lblId_Plan.Text = "Id_Plan";
+            this.lblId_Plan.Text = "Id Plan";
             // 
             // lblTipo_Pers
             // 
