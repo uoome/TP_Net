@@ -45,11 +45,11 @@
             this.lblTipo_Pers = new System.Windows.Forms.Label();
             this.txtLegajo = new System.Windows.Forms.TextBox();
             this.cbTipoPers = new System.Windows.Forms.ComboBox();
-            this.cbxId_Plan = new System.Windows.Forms.ComboBox();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.lblTelefono = new System.Windows.Forms.Label();
             this.txtTelefono = new System.Windows.Forms.TextBox();
+            this.txbId_Plan = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // lblNombre
@@ -60,7 +60,6 @@
             this.lblNombre.Size = new System.Drawing.Size(44, 13);
             this.lblNombre.TabIndex = 1;
             this.lblNombre.Text = "Nombre";
-            this.lblNombre.Click += new System.EventHandler(this.label1_Click);
             // 
             // lblApellido
             // 
@@ -79,7 +78,6 @@
             this.lblDireccion.Size = new System.Drawing.Size(52, 13);
             this.lblDireccion.TabIndex = 3;
             this.lblDireccion.Text = "Direccion";
-            this.lblDireccion.Click += new System.EventHandler(this.label3_Click);
             // 
             // lblFecha_nac
             // 
@@ -98,7 +96,6 @@
             this.lblEmail.Size = new System.Drawing.Size(32, 13);
             this.lblEmail.TabIndex = 5;
             this.lblEmail.Text = "Email";
-            this.lblEmail.Click += new System.EventHandler(this.label1_Click_1);
             // 
             // lblID_Persona
             // 
@@ -108,7 +105,6 @@
             this.lblID_Persona.Size = new System.Drawing.Size(60, 13);
             this.lblID_Persona.TabIndex = 6;
             this.lblID_Persona.Text = "ID Persona";
-            this.lblID_Persona.Click += new System.EventHandler(this.label1_Click_2);
             // 
             // txtNombre
             // 
@@ -130,7 +126,6 @@
             this.txtDireccion.Name = "txtDireccion";
             this.txtDireccion.Size = new System.Drawing.Size(166, 20);
             this.txtDireccion.TabIndex = 3;
-            this.txtDireccion.TextChanged += new System.EventHandler(this.txtDireccion_TextChanged);
             // 
             // txtFecha_nac
             // 
@@ -138,7 +133,6 @@
             this.txtFecha_nac.Name = "txtFecha_nac";
             this.txtFecha_nac.Size = new System.Drawing.Size(100, 20);
             this.txtFecha_nac.TabIndex = 5;
-            this.txtFecha_nac.TextChanged += new System.EventHandler(this.txtFecha_nac_TextChanged);
             // 
             // txtEmail
             // 
@@ -193,19 +187,17 @@
             // 
             // cbTipoPers
             // 
+            this.cbTipoPers.DisplayMember = "TipoPersona";
             this.cbTipoPers.FormattingEnabled = true;
+            this.cbTipoPers.Items.AddRange(new object[] {
+            "Administrador",
+            "Alumno",
+            "Docente"});
             this.cbTipoPers.Location = new System.Drawing.Point(394, 89);
             this.cbTipoPers.Name = "cbTipoPers";
             this.cbTipoPers.Size = new System.Drawing.Size(100, 21);
             this.cbTipoPers.TabIndex = 10;
-            // 
-            // cbxId_Plan
-            // 
-            this.cbxId_Plan.FormattingEnabled = true;
-            this.cbxId_Plan.Location = new System.Drawing.Point(394, 62);
-            this.cbxId_Plan.Name = "cbxId_Plan";
-            this.cbxId_Plan.Size = new System.Drawing.Size(100, 21);
-            this.cbxId_Plan.TabIndex = 9;
+            this.cbTipoPers.ValueMember = "TipoPersona";
             // 
             // btnAceptar
             // 
@@ -243,16 +235,23 @@
             this.txtTelefono.Size = new System.Drawing.Size(100, 20);
             this.txtTelefono.TabIndex = 6;
             // 
+            // txbId_Plan
+            // 
+            this.txbId_Plan.Location = new System.Drawing.Point(394, 62);
+            this.txbId_Plan.Name = "txbId_Plan";
+            this.txbId_Plan.Size = new System.Drawing.Size(100, 20);
+            this.txbId_Plan.TabIndex = 101;
+            // 
             // PersonasDesktop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(548, 180);
+            this.Controls.Add(this.txbId_Plan);
             this.Controls.Add(this.txtTelefono);
             this.Controls.Add(this.lblTelefono);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAceptar);
-            this.Controls.Add(this.cbxId_Plan);
             this.Controls.Add(this.cbTipoPers);
             this.Controls.Add(this.txtLegajo);
             this.Controls.Add(this.lblTipo_Pers);
@@ -275,7 +274,6 @@
             this.Name = "PersonasDesktop";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "PersonasDesktop";
-            this.Load += new System.EventHandler(this.PersonasDesktop_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -299,10 +297,10 @@
         private System.Windows.Forms.Label lblTipo_Pers;
         private System.Windows.Forms.TextBox txtLegajo;
         private System.Windows.Forms.ComboBox cbTipoPers;
-        private System.Windows.Forms.ComboBox cbxId_Plan;
         private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Label lblTelefono;
         private System.Windows.Forms.TextBox txtTelefono;
+        private System.Windows.Forms.TextBox txbId_Plan;
     }
 }

@@ -29,13 +29,13 @@ namespace Business.Entities
             get { return _Descripcion; }
             set { _Descripcion = value; }
         }
-        public int IDmateria
+        public int IDMateria
         {
             get { return _IdMateria; }
             set { _IdMateria = value; }
         }
 
-        public int IDcomision
+        public int IDComision
         {
             get { return _IdComision; }
             set { _IdComision = value; }

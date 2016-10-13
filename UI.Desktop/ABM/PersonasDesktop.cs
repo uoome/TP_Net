@@ -69,7 +69,8 @@ namespace UI.Desktop
             this.txtTelefono.Text = PersonaActual.Telefono;
             this.txtFecha_nac.Text = PersonaActual.FechaDeNacimiento.ToString();
             this.txtEmail.Text = PersonaActual.Email;
-            //Faltan los combobox.
+            this.txbId_Plan.Text = PersonaActual.IDPlan.ToString();
+            //Falta el combobox de TipoPersona.
         }
         public override void MapearADatos()
         {
@@ -86,8 +87,9 @@ namespace UI.Desktop
                 PersonaActual.Email = this.txtEmail.Text;
                 PersonaActual.Telefono = this.txtTelefono.Text;
                 PersonaActual.Legajo = Convert.ToInt32(this.txtLegajo.Text.Trim());
-                PersonaActual.IDPlan = Convert.ToInt32(this.cbTipoPers.Text.Trim());
+                PersonaActual.IDPlan = Convert.ToInt32(this.txbId_Plan.Text.Trim());
                 PersonaActual.FechaDeNacimiento = Convert.ToDateTime(this.txtFecha_nac.Text);
+                //Falta combo box de TipoPersona
 
                 //Siendo Alta no tiene ID inicial, por eso verificamos
                 if (Modo == ModoForm.Modificacion)
@@ -154,39 +156,6 @@ namespace UI.Desktop
         #endregion
 
         #region Eventos
-
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click_2(object sender, EventArgs e)
-        {
-
-        }
-
-        private void PersonasDesktop_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtFecha_nac_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-        #endregion
-
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             if (this.Validar())
@@ -196,14 +165,13 @@ namespace UI.Desktop
             }
         }
 
-        private void txtDireccion_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+
+        #endregion
+
+
     }
 }

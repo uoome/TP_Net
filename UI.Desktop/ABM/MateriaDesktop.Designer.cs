@@ -32,7 +32,6 @@
             this.lblHSTotales = new System.Windows.Forms.Label();
             this.lblId_Plan = new System.Windows.Forms.Label();
             this.txbHSTotales = new System.Windows.Forms.TextBox();
-            this.cbxIdPlan = new System.Windows.Forms.ComboBox();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.lblHSSemanales = new System.Windows.Forms.Label();
@@ -41,6 +40,7 @@
             this.lblDescripcion = new System.Windows.Forms.Label();
             this.lblId_Materia = new System.Windows.Forms.Label();
             this.txbId_Materia = new System.Windows.Forms.TextBox();
+            this.txbId_Plan = new System.Windows.Forms.TextBox();
             this.tbpMateriaDesktop.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,7 +54,6 @@
             this.tbpMateriaDesktop.Controls.Add(this.lblHSTotales, 2, 0);
             this.tbpMateriaDesktop.Controls.Add(this.lblId_Plan, 2, 1);
             this.tbpMateriaDesktop.Controls.Add(this.txbHSTotales, 3, 0);
-            this.tbpMateriaDesktop.Controls.Add(this.cbxIdPlan, 3, 1);
             this.tbpMateriaDesktop.Controls.Add(this.btnAceptar, 2, 2);
             this.tbpMateriaDesktop.Controls.Add(this.btnCancelar, 3, 2);
             this.tbpMateriaDesktop.Controls.Add(this.lblHSSemanales, 0, 2);
@@ -63,6 +62,7 @@
             this.tbpMateriaDesktop.Controls.Add(this.lblDescripcion, 0, 1);
             this.tbpMateriaDesktop.Controls.Add(this.lblId_Materia, 0, 0);
             this.tbpMateriaDesktop.Controls.Add(this.txbId_Materia, 1, 0);
+            this.tbpMateriaDesktop.Controls.Add(this.txbId_Plan, 3, 1);
             this.tbpMateriaDesktop.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tbpMateriaDesktop.Location = new System.Drawing.Point(0, 0);
             this.tbpMateriaDesktop.Name = "tbpMateriaDesktop";
@@ -100,15 +100,6 @@
             this.txbHSTotales.Name = "txbHSTotales";
             this.txbHSTotales.Size = new System.Drawing.Size(116, 20);
             this.txbHSTotales.TabIndex = 2;
-            // 
-            // cbxIdPlan
-            // 
-            this.cbxIdPlan.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.cbxIdPlan.FormattingEnabled = true;
-            this.cbxIdPlan.Location = new System.Drawing.Point(359, 57);
-            this.cbxIdPlan.Name = "cbxIdPlan";
-            this.cbxIdPlan.Size = new System.Drawing.Size(116, 21);
-            this.cbxIdPlan.TabIndex = 4;
             // 
             // btnAceptar
             // 
@@ -187,6 +178,14 @@
             this.txbId_Materia.TabIndex = 1;
             this.txbId_Materia.TabStop = false;
             // 
+            // txbId_Plan
+            // 
+            this.txbId_Plan.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.txbId_Plan.Location = new System.Drawing.Point(359, 58);
+            this.txbId_Plan.Name = "txbId_Plan";
+            this.txbId_Plan.Size = new System.Drawing.Size(116, 20);
+            this.txbId_Plan.TabIndex = 4;
+            // 
             // MateriaDesktop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -214,10 +213,10 @@
         private System.Windows.Forms.TextBox txbDescripcion;
         private System.Windows.Forms.TextBox txbHSSemanales;
         private System.Windows.Forms.TextBox txbHSTotales;
-        private System.Windows.Forms.ComboBox cbxIdPlan;
         private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Label lblId_Materia;
         private System.Windows.Forms.TextBox txbId_Materia;
+        private System.Windows.Forms.TextBox txbId_Plan;
     }
 }

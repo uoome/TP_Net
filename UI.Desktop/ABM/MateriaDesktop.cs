@@ -68,8 +68,8 @@ namespace UI.Desktop
             txbDescripcion.Text = MateriaActual.Descripcion;
             txbHSSemanales.Text = MateriaActual.HSSemanales.ToString();
             txbHSTotales.Text = MateriaActual.HSTotales.ToString();
-            //Falta combobox
-            //cbxIdPlan.Text
+            txbId_Plan.Text = MateriaActual.IDplan.ToString();
+
         }
         public override void MapearADatos()
         {
@@ -84,7 +84,7 @@ namespace UI.Desktop
                 MateriaActual.Descripcion = txbDescripcion.Text;
                 MateriaActual.HSSemanales = Convert.ToInt32(txbHSSemanales.Text.Trim());
                 MateriaActual.HSTotales = Convert.ToInt32(txbHSTotales.Text.Trim());
-                //Falta combobox
+                MateriaActual.IDplan = Convert.ToInt32(txbId_Plan.Text.Trim());
             }
 
             //Siendo Alta no tiene ID inicial, por eso 

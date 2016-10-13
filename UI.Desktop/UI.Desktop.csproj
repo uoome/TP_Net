@@ -55,6 +55,12 @@
     <Compile Include="ABM\EspecialidadDesktop.designer.cs">
       <DependentUpon>EspecialidadDesktop.cs</DependentUpon>
     </Compile>
+    <Compile Include="ABM\GrillaCursos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ABM\GrillaCursos.Designer.cs">
+      <DependentUpon>GrillaCursos.cs</DependentUpon>
+    </Compile>
     <Compile Include="ABM\GrillaEspecialidades.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,6 +125,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="ABM\EspecialidadDesktop.resx">
       <DependentUpon>EspecialidadDesktop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABM\GrillaCursos.resx">
+      <DependentUpon>GrillaCursos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ABM\GrillaEspecialidades.resx">
       <DependentUpon>GrillaEspecialidades.cs</DependentUpon>
