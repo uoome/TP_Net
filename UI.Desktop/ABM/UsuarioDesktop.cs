@@ -55,6 +55,7 @@ namespace UI.Desktop
             UsuarioActual = usLog.GetOne(ID);
             MapearDeDatos();
         }
+
         #endregion
 
         #region Metodos

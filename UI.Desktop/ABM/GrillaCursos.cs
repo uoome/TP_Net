@@ -7,14 +7,34 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Business.Entities;
+using Business.Logic;
 
-namespace UI.Desktop.ABM
+namespace UI.Desktop
 {
-    public partial class GrillaCursos : Form
+    public partial class GrillaCursos : ApplicationForm
     {
         public GrillaCursos()
         {
             InitializeComponent();
+            this.dgvCursos.AutoGenerateColumns = false;
+        }
+        
+        public void Listar()
+        {
+            CursoLogic curLog = new CursoLogic();
+            this.dgvCursos.AutoGenerateColumns = false;
+            this.dgvCursos.DataSource= curLog.GetAll();
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnActualizar_Click(object sender, EventArgs e)
+        {
+            this.Listar();
         }
     }
 }

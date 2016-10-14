@@ -59,5 +59,12 @@ namespace UI.Desktop
             grillaEspe.Show();
             grillaEspe.Listar();
         }
+
+        private void cursosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            GrillaCursos grillaCurs = new GrillaCursos();
+            grillaCurs.Show();
+            grillaCurs.Listar();
+        }
     }
 }
