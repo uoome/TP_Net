@@ -8,7 +8,7 @@ using System.Text;
     public class Personas : BusinessEntity
     {  
 
-        public enum TiposPersonas {Administrador = 1, Usuario = 2,Docente = 3} ;
+        public enum TiposPersonas {Administrador = 1, Usuario = 2,Docente = 3};
 
         private int _Legajo;
         private string _Apellido;
@@ -19,6 +19,11 @@ using System.Text;
         private DateTime _FechaDeNacimiento;
         private int _IdPlan;
         private TiposPersonas _TipoDePersona;
+        private string _NombreUsuario;
+        private string _Clave;
+        private string _CambiaClave;
+        private bool _Habilitado;
+        
 
         public string Direccion
         {
@@ -68,6 +73,29 @@ using System.Text;
         {
             get { return _TipoDePersona; }
             set { _TipoDePersona = value; }
+        }
+
+        public string NombreUsuario
+        {
+            get { return _NombreUsuario; }
+            set { _NombreUsuario = value; }
+        }
+        public string Clave
+        {
+            get { return _Clave; }
+            set { _Clave = value; }
+        }
+
+        public string CambiaCLave
+        {
+            get { return _CambiaClave; }
+            set { _CambiaClave = value; }
+        }
+
+        public bool Habilitado
+        {
+            get { return _Habilitado; }
+            set { _Habilitado = value; }
         }
     }
 }

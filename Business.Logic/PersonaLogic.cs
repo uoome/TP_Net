@@ -32,6 +32,10 @@ namespace Business.Logic
         {
             return PersonaData.GetOne(ID);
         }
+        public Personas GetOne(string nombUs)
+        {
+            return PersonaData.GetOne(nombUs);
+        }
         public void Delete(int ID)
         {
             PersonaData.Delete(ID);
@@ -39,6 +43,11 @@ namespace Business.Logic
         public void Save(Personas pers)
         {
             PersonaData.Save(pers);
+        }
+
+        public bool ExisteUs(string nombUs)
+        {
+            return PersonaData.ValidarUsuario(nombUs);
         }
 
         #endregion

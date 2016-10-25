@@ -81,8 +81,8 @@ namespace UI.Desktop
             }
             if (Modo==ModoForm.Alta || Modo == ModoForm.Modificacion)
             {
-                this.UsuarioActual.Nombre = this.txtNombre.Text ;
-                this.UsuarioActual.Apellido = this.txtApellido.Text ;
+                this.UsuarioActual.Nombre = this.txtNombre.Text;
+                this.UsuarioActual.Apellido = this.txtApellido.Text;
                 this.UsuarioActual.Clave= this.txtClave.Text ;
                 this.UsuarioActual.Clave = this.txtConfirmarClave.Text;
                 this.UsuarioActual.Email = this.txtEmail.Text;

@@ -21,13 +21,13 @@ namespace UI.Desktop
 
         private void btnIngresar_Click(object sender, EventArgs e)
         {
-            UsuarioLogic usLogic = new UsuarioLogic();
-            Usuario usr;
+            PersonaLogic persLogic = new PersonaLogic();
+            Personas per;
 
-            if (usLogic.ExisteUs(this.txtUsuario.Text))
+            if (persLogic.ExisteUs(this.txtUsuario.Text))
             {
-                usr= usLogic.GetOne(this.txtUsuario.Text);
-                if (usr.Clave == this.txtPass.Text)
+                per= persLogic.GetOne(this.txtUsuario.Text);
+                if (per.Clave == this.txtPass.Text)
                 {
                     this.DialogResult = DialogResult.OK;
                 }

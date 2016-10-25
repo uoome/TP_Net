@@ -49,6 +49,10 @@
             this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Id_Plan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Tipo_persona = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.Usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Contraseña = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cambiaClave = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Habilitado = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
@@ -107,7 +111,11 @@
             this.Telefono,
             this.Email,
             this.Id_Plan,
-            this.Tipo_persona});
+            this.Tipo_persona,
+            this.Usuario,
+            this.Contraseña,
+            this.cambiaClave,
+            this.Habilitado});
             this.tablePanelPersonas.SetColumnSpan(this.dgvPersonas, 2);
             this.dgvPersonas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvPersonas.Location = new System.Drawing.Point(3, 3);
@@ -245,6 +253,32 @@
             "Docente"});
             this.Tipo_persona.Name = "Tipo_persona";
             // 
+            // Usuario
+            // 
+            this.Usuario.DataPropertyName = "NombreUsuario";
+            this.Usuario.HeaderText = "Usuario";
+            this.Usuario.Name = "Usuario";
+            // 
+            // Contraseña
+            // 
+            this.Contraseña.DataPropertyName = "Clave";
+            this.Contraseña.HeaderText = "Contraseña";
+            this.Contraseña.Name = "Contraseña";
+            // 
+            // cambiaClave
+            // 
+            this.cambiaClave.DataPropertyName = "CambiaClave";
+            this.cambiaClave.HeaderText = "Cambia Clave";
+            this.cambiaClave.Name = "cambiaClave";
+            this.cambiaClave.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.cambiaClave.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Habilitado
+            // 
+            this.Habilitado.DataPropertyName = "Habilitado";
+            this.Habilitado.HeaderText = "Habilitado";
+            this.Habilitado.Name = "Habilitado";
+            // 
             // GrillaPersonas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -291,5 +325,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Email;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id_Plan;
         private System.Windows.Forms.DataGridViewComboBoxColumn Tipo_persona;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Usuario;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Contraseña;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cambiaClave;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Habilitado;
     }
 }
