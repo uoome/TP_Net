@@ -91,7 +91,7 @@ namespace UI.Desktop
             }
             if (Modo == ModoForm.Alta || Modo == ModoForm.Modificacion)
             {
-                //PersonaActual.Legajo = Convert.ToInt32(this.txbLegajo.Text);
+                PersonaActual.Legajo = int.Parse(this.txbLegajo.Text);
                 PersonaActual.Nombre = this.txbNombre.Text;
                 PersonaActual.Apellido= this.txbApellido.Text; 
                 PersonaActual.NombreUsuario= this.txbNombUs.Text;
@@ -99,8 +99,8 @@ namespace UI.Desktop
                 PersonaActual.CambiaCLave= this.txbCambiaClave.Text;
                 PersonaActual.Direccion= this.txbDireccion.Text;
                 PersonaActual.Email= this.txbEmail.Text;
-                PersonaActual.FechaDeNacimiento= Convert.ToDateTime(this.txbFecha_Nac.Text);
-                PersonaActual.IDPlan= Convert.ToInt32(this.txbID_Plan.Text.Trim());
+                PersonaActual.FechaDeNacimiento= DateTime.Parse(this.txbFecha_Nac.Text);
+                PersonaActual.IDPlan= int.Parse(this.txbID_Plan.Text.Trim());
                 PersonaActual.Habilitado= chbxHabilitado.Checked;
                 PersonaActual.Telefono= this.txbTelefono.Text;
                 //falta el comboBox
@@ -109,12 +109,12 @@ namespace UI.Desktop
                 if (Modo == ModoForm.Modificacion)
                 {
                     this.txbID_Pers.Text = this.PersonaActual.ID.ToString();
-                    PersonaActual.State = Usuario.States.Modified;
+                    PersonaActual.State = Personas.States.Modified;
                 }
             }
             if (Modo == ModoForm.Eliminar)
             {
-                PersonaActual.State = Usuario.States.Deleted;
+                PersonaActual.State = Personas.States.Deleted;
             }
 
         }
@@ -165,9 +165,8 @@ namespace UI.Desktop
             if (this.txbEmail.Text.Trim().Equals(""))
             {
                 msj += "El email no puede estar vacío";
-            } //else { msj+= validarMail(); } //Metodo que valida sintaxis del mail
+            } 
             
-
             //Configurar mensaje de error y devolución del método
             if (string.IsNullOrEmpty(msj))
             {

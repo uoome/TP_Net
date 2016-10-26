@@ -49,123 +49,123 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ABM\CursoDesktop.cs">
+    <Compile Include="Administrador\CursoDesktop.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ABM\CursoDesktop.Designer.cs">
+    <Compile Include="Administrador\CursoDesktop.Designer.cs">
       <DependentUpon>CursoDesktop.cs</DependentUpon>
     </Compile>
-    <Compile Include="ABM\EspecialidadDesktop.cs">
+    <Compile Include="Administrador\EspecialidadDesktop.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ABM\EspecialidadDesktop.designer.cs">
+    <Compile Include="Administrador\EspecialidadDesktop.designer.cs">
       <DependentUpon>EspecialidadDesktop.cs</DependentUpon>
     </Compile>
-    <Compile Include="ABM\GrillaCursos.cs">
+    <Compile Include="Administrador\GrillaCursos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ABM\GrillaCursos.Designer.cs">
+    <Compile Include="Administrador\GrillaCursos.Designer.cs">
       <DependentUpon>GrillaCursos.cs</DependentUpon>
     </Compile>
-    <Compile Include="ABM\GrillaEspecialidades.cs">
+    <Compile Include="Administrador\GrillaEspecialidades.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ABM\GrillaEspecialidades.designer.cs">
+    <Compile Include="Administrador\GrillaEspecialidades.designer.cs">
       <DependentUpon>GrillaEspecialidades.cs</DependentUpon>
     </Compile>
-    <Compile Include="ABM\GrillaMaterias.cs">
+    <Compile Include="Administrador\GrillaMaterias.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ABM\GrillaMaterias.Designer.cs">
+    <Compile Include="Administrador\GrillaMaterias.Designer.cs">
       <DependentUpon>GrillaMaterias.cs</DependentUpon>
     </Compile>
-    <Compile Include="ABM\GrillaPersonas.cs">
+    <Compile Include="Administrador\GrillaPersonas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ABM\GrillaPersonas.Designer.cs">
+    <Compile Include="Administrador\GrillaPersonas.Designer.cs">
       <DependentUpon>GrillaPersonas.cs</DependentUpon>
     </Compile>
-    <Compile Include="ABM\MateriaDesktop.cs">
+    <Compile Include="Administrador\MateriaDesktop.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ABM\MateriaDesktop.Designer.cs">
+    <Compile Include="Administrador\MateriaDesktop.Designer.cs">
       <DependentUpon>MateriaDesktop.cs</DependentUpon>
     </Compile>
-    <Compile Include="ABM\PersonasDesktop.cs">
+    <Compile Include="Administrador\PersonasDesktop.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ABM\PersonasDesktop.Designer.cs">
+    <Compile Include="Administrador\PersonasDesktop.Designer.cs">
       <DependentUpon>PersonasDesktop.cs</DependentUpon>
     </Compile>
-    <Compile Include="Administracion\ApplicationForm.cs">
+    <Compile Include="Inicio\ApplicationForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Administracion\ApplicationForm.Designer.cs">
+    <Compile Include="Inicio\ApplicationForm.Designer.cs">
       <DependentUpon>ApplicationForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Administracion\formLogin.cs">
+    <Compile Include="Inicio\formLogin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Administracion\formLogin.Designer.cs">
+    <Compile Include="Inicio\formLogin.Designer.cs">
       <DependentUpon>formLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="Administracion\formMain.cs">
+    <Compile Include="Inicio\formMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Administracion\formMain.Designer.cs">
+    <Compile Include="Inicio\formMain.Designer.cs">
       <DependentUpon>formMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="ABM\UsuarioDesktop.cs">
+    <Compile Include="Administrador\UsuarioDesktop.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ABM\UsuarioDesktop.Designer.cs">
+    <Compile Include="Administrador\UsuarioDesktop.Designer.cs">
       <DependentUpon>UsuarioDesktop.cs</DependentUpon>
     </Compile>
-    <Compile Include="ABM\Usuarios.cs">
+    <Compile Include="Administrador\Usuarios.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ABM\Usuarios.Designer.cs">
+    <Compile Include="Administrador\Usuarios.Designer.cs">
       <DependentUpon>Usuarios.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="ABM\CursoDesktop.resx">
+    <EmbeddedResource Include="Administrador\CursoDesktop.resx">
       <DependentUpon>CursoDesktop.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ABM\EspecialidadDesktop.resx">
+    <EmbeddedResource Include="Administrador\EspecialidadDesktop.resx">
       <DependentUpon>EspecialidadDesktop.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ABM\GrillaCursos.resx">
+    <EmbeddedResource Include="Administrador\GrillaCursos.resx">
       <DependentUpon>GrillaCursos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ABM\GrillaEspecialidades.resx">
+    <EmbeddedResource Include="Administrador\GrillaEspecialidades.resx">
       <DependentUpon>GrillaEspecialidades.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ABM\GrillaMaterias.resx">
+    <EmbeddedResource Include="Administrador\GrillaMaterias.resx">
       <DependentUpon>GrillaMaterias.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ABM\GrillaPersonas.resx">
+    <EmbeddedResource Include="Administrador\GrillaPersonas.resx">
       <DependentUpon>GrillaPersonas.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ABM\MateriaDesktop.resx">
+    <EmbeddedResource Include="Administrador\MateriaDesktop.resx">
       <DependentUpon>MateriaDesktop.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ABM\PersonasDesktop.resx">
+    <EmbeddedResource Include="Administrador\PersonasDesktop.resx">
       <DependentUpon>PersonasDesktop.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Administracion\ApplicationForm.resx">
+    <EmbeddedResource Include="Inicio\ApplicationForm.resx">
       <DependentUpon>ApplicationForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Administracion\formLogin.resx">
+    <EmbeddedResource Include="Inicio\formLogin.resx">
       <DependentUpon>formLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Administracion\formMain.resx">
+    <EmbeddedResource Include="Inicio\formMain.resx">
       <DependentUpon>formMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ABM\UsuarioDesktop.resx">
+    <EmbeddedResource Include="Administrador\UsuarioDesktop.resx">
       <DependentUpon>UsuarioDesktop.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ABM\Usuarios.resx">
+    <EmbeddedResource Include="Administrador\Usuarios.resx">
       <DependentUpon>Usuarios.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -200,6 +200,15 @@
       <Project>{38b6d2fd-c10d-488b-a701-175d3ebec09a}</Project>
       <Name>Business.Logic</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Alumno\" />
+    <Folder Include="Docente\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\agregar-planes.png" />
+    <Content Include="Resources\eliminar.gif" />
+    <Content Include="Resources\Icono_de_editar.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

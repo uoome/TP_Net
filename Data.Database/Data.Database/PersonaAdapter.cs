@@ -31,7 +31,7 @@ namespace Data.Database
                     pers.Email = (string)drPersonas["email"];
                     pers.Telefono = (string)drPersonas["telefono"];
                     pers.Legajo = (int)drPersonas["legajo"];
-                    // pers.TipoPersona = (TipoPersonas)drPersonas["tipo_persona"];
+                    pers.TipoPersona = (Personas.TiposPersonas)drPersonas["tipo_persona"];
                     pers.IDPlan = (int)drPersonas["id_plan"];
                     pers.FechaDeNacimiento = (DateTime)drPersonas["fecha_nac"];
                     pers.Habilitado = (bool)drPersonas["habilitado"];
@@ -76,7 +76,7 @@ namespace Data.Database
                     persona.IDPlan = (int)drPersona["id_plan"];
                     persona.Legajo = (int)drPersona["legajo"];
                     persona.FechaDeNacimiento = (DateTime)drPersona["fecha_nac"];
-                    //persona.TipoPersona = (TipoPersona)drPersona["tipo_persona"];
+                    persona.TipoPersona = (Personas.TiposPersonas)drPersona["tipo_persona"];
                     persona.ID = (int)drPersona["id_persona"];
                     persona.Habilitado = (bool)drPersona["habilitado"];
                     persona.NombreUsuario = (string)drPersona["nombre_usuario"];
@@ -121,7 +121,7 @@ namespace Data.Database
                     persona.IDPlan = (int)drPersona["id_plan"];
                     persona.Legajo = (int)drPersona["legajo"];
                     persona.FechaDeNacimiento = (DateTime)drPersona["fecha_nac"];
-                    //persona.TipoPersona = (TipoPersona)drPersona["tipo_persona"];
+                    persona.TipoPersona = (Personas.TiposPersonas)drPersona["tipo_persona"];
                     persona.ID = (int)drPersona["id_persona"];
                     persona.Habilitado = (bool)drPersona["habilitado"];
                     persona.NombreUsuario = (string)drPersona["nombre_usuario"];

@@ -48,7 +48,7 @@
             this.Telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Id_Plan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Tipo_persona = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.Tipo_persona = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Contraseña = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cambiaClave = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -246,12 +246,11 @@
             // 
             // Tipo_persona
             // 
+            this.Tipo_persona.DataPropertyName = "TipoPersona";
             this.Tipo_persona.HeaderText = "Tipo Persona";
-            this.Tipo_persona.Items.AddRange(new object[] {
-            "Administrador",
-            "Alumno",
-            "Docente"});
             this.Tipo_persona.Name = "Tipo_persona";
+            this.Tipo_persona.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Tipo_persona.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // Usuario
             // 
@@ -324,7 +323,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Telefono;
         private System.Windows.Forms.DataGridViewTextBoxColumn Email;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id_Plan;
-        private System.Windows.Forms.DataGridViewComboBoxColumn Tipo_persona;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Tipo_persona;
         private System.Windows.Forms.DataGridViewTextBoxColumn Usuario;
         private System.Windows.Forms.DataGridViewTextBoxColumn Contraseña;
         private System.Windows.Forms.DataGridViewTextBoxColumn cambiaClave;
