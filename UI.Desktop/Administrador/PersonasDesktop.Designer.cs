@@ -33,32 +33,32 @@
             this.lblId_Pers = new System.Windows.Forms.Label();
             this.lblTipoPers = new System.Windows.Forms.Label();
             this.cbxTipoPers = new System.Windows.Forms.ComboBox();
-            this.txbNombUs = new System.Windows.Forms.TextBox();
+            this.txtNombUs = new System.Windows.Forms.TextBox();
             this.lblNombUs = new System.Windows.Forms.Label();
             this.lblTelefono = new System.Windows.Forms.Label();
-            this.txbTelefono = new System.Windows.Forms.TextBox();
+            this.txtTelefono = new System.Windows.Forms.TextBox();
             this.lblClave = new System.Windows.Forms.Label();
             this.lblCambiaCLave = new System.Windows.Forms.Label();
             this.lblEmail = new System.Windows.Forms.Label();
             this.lblFecha_Nac = new System.Windows.Forms.Label();
             this.lblDireccion = new System.Windows.Forms.Label();
-            this.txbFecha_Nac = new System.Windows.Forms.TextBox();
-            this.txbDireccion = new System.Windows.Forms.TextBox();
+            this.txtFecha_Nac = new System.Windows.Forms.TextBox();
+            this.txtDireccion = new System.Windows.Forms.TextBox();
             this.chbxHabilitado = new System.Windows.Forms.CheckBox();
             this.lblNombre = new System.Windows.Forms.Label();
-            this.txbLegajo = new System.Windows.Forms.TextBox();
-            this.txbApellido = new System.Windows.Forms.TextBox();
+            this.txtLegajo = new System.Windows.Forms.TextBox();
+            this.txtApellido = new System.Windows.Forms.TextBox();
             this.lblLegajo = new System.Windows.Forms.Label();
             this.lblApellido = new System.Windows.Forms.Label();
             this.lblID_Plan = new System.Windows.Forms.Label();
-            this.txbID_Plan = new System.Windows.Forms.TextBox();
+            this.txtID_Plan = new System.Windows.Forms.TextBox();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
-            this.txbClave = new System.Windows.Forms.TextBox();
+            this.txtClave = new System.Windows.Forms.TextBox();
             this.txbID_Pers = new System.Windows.Forms.TextBox();
-            this.txbNombre = new System.Windows.Forms.TextBox();
-            this.txbEmail = new System.Windows.Forms.TextBox();
-            this.txbCambiaClave = new System.Windows.Forms.TextBox();
+            this.txtNombre = new System.Windows.Forms.TextBox();
+            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.txtCambiaClave = new System.Windows.Forms.TextBox();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
             this.tlpPersonasDesktop.SuspendLayout();
@@ -90,32 +90,32 @@
             this.tlpPersonasDesktop.Controls.Add(this.lblId_Pers, 0, 0);
             this.tlpPersonasDesktop.Controls.Add(this.lblTipoPers, 2, 0);
             this.tlpPersonasDesktop.Controls.Add(this.cbxTipoPers, 3, 0);
-            this.tlpPersonasDesktop.Controls.Add(this.txbNombUs, 1, 2);
+            this.tlpPersonasDesktop.Controls.Add(this.txtNombUs, 1, 2);
             this.tlpPersonasDesktop.Controls.Add(this.lblNombUs, 0, 2);
             this.tlpPersonasDesktop.Controls.Add(this.lblTelefono, 2, 3);
-            this.tlpPersonasDesktop.Controls.Add(this.txbTelefono, 3, 3);
+            this.tlpPersonasDesktop.Controls.Add(this.txtTelefono, 3, 3);
             this.tlpPersonasDesktop.Controls.Add(this.lblClave, 2, 2);
             this.tlpPersonasDesktop.Controls.Add(this.lblCambiaCLave, 4, 2);
             this.tlpPersonasDesktop.Controls.Add(this.lblEmail, 4, 3);
             this.tlpPersonasDesktop.Controls.Add(this.lblFecha_Nac, 0, 3);
             this.tlpPersonasDesktop.Controls.Add(this.lblDireccion, 0, 5);
-            this.tlpPersonasDesktop.Controls.Add(this.txbFecha_Nac, 1, 3);
-            this.tlpPersonasDesktop.Controls.Add(this.txbDireccion, 1, 5);
+            this.tlpPersonasDesktop.Controls.Add(this.txtFecha_Nac, 1, 3);
+            this.tlpPersonasDesktop.Controls.Add(this.txtDireccion, 1, 5);
             this.tlpPersonasDesktop.Controls.Add(this.chbxHabilitado, 4, 0);
             this.tlpPersonasDesktop.Controls.Add(this.lblNombre, 4, 1);
-            this.tlpPersonasDesktop.Controls.Add(this.txbLegajo, 1, 1);
-            this.tlpPersonasDesktop.Controls.Add(this.txbApellido, 3, 1);
+            this.tlpPersonasDesktop.Controls.Add(this.txtLegajo, 1, 1);
+            this.tlpPersonasDesktop.Controls.Add(this.txtApellido, 3, 1);
             this.tlpPersonasDesktop.Controls.Add(this.lblLegajo, 0, 1);
             this.tlpPersonasDesktop.Controls.Add(this.lblApellido, 2, 1);
             this.tlpPersonasDesktop.Controls.Add(this.lblID_Plan, 2, 5);
-            this.tlpPersonasDesktop.Controls.Add(this.txbID_Plan, 3, 5);
+            this.tlpPersonasDesktop.Controls.Add(this.txtID_Plan, 3, 5);
             this.tlpPersonasDesktop.Controls.Add(this.btnAceptar, 4, 6);
             this.tlpPersonasDesktop.Controls.Add(this.btnCancelar, 5, 6);
-            this.tlpPersonasDesktop.Controls.Add(this.txbClave, 3, 2);
+            this.tlpPersonasDesktop.Controls.Add(this.txtClave, 3, 2);
             this.tlpPersonasDesktop.Controls.Add(this.txbID_Pers, 1, 0);
-            this.tlpPersonasDesktop.Controls.Add(this.txbNombre, 5, 1);
-            this.tlpPersonasDesktop.Controls.Add(this.txbEmail, 5, 3);
-            this.tlpPersonasDesktop.Controls.Add(this.txbCambiaClave, 5, 2);
+            this.tlpPersonasDesktop.Controls.Add(this.txtNombre, 5, 1);
+            this.tlpPersonasDesktop.Controls.Add(this.txtEmail, 5, 3);
+            this.tlpPersonasDesktop.Controls.Add(this.txtCambiaClave, 5, 2);
             this.tlpPersonasDesktop.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpPersonasDesktop.Location = new System.Drawing.Point(0, 0);
             this.tlpPersonasDesktop.Name = "tlpPersonasDesktop";
@@ -158,12 +158,12 @@
             this.cbxTipoPers.Size = new System.Drawing.Size(121, 21);
             this.cbxTipoPers.TabIndex = 1;
             // 
-            // txbNombUs
+            // txtNombUs
             // 
-            this.txbNombUs.Location = new System.Drawing.Point(102, 56);
-            this.txbNombUs.Name = "txbNombUs";
-            this.txbNombUs.Size = new System.Drawing.Size(121, 20);
-            this.txbNombUs.TabIndex = 5;
+            this.txtNombUs.Location = new System.Drawing.Point(102, 56);
+            this.txtNombUs.Name = "txtNombUs";
+            this.txtNombUs.Size = new System.Drawing.Size(121, 20);
+            this.txtNombUs.TabIndex = 5;
             // 
             // lblNombUs
             // 
@@ -185,12 +185,12 @@
             this.lblTelefono.TabIndex = 9;
             this.lblTelefono.Text = "Telefono";
             // 
-            // txbTelefono
+            // txtTelefono
             // 
-            this.txbTelefono.Location = new System.Drawing.Point(305, 82);
-            this.txbTelefono.Name = "txbTelefono";
-            this.txbTelefono.Size = new System.Drawing.Size(121, 20);
-            this.txbTelefono.TabIndex = 9;
+            this.txtTelefono.Location = new System.Drawing.Point(305, 82);
+            this.txtTelefono.Name = "txtTelefono";
+            this.txtTelefono.Size = new System.Drawing.Size(121, 20);
+            this.txtTelefono.TabIndex = 9;
             // 
             // lblClave
             // 
@@ -242,19 +242,19 @@
             this.lblDireccion.TabIndex = 7;
             this.lblDireccion.Text = "Direccion";
             // 
-            // txbFecha_Nac
+            // txtFecha_Nac
             // 
-            this.txbFecha_Nac.Location = new System.Drawing.Point(102, 82);
-            this.txbFecha_Nac.Name = "txbFecha_Nac";
-            this.txbFecha_Nac.Size = new System.Drawing.Size(121, 20);
-            this.txbFecha_Nac.TabIndex = 8;
+            this.txtFecha_Nac.Location = new System.Drawing.Point(102, 82);
+            this.txtFecha_Nac.Name = "txtFecha_Nac";
+            this.txtFecha_Nac.Size = new System.Drawing.Size(121, 20);
+            this.txtFecha_Nac.TabIndex = 8;
             // 
-            // txbDireccion
+            // txtDireccion
             // 
-            this.txbDireccion.Location = new System.Drawing.Point(102, 108);
-            this.txbDireccion.Name = "txbDireccion";
-            this.txbDireccion.Size = new System.Drawing.Size(121, 20);
-            this.txbDireccion.TabIndex = 11;
+            this.txtDireccion.Location = new System.Drawing.Point(102, 108);
+            this.txtDireccion.Name = "txtDireccion";
+            this.txtDireccion.Size = new System.Drawing.Size(121, 20);
+            this.txtDireccion.TabIndex = 11;
             // 
             // chbxHabilitado
             // 
@@ -277,19 +277,19 @@
             this.lblNombre.TabIndex = 5;
             this.lblNombre.Text = "Nombre";
             // 
-            // txbLegajo
+            // txtLegajo
             // 
-            this.txbLegajo.Location = new System.Drawing.Point(102, 30);
-            this.txbLegajo.Name = "txbLegajo";
-            this.txbLegajo.Size = new System.Drawing.Size(121, 20);
-            this.txbLegajo.TabIndex = 2;
+            this.txtLegajo.Location = new System.Drawing.Point(102, 30);
+            this.txtLegajo.Name = "txtLegajo";
+            this.txtLegajo.Size = new System.Drawing.Size(121, 20);
+            this.txtLegajo.TabIndex = 2;
             // 
-            // txbApellido
+            // txtApellido
             // 
-            this.txbApellido.Location = new System.Drawing.Point(305, 30);
-            this.txbApellido.Name = "txbApellido";
-            this.txbApellido.Size = new System.Drawing.Size(121, 20);
-            this.txbApellido.TabIndex = 3;
+            this.txtApellido.Location = new System.Drawing.Point(305, 30);
+            this.txtApellido.Name = "txtApellido";
+            this.txtApellido.Size = new System.Drawing.Size(121, 20);
+            this.txtApellido.TabIndex = 3;
             // 
             // lblLegajo
             // 
@@ -321,12 +321,12 @@
             this.lblID_Plan.TabIndex = 29;
             this.lblID_Plan.Text = "ID Plan";
             // 
-            // txbID_Plan
+            // txtID_Plan
             // 
-            this.txbID_Plan.Location = new System.Drawing.Point(305, 108);
-            this.txbID_Plan.Name = "txbID_Plan";
-            this.txbID_Plan.Size = new System.Drawing.Size(121, 20);
-            this.txbID_Plan.TabIndex = 12;
+            this.txtID_Plan.Location = new System.Drawing.Point(305, 108);
+            this.txtID_Plan.Name = "txtID_Plan";
+            this.txtID_Plan.Size = new System.Drawing.Size(121, 20);
+            this.txtID_Plan.TabIndex = 12;
             // 
             // btnAceptar
             // 
@@ -348,12 +348,12 @@
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
-            // txbClave
+            // txtClave
             // 
-            this.txbClave.Location = new System.Drawing.Point(305, 56);
-            this.txbClave.Name = "txbClave";
-            this.txbClave.Size = new System.Drawing.Size(121, 20);
-            this.txbClave.TabIndex = 6;
+            this.txtClave.Location = new System.Drawing.Point(305, 56);
+            this.txtClave.Name = "txtClave";
+            this.txtClave.Size = new System.Drawing.Size(121, 20);
+            this.txtClave.TabIndex = 6;
             // 
             // txbID_Pers
             // 
@@ -364,26 +364,26 @@
             this.txbID_Pers.TabIndex = 15;
             this.txbID_Pers.TabStop = false;
             // 
-            // txbNombre
+            // txtNombre
             // 
-            this.txbNombre.Location = new System.Drawing.Point(513, 30);
-            this.txbNombre.Name = "txbNombre";
-            this.txbNombre.Size = new System.Drawing.Size(121, 20);
-            this.txbNombre.TabIndex = 4;
+            this.txtNombre.Location = new System.Drawing.Point(513, 30);
+            this.txtNombre.Name = "txtNombre";
+            this.txtNombre.Size = new System.Drawing.Size(121, 20);
+            this.txtNombre.TabIndex = 4;
             // 
-            // txbEmail
+            // txtEmail
             // 
-            this.txbEmail.Location = new System.Drawing.Point(513, 82);
-            this.txbEmail.Name = "txbEmail";
-            this.txbEmail.Size = new System.Drawing.Size(121, 20);
-            this.txbEmail.TabIndex = 10;
+            this.txtEmail.Location = new System.Drawing.Point(513, 82);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(121, 20);
+            this.txtEmail.TabIndex = 10;
             // 
-            // txbCambiaClave
+            // txtCambiaClave
             // 
-            this.txbCambiaClave.Location = new System.Drawing.Point(513, 56);
-            this.txbCambiaClave.Name = "txbCambiaClave";
-            this.txbCambiaClave.Size = new System.Drawing.Size(121, 20);
-            this.txbCambiaClave.TabIndex = 7;
+            this.txtCambiaClave.Location = new System.Drawing.Point(513, 56);
+            this.txtCambiaClave.Name = "txtCambiaClave";
+            this.txtCambiaClave.Size = new System.Drawing.Size(121, 20);
+            this.txtCambiaClave.TabIndex = 7;
             // 
             // PersonasDesktop
             // 
@@ -396,6 +396,7 @@
             this.Name = "PersonasDesktop";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "PersonasDesktop";
+            this.Load += new System.EventHandler(this.PersonasDesktop_Load);
             this.toolStripContainer1.ContentPanel.ResumeLayout(false);
             this.toolStripContainer1.ResumeLayout(false);
             this.toolStripContainer1.PerformLayout();
@@ -412,31 +413,31 @@
         private System.Windows.Forms.Label lblId_Pers;
         private System.Windows.Forms.Label lblTipoPers;
         private System.Windows.Forms.ComboBox cbxTipoPers;
-        private System.Windows.Forms.TextBox txbNombUs;
+        private System.Windows.Forms.TextBox txtNombUs;
         private System.Windows.Forms.Label lblNombUs;
         private System.Windows.Forms.Label lblTelefono;
-        private System.Windows.Forms.TextBox txbTelefono;
+        private System.Windows.Forms.TextBox txtTelefono;
         private System.Windows.Forms.Label lblClave;
         private System.Windows.Forms.Label lblCambiaCLave;
         private System.Windows.Forms.Label lblEmail;
-        private System.Windows.Forms.TextBox txbEmail;
+        private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Label lblFecha_Nac;
         private System.Windows.Forms.Label lblDireccion;
-        private System.Windows.Forms.TextBox txbFecha_Nac;
-        private System.Windows.Forms.TextBox txbDireccion;
-        private System.Windows.Forms.TextBox txbCambiaClave;
+        private System.Windows.Forms.TextBox txtFecha_Nac;
+        private System.Windows.Forms.TextBox txtDireccion;
+        private System.Windows.Forms.TextBox txtCambiaClave;
         private System.Windows.Forms.CheckBox chbxHabilitado;
-        private System.Windows.Forms.TextBox txbNombre;
+        private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.Label lblNombre;
-        private System.Windows.Forms.TextBox txbLegajo;
-        private System.Windows.Forms.TextBox txbApellido;
+        private System.Windows.Forms.TextBox txtLegajo;
+        private System.Windows.Forms.TextBox txtApellido;
         private System.Windows.Forms.Label lblLegajo;
         private System.Windows.Forms.Label lblApellido;
         private System.Windows.Forms.Label lblID_Plan;
-        private System.Windows.Forms.TextBox txbID_Plan;
+        private System.Windows.Forms.TextBox txtID_Plan;
         private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.Button btnCancelar;
-        private System.Windows.Forms.TextBox txbClave;
+        private System.Windows.Forms.TextBox txtClave;
         private System.Windows.Forms.TextBox txbID_Pers;
     }
 }

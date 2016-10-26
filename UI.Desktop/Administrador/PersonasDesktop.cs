@@ -15,6 +15,7 @@ namespace UI.Desktop
     public partial class PersonasDesktop : ApplicationForm
     {
         private Personas _personaActual;
+        private List<Personas> listaPersonas;
 
         public Personas PersonaActual
         {
@@ -65,19 +66,19 @@ namespace UI.Desktop
         public override void MapearDeDatos()
         {
             this.txbID_Pers.Text = PersonaActual.ID.ToString();
-            this.txbLegajo.Text = PersonaActual.Legajo.ToString();
-            this.txbNombre.Text = PersonaActual.Nombre;
-            this.txbApellido.Text = PersonaActual.Apellido;
-            this.txbNombUs.Text = PersonaActual.NombreUsuario;
-            this.txbClave.Text = PersonaActual.Clave;
-            this.txbCambiaClave.Text = PersonaActual.CambiaCLave;
-            this.txbDireccion.Text = PersonaActual.Direccion;
-            this.txbEmail.Text = PersonaActual.Email;
-            this.txbFecha_Nac.Text = PersonaActual.FechaDeNacimiento.ToString();
-            this.txbID_Plan.Text = PersonaActual.IDPlan.ToString();
+            this.txtLegajo.Text = PersonaActual.Legajo.ToString();
+            this.txtNombre.Text = PersonaActual.Nombre;
+            this.txtApellido.Text = PersonaActual.Apellido;
+            this.txtNombUs.Text = PersonaActual.NombreUsuario;
+            this.txtClave.Text = PersonaActual.Clave;
+            this.txtCambiaClave.Text = PersonaActual.CambiaCLave;
+            this.txtDireccion.Text = PersonaActual.Direccion;
+            this.txtEmail.Text = PersonaActual.Email;
+            this.txtFecha_Nac.Text = PersonaActual.FechaDeNacimiento.ToString();
+            this.txtID_Plan.Text = PersonaActual.IDPlan.ToString();
             this.chbxHabilitado.Checked = PersonaActual.Habilitado;
-            this.txbTelefono.Text = PersonaActual.Telefono;
-            //falta el comboBox
+            this.txtTelefono.Text = PersonaActual.Telefono;
+            this.cbxTipoPers.Text = PersonaActual.TipoPersona.ToString();
 
         }
         
@@ -91,19 +92,19 @@ namespace UI.Desktop
             }
             if (Modo == ModoForm.Alta || Modo == ModoForm.Modificacion)
             {
-                PersonaActual.Legajo = int.Parse(this.txbLegajo.Text);
-                PersonaActual.Nombre = this.txbNombre.Text;
-                PersonaActual.Apellido= this.txbApellido.Text; 
-                PersonaActual.NombreUsuario= this.txbNombUs.Text;
-                PersonaActual.Clave= this.txbClave.Text;
-                PersonaActual.CambiaCLave= this.txbCambiaClave.Text;
-                PersonaActual.Direccion= this.txbDireccion.Text;
-                PersonaActual.Email= this.txbEmail.Text;
-                PersonaActual.FechaDeNacimiento= DateTime.Parse(this.txbFecha_Nac.Text);
-                PersonaActual.IDPlan= int.Parse(this.txbID_Plan.Text.Trim());
+                PersonaActual.Legajo = int.Parse(this.txtLegajo.Text);
+                PersonaActual.Nombre = this.txtNombre.Text;
+                PersonaActual.Apellido= this.txtApellido.Text; 
+                PersonaActual.NombreUsuario= this.txtNombUs.Text;
+                PersonaActual.Clave= this.txtClave.Text;
+                PersonaActual.CambiaCLave= this.txtCambiaClave.Text;
+                PersonaActual.Direccion= this.txtDireccion.Text;
+                PersonaActual.Email= this.txtEmail.Text;
+                PersonaActual.FechaDeNacimiento= DateTime.Parse(this.txtFecha_Nac.Text);
+                PersonaActual.IDPlan= int.Parse(this.txtID_Plan.Text.Trim());
                 PersonaActual.Habilitado= chbxHabilitado.Checked;
-                PersonaActual.Telefono= this.txbTelefono.Text;
-                //falta el comboBox
+                PersonaActual.Telefono= this.txtTelefono.Text;
+                PersonaActual.TipoPersona = new PersonaLogic().GetOne(PersonaActual.ID).TipoPersona;
 
                 //Siendo Alta no tiene ID inicial, por eso verificamos
                 if (Modo == ModoForm.Modificacion)
@@ -130,41 +131,76 @@ namespace UI.Desktop
             string msj = "";
 
             //Validar espacios vacíos
-            if (txbNombre.Text.Trim().Equals(""))
+            if (txtNombre.Text.Trim().Equals(""))
+            {
                 msj += "El nombre no puede estar vacío" + "\n";
-            if (txbApellido.Text.Trim().Equals(""))
+                txtNombre.BackColor = Color.Red;
+            }
+            if (txtApellido.Text.Trim().Equals(""))
+            {
                 msj += "El apellido no puede estar vacío" + "\n";
-            if (txbNombUs.Text.Trim().Equals(""))
+                txtApellido.BackColor = Color.Red;
+            }
+            if (txtNombUs.Text.Trim().Equals(""))
+            {
                 msj += "El nombre de usuario no puede estar vacío" + "\n";
-            if (txbClave.Text.Trim().Equals(""))
+                txtNombUs.BackColor = Color.Red;
+            }
+            if (txtClave.Text.Trim().Equals(""))
+            {
                 msj += "La clave no puede estar vacía" + "\n";
+                txtClave.BackColor = Color.Red;
+            }
 
             //Validar que la clave no tenga menos de 8 caracteres
-            if (txbClave.Text.Trim().Length < 8)
+            if (txtClave.Text.Trim().Length < 8)
+            {
                 msj += "La clave no puede tener menos de 8 caracteres" + "\n";
+                txtClave.BackColor = Color.Red;
+            }
 
             //Validar que la confirmación de la clave no tenga espacios vacíos y coincida con la clave
-            if (txbCambiaClave.Text.Trim().Equals(""))
+            if (txtCambiaClave.Text.Trim().Equals(""))
             {
                 msj += "La confirmación de la clave no debe estar vacía" + "\n";
+                txtCambiaClave.BackColor = Color.Red;
             }
-            else if (!txbCambiaClave.Text.Trim().Equals(txbClave.Text.Trim()))
+            else if (!txtCambiaClave.Text.Trim().Equals(txtClave.Text.Trim()))
                 msj += "La confirmación de la clave debe coincidir con la clave" + "\n";
+                txtCambiaClave.BackColor = Color.Red;
 
-            if (this.txbID_Plan.Text.Trim().Equals(""))
-                msj += "El ID Plan no puede estar vacío";
-            if (this.txbTelefono.Text.Trim().Equals(""))
-                msj += "El telefono no puede estar vacío";
-            if (this.txbLegajo.Text.Trim().Equals(""))
-                msj += "El legajo no puede estar vacío";
-            if (this.txbDireccion.Text.Trim().Equals(""))
-                msj += "La dirección no puede estar vacía";
-            //Falta validar el comboBox
+
+            if (this.txtID_Plan.Text.Trim().Equals(""))
+            {
+                msj += "El ID Plan no puede estar vacío \n";
+                txtID_Plan.BackColor = Color.Red;
+            }
+            if (this.txtTelefono.Text.Trim().Equals(""))
+            {
+                msj += "El telefono no puede estar vacío \n";
+                txtTelefono.BackColor = Color.Red;
+            }
+            if (this.txtLegajo.Text.Trim().Equals(""))
+            {
+                msj += "El legajo no puede estar vacío \n";
+                txtLegajo.BackColor = Color.Red;
+            }
+            if (this.txtDireccion.Text.Trim().Equals(""))
+            {
+                msj += "La dirección no puede estar vacía \n";
+                txtDireccion.BackColor = Color.Red;
+            }
+            if (!(cbxTipoPers.SelectedIndex > 0))
+            {
+                msj += "Debe seleccionar que tipo de persona es \n";
+                cbxTipoPers.BackColor = Color.Red;
+            }
 
             //Controlar que la direccion de email sea válida 
-            if (this.txbEmail.Text.Trim().Equals(""))
+            if (this.txtEmail.Text.Trim().Equals(""))
             {
                 msj += "El email no puede estar vacío";
+                txtEmail.BackColor = Color.Red;
             } 
             
             //Configurar mensaje de error y devolución del método
@@ -207,8 +243,15 @@ namespace UI.Desktop
             this.Close();
         }
 
+
         #endregion
 
-        
+        private void PersonasDesktop_Load(object sender, EventArgs e)
+        {
+            //Inicializo comboBox de tipo de personas
+            cbxTipoPers.Items.Add(Personas.TiposPersonas.Administrador);
+            cbxTipoPers.Items.Add(Personas.TiposPersonas.Alumno);
+            cbxTipoPers.Items.Add(Personas.TiposPersonas.Docente);
+        }
     }
 }
