@@ -114,6 +114,7 @@
             this.planToolStripMenuItem.Name = "planToolStripMenuItem";
             this.planToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.planToolStripMenuItem.Text = "Plan";
+            this.planToolStripMenuItem.Click += new System.EventHandler(this.planToolStripMenuItem_Click);
             // 
             // comisionesToolStripMenuItem
             // 

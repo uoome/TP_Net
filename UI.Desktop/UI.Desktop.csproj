@@ -85,6 +85,12 @@
     <Compile Include="Administrador\GrillaPersonas.Designer.cs">
       <DependentUpon>GrillaPersonas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Administrador\GrillaPlanes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administrador\GrillaPlanes.Designer.cs">
+      <DependentUpon>GrillaPlanes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Administrador\MateriaDesktop.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,6 +102,12 @@
     </Compile>
     <Compile Include="Administrador\PersonasDesktop.Designer.cs">
       <DependentUpon>PersonasDesktop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Administrador\PlanDesktop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administrador\PlanDesktop.Designer.cs">
+      <DependentUpon>PlanDesktop.cs</DependentUpon>
     </Compile>
     <Compile Include="Inicio\ApplicationForm.cs">
       <SubType>Form</SubType>
@@ -147,11 +159,17 @@
     <EmbeddedResource Include="Administrador\GrillaPersonas.resx">
       <DependentUpon>GrillaPersonas.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Administrador\GrillaPlanes.resx">
+      <DependentUpon>GrillaPlanes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Administrador\MateriaDesktop.resx">
       <DependentUpon>MateriaDesktop.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Administrador\PersonasDesktop.resx">
       <DependentUpon>PersonasDesktop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administrador\PlanDesktop.resx">
+      <DependentUpon>PlanDesktop.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Inicio\ApplicationForm.resx">
       <DependentUpon>ApplicationForm.cs</DependentUpon>

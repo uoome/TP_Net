@@ -66,5 +66,13 @@ namespace UI.Desktop
             grillaCurs.Show();
             grillaCurs.Listar();
         }
+
+        private void planToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            GrillaPlanes grillaPlan = new GrillaPlanes();
+            grillaPlan.Show();
+            grillaPlan.Listar();
+          
+        }
     }
 }

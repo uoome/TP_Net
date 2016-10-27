@@ -12,7 +12,7 @@ using Business.Logic;
 
 namespace UI.Desktop
 {
-    public partial class GrillaEspecialidades : ApplicationForm
+    public partial class GrillaEspecialidades : Form
     {
         public GrillaEspecialidades()
         {
