@@ -1,4 +1,4 @@
-﻿namespace UI.Desktop.Administrador
+﻿namespace UI.Desktop
 {
     partial class PlanDesktop
     {
@@ -80,6 +80,7 @@
             this.txtID.ReadOnly = true;
             this.txtID.Size = new System.Drawing.Size(100, 20);
             this.txtID.TabIndex = 1;
+            this.txtID.TabStop = false;
             // 
             // lblDescripcion
             // 
@@ -104,32 +105,34 @@
             this.txtID_Especialidad.Location = new System.Drawing.Point(146, 147);
             this.txtID_Especialidad.Name = "txtID_Especialidad";
             this.txtID_Especialidad.Size = new System.Drawing.Size(100, 20);
-            this.txtID_Especialidad.TabIndex = 5;
+            this.txtID_Especialidad.TabIndex = 2;
             // 
             // txtDescripcion
             // 
             this.txtDescripcion.Location = new System.Drawing.Point(146, 75);
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(100, 20);
-            this.txtDescripcion.TabIndex = 6;
+            this.txtDescripcion.TabIndex = 1;
             // 
             // btnAceptar
             // 
             this.btnAceptar.Location = new System.Drawing.Point(3, 214);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(75, 23);
-            this.btnAceptar.TabIndex = 7;
+            this.btnAceptar.TabIndex = 3;
             this.btnAceptar.Text = "Aceptar";
             this.btnAceptar.UseVisualStyleBackColor = true;
+            this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
             // btnCancelar
             // 
             this.btnCancelar.Location = new System.Drawing.Point(146, 214);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
-            this.btnCancelar.TabIndex = 8;
+            this.btnCancelar.TabIndex = 4;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // PlanDesktop
             // 
@@ -138,6 +141,7 @@
             this.ClientSize = new System.Drawing.Size(284, 261);
             this.Controls.Add(this.tlPlanDesktop);
             this.Name = "PlanDesktop";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "PlanDesktop";
             this.tlPlanDesktop.ResumeLayout(false);
             this.tlPlanDesktop.PerformLayout();

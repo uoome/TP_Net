@@ -11,21 +11,22 @@ using Business.Logic;
 using Business.Entities;
 
 
-namespace UI.Desktop.Administrador
+namespace UI.Desktop
 {
     public partial class PlanDesktop : ApplicationForm 
     {
         private Plan _PlanActual;
-        public PlanDesktop()
-        {
-            InitializeComponent();
-        }
+        
         public Plan PlanActual
         {
             set { _PlanActual = value; }
             get { return _PlanActual; }
         }
 
+        public PlanDesktop()
+        {
+            InitializeComponent();
+        }
         public PlanDesktop(ModoForm modo) : this()
         {
             Modo = modo;
@@ -134,7 +135,5 @@ namespace UI.Desktop.Administrador
         {
             this.Close();
         }
-
-      
     }
 }

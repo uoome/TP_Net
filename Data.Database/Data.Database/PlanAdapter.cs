@@ -24,7 +24,7 @@ namespace Data.Database
                     Plan unPlan = new Plan();
                     unPlan.ID = (int)drPlanes["id_plan"];
                     unPlan.IDEspecialidad = (int)drPlanes["id_especialidad"];
-                    unPlan.Descripcion = (string)drPlanes["descripcion"];
+                    unPlan.Descripcion = (string)drPlanes["desc_plan"];
                     planes.Add(unPlan);
 
                 }
@@ -56,7 +56,7 @@ namespace Data.Database
                 if (drPlan.Read())
                 {
                     unPlan.ID = (int)drPlan["id_plan"];
-                    unPlan.Descripcion = (string)drPlan["descripcion"];
+                    unPlan.Descripcion = (string)drPlan["desc_plan"];
                     unPlan.IDEspecialidad = (int)drPlan["id_especialidad"];
                 }
                 //Cerramos la conexion
@@ -107,7 +107,7 @@ namespace Data.Database
                 this.OpenConnection();
                 SqlCommand cmdSave = new SqlCommand(
                     "UPDATE planes " +
-                    "SET id_especialidad=@esp, descripcion=@desc, " +
+                    "SET id_especialidad=@esp, desc_plan=@desc, " +
                     "WHERE id_plan=@id", sqlConn);
                 cmdSave.Parameters.Add("@id", SqlDbType.Int).Value = unplan.ID;
                 cmdSave.Parameters.Add("@desc", SqlDbType.VarChar, 50).Value = unplan.Descripcion;
@@ -131,7 +131,7 @@ namespace Data.Database
             {
                 this.OpenConnection();
                 SqlCommand cmdInsert = new SqlCommand(
-                    "INSERT INTO planes (descripcion, id_especialidad) " +
+                    "INSERT INTO planes (desc_plan, id_especialidad) " +
                     "VALUES (@desc , @id_especialidad ", sqlConn);
                 //El select recupera el id asignado automaticamente por la BD
 
