@@ -73,6 +73,38 @@ namespace Data.Database
             }
             return unPlan;
         }
+
+        public Plan GetOne(string dp, int ide)
+        {
+            Plan p = new Plan();
+
+            try
+            {
+                this.OpenConnection();
+                SqlCommand cmdPlan = new SqlCommand("SELECT * FROM planes WHERE desc_plan=@descrip and id_especialidad=@id_e", sqlConn);
+                cmdPlan.Parameters.Add("@descrip", SqlDbType.VarChar, 50).Value = dp;
+                cmdPlan.Parameters.Add("@id_e", SqlDbType.Int).Value = ide;
+
+                SqlDataReader drPlan = cmdPlan.ExecuteReader();
+
+                if (drPlan.Read())
+                {
+                    p.ID = (int)drPlan["id_plan"];
+                    p.Descripcion = (string)drPlan["desc_plan"];
+                    p.IDEspecialidad = (int)drPlan["id_especialidad"];
+                }
+                drPlan.Close();
+
+            }
+            catch (Exception ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al traer el plan" + ex.Message, ex);
+                throw ExcepcionManejada;
+            }
+            finally { this.CloseConnection(); }
+
+            return p;
+        }
         public void Delete(int ID)
         {
             try

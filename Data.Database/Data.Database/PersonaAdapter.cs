@@ -221,7 +221,7 @@ namespace Data.Database
                 this.OpenConnection();
                 SqlCommand cmdSave = new SqlCommand(
                     "UPDATE personas " +
-                    "SET nombre=@nombre, direccion=@direccion, habilitado=@habilitado, apellido=@apellido, email=@email, "+
+                    "SET nombre=@nombre, direccion=@direccion, apellido=@apellido, email=@email, "+
                     "telefono=@telefono, fecha_nac=@fecha_nac, legajo=@legajo, tipo_persona=@tipo_persona, id_plan=@id_plan, "+
                     "nombre_usuario=@nombUs, clave=@clave, cambia_clave=@cambClav, habilitado=@habi "+ 
                     "WHERE id_persona=@id", sqlConn);

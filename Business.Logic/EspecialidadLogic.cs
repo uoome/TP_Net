@@ -28,6 +28,10 @@ namespace Business.Logic
         {
             return EspecialidadData.GetOne(ID);
         }
+        public Especialidad GetOne(string descrip)
+        {
+            return EspecialidadData.GetOne(descrip);
+        }
         public void Delete(int ID)
         {
             EspecialidadData.Delete(ID);

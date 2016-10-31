@@ -14,14 +14,8 @@ namespace Business.Logic
         private Data.Database.PlanAdapter _PlanData;
         public Data.Database.PlanAdapter PlanData
         {
-            set
-            {
-                _PlanData = value;
-            }
-            get
-            {
-                return _PlanData;
-            }
+            get { return _PlanData; }
+            set { _PlanData = value; }
         }
         public PlanLogic()
         {
@@ -35,6 +29,13 @@ namespace Business.Logic
         public Plan GetOne(int ID)
         {
             return PlanData.GetOne(ID); 
+        }
+
+        public Plan GetOne(string dp, string de)
+        {
+            EspecialidadLogic el = new EspecialidadLogic();
+            Especialidad espe = el.GetOne(de);
+            return PlanData.GetOne(dp, espe.ID);
         }
 
         public void Delete(int ID)

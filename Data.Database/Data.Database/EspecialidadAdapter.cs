@@ -47,6 +47,7 @@ namespace Data.Database
             return especialidades;
 
         }
+
         public Especialidad GetOne(int ID)
         {
             Especialidad esp = new Especialidad();
@@ -54,7 +55,7 @@ namespace Data.Database
             {
                 this.OpenConnection();
                 SqlCommand CmdEspecialidad = new SqlCommand("SELECT * FROM especialidades WHERE id_especialidad=@id", sqlConn);
-               CmdEspecialidad.Parameters.Add("@id", SqlDbType.Int).Value = ID;
+                CmdEspecialidad.Parameters.Add("@id", SqlDbType.Int).Value = ID;
                 SqlDataReader drEspecialidad = CmdEspecialidad.ExecuteReader();
 
                 if(drEspecialidad.Read())
@@ -76,6 +77,34 @@ namespace Data.Database
             }
             return esp;
 
+        }
+        public Especialidad GetOne(string descrip)
+        {
+            Especialidad e = new Especialidad();
+
+            try
+            {
+                this.OpenConnection();
+
+                SqlCommand cmdEspe = new SqlCommand("SELECT * FROM especialidades WHERE desc_especialidad=@desc", sqlConn);
+                cmdEspe.Parameters.Add("@desc", SqlDbType.VarChar, 50).Value = descrip;
+                SqlDataReader drEspe = cmdEspe.ExecuteReader();
+
+                if (drEspe.Read())
+                {
+                    e.ID = (int)drEspe["id_especialidad"];
+                    e.Descripcion = (string)drEspe["desc_especialidad"];
+                }
+                drEspe.Close();
+            }
+            catch (Exception ex)
+            {
+                Exception ExManejada = new Exception("Error al traer la especialidad: " + ex.Message, ex);
+                throw ExManejada;
+            }
+            finally { this.CloseConnection(); }
+
+            return e;
         }
         public void Delete(int ID)
         {

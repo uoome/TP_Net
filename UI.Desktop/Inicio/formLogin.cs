@@ -29,13 +29,20 @@ namespace UI.Desktop
                 per= persLogic.GetOne(this.txtUsuario.Text);
                 if (per.Clave == this.txtPass.Text)
                 {
-                    this.DialogResult = DialogResult.OK;
+                    if (per.Habilitado)
+                    {
+                        Program.UsuarioSesion = per;
+                        this.DialogResult = DialogResult.OK;
+                    }
+                        
+                    else {
+                        MessageBox.Show("Usuario no habilitado", "Login", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
             else
             {
-                MessageBox.Show("Usuario y/o contraseña incorrectos", "Login"
-                    , MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Usuario y/o contraseña incorrectos", "Login", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
