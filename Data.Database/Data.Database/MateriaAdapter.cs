@@ -38,7 +38,7 @@ namespace Data.Database
             }
             catch (Exception ex)
             {
-                Exception ExManejada = new Exception("Error al traer la lista de materias", ex);
+                Exception ExManejada = new Exception("Error al traer la lista de materias: "+ex.Message, ex);
                 throw ExManejada;
             }
             finally
@@ -71,7 +71,7 @@ namespace Data.Database
             }
             catch (Exception ex)
             {
-                Exception ExManejada = new Exception("Error al traer la materia", ex);
+                Exception ExManejada = new Exception("Error al traer la materia: "+ex.Message, ex);
                 throw ExManejada;
             }
             finally
@@ -79,6 +79,38 @@ namespace Data.Database
                 this.CloseConnection();
             }
             return unaMateria;
+        }
+
+        public Materia GetOne(string descrip)
+        {
+            Materia mate = new Materia();
+
+            try
+            {
+                this.OpenConnection();
+                SqlCommand cmdMateria = new SqlCommand("SELECT * FROM materias WHERE desc_materia=@d", sqlConn);
+                cmdMateria.Parameters.Add("@d", SqlDbType.VarChar, 50).Value = descrip;
+                SqlDataReader drMateria = cmdMateria.ExecuteReader();
+
+                if (drMateria.Read()) //Si encuentra algun registro
+                {
+                    mate.ID = (int)drMateria["id_materia"];
+                    mate.Descripcion = (string)drMateria["desc_materia"];
+                    mate.HSSemanales = (int)drMateria["hs_semanales"];
+                    mate.HSTotales = (int)drMateria["hs_totales"];
+                    mate.IDplan = (int)drMateria["id_plan"];
+                }
+                drMateria.Close();
+
+            }
+            catch(Exception ex)
+            {
+                Exception ExManejada = new Exception("Error al traer la materia: " + ex.Message, ex);
+                throw ExManejada;
+            }
+            finally { this.CloseConnection(); }
+
+            return mate;
         }
 
         public void Delete(int ID)
@@ -93,7 +125,7 @@ namespace Data.Database
             }
             catch (Exception ex)
             {
-                Exception ExManejada = new Exception("Error al eliminar la materia", ex);
+                Exception ExManejada = new Exception("Error al eliminar la materia: "+ex.Message, ex);
                 throw ExManejada;
             }
             finally
@@ -121,7 +153,7 @@ namespace Data.Database
             } 
             catch(Exception ex)
             {
-                Exception ExManejada = new Exception("Error al crear nueva materia", ex);
+                Exception ExManejada = new Exception("Error al crear nueva materia: "ex.Message, ex);
                 throw ExManejada;
             }
             finally
@@ -152,7 +184,7 @@ namespace Data.Database
             }
             catch (Exception ex)
             {
-                Exception ExManejada = new Exception("Error al actualizar la materia", ex);
+                Exception ExManejada = new Exception("Error al actualizar la materia: "+ex.Message, ex);
                 throw ExManejada;
             }
             finally

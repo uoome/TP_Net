@@ -35,7 +35,7 @@ namespace Data.Database
             }
             catch (Exception ex)
             {
-                Exception exManejada = new Exception("No se pudo mostrar las especialidades", ex);
+                Exception exManejada = new Exception("No se pudo mostrar las especialidades: "+ex.Message, ex);
                 throw exManejada;
 
             }
@@ -68,7 +68,7 @@ namespace Data.Database
             }
             catch (Exception ex)
             {
-                Exception ExManejada = new Exception("Error al traer la especialidad", ex);
+                Exception ExManejada = new Exception("Error al traer la especialidad:"+ex.Message, ex);
                 throw ExManejada;
             }
             finally
@@ -90,7 +90,7 @@ namespace Data.Database
                 cmdEspe.Parameters.Add("@desc", SqlDbType.VarChar, 50).Value = descrip;
                 SqlDataReader drEspe = cmdEspe.ExecuteReader();
 
-                if (drEspe.Read())
+                if (drEspe.Read()) //Si encuentra el registro
                 {
                     e.ID = (int)drEspe["id_especialidad"];
                     e.Descripcion = (string)drEspe["desc_especialidad"];
@@ -106,6 +106,7 @@ namespace Data.Database
 
             return e;
         }
+
         public void Delete(int ID)
         {
           try
@@ -118,7 +119,7 @@ namespace Data.Database
             }
             catch (Exception ex)
             {
-                Exception exManejada = new Exception("Error al eliminar la especialidad", ex );
+                Exception exManejada = new Exception("Error al eliminar la especialidad: "+ex.Message, ex );
                 throw exManejada;
             }
             finally
@@ -127,6 +128,7 @@ namespace Data.Database
             }
 
         }
+
         protected void Update(Especialidad Esp)
 
         {
@@ -143,7 +145,7 @@ namespace Data.Database
             }
            catch(Exception ex)
             {
-                Exception ExManejada = new Exception("Error al actualizar especialidad", ex);
+                Exception ExManejada = new Exception("Error al actualizar especialidad:"+ex.Message, ex);
                 throw ExManejada;
             }
             finally
@@ -152,6 +154,7 @@ namespace Data.Database
             }
 
         }
+
         protected void Insert(Especialidad Esp)
         {
             try
@@ -166,7 +169,7 @@ namespace Data.Database
             }
             catch (Exception ex)
             {
-                Exception ExManejada = new Exception("Error al crear una especialidad", ex);
+                Exception ExManejada = new Exception("Error al crear una especialidad: "+ex.Message, ex);
                 throw ExManejada;
             }
             finally
@@ -174,6 +177,7 @@ namespace Data.Database
                 this.CloseConnection();
             }
         }
+
         public void Save(Especialidad esp)
         {
             if(esp.State == BusinessEntity.States.Deleted )

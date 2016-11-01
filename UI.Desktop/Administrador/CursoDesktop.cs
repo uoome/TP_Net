@@ -70,8 +70,15 @@ namespace UI.Desktop
             txbAnioCalendario.Text = CursoActual.AnioCalendario.ToString();
             txbCupo.Text = CursoActual.Cupo.ToString();
             txbDescripcion.Text = CursoActual.Descripcion;
-            txbId_Comi.Text = CursoActual.IDComision.ToString();
-            txbID_Materia.Text = CursoActual.IDMateria.ToString();
+
+            MateriaLogic ml = new MateriaLogic();
+            Materia m = ml.GetOne(CursoActual.IDMateria);
+            cbxMaterias.Text = m.Descripcion;
+            /*
+            ComisionLogic cl = new ComisionLogic();
+            Comision c = cl.GetOne(CursoActual.IDComision);
+            cbxComisiones.Text = c.Descripcion;
+            */
 
         }
         public override void MapearADatos()
@@ -81,27 +88,25 @@ namespace UI.Desktop
                 CursoActual = new Curso();
                 CursoActual.State = BusinessEntity.States.New;
             }
-            if(Modo==ModoForm.Alta || Modo == ModoForm.Modificacion)
+            //Si es alta no tiene ID incial, por eso validamos
+            if (Modo != ModoForm.Alta)
+            {
+                CursoActual.ID = int.Parse(txbID_Curso.Text.Trim());
+                CursoActual.State = BusinessEntity.States.Modified;
+            }
+            if (Modo==ModoForm.Alta || Modo == ModoForm.Modificacion)
             {
                 CursoActual.Descripcion = txbDescripcion.Text;
-                CursoActual.Cupo = Convert.ToInt32(txbCupo.Text.Trim());
-                CursoActual.AnioCalendario = Convert.ToInt32(txbAnioCalendario.Text.Trim());
-                CursoActual.IDComision = Convert.ToInt32(txbId_Comi.Text.Trim());
-                CursoActual.IDMateria = Convert.ToInt32(txbID_Materia.Text.Trim());
-            }
-
-            //Si es alta no tiene ID incial, por eso validamos
-            if (Modo == ModoForm.Modificacion)
-            {
-                CursoActual.ID = Convert.ToInt32(txbID_Curso.Text.Trim());
-                CursoActual.State = BusinessEntity.States.Modified;
+                CursoActual.Cupo = int.Parse(txbCupo.Text.Trim());
+                CursoActual.AnioCalendario = int.Parse(txbAnioCalendario.Text.Trim());
+                CursoActual.IDMateria = new MateriaLogic().GetOne(cbxMaterias.Text).ID;
+                //CursoActual.IDComision = new ComsionLogic().GetOne(cbxComisiones.Text).ID;
+                
             }
             if (Modo == ModoForm.Eliminar)
             {
                 CursoActual.State = BusinessEntity.States.Deleted;
             }
-
-
         }
         public override void GuardarCambios()
         {
@@ -122,8 +127,40 @@ namespace UI.Desktop
             this.Notificar(this.Text, mensaje, botones, icono);
         }
 
+
         #endregion
 
+        #region Eventos
 
+        private List<Materia> listaMaterias;
+        private List<Comision> listaComisiones;
+
+        private void CursoDesktop_Load(object sender, EventArgs e)
+        {
+            //Cargo combo de materias
+            MateriaLogic ml = new MateriaLogic();
+            listaMaterias= ml.GetAll();
+
+            cbxMaterias.Items.Add("");
+            foreach(Materia m in listaMaterias)
+            {
+                cbxMaterias.Items.Add(m.Descripcion);
+            }
+
+            //Cargo combo de comisiones
+            //Quitar comentarios cuando esten cargadas las clases ComisionAdapter y ComisionLogic
+            /*
+            ComisionLogic cl = new ComisionLogic();
+            listaComisiones = cl.GetAll();
+
+            cbxComisiones.Items.Add("");
+            foreach(Comision c in listaComisiones)
+            {
+                cbxComisiones.Items.Add(c.Descripcion);
+            }
+            */  
+        }
+
+        #endregion
     }
 }

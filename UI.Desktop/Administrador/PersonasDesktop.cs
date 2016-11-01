@@ -89,7 +89,6 @@ namespace UI.Desktop
             this.cbxEspecialidades.Text = new EspecialidadLogic().GetOne(planPersona.IDEspecialidad).Descripcion;
 
         }
-        
         public override void MapearADatos()
         {
             if (Modo == ModoForm.Alta)
@@ -254,9 +253,52 @@ namespace UI.Desktop
         {
             this.Notificar(this.Text, mensaje, botones, icono);
         }
+
         #endregion
 
         #region Eventos
+
+        private void PersonasDesktop_Load(object sender, EventArgs e)
+        {
+            //Cargo lista de planes
+            PlanLogic plog = new PlanLogic();
+            listaPlanes = plog.GetAll();
+
+            //Carglo lista de especialidades
+            EspecialidadLogic elog = new EspecialidadLogic();
+            listaEspecialidades = elog.GetAll();
+
+            //Cargo el combo de descripcion de especialidades 
+            cbxEspecialidades.Items.Add("");
+            foreach (Especialidad esp in listaEspecialidades)
+            {
+                cbxEspecialidades.Items.Add(esp.Descripcion);
+            }
+
+            //Cargo el combo de tipos de personas
+            cbxTipoPers.Items.Add("");
+            cbxTipoPers.Items.Add(Personas.TiposPersonas.Administrador);
+            cbxTipoPers.Items.Add(Personas.TiposPersonas.Alumno);
+            cbxTipoPers.Items.Add(Personas.TiposPersonas.Docente);
+
+        }
+
+        //Este metodo carga el combo de planes cuando se selecciona una especialidad
+        private void cbxEspecialidades_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cbxPlanes.Items.Clear();
+            cbxPlanes.Items.Add("");
+            if (cbxEspecialidades.SelectedIndex > 0) //Si hay una especialidad del combo elegida
+            {
+                foreach (Plan p in listaPlanes)
+                {
+                    if (p.IDEspecialidad == cbxEspecialidades.SelectedIndex)
+                        cbxPlanes.Items.Add(p.Descripcion);
+                }
+                cbxPlanes.SelectedIndex = 0;
+            }
+
+        }
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
@@ -275,46 +317,5 @@ namespace UI.Desktop
 
         #endregion
 
-        private void PersonasDesktop_Load(object sender, EventArgs e)
-        {
-            //Cargo lista de planes
-            PlanLogic plog = new PlanLogic();
-            listaPlanes = plog.GetAll();
-
-            //Carglo lista de especialidades
-            EspecialidadLogic elog = new EspecialidadLogic();
-            listaEspecialidades = elog.GetAll();
-
-            //Cargo el combo de descripcion de especialidades 
-            cbxEspecialidades.Items.Add("");
-            foreach(Especialidad esp in listaEspecialidades)
-            {
-                cbxEspecialidades.Items.Add(esp.Descripcion);
-            }
-
-            //Cargo el combo de tipos de personas
-            cbxTipoPers.Items.Add("");
-            cbxTipoPers.Items.Add(Personas.TiposPersonas.Administrador);
-            cbxTipoPers.Items.Add(Personas.TiposPersonas.Alumno);
-            cbxTipoPers.Items.Add(Personas.TiposPersonas.Docente);
-
         }
-
-        //Este metodo carga el combo de planes cuando se selecciona una especialidad
-        private void cbxEspecialidades_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            cbxPlanes.Items.Clear();
-            cbxPlanes.Items.Add("");
-            if(cbxEspecialidades.SelectedIndex > 0) //Si hay una especialidad del combo elegida
-            {
-                foreach(Plan p in listaPlanes)
-                {
-                    if (p.IDEspecialidad == cbxEspecialidades.SelectedIndex)
-                        cbxPlanes.Items.Add(p.Descripcion);
-                }
-                cbxPlanes.SelectedIndex = 0;
-            }
-            
-        }
-    }
 }

@@ -46,6 +46,11 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblMensajeSesion = new System.Windows.Forms.Label();
             this.btnSesion = new System.Windows.Forms.Button();
+            this.tsc_Alumno_EstadoAcad = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsc_Alumno_MateriasPlan = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsc_Alumno_InscCursado = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsc_Docente_InscDictado = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsc_Docente_ActNotas = new System.Windows.Forms.ToolStripMenuItem();
             this.mnsPrincipal.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -143,6 +148,9 @@
             // menuAlumnos
             // 
             this.menuAlumnos.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsc_Alumno_EstadoAcad,
+            this.tsc_Alumno_MateriasPlan,
+            this.tsc_Alumno_InscCursado,
             this.tsc_Alumno_Salir});
             this.menuAlumnos.Name = "menuAlumnos";
             this.menuAlumnos.Size = new System.Drawing.Size(50, 20);
@@ -151,13 +159,15 @@
             // tsc_Alumno_Salir
             // 
             this.tsc_Alumno_Salir.Name = "tsc_Alumno_Salir";
-            this.tsc_Alumno_Salir.Size = new System.Drawing.Size(96, 22);
+            this.tsc_Alumno_Salir.Size = new System.Drawing.Size(183, 22);
             this.tsc_Alumno_Salir.Text = "Salir";
             this.tsc_Alumno_Salir.Click += new System.EventHandler(this.tsc_Alumno_Salir_Click);
             // 
             // menuDocentes
             // 
             this.menuDocentes.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsc_Docente_InscDictado,
+            this.tsc_Docente_ActNotas,
             this.tsc_Docente_Salir});
             this.menuDocentes.Name = "menuDocentes";
             this.menuDocentes.Size = new System.Drawing.Size(50, 20);
@@ -166,7 +176,7 @@
             // tsc_Docente_Salir
             // 
             this.tsc_Docente_Salir.Name = "tsc_Docente_Salir";
-            this.tsc_Docente_Salir.Size = new System.Drawing.Size(96, 22);
+            this.tsc_Docente_Salir.Size = new System.Drawing.Size(180, 22);
             this.tsc_Docente_Salir.Text = "Salir";
             this.tsc_Docente_Salir.Click += new System.EventHandler(this.tsc_Docente_Salir_Click);
             // 
@@ -199,6 +209,36 @@
             this.btnSesion.Text = "Sesion";
             this.btnSesion.UseVisualStyleBackColor = true;
             this.btnSesion.Click += new System.EventHandler(this.btnSesion_Click);
+            // 
+            // tsc_Alumno_EstadoAcad
+            // 
+            this.tsc_Alumno_EstadoAcad.Name = "tsc_Alumno_EstadoAcad";
+            this.tsc_Alumno_EstadoAcad.Size = new System.Drawing.Size(183, 22);
+            this.tsc_Alumno_EstadoAcad.Text = "Estado Académico";
+            // 
+            // tsc_Alumno_MateriasPlan
+            // 
+            this.tsc_Alumno_MateriasPlan.Name = "tsc_Alumno_MateriasPlan";
+            this.tsc_Alumno_MateriasPlan.Size = new System.Drawing.Size(183, 22);
+            this.tsc_Alumno_MateriasPlan.Text = "Materias del Plan";
+            // 
+            // tsc_Alumno_InscCursado
+            // 
+            this.tsc_Alumno_InscCursado.Name = "tsc_Alumno_InscCursado";
+            this.tsc_Alumno_InscCursado.Size = new System.Drawing.Size(183, 22);
+            this.tsc_Alumno_InscCursado.Text = "Inscribirse a Cursado";
+            // 
+            // tsc_Docente_InscDictado
+            // 
+            this.tsc_Docente_InscDictado.Name = "tsc_Docente_InscDictado";
+            this.tsc_Docente_InscDictado.Size = new System.Drawing.Size(180, 22);
+            this.tsc_Docente_InscDictado.Text = "Inscribirse a Dictado";
+            // 
+            // tsc_Docente_ActNotas
+            // 
+            this.tsc_Docente_ActNotas.Name = "tsc_Docente_ActNotas";
+            this.tsc_Docente_ActNotas.Size = new System.Drawing.Size(180, 22);
+            this.tsc_Docente_ActNotas.Text = "Actualizar Notas";
             // 
             // formMain
             // 
@@ -243,5 +283,10 @@
         private System.Windows.Forms.Button btnSesion;
         private System.Windows.Forms.ToolStripMenuItem tsc_Alumno_Salir;
         private System.Windows.Forms.ToolStripMenuItem tsc_Docente_Salir;
+        private System.Windows.Forms.ToolStripMenuItem tsc_Alumno_EstadoAcad;
+        private System.Windows.Forms.ToolStripMenuItem tsc_Alumno_MateriasPlan;
+        private System.Windows.Forms.ToolStripMenuItem tsc_Alumno_InscCursado;
+        private System.Windows.Forms.ToolStripMenuItem tsc_Docente_InscDictado;
+        private System.Windows.Forms.ToolStripMenuItem tsc_Docente_ActNotas;
     }
 }

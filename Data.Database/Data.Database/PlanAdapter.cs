@@ -32,7 +32,7 @@ namespace Data.Database
             }
             catch (Exception ex)
             {
-                Exception ExManejada = new Exception("No se pudo obtener la lista de planes", ex);
+                Exception ExManejada = new Exception("No se pudo obtener la lista de planes: " +ex.Message, ex);
                 throw ExManejada;
             }
             finally
@@ -64,7 +64,7 @@ namespace Data.Database
             }
             catch (Exception Ex)
             {
-                Exception ExcepcionManejada = new Exception("Error al recuperar la lista de usuarios", Ex);
+                Exception ExcepcionManejada = new Exception("Error al recuperar la lista de usuarios: "+Ex.Message, Ex);
                 throw ExcepcionManejada;
             }
             finally
@@ -81,13 +81,13 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdPlan = new SqlCommand("SELECT * FROM planes WHERE desc_plan=@descrip and id_especialidad=@id_e", sqlConn);
+                SqlCommand cmdPlan = new SqlCommand("SELECT * FROM planes WHERE (desc_plan=@descrip and id_especialidad=@id_e)", sqlConn);
                 cmdPlan.Parameters.Add("@descrip", SqlDbType.VarChar, 50).Value = dp;
                 cmdPlan.Parameters.Add("@id_e", SqlDbType.Int).Value = ide;
 
                 SqlDataReader drPlan = cmdPlan.ExecuteReader();
 
-                if (drPlan.Read())
+                if (drPlan.Read()) //Si encuentra algun registro
                 {
                     p.ID = (int)drPlan["id_plan"];
                     p.Descripcion = (string)drPlan["desc_plan"];
@@ -118,19 +118,13 @@ namespace Data.Database
             }
             catch (Exception Ex)
             {
-                Exception ExcepcionManejada = new Exception("Error al eliminar al usuario", Ex);
+                Exception ExcepcionManejada = new Exception("Error al eliminar al usuario: "+Ex.Message, Ex);
                 throw ExcepcionManejada;
             }
             finally
             {
                 this.CloseConnection();
             }
-
-
-
-
-
-
         }
         protected void Update(Plan unplan)
         {
@@ -149,7 +143,7 @@ namespace Data.Database
             }
             catch (Exception Ex)
             {
-                Exception ExcepcionManejada = new Exception("Error al modificar datos del usuario", Ex);
+                Exception ExcepcionManejada = new Exception("Error al modificar datos del usuario: "+Ex.Message, Ex);
                 throw ExcepcionManejada;
             }
             finally
@@ -176,7 +170,7 @@ namespace Data.Database
             }
             catch (Exception Ex)
             {
-                Exception ExcepcionManejada = new Exception("Error al crear el usuario", Ex);
+                Exception ExcepcionManejada = new Exception("Error al crear el usuario:"+Ex.Message, Ex);
                 throw ExcepcionManejada;
             }
             finally

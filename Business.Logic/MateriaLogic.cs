@@ -29,6 +29,10 @@ namespace Business.Logic
         {
             return MateriaData.GetOne(IDMateria);
         }
+        public Materia GetOne(string descrip)
+        {
+            return MateriaData.GetOne(descrip);
+        }
         public void Delete(int IDMateria)
         {
             MateriaData.Delete(IDMateria);
