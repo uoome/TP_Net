@@ -153,7 +153,7 @@ namespace Data.Database
             } 
             catch(Exception ex)
             {
-                Exception ExManejada = new Exception("Error al crear nueva materia: "ex.Message, ex);
+                Exception ExManejada = new Exception("Error al crear nueva materia: " + ex.Message, ex);
                 throw ExManejada;
             }
             finally
