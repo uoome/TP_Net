@@ -166,7 +166,7 @@ namespace Data.Database
             {
                 this.OpenConnection();
                 SqlCommand cmdDeletePers = new SqlCommand("DELETE personas WHERE id_persona=@id",sqlConn);
-                cmdDeletePers.Parameters.Add("@id_persona", SqlDbType.Int).Value = ID;
+                cmdDeletePers.Parameters.Add("@id", SqlDbType.Int).Value = ID;
                 cmdDeletePers.ExecuteNonQuery();
             }
             catch (Exception ex)
