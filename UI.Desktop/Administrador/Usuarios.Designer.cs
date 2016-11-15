@@ -67,7 +67,7 @@
             this.tcUsuarios.TabIndex = 0;
             this.tcUsuarios.Text = "toolStripContainer1";
             // 
-            // tcUsuarios.tsPanel
+            // tcUsuarios.TopToolStripPanel
             // 
             this.tcUsuarios.TopToolStripPanel.Controls.Add(this.tsUsuarios);
             // 

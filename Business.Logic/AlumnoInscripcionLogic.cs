@@ -11,7 +11,7 @@ namespace Business.Logic
     public class AlumnoInscripcionLogic: BusinessLogic 
     {
 
-        private AlumnoInscripcionAdapter _alumnoInscripcionData
+        private AlumnoInscripcionAdapter _alumnoInscripcionData;
             public AlumnoInscripcionAdapter AlumnoInscripcionData
         {
             get { return _alumnoInscripcionData; }
@@ -29,6 +29,14 @@ namespace Business.Logic
         public AlumnoInscripcion GetOne(int ID)
         {
             return AlumnoInscripcionData.GetOne(ID);
+        }
+        public void Delete(  int ID)
+        {
+          AlumnoInscripcionData.Delete(ID);
+        }
+        public void Save(AlumnoInscripcion alu)
+        {
+            AlumnoInscripcionData.Save(alu);
         }
 
 

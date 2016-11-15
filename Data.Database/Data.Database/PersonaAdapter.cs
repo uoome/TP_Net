@@ -171,7 +171,7 @@ namespace Data.Database
             }
             catch (Exception ex)
             {
-                Exception ExcepcionManejada = new Exception("Error al eliminar al usuario", ex);
+                Exception ExcepcionManejada = new Exception("Error al eliminar al usuario" + ex.Message, ex);
                 throw ExcepcionManejada;
             }
             finally

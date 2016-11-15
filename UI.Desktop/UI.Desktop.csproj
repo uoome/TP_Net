@@ -49,6 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Administrador\AlumnoInscripcionDesktop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administrador\AlumnoInscripcionDesktop.Designer.cs">
+      <DependentUpon>AlumnoInscripcionDesktop.cs</DependentUpon>
+    </Compile>
     <Compile Include="Administrador\CursoDesktop.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -72,6 +78,12 @@
     </Compile>
     <Compile Include="Administrador\GrillaEspecialidades.designer.cs">
       <DependentUpon>GrillaEspecialidades.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Administrador\GrillaInscripciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administrador\GrillaInscripciones.Designer.cs">
+      <DependentUpon>GrillaInscripciones.cs</DependentUpon>
     </Compile>
     <Compile Include="Administrador\GrillaMaterias.cs">
       <SubType>Form</SubType>
@@ -141,6 +153,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Administrador\AlumnoInscripcionDesktop.resx">
+      <DependentUpon>AlumnoInscripcionDesktop.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Administrador\CursoDesktop.resx">
       <DependentUpon>CursoDesktop.cs</DependentUpon>
     </EmbeddedResource>
@@ -152,6 +167,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Administrador\GrillaEspecialidades.resx">
       <DependentUpon>GrillaEspecialidades.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administrador\GrillaInscripciones.resx">
+      <DependentUpon>GrillaInscripciones.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Administrador\GrillaMaterias.resx">
       <DependentUpon>GrillaMaterias.cs</DependentUpon>

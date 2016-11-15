@@ -83,10 +83,91 @@ namespace Data.Database
             return al;
 
             }
-        private AlumnoInscripcion Delete (int ID)
+        public void Delete (int ID)
         {
-
+            try
+            {
+                this.OpenConnection();
+                SqlCommand cmdAluInscri = new SqlCommand("Delete alumnos_inscripciones where id_alumno_inscripcion = @id",sqlConn);
+                cmdAluInscri.Parameters.Add("@id", SqlDbType.Int).Value = ID;
+                cmdAluInscri.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                Exception ExManejada = new Exception("No se pudo eliminar la inscripcion del alumno", ex);
+                throw ExManejada;
+            }
+            finally
+            {
+                this.CloseConnection();
+            }
+                        
         }
+        protected void Update(AlumnoInscripcion Alu )
+        {
+            try
+            {
+                this.OpenConnection();
+                SqlCommand cmdUpdateAlu = new SqlCommand("Update alumnos_inscripciones set " +
+                                                         "condicion = @cond, id_alumno@id_alu, id_curso = @ id_cur , nota= @nota " +
+                                                         "where id_alumno_inscripcion = @id ", sqlConn);
+                cmdUpdateAlu.Parameters.Add("@id", SqlDbType.Int).Value = Alu.ID;
+                cmdUpdateAlu.Parameters.Add("@cond", SqlDbType.VarChar, 50).Value = Alu.Condicion;
+                cmdUpdateAlu.Parameters.Add("@id_alu", SqlDbType.Int).Value = Alu.IdAlumno;
+                cmdUpdateAlu.Parameters.Add("@nota", SqlDbType.VarChar, 50).Value = Alu.Nota;
+                cmdUpdateAlu.Parameters.Add("id_cur", SqlDbType.Int).Value = Alu.IdCurso;
+
+                cmdUpdateAlu.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                Exception exManejada = new Exception("No se pudo actualizar la inscripcion" + ex.Message,ex);
+                throw exManejada;
+            }
+            finally
+            {
+                this.CloseConnection();   
+            }
+            
+        }
+        protected void Insert(AlumnoInscripcion Alu)
+        {
+            try
+            {
+                this.OpenConnection();
+                SqlCommand CmdInsert = new SqlCommand("insert into alumnos_inscripciones(id_alumno, id_curso, condicion, nota)" +
+                                                       "values (@varId_alu,@varId_curso, @varCond, @varNota)", sqlConn);
+                CmdInsert.Parameters.Add("@varId_alu", SqlDbType.Int).Value = Alu.IdAlumno;
+                CmdInsert.Parameters.Add("@varId_curso", SqlDbType.Int).Value = Alu.IdCurso;
+                CmdInsert.Parameters.Add("@varCond ", SqlDbType.VarChar,50).Value = Alu.Condicion;
+                CmdInsert.Parameters.Add("@varNota", SqlDbType.VarChar,50).Value = Alu.Nota;
+                CmdInsert.ExecuteNonQuery();
+            }
+        
+            catch (Exception ex)
+            {
+                Exception ExManejada = new Exception("No se pudo crear la inscripcion" + ex.Message, ex);
+                    throw ExManejada;
+            }
+            finally
+            {
+                this.CloseConnection();
+            }
+            
+            
+            }
+        public void Save(AlumnoInscripcion Alu)
+        {
+            if (Alu.State = BusinessEntity.States.Deleted)
+            { this.Delete(Alu.ID)} else
+                if (Alu.State = BusinessEntity.States.New)
+            {
+                this.Insert(Alu);
+            } else if (Alu.State = BusinessEntity.States.Modified)
+            { this.Update(Alu); }
+            else Alu.State = BusinessEntity.States.Unmodified;
+        } 
+
 
     }
 }
