@@ -9,47 +9,10 @@ using Business.Logic;
 
 namespace UI.Web
 {
-    public partial class Usuarios : System.Web.UI.Page
+    public partial class Usuarios : ABM
     {
-        public enum FormModes
-        {
-            Alta,
-            Baja,
-            Modificacion
-        }
-        public FormModes FormMode
-        {
-            get { return (FormModes)this.ViewState["FormMode"]; }
-            set { this.ViewState["FormMode"] = value; }
-        }
-        protected int SelectedID
-        {
-            get
-            {
-                if (this.ViewState["SelectedID"] != null)
-                {
-                    return (int)this.ViewState["SelectedID"];
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-            set { this.ViewState["SelectedID"] = value; }
-        }
-        protected bool IsEntitySelected
-        {
-            get { return (this.SelectedID != 0); }
-        }
-
-
-
-
-
-
-
-
-        protected void Page_Load(object sender, EventArgs e)
+     
+        protected override void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
             {
@@ -103,6 +66,7 @@ namespace UI.Web
             this.txtEmail.Text = this.Entity.Email;
             this.txtNombreUsuario.Text = this.Entity.NombreUsuario;
             this.chbHabilitado.Checked = this.Entity.Habilitado;
+            this.txtClave.Text = this.Entity.Clave;
         }
 
         protected void EditarLinkBtn_Click(object sender, EventArgs e)
@@ -110,6 +74,7 @@ namespace UI.Web
             EnableForm(true);
             if (this.IsEntitySelected)
             {
+                this.Panel3.Visible = true;
                 this.Panel1.Visible = true;
                 this.FormMode = FormModes.Modificacion;
                 this.LoadForm(this.SelectedID);
@@ -122,6 +87,7 @@ namespace UI.Web
             Usr.NombreUsuario = this.txtNombreUsuario.Text;
             Usr.Apellido = this.txtApellido.Text;
             Usr.Habilitado = this.chbHabilitado.Checked;
+            Usr.Clave = this.txtClave.Text;
         }
         private void SaveEntity(Usuario usr)
         {
@@ -165,6 +131,7 @@ namespace UI.Web
             this.txtEmail.Enabled = enable;
             this.txtNombreUsuario.Enabled = enable;
             this.chbHabilitado.Enabled = enable;
+            this.txtClave.Enabled = enable;
 
         }
 
@@ -172,11 +139,12 @@ namespace UI.Web
         {
             if (this.IsEntitySelected)
             {
+                this.Panel3.Visible = true;
                 this.Panel1.Visible = true;
                 this.FormMode = FormModes.Baja;
                 this.EnableForm(false);
                 this.LoadForm(this.SelectedID);
-
+                
             }
         }
         private void DeleteEntity(int id)
@@ -189,8 +157,8 @@ namespace UI.Web
             this.Panel1.Visible = true;
             this.FormMode = FormModes.Alta;
             this.ClearForm();
+            this.Panel3.Visible = true;
             this.EnableForm(true);
-
         }
         private void ClearForm()
         {
@@ -199,11 +167,11 @@ namespace UI.Web
             this.txtEmail.Text = string.Empty;
             this.txtNombreUsuario.Text = string.Empty;
             this.chbHabilitado.Checked = false;
+            this.txtClave.Text = string.Empty;
         }
 
         protected void CancelarLinkBtn_Click(object sender, EventArgs e)
         {
-
             Response.Redirect("~/Usuarios.aspx");
         }
     }

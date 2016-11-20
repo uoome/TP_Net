@@ -13,13 +13,13 @@ namespace UI.Web {
     public partial class Site {
         
         /// <summary>
-        /// Control bodyform.
+        /// Control bodyForm.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm bodyform;
+        protected global::System.Web.UI.HtmlControls.HtmlForm bodyForm;
         
         /// <summary>
         /// Control menu.
