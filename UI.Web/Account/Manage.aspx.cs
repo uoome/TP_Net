@@ -1,127 +1,128 @@
-﻿using Microsoft.AspNet.Identity;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using UI.Web;
+using System.Threading.Tasks;
+using System.Web;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin.Security;
+using Owin;
+using UI.Web.Models;
 
-public partial class Account_Manage : System.Web.UI.Page
+namespace UI.Web.Account
 {
-    protected string SuccessMessage
+    public partial class Manage : System.Web.UI.Page
     {
-        get;
-        private set;
-    }
-
-    protected bool CanRemoveExternalLogins
-    {
-        get;
-        private set;
-    }
-
-    private bool HasPassword(UserManager manager)
-    {
-        var user = manager.FindById(User.Identity.GetUserId());
-        return (user != null && user.PasswordHash != null);
-    }
-
-    protected void Page_Load()
-    {
-        if (!IsPostBack)
+        protected string SuccessMessage
         {
-            // Determine las secciones que se van a presentar
-            UserManager manager = new UserManager();
-            if (HasPassword(manager))
-            {
-                changePasswordHolder.Visible = true;
-            }
-            else
-            {
-                setPassword.Visible = true;
-                changePasswordHolder.Visible = false;
-            }
-            CanRemoveExternalLogins = manager.GetLogins(User.Identity.GetUserId()).Count() > 1;
+            get;
+            private set;
+        }
 
-            // Presentar mensaje de operación correcta
-            var message = Request.QueryString["m"];
-            if (message != null)
-            {
-                // Seccionar la cadena de consulta desde la acción
-                Form.Action = ResolveUrl("~/Account/Manage");
+        private bool HasPassword(ApplicationUserManager manager)
+        {
+            return manager.HasPassword(User.Identity.GetUserId());
+        }
 
-                SuccessMessage =
-                    message == "ChangePwdSuccess" ? "Se cambió la contraseña."
-                    : message == "SetPwdSuccess" ? "Se estableció la contraseña."
-                    : message == "RemoveLoginSuccess" ? "La cuenta se quitó."
-                    : String.Empty;
-                successMessage.Visible = !String.IsNullOrEmpty(SuccessMessage);
+        public bool HasPhoneNumber { get; private set; }
+
+        public bool TwoFactorEnabled { get; private set; }
+
+        public bool TwoFactorBrowserRemembered { get; private set; }
+
+        public int LoginsCount { get; set; }
+
+        protected void Page_Load()
+        {
+            var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
+
+            HasPhoneNumber = String.IsNullOrEmpty(manager.GetPhoneNumber(User.Identity.GetUserId()));
+
+            // Habilitar esta opción tras configurar autenticación de dos factores
+            //PhoneNumber.Text = manager.GetPhoneNumber(User.Identity.GetUserId()) ?? String.Empty;
+
+            TwoFactorEnabled = manager.GetTwoFactorEnabled(User.Identity.GetUserId());
+
+            LoginsCount = manager.GetLogins(User.Identity.GetUserId()).Count;
+
+            var authenticationManager = HttpContext.Current.GetOwinContext().Authentication;
+
+            if (!IsPostBack)
+            {
+                // Determine las secciones que se van a presentar
+                if (HasPassword(manager))
+                {
+                    ChangePassword.Visible = true;
+                }
+                else
+                {
+                    CreatePassword.Visible = true;
+                    ChangePassword.Visible = false;
+                }
+
+                // Presentar mensaje de operación correcta
+                var message = Request.QueryString["m"];
+                if (message != null)
+                {
+                    // Seccionar la cadena de consulta desde la acción
+                    Form.Action = ResolveUrl("~/Account/Manage");
+
+                    SuccessMessage =
+                        message == "ChangePwdSuccess" ? "Se cambió la contraseña."
+                        : message == "SetPwdSuccess" ? "Se estableció la contraseña."
+                        : message == "RemoveLoginSuccess" ? "La cuenta se quitó."
+                        : message == "AddPhoneNumberSuccess" ? "Se ha agregado el número de teléfono"
+                        : message == "RemovePhoneNumberSuccess" ? "Se ha quitado el número de teléfono"
+                        : String.Empty;
+                    successMessage.Visible = !String.IsNullOrEmpty(SuccessMessage);
+                }
             }
         }
-    }
 
-    protected void ChangePassword_Click(object sender, EventArgs e)
-    {
-        if (IsValid)
+
+        private void AddErrors(IdentityResult result)
         {
-            UserManager manager = new UserManager();
-            IdentityResult result = manager.ChangePassword(User.Identity.GetUserId(), CurrentPassword.Text, NewPassword.Text);
-            if (result.Succeeded)
+            foreach (var error in result.Errors)
             {
-                var user = manager.FindById(User.Identity.GetUserId());
-                IdentityHelper.SignIn(manager, user, isPersistent: false);
-                Response.Redirect("~/Account/Manage?m=ChangePwdSuccess");
-            }
-            else
-            {
-                AddErrors(result);
+                ModelState.AddModelError("", error);
             }
         }
-    }
 
-    protected void SetPassword_Click(object sender, EventArgs e)
-    {
-        if (IsValid)
+        // Quitar número de teléfono del usuario
+        protected void RemovePhone_Click(object sender, EventArgs e)
         {
-            // Cree la información de inicio de sesión local y vincule la cuenta local con el usuario
-            UserManager manager = new UserManager();
-            IdentityResult result = manager.AddPassword(User.Identity.GetUserId(), password.Text);
-            if (result.Succeeded)
+            var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            var signInManager = Context.GetOwinContext().Get<ApplicationSignInManager>();
+            var result = manager.SetPhoneNumber(User.Identity.GetUserId(), null);
+            if (!result.Succeeded)
             {
-                Response.Redirect("~/Account/Manage?m=SetPwdSuccess");
+                return;
             }
-            else
-            {
-                AddErrors(result);
-            }
-        }
-    }
-
-    public IEnumerable<UserLoginInfo> GetLogins()
-    {
-        UserManager manager = new UserManager();
-        var accounts = manager.GetLogins(User.Identity.GetUserId());
-        CanRemoveExternalLogins = accounts.Count() > 1 || HasPassword(manager);
-        return accounts;
-    }
-
-    public void RemoveLogin(string loginProvider, string providerKey)
-    {
-        UserManager manager = new UserManager();
-        var result = manager.RemoveLogin(User.Identity.GetUserId(), new UserLoginInfo(loginProvider, providerKey));
-        string msg = String.Empty;
-        if (result.Succeeded)
-        {
             var user = manager.FindById(User.Identity.GetUserId());
-            IdentityHelper.SignIn(manager, user, isPersistent: false);
-            msg = "?m=RemoveLoginSuccess";
+            if (user != null)
+            {
+                signInManager.SignIn(user, isPersistent: false, rememberBrowser: false);
+                Response.Redirect("/Account/Manage?m=RemovePhoneNumberSuccess");
+            }
         }
-        Response.Redirect("~/Account/Manage" + msg);
-    }
 
-    private void AddErrors(IdentityResult result)
-    {
-        foreach (var error in result.Errors)
+        // DisableTwoFactorAuthentication
+        protected void TwoFactorDisable_Click(object sender, EventArgs e)
         {
-            ModelState.AddModelError("", error);
+            var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            manager.SetTwoFactorEnabled(User.Identity.GetUserId(), false);
+
+            Response.Redirect("/Account/Manage");
+        }
+
+        //EnableTwoFactorAuthentication 
+        protected void TwoFactorEnable_Click(object sender, EventArgs e)
+        {
+            var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            manager.SetTwoFactorEnabled(User.Identity.GetUserId(), true);
+
+            Response.Redirect("/Account/Manage");
         }
     }
 }

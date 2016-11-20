@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Iniciar sesión" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeFile="Login.aspx.cs" Inherits="Account_Login" Async="true" %>
+﻿<%@ Page Title="Iniciar sesión" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="UI.Web.Account.Login" Async="true" %>
 
 <%@ Register Src="~/Account/OpenAuthProviders.ascx" TagPrefix="uc" TagName="OpenAuthProviders" %>
 
@@ -17,11 +17,11 @@
                         </p>
                     </asp:PlaceHolder>
                     <div class="form-group">
-                        <asp:Label runat="server" AssociatedControlID="UserName" CssClass="col-md-2 control-label">Nombre de usuario</asp:Label>
+                        <asp:Label runat="server" AssociatedControlID="Email" CssClass="col-md-2 control-label">Correo electrónico</asp:Label>
                         <div class="col-md-10">
-                            <asp:TextBox runat="server" ID="UserName" CssClass="form-control" />
-                            <asp:RequiredFieldValidator runat="server" ControlToValidate="UserName"
-                                CssClass="text-danger" ErrorMessage="El campo de nombre de usuario es obligatorio." />
+                            <asp:TextBox runat="server" ID="Email" CssClass="form-control" TextMode="Email" />
+                            <asp:RequiredFieldValidator runat="server" ControlToValidate="Email"
+                                CssClass="text-danger" ErrorMessage="El campo de correo electrónico es obligatorio." />
                         </div>
                     </div>
                     <div class="form-group">
@@ -46,17 +46,20 @@
                     </div>
                 </div>
                 <p>
-                    <asp:HyperLink runat="server" ID="RegisterHyperLink" ViewStateMode="Disabled">Registrarse</asp:HyperLink>
-                    si no tiene una cuenta local.
+                    <asp:HyperLink runat="server" ID="RegisterHyperLink" ViewStateMode="Disabled">Registrarse como usuario nuevo</asp:HyperLink>
+                </p>
+                <p>
+                    <%-- Habilite esta opción cuando haya habilitado la confirmación de cuentas para la funcionalidad de restablecimiento de contraseña
+                    <asp:HyperLink runat="server" ID="ForgotPasswordHyperLink" ViewStateMode="Disabled">¿Olvidó su contraseña?</asp:HyperLink>
+                    --%>
                 </p>
             </section>
         </div>
 
         <div class="col-md-4">
             <section id="socialLoginForm">
-                <uc:openauthproviders runat="server" id="OpenAuthLogin" />
+                <uc:OpenAuthProviders runat="server" ID="OpenAuthLogin" />
             </section>
         </div>
     </div>
 </asp:Content>
-

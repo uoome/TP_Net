@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="OpenAuthProviders.ascx.cs" Inherits="OpenAuthProviders" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="OpenAuthProviders.ascx.cs" Inherits="UI.Web.Account.OpenAuthProviders" %>
 
 <div id="socialLoginList">
     <h4>Utilice otro servicio para iniciar sesión.</h4>

@@ -1,34 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UI.Desktop", "UI.desktop\UI.Desktop.csproj", "{4FFE5AC6-C840-48FC-9294-94613BAEDCC9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Util", "Util\Util.csproj", "{E210B627-82C6-40BC-9990-764E3BB24D85}"
-EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "UI.Web", "http://localhost:1101", "{D169195A-1167-48AC-80E7-6A11D34960C8}"
-	ProjectSection(WebsiteProperties) = preProject
-		UseIISExpress = "true"
-		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5"
-		ProjectReferences = "{3aac3000-2798-422c-8659-73d957682372}|Business.Entities.dll;{38b6d2fd-c10d-488b-a701-175d3ebec09a}|Business.Logic.dll;{18D1C50F-58E0-4D94-B05B-4A95A146E6BB}|Data.Database.dll;"
-		Debug.AspNetCompiler.VirtualPath = "/localhost_1101"
-		Debug.AspNetCompiler.PhysicalPath = "UI.Web\"
-		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_1101\"
-		Debug.AspNetCompiler.Updateable = "true"
-		Debug.AspNetCompiler.ForceOverwrite = "true"
-		Debug.AspNetCompiler.FixedNames = "false"
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.VirtualPath = "/localhost_1101"
-		Release.AspNetCompiler.PhysicalPath = "UI.Web\"
-		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_1101\"
-		Release.AspNetCompiler.Updateable = "true"
-		Release.AspNetCompiler.ForceOverwrite = "true"
-		Release.AspNetCompiler.FixedNames = "false"
-		Release.AspNetCompiler.Debug = "False"
-		SlnRelativePath = "UI.Web\"
-		DefaultWebSiteLanguage = "Visual C#"
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Business.Entities", "Business.Entities\Business.Entities\Business.Entities.csproj", "{3AAC3000-2798-422C-8659-73D957682372}"
 EndProject
@@ -37,6 +14,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.Database", "Data.Database\Data.Database\Data.Database.csproj", "{18D1C50F-58E0-4D94-B05B-4A95A146E6BB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UI.Consola", "UI.Consola\UI.Consola.csproj", "{EAE136E7-BF73-4CEF-8E67-1E1C8C98152D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UI.Web", "UI.Web\UI.Web.csproj", "{83456B3D-378A-42C0-B6E7-8939E52125BE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -52,10 +31,6 @@ Global
 		{E210B627-82C6-40BC-9990-764E3BB24D85}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E210B627-82C6-40BC-9990-764E3BB24D85}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E210B627-82C6-40BC-9990-764E3BB24D85}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D169195A-1167-48AC-80E7-6A11D34960C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D169195A-1167-48AC-80E7-6A11D34960C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D169195A-1167-48AC-80E7-6A11D34960C8}.Release|Any CPU.ActiveCfg = Debug|Any CPU
-		{D169195A-1167-48AC-80E7-6A11D34960C8}.Release|Any CPU.Build.0 = Debug|Any CPU
 		{3AAC3000-2798-422C-8659-73D957682372}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3AAC3000-2798-422C-8659-73D957682372}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3AAC3000-2798-422C-8659-73D957682372}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -72,6 +47,10 @@ Global
 		{EAE136E7-BF73-4CEF-8E67-1E1C8C98152D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EAE136E7-BF73-4CEF-8E67-1E1C8C98152D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EAE136E7-BF73-4CEF-8E67-1E1C8C98152D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83456B3D-378A-42C0-B6E7-8939E52125BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83456B3D-378A-42C0-B6E7-8939E52125BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83456B3D-378A-42C0-B6E7-8939E52125BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83456B3D-378A-42C0-B6E7-8939E52125BE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

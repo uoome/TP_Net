@@ -33,7 +33,7 @@ namespace UI.Web
             // para la producción, use la herramienta de creación en http://modernizr.com para elegir solo las pruebas que necesite
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                             "~/Scripts/modernizr-*"));
-            
+
             ScriptManager.ScriptResourceMapping.AddDefinition(
                 "respond",
                 new ScriptResourceDefinition
