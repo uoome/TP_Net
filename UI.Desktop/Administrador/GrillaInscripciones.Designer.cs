@@ -1,4 +1,4 @@
-﻿namespace UI.Desktop.Administrador
+﻿namespace UI.Desktop
 {
     partial class GrillaInscripciones
     {

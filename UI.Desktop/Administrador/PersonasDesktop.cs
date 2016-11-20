@@ -120,7 +120,7 @@ namespace UI.Desktop
 
                 //Cargo comboBox
                 PersonaActual.TipoPersona = new PersonaLogic().GetOne(PersonaActual.ID).TipoPersona;
-                PersonaActual.IDPlan = new PlanLogic().GetOne(cbxEspecialidades.Text, cbxPlanes.Text).ID;
+                PersonaActual.IDPlan = new PlanLogic().GetOne(cbxEspecialidades.Text, int.Parse(cbxPlanes.Text)).ID;
                 
             }
             if (Modo == ModoForm.Eliminar)

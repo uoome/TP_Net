@@ -164,12 +164,19 @@ namespace UI.Desktop
             grillaPlan.Show();
             grillaPlan.Listar();
         }
-
+        
         private void tsc_Admin_Comisiones_Click(object sender, EventArgs e)
         {
 
         }
 
+        private void tsc_Admin_AluInscp_Click(object sender, EventArgs e)
+        {
+            GrillaInscripciones grillaInscp = new GrillaInscripciones();
+            grillaInscp.Show();
+            grillaInscp.Listar();
+
+        }
         private void mnuSalir_Admin_Click(object sender, EventArgs e)
         {
             this.Dispose();
@@ -194,6 +201,7 @@ namespace UI.Desktop
         }
 
         #endregion
- 
+
+        
     }
 }

@@ -41,7 +41,7 @@ namespace Data.Database
             }
             catch (Exception ex)
             {
-                Exception ExcepcionManejada= new Exception("Error al traer la lista de crusos",ex);
+                Exception ExcepcionManejada= new Exception("Error al traer la lista de crusos" +ex.Message,ex);
                 throw ExcepcionManejada;
             }
             finally
@@ -49,7 +49,7 @@ namespace Data.Database
                this.CloseConnection();
             }
 
-            return (listaCursos);
+            return listaCursos;
         }
 
         public Curso GetOne(int ID)

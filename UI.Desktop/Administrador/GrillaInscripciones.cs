@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using Business.Logic;
 using Business.Entities;
 
-namespace UI.Desktop.Administrador
+namespace UI.Desktop
 {
     public partial class GrillaInscripciones : Form
     {

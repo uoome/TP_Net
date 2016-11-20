@@ -47,7 +47,7 @@ namespace Data.Database
             }
             catch (Exception Ex)
             {
-                Exception ExcepcionManejada = new Exception("Error al cargar la lista de Personas", Ex);
+                Exception ExcepcionManejada = new Exception("Error al cargar la lista de Personas" +Ex.Message, Ex);
                 throw ExcepcionManejada;
             }
             finally
@@ -91,7 +91,7 @@ namespace Data.Database
             }
             catch (Exception Ex)
             {
-                Exception ExcepcionManejada = new Exception("Error al traer la persona", Ex);
+                Exception ExcepcionManejada = new Exception("Error al traer la persona" + Ex.Message, Ex);
             }
             finally
             {
@@ -134,7 +134,7 @@ namespace Data.Database
             }
             catch (Exception Ex)
             {
-                Exception ExcepcionManejada = new Exception("Error al recuperar la lista de usuarios", Ex);
+                Exception ExcepcionManejada = new Exception("Error al recuperar la lista de usuarios" + Ex.Message, Ex);
                 throw ExcepcionManejada;
             }
             finally
@@ -206,7 +206,7 @@ namespace Data.Database
             }
             catch(Exception ex)
             {
-                Exception ExcepcionManejada = new Exception("Error al crear la persona", ex);
+                Exception ExcepcionManejada = new Exception("Error al crear la persona" + ex.Message, ex);
                 throw ExcepcionManejada;
             }
             finally
@@ -246,7 +246,7 @@ namespace Data.Database
             }
             catch (Exception Ex)
             {
-                Exception ExcepcionManejada = new Exception("Error al modificar datos de la persona", Ex);
+                Exception ExcepcionManejada = new Exception("Error al modificar datos de la persona" + Ex.Message, Ex);
                 throw ExcepcionManejada;
             }
             finally

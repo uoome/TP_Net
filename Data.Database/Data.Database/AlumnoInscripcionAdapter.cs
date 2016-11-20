@@ -24,7 +24,7 @@ namespace Data.Database
                 while (drAlumnosIns.Read())
                 {
                     AlumnoInscripcion al = new AlumnoInscripcion();
-                    al.ID = (int)drAlumnosIns["id_alumno_inscripcion"];
+                    al.ID = (int)drAlumnosIns["id_inscripcion"];
                     al.IdAlumno = (int)drAlumnosIns["id_alumno"];
                     al.IdCurso = (int)drAlumnosIns["id_curso"];
                     al.Nota = (int)drAlumnosIns["nota"];
@@ -36,7 +36,7 @@ namespace Data.Database
             }
             catch (Exception ex)
             {
-                Exception ExManejada = new Exception("Error al recuperar la lista de inscripciones", ex);
+                Exception ExManejada = new Exception("Error al recuperar la lista de inscripciones" + ex.Message, ex);
                 throw ExManejada;
             }
             finally
@@ -55,12 +55,12 @@ namespace Data.Database
             {
                 this.OpenConnection();
                
-                SqlCommand CmdAlumnosIns = new SqlCommand("Select * from alumnos_inscripciones where @id = id_alumno_inscripcion", sqlConn);
+                SqlCommand CmdAlumnosIns = new SqlCommand("Select * from alumnos_inscripciones where @id = id_inscripcion", sqlConn);
                 CmdAlumnosIns.Parameters.Add("@id", SqlDbType.Int).Value = ID;
                 SqlDataReader drAlumnosIns = CmdAlumnosIns.ExecuteReader();
                 if (drAlumnosIns.Read())
                 {
-                    al.ID = (int)drAlumnosIns["id_alumno_inscripcion"];
+                    al.ID = (int)drAlumnosIns["id_inscripcion"];
                     al.IdAlumno = (int)drAlumnosIns["id_alumno"];
                     al.IdCurso = (int)drAlumnosIns["id_curso"];
                     al.Nota = (int)drAlumnosIns["nota"];
@@ -72,7 +72,7 @@ namespace Data.Database
 
             catch( Exception ex)
             {
-                Exception ExManejada = new Exception("Error al traer la inscripcion", ex);
+                Exception ExManejada = new Exception("Error al traer la inscripcion" + ex.Message, ex);
                 throw ExManejada;
 
             }
@@ -88,13 +88,13 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdAluInscri = new SqlCommand("Delete alumnos_inscripciones where id_alumno_inscripcion = @id",sqlConn);
+                SqlCommand cmdAluInscri = new SqlCommand("Delete alumnos_inscripciones where id_inscripcion = @id",sqlConn);
                 cmdAluInscri.Parameters.Add("@id", SqlDbType.Int).Value = ID;
                 cmdAluInscri.ExecuteNonQuery();
             }
             catch (Exception ex)
             {
-                Exception ExManejada = new Exception("No se pudo eliminar la inscripcion del alumno", ex);
+                Exception ExManejada = new Exception("No se pudo eliminar la inscripcion del alumno" +ex.Message, ex);
                 throw ExManejada;
             }
             finally
@@ -110,7 +110,7 @@ namespace Data.Database
                 this.OpenConnection();
                 SqlCommand cmdUpdateAlu = new SqlCommand("Update alumnos_inscripciones set " +
                                                          "condicion = @cond, id_alumno@id_alu, id_curso = @ id_cur , nota= @nota " +
-                                                         "where id_alumno_inscripcion = @id ", sqlConn);
+                                                         "where id_inscripcion = @id ", sqlConn);
                 cmdUpdateAlu.Parameters.Add("@id", SqlDbType.Int).Value = Alu.ID;
                 cmdUpdateAlu.Parameters.Add("@cond", SqlDbType.VarChar, 50).Value = Alu.Condicion;
                 cmdUpdateAlu.Parameters.Add("@id_alu", SqlDbType.Int).Value = Alu.IdAlumno;
@@ -155,15 +155,15 @@ namespace Data.Database
             }
             
             
-            }
+        }
         public void Save(AlumnoInscripcion Alu)
         {
-            if (Alu.State = BusinessEntity.States.Deleted)
-            { this.Delete(Alu.ID)} else
-                if (Alu.State = BusinessEntity.States.New)
+            if (Alu.State == BusinessEntity.States.Deleted)
+            { this.Delete(Alu.ID); } else
+                if (Alu.State == BusinessEntity.States.New)
             {
                 this.Insert(Alu);
-            } else if (Alu.State = BusinessEntity.States.Modified)
+            } else if (Alu.State == BusinessEntity.States.Modified)
             { this.Update(Alu); }
             else Alu.State = BusinessEntity.States.Unmodified;
         } 
