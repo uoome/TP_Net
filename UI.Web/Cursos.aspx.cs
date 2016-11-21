@@ -1,0 +1,196 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using Business.Logic;
+using Business.Entities;
+
+namespace UI.Web
+{
+    public partial class Cursos : ABM
+    {
+        #region Metodos
+
+        private void LoadGrid()
+        {
+            this.grvCursos.DataSource = CurLog.GetAll();
+            this.grvCursos.DataBind();
+        }
+
+        private void LoadForm(int id)
+        {
+            this.Entity = CurLog.GetOne(id);
+            this.txtAnioCalendario.Text = this.Entity.AnioCalendario.ToString();
+            this.txtCupo.Text = this.Entity.Cupo.ToString();
+            this.txtDescripcion.Text = this.Entity.Descripcion;
+            this.txtIDComision.Text = this.Entity.IDComision.ToString();
+            this.txtIDMateria.Text = this.Entity.IDMateria.ToString();
+        }
+
+        private void Enable(bool enable)
+        {
+            this.txtAnioCalendario.Enabled = enable;
+            this.txtCupo.Enabled = enable;
+            this.txtDescripcion.Enabled = enable;
+            this.txtIDComision.Enabled = enable;
+            this.txtIDMateria.Enabled = enable;
+
+        }
+        private void LoadEntity(Curso Cur)
+        {
+            Cur.AnioCalendario = int.Parse(this.txtAnioCalendario.Text);
+            Cur.Cupo = int.Parse(this.txtCupo.Text);
+            Cur.Descripcion = this.txtDescripcion.Text;
+            Cur.IDComision = int.Parse(this.txtIDComision.Text);
+            Cur.IDMateria = int.Parse(this.txtIDMateria.Text);
+        }
+        private void SaveEntity(Curso cur)
+        {
+            this.CurLog.Save(cur);
+        }
+
+
+
+        private void ClearForm()
+        {
+            this.txtAnioCalendario.Text = string.Empty;
+            //Dudas sobre el Empty con campo entero
+            this.txtCupo.Text = string.Empty;
+            this.txtDescripcion.Text = string.Empty;
+            this.txtIDComision.Text = string.Empty;
+            this.txtIDMateria.Text = string.Empty;
+        }
+
+
+        private void DeleteEntity(int id)
+        {
+            CurLog.Delete(id);
+        }
+
+
+
+
+
+
+
+        #endregion
+
+        #region Eventos
+
+
+
+        protected void btnAceptar_Click(object sender, EventArgs e)
+        {
+            switch (this.FormMode)
+            {
+                case FormModes.Alta:
+
+                    Entity = new Curso();
+                    this.LoadEntity(Entity);
+                    this.SaveEntity(Entity);
+                    this.LoadGrid();
+                    this.Entity.State = BusinessEntity.States.New;
+                    break;
+
+                case FormModes.Modificacion:
+
+                    Entity = new Curso();
+                    Entity.ID = this.SelectedID;
+                    this.Entity.State = BusinessEntity.States.Modified;
+                    this.LoadEntity(Entity);
+                    this.SaveEntity(Entity);
+                    this.LoadGrid();
+                    break;
+
+                case FormModes.Baja:
+
+                    this.DeleteEntity(this.SelectedID);
+                    this.LoadGrid();
+                    break;
+
+                default:
+                    break;
+
+            }
+            this.panelControles.Visible = false;
+            this.panelConfirmacion.Visible = false;
+
+        }
+        protected void linkBtnEliminar_Click(object sender, EventArgs e)
+        {
+            if (this.IsEntitySelected)
+            {
+                this.panelControles.Visible = true;
+                this.panelConfirmacion.Visible = true;
+                this.FormMode = FormModes.Baja;
+                this.LoadForm(this.SelectedID);
+                this.Enable(false);
+            }
+        }
+
+        protected void btnCancelar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Cursos.aspx");
+            this.panelConfirmacion.Visible = false;
+        }
+
+        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.SelectedID = (int)this.grvCursos.SelectedValue;
+        }
+
+
+        protected void linkBtnEditar_Click(object sender, EventArgs e)
+        {
+            if (this.IsEntitySelected)
+            {
+                this.panelControles.Visible = true;
+                this.panelConfirmacion.Visible = true;
+                this.FormMode = FormModes.Modificacion;
+                this.LoadForm(this.SelectedID);
+                this.Enable(true);
+            }
+        }
+
+        protected override void Page_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                this.LoadGrid();
+            }
+        }
+        protected void linkBtnNuevo_Click(object sender, EventArgs e)
+        {
+            this.panelControles.Visible = true;
+            this.panelConfirmacion.Visible = true;
+            this.FormMode = FormModes.Alta;
+            this.ClearForm();
+            Enable(true);
+        }
+        #endregion
+
+
+
+        private Curso Entity
+        {
+            set;
+            get;
+        }
+        private CursoLogic _curLog;
+        public CursoLogic CurLog
+        {
+            
+            get { if(_curLog == null)
+                {
+                    _curLog = new CursoLogic();
+                    
+                }
+                return _curLog;
+            }
+        }
+
+       
+    }
+}
