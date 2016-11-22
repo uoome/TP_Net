@@ -317,5 +317,9 @@ namespace UI.Desktop
 
         #endregion
 
+        private void cbxTipoPers_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
+    }
 }

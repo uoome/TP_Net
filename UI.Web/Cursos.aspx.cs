@@ -17,7 +17,26 @@ namespace UI.Web
         {
             this.grvCursos.DataSource = CurLog.GetAll();
             this.grvCursos.DataBind();
-        }
+         
+            MateriaLogic mat = new MateriaLogic();
+           // ComisionLogic com = new ComisionLogic();
+            // Business.Logic.ComisionLogic cl = new ComisionLogic();
+               
+              //  List<Comision> listacursos = new List<Comision>();
+               // listacursos = cl.GetAll();
+                //foreach (Comision comi in listacursos)
+                //{
+                  //  ddlComision.Items.Add(comi.ID.ToString());
+                //} FALTA HACER LOGIC Y BD 
+             
+
+                List<Materia> listaMateria = new List<Materia>();
+                listaMateria = mat.GetAll();
+                foreach (Materia mate in listaMateria)
+                {
+                    ddlMateria.Items.Add(mate.ID.ToString());
+                }
+            }
 
         private void LoadForm(int id)
         {
@@ -25,8 +44,8 @@ namespace UI.Web
             this.txtAnioCalendario.Text = this.Entity.AnioCalendario.ToString();
             this.txtCupo.Text = this.Entity.Cupo.ToString();
             this.txtDescripcion.Text = this.Entity.Descripcion;
-            this.txtIDComision.Text = this.Entity.IDComision.ToString();
-            this.txtIDMateria.Text = this.Entity.IDMateria.ToString();
+            this.ddlComision.SelectedValue = this.Entity.IDComision.ToString();
+            this.ddlMateria.SelectedValue = this.Entity.IDMateria.ToString();
         }
 
         private void Enable(bool enable)
@@ -34,8 +53,8 @@ namespace UI.Web
             this.txtAnioCalendario.Enabled = enable;
             this.txtCupo.Enabled = enable;
             this.txtDescripcion.Enabled = enable;
-            this.txtIDComision.Enabled = enable;
-            this.txtIDMateria.Enabled = enable;
+            this.ddlComision.Enabled = enable;
+            this.ddlMateria.Enabled = enable;
 
         }
         private void LoadEntity(Curso Cur)
@@ -43,8 +62,8 @@ namespace UI.Web
             Cur.AnioCalendario = int.Parse(this.txtAnioCalendario.Text);
             Cur.Cupo = int.Parse(this.txtCupo.Text);
             Cur.Descripcion = this.txtDescripcion.Text;
-            Cur.IDComision = int.Parse(this.txtIDComision.Text);
-            Cur.IDMateria = int.Parse(this.txtIDMateria.Text);
+            Cur.IDComision = int.Parse(this.ddlComision.SelectedValue);
+            Cur.IDMateria = int.Parse(this.ddlMateria.SelectedValue);
         }
         private void SaveEntity(Curso cur)
         {
@@ -59,8 +78,8 @@ namespace UI.Web
             //Dudas sobre el Empty con campo entero
             this.txtCupo.Text = string.Empty;
             this.txtDescripcion.Text = string.Empty;
-            this.txtIDComision.Text = string.Empty;
-            this.txtIDMateria.Text = string.Empty;
+            this.ddlComision.SelectedIndex = -1;
+            this.ddlMateria.SelectedIndex = -1;
         }
 
 
@@ -138,7 +157,7 @@ namespace UI.Web
 
         protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            this.SelectedID = (int)this.grvCursos.SelectedValue;
+            
         }
 
 
@@ -191,6 +210,18 @@ namespace UI.Web
             }
         }
 
-       
+        protected void grvCursos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.SelectedID = (int)this.grvCursos.SelectedValue;
+
+        }
+
+        protected void ddlMateria_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Materia mat = new Materia();
+            MateriaLogic matL = new MateriaLogic();
+            mat = matL.GetOne(Convert.ToInt32(ddlMateria.SelectedValue));
+            this.txtDescripcion.Text = mat.Descripcion;
+        }
     }
 }

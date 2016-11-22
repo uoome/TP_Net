@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Cursos.aspx.cs" Inherits="UI.Web.Cursos" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="bodyContentPlaceHolder" runat="server">
-    <asp:GridView ID="grvCursos" runat="server" AutoGenerateColumns="False" BackColor="LightGoldenrodYellow" BorderColor="Tan" BorderWidth="1px" CellPadding="2" DataKeyNames="ID" ForeColor="Black" GridLines="None">
+    <asp:GridView ID="grvCursos" runat="server" AutoGenerateColumns="False" BackColor="LightGoldenrodYellow" BorderColor="Tan" BorderWidth="1px" CellPadding="2" DataKeyNames="ID" ForeColor="Black" GridLines="None" OnSelectedIndexChanged="grvCursos_SelectedIndexChanged">
         <AlternatingRowStyle BackColor="PaleGoldenrod" />
         <Columns>
             <asp:BoundField DataField="Cupo" HeaderText="Cupo" SortExpression="Cupo" />
@@ -8,6 +8,7 @@
             <asp:BoundField DataField="IDComision" HeaderText="ID Comision" />
             <asp:BoundField DataField="IDMateria" HeaderText="ID Materia" />
             <asp:BoundField DataField="Descripcion" HeaderText="Descripcion" />
+            <asp:CommandField ShowSelectButton="True" />
         </Columns>
         <FooterStyle BackColor="Tan" />
         <HeaderStyle BackColor="Tan" Font-Bold="True" />
@@ -46,7 +47,7 @@
                     <asp:Label ID="lblIDMateria" runat="server" Text="ID Materia"></asp:Label>
                 </td>
                 <td>
-                    <asp:TextBox ID="txtIDMateria" runat="server"></asp:TextBox>
+                    <asp:ListBox ID="ddlMateria" runat="server" OnSelectedIndexChanged="ddlMateria_SelectedIndexChanged"></asp:ListBox>
                 </td>
             </tr>
             <tr>
@@ -54,7 +55,7 @@
                     <asp:Label ID="lblIDComision" runat="server" Text="ID Comision"></asp:Label>
                 </td>
                 <td>
-                    <asp:TextBox ID="txtIDComision" runat="server"></asp:TextBox>
+                    <asp:ListBox ID="ddlComision" runat="server"></asp:ListBox>
                 </td>
             </tr>
             <tr>

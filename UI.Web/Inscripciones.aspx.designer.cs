@@ -10,16 +10,16 @@
 namespace UI.Web {
     
     
-    public partial class Cursos {
+    public partial class Inscripciones {
         
         /// <summary>
-        /// Control grvCursos.
+        /// Control grvInscripciones.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView grvCursos;
+        protected global::System.Web.UI.WebControls.GridView grvInscripciones;
         
         /// <summary>
         /// Control panelABM.
@@ -31,130 +31,175 @@ namespace UI.Web {
         protected global::System.Web.UI.WebControls.Panel panelABM;
         
         /// <summary>
-        /// Control linkBtnNuevo.
+        /// Control linkbtnNuevo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton linkBtnNuevo;
+        protected global::System.Web.UI.WebControls.LinkButton linkbtnNuevo;
         
         /// <summary>
-        /// Control linkBtnEditar.
+        /// Control linkbtnEditar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton linkBtnEditar;
+        protected global::System.Web.UI.WebControls.LinkButton linkbtnEditar;
         
         /// <summary>
-        /// Control linkBtnEliminar.
+        /// Control linkbtnEliminar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton linkBtnEliminar;
+        protected global::System.Web.UI.WebControls.LinkButton linkbtnEliminar;
         
         /// <summary>
-        /// Control panelControles.
+        /// Control panelBotones.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel panelControles;
+        protected global::System.Web.UI.WebControls.Panel panelBotones;
         
         /// <summary>
-        /// Control lblAnioCalendario.
+        /// Control lblIDAlumno.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblAnioCalendario;
+        protected global::System.Web.UI.WebControls.Label lblIDAlumno;
         
         /// <summary>
-        /// Control txtAnioCalendario.
+        /// Control ddlAlumno.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAnioCalendario;
+        protected global::System.Web.UI.WebControls.ListBox ddlAlumno;
         
         /// <summary>
-        /// Control lblCupo.
+        /// Control lblNombre.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCupo;
+        protected global::System.Web.UI.WebControls.Label lblNombre;
         
         /// <summary>
-        /// Control txtCupo.
+        /// Control txtNombre.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCupo;
+        protected global::System.Web.UI.WebControls.TextBox txtNombre;
         
         /// <summary>
-        /// Control lblIDMateria.
+        /// Control lblApellido.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblIDMateria;
+        protected global::System.Web.UI.WebControls.Label lblApellido;
         
         /// <summary>
-        /// Control ddlMateria.
+        /// Control txtApellido.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox ddlMateria;
+        protected global::System.Web.UI.WebControls.TextBox txtApellido;
         
         /// <summary>
-        /// Control lblIDComision.
+        /// Control lblIDCurso.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblIDComision;
+        protected global::System.Web.UI.WebControls.Label lblIDCurso;
         
         /// <summary>
-        /// Control ddlComision.
+        /// Control txtCurso.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox ddlComision;
+        protected global::System.Web.UI.WebControls.TextBox txtCurso;
         
         /// <summary>
-        /// Control lblDescripcion.
+        /// Control rfvCurso.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDescripcion;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvCurso;
         
         /// <summary>
-        /// Control txtDescripcion.
+        /// Control lblCondicion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDescripcion;
+        protected global::System.Web.UI.WebControls.Label lblCondicion;
+        
+        /// <summary>
+        /// Control txtCondicion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCondicion;
+        
+        /// <summary>
+        /// Control rfvCondicion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvCondicion;
+        
+        /// <summary>
+        /// Control lblNota.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblNota;
+        
+        /// <summary>
+        /// Control txtNota.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtNota;
+        
+        /// <summary>
+        /// Control rfvNota.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvNota;
         
         /// <summary>
         /// Control panelConfirmacion.
@@ -182,5 +227,14 @@ namespace UI.Web {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnCancelar;
+        
+        /// <summary>
+        /// Control ValidationSummary1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary1;
     }
 }
