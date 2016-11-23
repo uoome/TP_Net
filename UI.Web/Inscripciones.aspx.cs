@@ -120,9 +120,10 @@ namespace UI.Web
                 case ABM.FormModes.Alta:
                     this.Entity = new AlumnoInscripcion();
                     this.LoadEntity(this.Entity);
+                    this.Entity.State = BusinessEntity.States.New;
                     this.SaveEntity(this.Entity);
                     this.LoadGrid();
-                    this.Entity.State = BusinessEntity.States.New;
+                  
                     break;
                 case ABM.FormModes.Baja:
                     this.DeleteEntity(this.SelectedID);
@@ -146,9 +147,10 @@ namespace UI.Web
 
         protected void linkbtnEditar_Click(object sender, EventArgs e)
         {
-            EnableForm(true);
+           
             if (this.IsEntitySelected)
             {
+                EnableForm(true);
                 this.panelConfirmacion.Visible = true;
                 this.panelBotones.Visible = true;
                 this.FormMode = FormModes.Modificacion;
