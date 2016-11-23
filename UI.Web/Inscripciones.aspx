@@ -23,14 +23,14 @@
         <asp:LinkButton ID="linkbtnEditar" runat="server" OnClick="linkbtnEditar_Click">Editar</asp:LinkButton>
         <asp:LinkButton ID="linkbtnEliminar" runat="server" OnClick="linkbtnEliminar_Click">Eliminar</asp:LinkButton>
     </asp:Panel>
-    <asp:Panel ID="panelBotones" runat="server">
+    <asp:Panel ID="panelBotones" runat="server" Visible="False">
         <table style="width:100%;">
             <tr>
                 <td>
                     <asp:Label ID="lblIDAlumno" runat="server" Text="ID Alumno"></asp:Label>
                 </td>
                 <td>
-                    <asp:ListBox ID="ddlAlumno" runat="server" OnSelectedIndexChanged="ListBox1_SelectedIndexChanged"></asp:ListBox>
+                    <asp:ListBox ID="ddlAlumno" runat="server" OnSelectedIndexChanged="ListBox1_SelectedIndexChanged" AutoPostBack="True"></asp:ListBox>
                 </td>
                 <td>&nbsp;</td>
             </tr>
@@ -57,8 +57,7 @@
                     <asp:Label ID="lblIDCurso" runat="server" Text="ID Curso"></asp:Label>
                 </td>
                 <td>
-                    <asp:TextBox ID="txtCurso" runat="server"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="rfvCurso" runat="server" Display="None" ErrorMessage="RequiredFieldValidator" Visible="False"></asp:RequiredFieldValidator>
+                    <asp:ListBox ID="ddlCursos" runat="server" AutoPostBack="True"></asp:ListBox>
                 </td>
                 <td>&nbsp;</td>
             </tr>
@@ -68,7 +67,7 @@
                 </td>
                 <td>
                     <asp:TextBox ID="txtCondicion" runat="server"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="rfvCondicion" runat="server" Display="None" ErrorMessage="No puede estar vacio Condicion"></asp:RequiredFieldValidator>
+                    <asp:RequiredFieldValidator ID="rfvCondicion" runat="server" Display="None" ErrorMessage="No puede estar vacio Condicion" ControlToValidate="txtCondicion"></asp:RequiredFieldValidator>
                 </td>
                 <td>&nbsp;</td>
             </tr>
@@ -78,13 +77,13 @@
                 </td>
                 <td>
                     <asp:TextBox ID="txtNota" runat="server"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="rfvNota" runat="server" Display="None" ErrorMessage="No puede estar vacio la nota"></asp:RequiredFieldValidator>
+                    <asp:RequiredFieldValidator ID="rfvNota" runat="server" Display="None" ErrorMessage="No puede estar vacio la nota" ControlToValidate="txtNota"></asp:RequiredFieldValidator>
                 </td>
                 <td>&nbsp;</td>
             </tr>
         </table>
     </asp:Panel>
-    <asp:Panel ID="panelConfirmacion" runat="server">
+    <asp:Panel ID="panelConfirmacion" runat="server" Visible="False">
         <asp:Button ID="btnAceptar" runat="server" Text="Aceptar" OnClick="btnAceptar_Click" />
         <asp:Button ID="btnCancelar" runat="server"  CausesValidation="false" Text="Cancelar" OnClick="btnCancelar_Click" />
     </asp:Panel>

@@ -33,7 +33,7 @@ namespace UI.Web
         private void EnableForm(bool enable)
         {
             this.txtCondicion.Enabled = enable;
-            this.txtCurso.Enabled = enable;
+            this.ddlCursos.Enabled = enable;
             this.ddlAlumno.Enabled = enable;
             this.txtNota.Enabled = enable;
         }
@@ -41,7 +41,7 @@ namespace UI.Web
         {
             this.txtNota.Text = string.Empty;
             this.ddlAlumno.SelectedIndex = -1;
-            this.txtCurso.Text = string.Empty;
+            this.ddlCursos.SelectedIndex = -1;
             this.txtCondicion.Text = string.Empty;
         }
         private void SaveEntity(AlumnoInscripcion Alu)
@@ -51,7 +51,7 @@ namespace UI.Web
         private void LoadEntity(AlumnoInscripcion alu)
         {
             alu.IdAlumno = Convert.ToInt32(this.ddlAlumno.SelectedValue);
-            alu.IdCurso = int.Parse(this.txtCurso.Text);
+            alu.IdCurso = Convert.ToInt32(this.ddlCursos.SelectedValue);
             alu.Nota = int.Parse(this.txtNota.Text);
             alu.Condicion = this.txtCondicion.Text;
             
@@ -65,15 +65,15 @@ namespace UI.Web
         {
             this.grvInscripciones.DataSource = InscLogic.GetAll();
             PersonaLogic per = new PersonaLogic();
-           // CursoLogic cur = new CursoLogic();
-           // List<Curso> curs = new List<Curso>();
+         CursoLogic cur = new CursoLogic();
+            List<Curso> curs = new List<Curso>();
             List<Personas> pers = new List<Personas>();
  
- //           curs = cur.GetAll();
-   //         foreach (Curso cu in curs)
-     //       {
-       //         ddlCurso.Items.Add(cu.ID.ToString());
-         //   }
+           curs = cur.GetAll();
+            foreach (Curso cu in curs)
+            {
+                ddlCursos.Items.Add(cu.ID.ToString());
+            }
             pers = per.GetAll();
             foreach (Personas pe in pers)
             {
@@ -89,7 +89,7 @@ namespace UI.Web
         {
             this.Entity = InscLogic.GetOne(id);
             this.txtCondicion.Text = this.Entity.Condicion;
-            this.txtCurso.Text = this.Entity.IdCurso.ToString();
+            this.ddlCursos.SelectedValue = this.Entity.IdCurso.ToString();
             this.ddlAlumno.SelectedValue = this.Entity.IdAlumno.ToString();
             this.txtNota.Text = this.Entity.Nota.ToString();
         }

@@ -130,22 +130,13 @@ namespace UI.Web {
         protected global::System.Web.UI.WebControls.Label lblIDCurso;
         
         /// <summary>
-        /// Control txtCurso.
+        /// Control ddlCursos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCurso;
-        
-        /// <summary>
-        /// Control rfvCurso.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvCurso;
+        protected global::System.Web.UI.WebControls.ListBox ddlCursos;
         
         /// <summary>
         /// Control lblCondicion.

@@ -11,7 +11,7 @@ namespace UI.Web
     {
         protected virtual void Page_Load(object sender, EventArgs e)
         {
-
+         
         }
 
         public enum FormModes
@@ -44,5 +44,9 @@ namespace UI.Web
         {
             get { return (this.SelectedID != 0); }
         }
+        
+        
+        
     }
+    
 }

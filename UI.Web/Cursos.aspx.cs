@@ -178,6 +178,7 @@ namespace UI.Web
             if (!IsPostBack)
             {
                 this.LoadGrid();
+               
             }
         }
         protected void linkBtnNuevo_Click(object sender, EventArgs e)

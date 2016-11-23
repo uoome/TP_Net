@@ -47,7 +47,7 @@
                     <asp:Label ID="lblIDMateria" runat="server" Text="ID Materia"></asp:Label>
                 </td>
                 <td>
-                    <asp:ListBox ID="ddlMateria" runat="server" OnSelectedIndexChanged="ddlMateria_SelectedIndexChanged"></asp:ListBox>
+                    <asp:ListBox ID="ddlMateria" runat="server" OnSelectedIndexChanged="ddlMateria_SelectedIndexChanged" AutoPostBack="True"></asp:ListBox>
                 </td>
             </tr>
             <tr>
@@ -55,7 +55,7 @@
                     <asp:Label ID="lblIDComision" runat="server" Text="ID Comision"></asp:Label>
                 </td>
                 <td>
-                    <asp:ListBox ID="ddlComision" runat="server"></asp:ListBox>
+                    <asp:ListBox ID="ddlComision" runat="server" AutoPostBack="True"></asp:ListBox>
                 </td>
             </tr>
             <tr>

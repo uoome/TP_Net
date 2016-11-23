@@ -9,9 +9,9 @@ using Business.Logic;
 
 namespace UI.Web
 {
-    public partial class Login : System.Web.UI.Page
+    public partial class Login : ABM
     {
-        protected void Page_Load(object sender, EventArgs e)
+        protected override void Page_Load(object sender, EventArgs e)
         {
 
         }
@@ -29,7 +29,8 @@ namespace UI.Web
                 {
                     if (per.Habilitado)
                     {
-
+                       
+                      
                         Response.Redirect("~/Default.aspx");
                     }
 
