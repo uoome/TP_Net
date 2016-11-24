@@ -13,22 +13,22 @@ namespace UI.Web {
     public partial class Personas {
         
         /// <summary>
-        /// Control GridView1.
+        /// Control grillaPersonas.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView1;
+        protected global::System.Web.UI.WebControls.GridView grillaPersonas;
         
         /// <summary>
-        /// Control Panel1.
+        /// Control panelToolStrip.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel Panel1;
+        protected global::System.Web.UI.WebControls.Panel panelToolStrip;
         
         /// <summary>
         /// Control lnkButtonNuevo.
@@ -58,13 +58,13 @@ namespace UI.Web {
         protected global::System.Web.UI.WebControls.LinkButton lnkButtonEliminar;
         
         /// <summary>
-        /// Control Panel2.
+        /// Control panelFormulario.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel Panel2;
+        protected global::System.Web.UI.WebControls.Panel panelFormulario;
         
         /// <summary>
         /// Control lblID_Pers.
@@ -337,13 +337,13 @@ namespace UI.Web {
         protected global::System.Web.UI.WebControls.TextBox txtEmail;
         
         /// <summary>
-        /// Control chxHabilitado.
+        /// Control chbxHabilitado.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox chxHabilitado;
+        protected global::System.Web.UI.WebControls.CheckBox chbxHabilitado;
         
         /// <summary>
         /// Control lblEspecialidad.
@@ -382,22 +382,31 @@ namespace UI.Web {
         protected global::System.Web.UI.WebControls.DropDownList ddlPlanes;
         
         /// <summary>
-        /// Control Panel3.
+        /// Control lblTipoPers.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel Panel3;
+        protected global::System.Web.UI.WebControls.Label lblTipoPers;
         
         /// <summary>
-        /// Control Panel4.
+        /// Control ddlTipoPers.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel Panel4;
+        protected global::System.Web.UI.WebControls.DropDownList ddlTipoPers;
+        
+        /// <summary>
+        /// Control panelConfirmacion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel panelConfirmacion;
         
         /// <summary>
         /// Control btnAceptar.

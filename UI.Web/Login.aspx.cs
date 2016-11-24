@@ -20,7 +20,7 @@ namespace UI.Web
         {
 
             PersonaLogic persLogic = new PersonaLogic();
-            Personas per;
+            Business.Entities.Personas per;
 
             if (persLogic.ExisteUs(this.txtUsuario.Text))
             {

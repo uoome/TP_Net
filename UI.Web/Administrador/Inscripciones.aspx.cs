@@ -64,34 +64,38 @@ namespace UI.Web
         private void LoadGrid()
         {
             this.grvInscripciones.DataSource = InscLogic.GetAll();
-            PersonaLogic per = new PersonaLogic();
-         CursoLogic cur = new CursoLogic();
-            List<Curso> curs = new List<Curso>();
-            List<Personas> pers = new List<Personas>();
- 
-           curs = cur.GetAll();
-            foreach (Curso cu in curs)
-            {
-                ddlCursos.Items.Add(cu.ID.ToString());
-            }
-            pers = per.GetAll();
-            foreach (Personas pe in pers)
-            {
-                if (pe.TipoPersona == Personas.TiposPersonas.Alumno)
-                {
-                    this.ddlAlumno.Items.Add(pe.ID.ToString());
-                }
-            }
-            this.grvInscripciones.DataBind();
+
         }
 
         private void LoadForm(int id)
         {
+            this.grvInscripciones.DataBind();
             this.Entity = InscLogic.GetOne(id);
             this.txtCondicion.Text = this.Entity.Condicion;
             this.ddlCursos.SelectedValue = this.Entity.IdCurso.ToString();
             this.ddlAlumno.SelectedValue = this.Entity.IdAlumno.ToString();
             this.txtNota.Text = this.Entity.Nota.ToString();
+
+            PersonaLogic per = new PersonaLogic();
+            CursoLogic cur = new CursoLogic();
+            List<Curso> curs = new List<Curso>();
+            List<Business.Entities.Personas> pers = new List<Business.Entities.Personas>();
+
+            curs = cur.GetAll();
+            foreach (Curso cu in curs)
+            {
+                ddlCursos.Items.Add(cu.ID.ToString());
+            }
+            pers = per.GetAll();
+
+            foreach (Business.Entities.Personas pe in pers)
+            {
+                if (pe.TipoPersona == Business.Entities.Personas.TiposPersonas.Alumno)
+                {
+                    this.ddlAlumno.Items.Add(pe.ID.ToString());
+                }
+            }
+           
         }
 
         #endregion
@@ -107,12 +111,6 @@ namespace UI.Web
             }
 
         }
-
-
-
-
-
-
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
             switch (this.FormMode)
@@ -125,12 +123,13 @@ namespace UI.Web
                     this.LoadGrid();
                   
                     break;
+
                 case ABM.FormModes.Baja:
                     this.DeleteEntity(this.SelectedID);
                     this.LoadGrid();
                     break;
-                case FormModes.Modificacion:
 
+                case FormModes.Modificacion:
                     this.Entity = new AlumnoInscripcion();
                     this.Entity.ID = this.SelectedID;
                     this.Entity.State = BusinessEntity.States.Modified;
@@ -194,7 +193,7 @@ namespace UI.Web
 
         protected void ListBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Personas pers = new Personas();
+            Business.Entities.Personas pers = new Business.Entities.Personas();
             PersonaLogic persL = new PersonaLogic();
             pers = persL.GetOne(Convert.ToInt32(ddlAlumno.SelectedValue));
             this.txtNombre.Text = pers.Nombre;
