@@ -19,11 +19,14 @@ namespace UI.Desktop
             InitializeComponent();
             grvComisiones.AutoGenerateColumns = false;
         }
+        #region Metodos
         public void Listar()
-        {   ComisionLogic ComLog = new ComisionLogic();
+        {
+            ComisionLogic ComLog = new ComisionLogic();
             this.grvComisiones.DataSource = ComLog.GetAll();
         }
-
+        #endregion
+        #region eventos
         private void btnActualizar_Click(object sender, EventArgs e)
         {
             this.Listar();
@@ -36,7 +39,33 @@ namespace UI.Desktop
 
         private void GrillaComisiones_Load(object sender, EventArgs e)
         {
+            Listar();
+        }
+
+        private void tsbNuevo_Click(object sender, EventArgs e)
+        {
+            int ID = ((Comision)this.grvComisiones.SelectedRows[0].DataBoundItem).ID;
+            ComisionDesktop ComDs = new ComisionDesktop();
+            ComDs.ShowDialog();
+        }
+
+        private void toolStripButton2_Click(object sender, EventArgs e)
+        {
+            int ID = ((Comision)this.grvComisiones.SelectedRows[0].DataBoundItem).ID;
+            ComisionDesktop ComDesk = new ComisionDesktop(ID,ApplicationForm.ModoForm.Modificacion);
+            ComDesk.ShowDialog();
             this.Listar();
         }
+        private void toolStripButton3_Click(object sender, EventArgs e)
+        {
+            int ID = ((Comision)this.grvComisiones.SelectedRows[0].DataBoundItem).ID;
+            ComisionDesktop ComDesk = new ComisionDesktop(ID, ApplicationForm.ModoForm.Eliminar);
+            ComDesk.ShowDialog();
+            this.Listar();
+        }
+        #endregion
+
+
     }
+    
 }

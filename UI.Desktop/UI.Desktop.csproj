@@ -58,7 +58,7 @@
     <Compile Include="Administrador\ComisionDesktop.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Administrador\ComisionDesktop.Designer.cs">
+    <Compile Include="Administrador\ComisionDesktop.designer.cs">
       <DependentUpon>ComisionDesktop.cs</DependentUpon>
     </Compile>
     <Compile Include="Administrador\CursoDesktop.cs">
@@ -76,7 +76,7 @@
     <Compile Include="Administrador\GrillaComisiones.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Administrador\GrillaComisiones.Designer.cs">
+    <Compile Include="Administrador\GrillaComisiones.designer.cs">
       <DependentUpon>GrillaComisiones.cs</DependentUpon>
     </Compile>
     <Compile Include="Administrador\GrillaCursos.cs">
