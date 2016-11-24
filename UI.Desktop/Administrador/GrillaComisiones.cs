@@ -33,5 +33,10 @@ namespace UI.Desktop
         {
             this.Close();
         }
+
+        private void GrillaComisiones_Load(object sender, EventArgs e)
+        {
+            this.Listar();
+        }
     }
 }
