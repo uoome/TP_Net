@@ -108,9 +108,10 @@ namespace UI.Web
 
                     Entity = new Curso();
                     this.LoadEntity(Entity);
+                    this.Entity.State = BusinessEntity.States.New;
                     this.SaveEntity(Entity);
                     this.LoadGrid();
-                    this.Entity.State = BusinessEntity.States.New;
+                   
                     break;
 
                 case FormModes.Modificacion:

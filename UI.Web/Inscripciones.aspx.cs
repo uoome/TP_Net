@@ -187,10 +187,6 @@ namespace UI.Web
             this.panelBotones.Visible = false;
         }
 
-
-
-        #endregion
-
         protected void grvInscripciones_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.SelectedID = (int)this.grvInscripciones.SelectedValue;
@@ -204,5 +200,9 @@ namespace UI.Web
             this.txtNombre.Text = pers.Nombre;
             this.txtApellido.Text = pers.Apellido;
         }
+
+        #endregion
+
+
     }
 }
