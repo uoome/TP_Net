@@ -67,6 +67,12 @@
     <Compile Include="Administrador\EspecialidadDesktop.designer.cs">
       <DependentUpon>EspecialidadDesktop.cs</DependentUpon>
     </Compile>
+    <Compile Include="Administrador\GrillaComisiones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administrador\GrillaComisiones.Designer.cs">
+      <DependentUpon>GrillaComisiones.cs</DependentUpon>
+    </Compile>
     <Compile Include="Administrador\GrillaCursos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -161,6 +167,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Administrador\EspecialidadDesktop.resx">
       <DependentUpon>EspecialidadDesktop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administrador\GrillaComisiones.resx">
+      <DependentUpon>GrillaComisiones.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Administrador\GrillaCursos.resx">
       <DependentUpon>GrillaCursos.cs</DependentUpon>
