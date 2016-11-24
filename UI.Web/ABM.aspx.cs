@@ -25,7 +25,7 @@ namespace UI.Web
             get { return (FormModes)this.ViewState["FormMode"]; }
             set { this.ViewState["FormMode"] = value; }
         }
-        protected int SelectedID
+        protected int SelectedID //Se usa para guardar un registro al hacer doble click
         {
             get
             {
