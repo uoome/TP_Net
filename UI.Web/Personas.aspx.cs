@@ -60,7 +60,7 @@ namespace UI.Web
             txtCambiaClave.Text = string.Empty;
             txtLegajo.Text = string.Empty;
             chbxHabilitado.Checked = false;
-            ddlEspecialidades.SelectedIndex = 0;
+            ddlEspecialidades.SelectedIndex = -1;
             ddlPlanes.SelectedIndex = 0;
             ddlTipoPers.SelectedIndex = 0;
         }
