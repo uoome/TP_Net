@@ -30,7 +30,8 @@
                     <asp:Label ID="lblIDAlumno" runat="server" Text="ID Alumno"></asp:Label>
                 </td>
                 <td>
-                    <asp:ListBox ID="ddlAlumno" runat="server" OnSelectedIndexChanged="ListBox1_SelectedIndexChanged" AutoPostBack="True"></asp:ListBox>
+                    <asp:DropDownList ID="ddlAlumno" runat="server" AutoPostBack="True">
+                    </asp:DropDownList>
                 </td>
                 <td>&nbsp;</td>
             </tr>
@@ -54,10 +55,11 @@
             </tr>
             <tr>
                 <td>
-                    <asp:Label ID="lblIDCurso" runat="server" Text="ID Curso"></asp:Label>
+                    <asp:Label ID="lblCurso" runat="server" Text="Curso"></asp:Label>
                 </td>
                 <td>
-                    <asp:ListBox ID="ddlCursos" runat="server" AutoPostBack="True"></asp:ListBox>
+                    <asp:DropDownList ID="ddlCursos" runat="server" AutoPostBack="True">
+                    </asp:DropDownList>
                 </td>
                 <td>&nbsp;</td>
             </tr>

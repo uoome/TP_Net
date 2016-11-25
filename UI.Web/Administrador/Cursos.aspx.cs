@@ -11,6 +11,26 @@ namespace UI.Web
 {
     public partial class Cursos : ABM
     {
+        private Curso Entity
+        {
+            set;
+            get;
+        }
+        private CursoLogic _curLog;
+        public CursoLogic CurLog
+        {
+
+            get
+            {
+                if (_curLog == null)
+                {
+                    _curLog = new CursoLogic();
+
+                }
+                return _curLog;
+            }
+        }
+
         #region Metodos
 
         private void LoadGrid()
@@ -70,8 +90,6 @@ namespace UI.Web
             this.CurLog.Save(cur);
         }
 
-
-
         private void ClearForm()
         {
             this.txtAnioCalendario.Text = string.Empty;
@@ -87,35 +105,23 @@ namespace UI.Web
         {
             CurLog.Delete(id);
         }
-
-
-
-
-
-
-
         #endregion
 
         #region Eventos
-
-
-
+        
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
             switch (this.FormMode)
             {
                 case FormModes.Alta:
-
                     Entity = new Curso();
                     this.LoadEntity(Entity);
                     this.Entity.State = BusinessEntity.States.New;
                     this.SaveEntity(Entity);
                     this.LoadGrid();
-                   
                     break;
 
                 case FormModes.Modificacion:
-
                     Entity = new Curso();
                     Entity.ID = this.SelectedID;
                     this.Entity.State = BusinessEntity.States.Modified;
@@ -125,7 +131,6 @@ namespace UI.Web
                     break;
 
                 case FormModes.Baja:
-
                     this.DeleteEntity(this.SelectedID);
                     this.LoadGrid();
                     break;
@@ -136,8 +141,8 @@ namespace UI.Web
             }
             this.panelControles.Visible = false;
             this.panelConfirmacion.Visible = false;
-
         }
+
         protected void linkBtnEliminar_Click(object sender, EventArgs e)
         {
             if (this.IsEntitySelected)
@@ -152,15 +157,25 @@ namespace UI.Web
 
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Cursos.aspx");
+            Response.Redirect("~/Administrador/Cursos.aspx");
             this.panelConfirmacion.Visible = false;
+            this.panelControles.Visible = false;
         }
 
-        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+        protected void grvCursos_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+            this.SelectedID = (int)this.grvCursos.SelectedValue;
+
         }
 
+        protected void ddlMateria_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Materia mat = new Materia();
+            MateriaLogic matL = new MateriaLogic();
+            mat = matL.GetOne(Convert.ToInt32(ddlMateria.SelectedValue));
+            this.txtDescripcion.Text = mat.Descripcion;
+        }
+        
 
         protected void linkBtnEditar_Click(object sender, EventArgs e)
         {
@@ -192,38 +207,5 @@ namespace UI.Web
         }
         #endregion
 
-
-
-        private Curso Entity
-        {
-            set;
-            get;
-        }
-        private CursoLogic _curLog;
-        public CursoLogic CurLog
-        {
-            
-            get { if(_curLog == null)
-                {
-                    _curLog = new CursoLogic();
-                    
-                }
-                return _curLog;
-            }
-        }
-
-        protected void grvCursos_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            this.SelectedID = (int)this.grvCursos.SelectedValue;
-
-        }
-
-        protected void ddlMateria_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            Materia mat = new Materia();
-            MateriaLogic matL = new MateriaLogic();
-            mat = matL.GetOne(Convert.ToInt32(ddlMateria.SelectedValue));
-            this.txtDescripcion.Text = mat.Descripcion;
-        }
     }
 }

@@ -58,6 +58,15 @@ namespace UI.Web {
         protected global::System.Web.UI.WebControls.LinkButton lnkButtonEliminar;
         
         /// <summary>
+        /// Control lblRegistro.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblRegistro;
+        
+        /// <summary>
         /// Control panelFormulario.
         /// </summary>
         /// <remarks>
@@ -364,6 +373,15 @@ namespace UI.Web {
         protected global::System.Web.UI.WebControls.DropDownList ddlEspecialidades;
         
         /// <summary>
+        /// Control rfvEspecialidades.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvEspecialidades;
+        
+        /// <summary>
         /// Control lblPlan.
         /// </summary>
         /// <remarks>
@@ -382,6 +400,15 @@ namespace UI.Web {
         protected global::System.Web.UI.WebControls.DropDownList ddlPlanes;
         
         /// <summary>
+        /// Control rfvPlanes.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvPlanes;
+        
+        /// <summary>
         /// Control lblTipoPers.
         /// </summary>
         /// <remarks>
@@ -398,6 +425,15 @@ namespace UI.Web {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlTipoPers;
+        
+        /// <summary>
+        /// Control rfvTipoPers.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvTipoPers;
         
         /// <summary>
         /// Control panelConfirmacion.
@@ -425,5 +461,14 @@ namespace UI.Web {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnCancelar;
+        
+        /// <summary>
+        /// Control vsumaryPersonas.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ValidationSummary vsumaryPersonas;
     }
 }

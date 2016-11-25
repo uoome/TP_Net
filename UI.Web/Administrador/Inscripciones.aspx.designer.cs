@@ -82,7 +82,7 @@ namespace UI.Web {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox ddlAlumno;
+        protected global::System.Web.UI.WebControls.DropDownList ddlAlumno;
         
         /// <summary>
         /// Control lblNombre.
@@ -121,13 +121,13 @@ namespace UI.Web {
         protected global::System.Web.UI.WebControls.TextBox txtApellido;
         
         /// <summary>
-        /// Control lblIDCurso.
+        /// Control lblCurso.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblIDCurso;
+        protected global::System.Web.UI.WebControls.Label lblCurso;
         
         /// <summary>
         /// Control ddlCursos.
@@ -136,7 +136,7 @@ namespace UI.Web {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox ddlCursos;
+        protected global::System.Web.UI.WebControls.DropDownList ddlCursos;
         
         /// <summary>
         /// Control lblCondicion.

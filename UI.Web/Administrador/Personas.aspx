@@ -30,11 +30,13 @@
         <SortedDescendingHeaderStyle BackColor="#15524A" />
     </asp:GridView>
     <asp:Panel ID="panelToolStrip" runat="server">
-        <asp:LinkButton ID="lnkButtonNuevo" runat="server" OnClick="lnkButtonNuevo_Click">Nuevo</asp:LinkButton>
+        <asp:LinkButton ID="lnkButtonNuevo" runat="server" OnClick="lnkButtonNuevo_Click" CausesValidation="false">Nuevo</asp:LinkButton>
         &nbsp;
-        <asp:LinkButton ID="lnkButtonEditar" runat="server" OnClick="lnkButtonEditar_Click">Editar</asp:LinkButton>
+        <asp:LinkButton ID="lnkButtonEditar" runat="server" OnClick="lnkButtonEditar_Click" CausesValidation="false">Editar</asp:LinkButton>
         &nbsp;
-        <asp:LinkButton ID="lnkButtonEliminar" runat="server" OnClick="lnkButtonEliminar_Click">Eliminar</asp:LinkButton>
+        <asp:LinkButton ID="lnkButtonEliminar" runat="server" OnClick="lnkButtonEliminar_Click" CausesValidation="false">Eliminar</asp:LinkButton>
+        &nbsp;
+        <asp:Label ID="lblRegistro" runat="server" ForeColor="Red" Text="Debe seleccionar un registro" Visible="False"></asp:Label>
     </asp:Panel>
     <asp:Panel ID="panelFormulario" runat="server" Visible="False">
         <table style="width:100%;">
@@ -43,14 +45,14 @@
                     <asp:Label ID="lblID_Pers" runat="server" Text="ID Persona"></asp:Label>
                 </td>
                 <td>
-                    <asp:TextBox ID="txtID_Pers" runat="server" ReadOnly="True" TabIndex="1"></asp:TextBox>
+                    <asp:TextBox ID="txtID_Pers" runat="server" ReadOnly="True" TabIndex="1" Enabled="False"></asp:TextBox>
                 </td>
                 <td>
                     <asp:Label ID="lblLegajo" runat="server" Text="Legajo"></asp:Label>
                 </td>
                 <td>
                     <asp:TextBox ID="txtLegajo" runat="server" TabIndex="1"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="rfvLegajo" runat="server" Display="None" ErrorMessage="El legajo no puede estar vacío" ControlToValidate="txtLegajo" ForeColor="Red"></asp:RequiredFieldValidator>
+                    <asp:RequiredFieldValidator ID="rfvLegajo" runat="server" Display="None" ErrorMessage="El legajo no puede estar vacío" ControlToValidate="txtLegajo" ForeColor="Red" SetFocusOnError="True">*</asp:RequiredFieldValidator>
                 </td>
             </tr>
             <tr>
@@ -59,14 +61,14 @@
                 </td>
                 <td>
                     <asp:TextBox ID="txtApellido" runat="server" TabIndex="2"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="rfvApellido" runat="server" Display="None" ErrorMessage="El apellido no puede estar vacío" ControlToValidate="txtApellido" ForeColor="Red"></asp:RequiredFieldValidator>
+                    <asp:RequiredFieldValidator ID="rfvApellido" runat="server" Display="None" ErrorMessage="El apellido no puede estar vacío" ControlToValidate="txtApellido" ForeColor="Red" SetFocusOnError="True">*</asp:RequiredFieldValidator>
                 </td>
                 <td>
                     <asp:Label ID="lblNombre" runat="server" Text="Nombre"></asp:Label>
                 </td>
                 <td>
                     <asp:TextBox ID="txtNombre" runat="server" TabIndex="3"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="rfvNombre" runat="server" Display="None" ErrorMessage="El nombre no puede estar vacío" ControlToValidate="txtNombre" ForeColor="Red"></asp:RequiredFieldValidator>
+                    <asp:RequiredFieldValidator ID="rfvNombre" runat="server" Display="None" ErrorMessage="El nombre no puede estar vacío" ControlToValidate="txtNombre" ForeColor="Red" SetFocusOnError="True">*</asp:RequiredFieldValidator>
                 </td>
             </tr>
             <tr>
@@ -75,14 +77,14 @@
                 </td>
                 <td>
                     <asp:TextBox ID="txtFeNac" runat="server" TabIndex="4"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="rfvFechaNac" runat="server" Display="None" ErrorMessage="La fecha de nacimiento no puede estar vacía" ControlToValidate="txtFeNac" ForeColor="Red"></asp:RequiredFieldValidator>
+                    <asp:RequiredFieldValidator ID="rfvFechaNac" runat="server" Display="None" ErrorMessage="La fecha de nacimiento no puede estar vacía" ControlToValidate="txtFeNac" ForeColor="Red" SetFocusOnError="True">*</asp:RequiredFieldValidator>
                 </td>
                 <td>
                     <asp:Label ID="lblUsuario" runat="server" Text="Usuario"></asp:Label>
                 </td>
                 <td>
                     <asp:TextBox ID="txtUsuario" runat="server" TabIndex="5"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="rfvUsuario" runat="server" Display="None" ErrorMessage="El usuario no puede estar vacío" ControlToValidate="txtUsuario" ForeColor="Red"></asp:RequiredFieldValidator>
+                    <asp:RequiredFieldValidator ID="rfvUsuario" runat="server" Display="None" ErrorMessage="El usuario no puede estar vacío" ControlToValidate="txtUsuario" ForeColor="Red" SetFocusOnError="True">*</asp:RequiredFieldValidator>
                 </td>
             </tr>
             <tr>
@@ -91,14 +93,14 @@
                 </td>
                 <td>
                     <asp:TextBox ID="txtClave" runat="server" TabIndex="6"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="rfvCalve" runat="server" ErrorMessage="La clave no puede estar vacía" ControlToValidate="txtClave" Display="None" ForeColor="Red"></asp:RequiredFieldValidator>
+                    <asp:RequiredFieldValidator ID="rfvCalve" runat="server" ErrorMessage="La clave no puede estar vacía" ControlToValidate="txtClave" Display="None" ForeColor="Red" SetFocusOnError="True">*</asp:RequiredFieldValidator>
                 </td>
                 <td>
                     <asp:Label ID="lblCambiaClave" runat="server" Text="Cambia Clave"></asp:Label>
                 </td>
                 <td>
                     <asp:TextBox ID="txtCambiaClave" runat="server" TabIndex="7"></asp:TextBox>
-                    <asp:CompareValidator ID="cpvCambiaCLave" runat="server" ControlToCompare="txtClave" ControlToValidate="txtCambiaClave" Display="None" ErrorMessage="La confirmación de la clave debe coincidir con la clave" ForeColor="Red"></asp:CompareValidator>
+                    <asp:CompareValidator ID="cpvCambiaCLave" runat="server" ControlToCompare="txtClave" ControlToValidate="txtCambiaClave" Display="None" ErrorMessage="La confirmación de la clave debe coincidir con la clave" ForeColor="Red" SetFocusOnError="True">*</asp:CompareValidator>
                 </td>
             </tr>
             <tr>
@@ -107,7 +109,7 @@
                 </td>
                 <td>
                     <asp:TextBox ID="txtDirec" runat="server" TabIndex="8"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="rfvDireccion" runat="server" Display="None" ErrorMessage="La dirección no puede estar vacía" ControlToValidate="txtDirec" ForeColor="Red"></asp:RequiredFieldValidator>
+                    <asp:RequiredFieldValidator ID="rfvDireccion" runat="server" Display="None" ErrorMessage="La dirección no puede estar vacía" ControlToValidate="txtDirec" ForeColor="Red" SetFocusOnError="True">*</asp:RequiredFieldValidator>
                 </td>
                 <td>
                     <asp:Label ID="lblTelef" runat="server" Text="Teléfono"></asp:Label>
@@ -135,6 +137,7 @@
                 <td>
                     <asp:DropDownList ID="ddlEspecialidades" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlEspecialidades_SelectedIndexChanged">
                     </asp:DropDownList>
+                    &nbsp;<asp:RequiredFieldValidator ID="rfvEspecialidades" runat="server" ControlToValidate="ddlEspecialidades" ErrorMessage="Debe seleccionar una especialidad" ForeColor="Red">*</asp:RequiredFieldValidator>
                 </td>
                 <td>
                     <asp:Label ID="lblPlan" runat="server" Text="Plan"></asp:Label>
@@ -142,6 +145,7 @@
                 <td>
                     <asp:DropDownList ID="ddlPlanes" runat="server" AutoPostBack="True">
                     </asp:DropDownList>
+                    <asp:RequiredFieldValidator ID="rfvPlanes" runat="server" ControlToValidate="ddlPlanes" ErrorMessage="Debe seleccionar un plan" ForeColor="Red">*</asp:RequiredFieldValidator>
                 </td>
             </tr>
             <tr>
@@ -151,6 +155,7 @@
                 <td>
                     <asp:DropDownList ID="ddlTipoPers" runat="server" AutoPostBack="True">
                     </asp:DropDownList>
+                    <asp:RequiredFieldValidator ID="rfvTipoPers" runat="server" ControlToValidate="ddlTipoPers" ErrorMessage="Debe seleccionar un tipo de persona" ForeColor="Red">*</asp:RequiredFieldValidator>
                 </td>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
@@ -161,6 +166,7 @@
         &nbsp;
         <asp:Button ID="btnAceptar" runat="server" OnClick="btnAceptar_Click" Text="Aceptar" />
         &nbsp;
-        <asp:Button ID="btnCancelar" runat="server" OnClick="btnCancelar_Click" Text="Cancelar" />
+        <asp:Button ID="btnCancelar" runat="server" OnClick="btnCancelar_Click" CausesValidation="false" Text="Cancelar" />
     </asp:Panel>
+    <asp:ValidationSummary ID="vsumaryPersonas" runat="server" ForeColor="Red" ShowValidationErrors="True" />
     </asp:Content>

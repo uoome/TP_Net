@@ -218,7 +218,7 @@
     <Content Include="Administrador\Inscripciones.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Administrador\Materias.aspx" />
-    <Content Include="Personas.aspx" />
+    <Content Include="Administrador\Personas.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -250,7 +250,7 @@
     <Content Include="Scripts\_references.js" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <Content Include="Usuarios.aspx" />
+    <Content Include="Administrador\Usuarios.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
@@ -264,7 +264,9 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
-    <Content Include="Web.sitemap" />
+    <Content Include="Web.sitemap">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ABM.aspx.cs">
@@ -443,11 +445,11 @@
       <DependentUpon>Materias.aspx</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Personas.aspx.cs">
+    <Compile Include="Administrador\Personas.aspx.cs">
       <DependentUpon>Personas.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Personas.aspx.designer.cs">
+    <Compile Include="Administrador\Personas.aspx.designer.cs">
       <DependentUpon>Personas.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -459,11 +461,11 @@
       <DependentUpon>Site.Master</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
-    <Compile Include="Usuarios.aspx.cs">
+    <Compile Include="Administrador\Usuarios.aspx.cs">
       <DependentUpon>Usuarios.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Usuarios.aspx.designer.cs">
+    <Compile Include="Administrador\Usuarios.aspx.designer.cs">
       <DependentUpon>Usuarios.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">

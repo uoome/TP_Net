@@ -172,7 +172,7 @@ namespace UI.Web
 
         protected void CancelarLinkBtn_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Usuarios.aspx");
+            Response.Redirect("~/Administrador/Usuarios.aspx");
         }
     }
 }

@@ -60,6 +60,6 @@
         <br />
     </asp:Panel>
     <asp:Panel ID="Panel4" runat="server">
-        <asp:ValidationSummary ID="ValidationSummary1" runat="server" ForeColor="Red" ShowValidationErrors="False" />
+        <asp:ValidationSummary ID="vsumaryUsuarios" runat="server" ForeColor="Red" />
     </asp:Panel>
 </asp:Content>

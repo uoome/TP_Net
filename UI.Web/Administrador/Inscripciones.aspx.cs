@@ -64,12 +64,11 @@ namespace UI.Web
         private void LoadGrid()
         {
             this.grvInscripciones.DataSource = InscLogic.GetAll();
-
+            this.grvInscripciones.DataBind();
         }
 
         private void LoadForm(int id)
         {
-            this.grvInscripciones.DataBind();
             this.Entity = InscLogic.GetOne(id);
             this.txtCondicion.Text = this.Entity.Condicion;
             this.ddlCursos.SelectedValue = this.Entity.IdCurso.ToString();
@@ -101,7 +100,6 @@ namespace UI.Web
         #endregion
 
         #region Eventos
-
       
         protected override void Page_Load(object sender, EventArgs e)
         {
@@ -177,6 +175,8 @@ namespace UI.Web
             this.ClearForm();
             this.panelConfirmacion.Visible = true;
             this.EnableForm(true);
+
+
         }
 
         protected void btnCancelar_Click(object sender, EventArgs e)

@@ -60,9 +60,9 @@ namespace UI.Web
             txtCambiaClave.Text = string.Empty;
             txtLegajo.Text = string.Empty;
             chbxHabilitado.Checked = false;
-            ddlEspecialidades.SelectedIndex = -1;
-            ddlPlanes.SelectedIndex = 0;
-            ddlTipoPers.SelectedIndex = 0;
+            ddlEspecialidades.ClearSelection();
+            ddlPlanes.ClearSelection();
+            ddlTipoPers.ClearSelection();
         }
 
         private void SaveEntity(Business.Entities.Personas p)
@@ -82,10 +82,12 @@ namespace UI.Web
             p.Legajo = int.Parse(txtLegajo.Text);
             p.Telefono = txtTelef.Text;
             p.Habilitado = chbxHabilitado.Checked;
-
-            //Cargo los DropDownList
+            p.FechaDeNacimiento = DateTime.Parse(txtFeNac.Text);
+            
             p.TipoPersona = new PersonaLogic().GetOne(p.ID).TipoPersona;
-            p.IDPlan = new PlanLogic().GetOne(ddlEspecialidades.Text, int.Parse(ddlPlanes.Text)).ID;
+            PlanLogic pl = new PlanLogic();
+            p.IDPlan = pl.GetOne(ddlEspecialidades.Text, int.Parse(ddlPlanes.Text)).ID;
+            //p.IDPlan = new PlanLogic().GetOne(ddlEspecialidades.Text, int.Parse(ddlPlanes.Text)).ID;
 
         }
 
@@ -103,7 +105,6 @@ namespace UI.Web
         private void LoadForm(int ID)
         {
             Entity = PersLogic.GetOne(ID);
-
             txtID_Pers.Text = Entity.ID.ToString();
             txtApellido.Text = Entity.Apellido;
             txtNombre.Text = Entity.Nombre;
@@ -115,24 +116,13 @@ namespace UI.Web
             txtDirec.Text = Entity.Direccion;
             txtLegajo.Text = Entity.Legajo.ToString();
             chbxHabilitado.Checked = Entity.Habilitado;
-
-            //Cargo los DropDownList
+            txtFeNac.Text = Entity.FechaDeNacimiento.ToString();
+            ddlTipoPers.Text = Entity.TipoPersona.ToString();
+            PlanLogic pl = new PlanLogic();
+            Plan planPersona = pl.GetOne(Entity.IDPlan);
+            ddlEspecialidades.Text = new EspecialidadLogic().GetOne(planPersona.IDEspecialidad).Descripcion;
+            ddlPlanes.Text = planPersona.Descripcion;
             
-            EspecialidadLogic espe = new EspecialidadLogic();
-            List<Especialidad> listaEspeci = new List<Especialidad>();
-            listaEspeci = espe.GetAll();
-
-            ddlEspecialidades.Items.Add("");
-            foreach (Especialidad e in listaEspeci)
-            {
-                ddlEspecialidades.Items.Add(e.Descripcion);
-            }
-            
-            ddlTipoPers.Items.Add("");
-            ddlTipoPers.Items.Add(Business.Entities.Personas.TiposPersonas.Administrador.ToString());
-            ddlTipoPers.Items.Add(Business.Entities.Personas.TiposPersonas.Alumno.ToString());
-            ddlTipoPers.Items.Add(Business.Entities.Personas.TiposPersonas.Docente.ToString());
-
         }
 
 
@@ -144,6 +134,21 @@ namespace UI.Web
         {
             if (!IsPostBack)
             {
+                EspecialidadLogic espe = new EspecialidadLogic();
+                List<Especialidad> listaEspeci = new List<Especialidad>();
+                listaEspeci = espe.GetAll();
+                
+                ddlEspecialidades.Items.Add("");
+                foreach (Especialidad x in listaEspeci)
+                {
+                    ddlEspecialidades.Items.Add(x.Descripcion);
+                }
+
+                ddlTipoPers.Items.Add("");
+                ddlTipoPers.Items.Add(Business.Entities.Personas.TiposPersonas.Administrador.ToString());
+                ddlTipoPers.Items.Add(Business.Entities.Personas.TiposPersonas.Alumno.ToString());
+                ddlTipoPers.Items.Add(Business.Entities.Personas.TiposPersonas.Docente.ToString());
+
                 this.LoadGrid();
             }
         }
@@ -152,7 +157,7 @@ namespace UI.Web
         {
             switch (this.FormMode)
             {
-                case ABM.FormModes.Alta:
+                case FormModes.Alta:
                     Entity = new Business.Entities.Personas();
                     this.LoadEntity(Entity);
                     Entity.State = BusinessEntity.States.New;
@@ -160,7 +165,7 @@ namespace UI.Web
                     this.LoadGrid();
                     break;
 
-                case ABM.FormModes.Modificacion:
+                case FormModes.Modificacion:
                     Entity = new Business.Entities.Personas();
                     Entity.ID = SelectedID;
                     Entity.State = BusinessEntity.States.Modified;
@@ -169,7 +174,7 @@ namespace UI.Web
                     this.LoadGrid();
                     break;
 
-                case ABM.FormModes.Baja:
+                case FormModes.Baja:
                     this.DeleteEntity(SelectedID);
                     this.LoadGrid();
                     break;
@@ -183,7 +188,7 @@ namespace UI.Web
 
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Personas.aspx");
+            Response.Redirect("~/Administrador/Personas.aspx");
             this.panelConfirmacion.Visible = false;
             this.panelFormulario.Visible = false;
         }
@@ -194,31 +199,38 @@ namespace UI.Web
             this.panelConfirmacion.Visible = true;
             this.FormMode = FormModes.Alta;
             this.ClearForm();
-            this.EnableForm(true);
+            EnableForm(true);
+            
         }
 
         protected void lnkButtonEditar_Click(object sender, EventArgs e)
         {
             if (this.IsEntitySelected)
             {
+                lblRegistro.Visible = false;
                 this.panelFormulario.Visible = true;
                 this.panelConfirmacion.Visible = true;
                 this.FormMode = FormModes.Modificacion;
                 this.LoadForm(this.SelectedID);
                 this.EnableForm(true);
-            } 
+
+            }
+            else lblRegistro.Visible = true;
         }
 
         protected void lnkButtonEliminar_Click(object sender, EventArgs e)
         {
             if (this.IsEntitySelected)
             {
+                this.lblRegistro.Visible = false;
                 this.panelConfirmacion.Visible = true;
                 this.panelConfirmacion.Visible = true;
                 this.EnableForm(false);
                 this.FormMode = FormModes.Baja;
                 this.LoadForm(this.SelectedID);
+                
             }
+            else lblRegistro.Visible = true; 
         }
 
         protected void grillaPersonas_SelectedIndexChanged(object sender, EventArgs e)

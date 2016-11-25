@@ -186,8 +186,10 @@ namespace Data.Database
                 this.OpenConnection();
                 SqlCommand cmdInsert = new SqlCommand(
                     "INSERT INTO personas (nombre, apellido, email, telefono, id_plan, fecha_nac, legajo, tipo_persona, nombre_usuario, clave, cambia_clave, habilitado"+
-                    "VALUES(@nombre, @apellido, @email, @telefono, @id_plan, @fecha_nac, @legajo, @tipo_persona, @id_plan, @nomUs, @clave, @cambiaClave, @habi)", sqlConn);
+                    "VALUES(@nombre, @apellido, @email, @telefono, @id_plan, @fecha_nac, @legajo, @tipo_persona, @id_plan, @nomUs, @clave, @cambiaClave, @habi)" +
+                    "SET @Identity = Scope_Identity()", sqlConn);
 
+                //cmdInsert.Parameters.Add("@Identity", SqlDbType.Int, 32, "id_persona");
                 cmdInsert.Parameters.Add("@nombre", SqlDbType.VarChar, 50).Value= pers.Nombre;
                 cmdInsert.Parameters.Add("@apellido", SqlDbType.VarChar, 50).Value = pers.Apellido;
                 cmdInsert.Parameters.Add("@email", SqlDbType.VarChar, 50).Value = pers.Email;
