@@ -31,7 +31,7 @@ namespace Business.Logic
             return PlanData.GetOne(ID); 
         }
 
-        public Plan GetOne(string dp, int de)
+        public Plan GetOne(string de, string dp)
         {
             EspecialidadLogic el = new EspecialidadLogic();
             Especialidad espe = el.GetOne(de);

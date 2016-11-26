@@ -185,9 +185,8 @@ namespace Data.Database
             {
                 this.OpenConnection();
                 SqlCommand cmdInsert = new SqlCommand(
-                    "INSERT INTO personas (nombre, apellido, email, telefono, id_plan, fecha_nac, legajo, tipo_persona, nombre_usuario, clave, cambia_clave, habilitado"+
-                    "VALUES(@nombre, @apellido, @email, @telefono, @id_plan, @fecha_nac, @legajo, @tipo_persona, @id_plan, @nomUs, @clave, @cambiaClave, @habi)" +
-                    "SET @Identity = Scope_Identity()", sqlConn);
+                    "INSERT INTO personas (nombre, apellido, email, telefono, id_plan, fecha_nac, legajo, tipo_persona, nombre_usuario, clave, cambia_clave, habilitado, direccion) "+
+                    "VALUES (@nombre, @apellido, @email, @telefono, @id_plan, @fecha_nac, @legajo, @tipo_persona, @nomUs, @clave, @cambiaClave, @habi, @direc)", sqlConn);
 
                 //cmdInsert.Parameters.Add("@Identity", SqlDbType.Int, 32, "id_persona");
                 cmdInsert.Parameters.Add("@nombre", SqlDbType.VarChar, 50).Value= pers.Nombre;
@@ -197,11 +196,12 @@ namespace Data.Database
                 cmdInsert.Parameters.Add("@id_plan", SqlDbType.VarChar, 50).Value = pers.IDPlan;
                 cmdInsert.Parameters.Add("@fecha_nac", SqlDbType.VarChar, 50).Value = pers.FechaDeNacimiento;
                 cmdInsert.Parameters.Add("@legajo", SqlDbType.VarChar, 50).Value = pers.Legajo;
-                cmdInsert.Parameters.Add("@tipo_persona", SqlDbType.VarChar, 50).Value = pers.TipoPersona;
+                cmdInsert.Parameters.Add("@tipo_persona", SqlDbType.Int,32).Value = pers.TipoPersona;
                 cmdInsert.Parameters.Add("@nomUs", SqlDbType.VarChar, 50).Value = pers.NombreUsuario;
                 cmdInsert.Parameters.Add("@clave", SqlDbType.VarChar, 50).Value=pers.Clave;
                 cmdInsert.Parameters.Add("@cambiaClave", SqlDbType.VarChar, 50).Value = pers.CambiaCLave;
                 cmdInsert.Parameters.Add("@habi", SqlDbType.Bit).Value = pers.Habilitado;
+                cmdInsert.Parameters.Add("@direc", SqlDbType.VarChar, 50).Value = pers.Direccion;
 
                 cmdInsert.ExecuteNonQuery();
 

@@ -83,11 +83,8 @@ namespace UI.Web
             p.Telefono = txtTelef.Text;
             p.Habilitado = chbxHabilitado.Checked;
             p.FechaDeNacimiento = DateTime.Parse(txtFeNac.Text);
-            
             p.TipoPersona = new PersonaLogic().GetOne(p.ID).TipoPersona;
-            PlanLogic pl = new PlanLogic();
-            p.IDPlan = pl.GetOne(ddlEspecialidades.Text, int.Parse(ddlPlanes.Text)).ID;
-            //p.IDPlan = new PlanLogic().GetOne(ddlEspecialidades.Text, int.Parse(ddlPlanes.Text)).ID;
+            p.IDPlan = new PlanLogic().GetOne(ddlEspecialidades.Text, ddlPlanes.Text).ID;
 
         }
 

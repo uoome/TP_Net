@@ -85,9 +85,8 @@ namespace UI.Desktop
 
             PlanLogic pl = new PlanLogic();
             Plan planPersona = pl.GetOne(PersonaActual.IDPlan);
-            this.cbxPlanes.Text = planPersona.Descripcion;
             this.cbxEspecialidades.Text = new EspecialidadLogic().GetOne(planPersona.IDEspecialidad).Descripcion;
-
+            this.cbxPlanes.Text = planPersona.Descripcion;
         }
         public override void MapearADatos()
         {
@@ -119,8 +118,8 @@ namespace UI.Desktop
                 PersonaActual.Telefono= this.txtTelefono.Text;
 
                 //Cargo comboBox
-                PersonaActual.TipoPersona = new PersonaLogic().GetOne(PersonaActual.ID).TipoPersona;
-                PersonaActual.IDPlan = new PlanLogic().GetOne(cbxEspecialidades.Text, int.Parse(cbxPlanes.Text)).ID;
+                PersonaActual.TipoPersona = (Personas.TiposPersonas)cbxTipoPers.SelectedItem;
+                PersonaActual.IDPlan = new PlanLogic().GetOne(cbxEspecialidades.Text, cbxPlanes.Text).ID;
                 
             }
             if (Modo == ModoForm.Eliminar)
