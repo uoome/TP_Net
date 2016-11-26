@@ -182,5 +182,9 @@ namespace UI.Web
 
         #endregion
 
+        protected void ddlIdPlan_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

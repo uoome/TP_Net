@@ -58,7 +58,7 @@
                     <asp:Label ID="lblCurso" runat="server" Text="Curso"></asp:Label>
                 </td>
                 <td>
-                    <asp:DropDownList ID="ddlCursos" runat="server" AutoPostBack="True">
+                    <asp:DropDownList ID="ddlCursos" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlCursos_SelectedIndexChanged">
                     </asp:DropDownList>
                 </td>
                 <td>&nbsp;</td>

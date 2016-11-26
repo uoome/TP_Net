@@ -39,7 +39,7 @@
                     <asp:Label ID="lblIdPlan" runat="server" Text="Id Plan"></asp:Label>
                 </td>
                 <td>
-                    <asp:DropDownList ID="ddlIdPlan" runat="server">
+                    <asp:DropDownList ID="ddlIdPlan" runat="server" OnSelectedIndexChanged="ddlIdPlan_SelectedIndexChanged">
                     </asp:DropDownList>
                 </td>
             </tr>

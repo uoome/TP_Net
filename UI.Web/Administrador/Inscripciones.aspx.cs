@@ -202,8 +202,12 @@ namespace UI.Web
             this.txtApellido.Text = pers.Apellido;
         }
 
+
         #endregion
 
+        protected void ddlCursos_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
+        }
     }
 }

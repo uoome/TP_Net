@@ -12,18 +12,6 @@ namespace UI.Web
     public partial class Personas : ABM
     {
         private PersonaLogic _perLogic;
-        private Business.Entities.Personas.TiposPersonas _tipo;
-        public Business.Entities.Personas.TiposPersonas Tipo
-        {
-            set
-            {
-                _tipo = value;
-            }
-            get
-            {
-                return _tipo;
-            }
-        }
         public PersonaLogic PersLogic
         {
             get {
@@ -82,7 +70,21 @@ namespace UI.Web
         }
 
         private void LoadEntity(Business.Entities.Personas p)
-        { Business.Entities.Personas pers = new Business.Entities.Personas();
+        {
+            string variable;
+            variable = ddlTipoPers.SelectedValue;
+            if ("Alumno" == variable)
+            {
+                p.TipoPersona = Business.Entities.Personas.TiposPersonas.Alumno;
+            }
+            if (variable == "Docente")
+            {
+              p.TipoPersona = Business.Entities.Personas.TiposPersonas.Docente;
+            }
+            if (variable == "Administrador")
+            {
+                p.TipoPersona = Business.Entities.Personas.TiposPersonas.Administrador;
+            }
             p.Apellido = txtApellido.Text;
             p.Nombre = txtNombre.Text;
             p.NombreUsuario = txtUsuario.Text;
@@ -93,13 +95,8 @@ namespace UI.Web
             p.Legajo = int.Parse(txtLegajo.Text);
             p.Telefono = txtTelef.Text;
             p.Habilitado = chbxHabilitado.Checked;
-            p.FechaDeNacimiento = DateTime.Parse(txtFeNac.Text);
-            PersonaLogic persL = new PersonaLogic();
-
-           
-          
-            p.TipoPersona = Tipo;
-                            
+            p.FechaDeNacimiento = DateTime.Parse(txtFeNac.Text);         
+                               
             p.IDPlan = new PlanLogic().GetOne(ddlEspecialidades.Text, ddlPlanes.Text).ID;
 
         }
@@ -276,10 +273,8 @@ namespace UI.Web
 
         protected void ddlTipoPers_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Business.Entities.Personas pers = new Business.Entities.Personas();
-            PersonaLogic persL = new PersonaLogic();
-            pers = persL.GetOne(Convert.ToInt32(ddlTipoPers.SelectedValue));
-            Tipo = pers.TipoPersona;
+          
+               
             
         }
     }
