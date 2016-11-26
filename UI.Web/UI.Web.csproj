@@ -209,6 +209,7 @@
     <Content Include="Alumno\DefaultAlumnos.aspx" />
     <Content Include="DefaultDocentes.aspx" />
     <Content Include="Alumno\EstadoAcademicoAlumnos.aspx" />
+    <Content Include="Administrador\FinalizoSession.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -219,7 +220,7 @@
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Administrador\Inscripciones.aspx" />
-    <Content Include="Login.aspx" />
+    <Content Include="UtilWeb\Login.aspx" />
     <Content Include="Administrador\Materias.aspx" />
     <Content Include="Administrador\Personas.aspx" />
     <Content Include="Scripts\bootstrap.js" />
@@ -446,6 +447,13 @@
     <Compile Include="Alumno\EstadoAcademicoAlumnos.aspx.designer.cs">
       <DependentUpon>EstadoAcademicoAlumnos.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Administrador\FinalizoSession.aspx.cs">
+      <DependentUpon>FinalizoSession.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrador\FinalizoSession.aspx.designer.cs">
+      <DependentUpon>FinalizoSession.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -456,11 +464,11 @@
     <Compile Include="Administrador\Inscripciones.aspx.designer.cs">
       <DependentUpon>Inscripciones.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Login.aspx.cs">
+    <Compile Include="UtilWeb\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Login.aspx.designer.cs">
+    <Compile Include="UtilWeb\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Administrador\Materias.aspx.cs">

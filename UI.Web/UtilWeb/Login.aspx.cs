@@ -13,10 +13,10 @@ namespace UI.Web
     {
         protected override void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+           /* if (!IsPostBack)
             {
                 Session.Abandon();
-            }
+            } */
 
         }
 

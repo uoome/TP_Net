@@ -76,8 +76,9 @@ namespace UI.Web
             }
             else
             {
-                Response.Redirect("~/Login.aspx");
+                Response.Redirect("~/Administrador/FinalizoSession.aspx");
             }
         }
+
     }
 }
