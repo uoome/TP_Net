@@ -7,15 +7,25 @@ namespace Business.Entities
 {
     public class AlumnoInscripcion : BusinessEntity
     {
-        private string _Condicion;
+        public enum TiposCondiciones
+        {
+            Inscripto = 1,
+            Cursando = 2,
+            Regular = 3,
+            Promocionado = 4,
+            Aprobado = 5,
+            Libre = 6
+        }
+
+        private TiposCondiciones _condicion;
         private int _IdAlumno;
         private int _IdCurso;
         private int _Nota;
 
-        public string Condicion
+        public TiposCondiciones Condicion
         {
-            get { return _Condicion; }
-            set { _Condicion = value; }
+            get { return _condicion; }
+            set { _condicion = value; }
         }
 
         public int IdAlumno

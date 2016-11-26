@@ -56,6 +56,56 @@ namespace Data.Database
             }
             return personas;
         }
+
+        public List<Personas> GetAll(Personas.TiposPersonas tipoPers)
+        {
+            List<Personas> listaPers = new List<Personas>();
+
+            try
+            {
+                this.OpenConnection();
+
+                SqlCommand cmdPersonas = new SqlCommand("SELECT * FROM personas WHERE tipo_persona in (@tipo_pers)", sqlConn);
+                cmdPersonas.Parameters.Add("@tipo_pers", SqlDbType.Int).Value = tipoPers;
+                SqlDataReader drPersonas = cmdPersonas.ExecuteReader();
+
+                if (drPersonas.Read())
+                {
+                    Personas pers = new Personas();
+                    pers.ID = (int)drPersonas["id_persona"];
+                    pers.Nombre = (string)drPersonas["nombre"];
+                    pers.Apellido = (string)drPersonas["apellido"];
+                    pers.Direccion = (string)drPersonas["direccion"];
+                    pers.Email = (string)drPersonas["email"];
+                    pers.Telefono = (string)drPersonas["telefono"];
+                    pers.Legajo = (int)drPersonas["legajo"];
+                    pers.TipoPersona = (Personas.TiposPersonas)drPersonas["tipo_persona"];
+                    pers.IDPlan = (int)drPersonas["id_plan"];
+                    pers.FechaDeNacimiento = (DateTime)drPersonas["fecha_nac"];
+                    pers.Habilitado = (bool)drPersonas["habilitado"];
+                    pers.NombreUsuario = (string)drPersonas["nombre_usuario"];
+                    pers.Clave = (string)drPersonas["clave"];
+                    pers.CambiaCLave = (string)drPersonas["cambia_clave"];
+
+                    listaPers.Add(pers);
+                }
+
+                drPersonas.Close();
+
+            }
+            catch (Exception ex)
+            {
+                Exception exManejada = new Exception("Error al traer la lista de personas" + ex.Message);
+                throw (exManejada);
+            }
+            finally
+            {
+                this.CloseConnection();
+            }
+
+            return listaPers;
+
+        }
         public Personas GetOne(int ID)
         {
             Personas persona= new Personas();

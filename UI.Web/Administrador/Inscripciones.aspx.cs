@@ -11,7 +11,41 @@ namespace UI.Web
 {
     public partial class Inscripciones : ABM
     {
+
+        private BusinessEntity.States _estado;
+
+        public BusinessEntity.States Estado
+        {
+            get { return _estado; }
+            set { _estado = value; }
+        }
+
+        private static List<Business.Entities.Personas> _alumnos = new List<Business.Entities.Personas>();
+
+        public List<Business.Entities.Personas> Alumnos
+        {
+            get { return _alumnos; }
+            set { _alumnos = value; }
+        }
+
+        private List<AlumnoInscripcion> _inscripciones = new List<AlumnoInscripcion>();
+
+        public List<AlumnoInscripcion> Inscrip
+        {
+            get { return _inscripciones; }
+            set { _inscripciones = value; }
+        }
+
+        private List<Curso> _cursos = new List<Curso>();
+
+        public List<Curso> Cursos
+        {
+            get { return _cursos; }
+            set { _cursos = value; }
+        }
+        
         private AlumnoInscripcionLogic _insLogic;
+
         public AlumnoInscripcionLogic InscLogic
         {
             get
@@ -29,31 +63,26 @@ namespace UI.Web
             set;
             get;
         }
+
+
         #region Metodos
         private void EnableForm(bool enable)
         {
-            this.txtCondicion.Enabled = enable;
-            this.ddlCursos.Enabled = enable;
-            this.ddlAlumno.Enabled = enable;
-            this.txtNota.Enabled = enable;
+            ddlCondicion.Enabled = enable;
+            txtNota.Enabled = enable;
         }
+
         private void ClearForm()
         {
-            this.txtNota.Text = string.Empty;
-            this.ddlAlumno.SelectedIndex = -1;
-            this.ddlCursos.SelectedIndex = -1;
-            this.txtCondicion.Text = string.Empty;
+            ddlCondicion.SelectedIndex = -1;
+            txtNota.Text.Equals("0");
         }
         private void SaveEntity(AlumnoInscripcion Alu)
         {
-            this.InscLogic.Save(Alu);
+
         }
         private void LoadEntity(AlumnoInscripcion alu)
         {
-            alu.IdAlumno = Convert.ToInt32(this.ddlAlumno.SelectedValue);
-            alu.IdCurso = Convert.ToInt32(this.ddlCursos.SelectedValue);
-            alu.Nota = int.Parse(this.txtNota.Text);
-            alu.Condicion = this.txtCondicion.Text;
             
         }
         private void DeleteEntity(int id)
@@ -61,11 +90,7 @@ namespace UI.Web
             this.InscLogic.Delete(id);
         }
 
-        private void LoadGrid()
-        {
-            this.grvInscripciones.DataSource = InscLogic.GetAll();
-            this.grvInscripciones.DataBind();
-        }
+        
 
         private void LoadForm(int id)
         {
@@ -97,17 +122,49 @@ namespace UI.Web
            
         }
 
+        protected void cargarCursos()
+        {
+            List<Object> lista = new List<Object>();
+            MateriaLogic ml = new MateriaLogic();
+            ComisionLogic coml = new ComisionLogic();
+
+            foreach (Curso c in Cursos)
+            {
+                lista.Add(new
+                {
+                    materia = ml.GetOne(c.IDMateria).Descripcion,
+                    comision = coml.GetOne(c.IDComision).Descripcion,
+                    anio_curso = c.AnioCalendario.ToString(),
+                    cupo_curso = c.Cupo.ToString(),
+                });
+            }
+
+            grvCursos.DataSource = lista;
+            grvCursos.DataBind();
+
+        }
+
+
         #endregion
 
         #region Eventos
-      
+
         protected override void Page_Load(object sender, EventArgs e)
         {
             if(!IsPostBack)
             {
                 string si = "menuInscripciones";
                 Session["Menu"] = si;
-                this.LoadGrid();
+
+                PersonaLogic plog = new PersonaLogic();
+                Alumnos = plog.GetAll(Business.Entities.Personas.TiposPersonas.Alumno);
+                grvAlumnos.DataSource = Alumnos;
+                grvAlumnos.DataBind();
+
+                CursoLogic clog = new CursoLogic();
+                Cursos = clog.GetAll();
+                cargarCursos();
+
             }
 
         }
@@ -140,8 +197,8 @@ namespace UI.Web
                 default: break;
                     
             }
-            this.panelBotones.Visible = false;
-            this.panelConfirmacion.Visible = false;
+            this.panelGrillaInscripciones.Visible = false;
+            this.panelControlesInscripciones.Visible = false;
         }
 
         protected void linkbtnEditar_Click(object sender, EventArgs e)
@@ -150,8 +207,8 @@ namespace UI.Web
             if (this.IsEntitySelected)
             {
                 EnableForm(true);
-                this.panelConfirmacion.Visible = true;
-                this.panelBotones.Visible = true;
+                this.panelControlesInscripciones.Visible = true;
+                this.panelGrillaInscripciones.Visible = true;
                 this.FormMode = FormModes.Modificacion;
                 this.LoadForm(this.SelectedID);
             }
@@ -161,8 +218,8 @@ namespace UI.Web
         {
             if (this.IsEntitySelected)
             {
-                this.panelConfirmacion.Visible = true;
-                this.panelBotones.Visible = true;
+                this.panelControlesInscripciones.Visible = true;
+                this.panelGrillaInscripciones.Visible = true;
                 this.FormMode = FormModes.Baja;
                 this.EnableForm(false);
                 this.LoadForm(this.SelectedID);
@@ -172,10 +229,10 @@ namespace UI.Web
 
         protected void linkbtnNuevo_Click(object sender, EventArgs e)
         {
-            this.panelBotones.Visible = true;
+            this.panelGrillaInscripciones.Visible = true;
             this.FormMode = FormModes.Alta;
             this.ClearForm();
-            this.panelConfirmacion.Visible = true;
+            this.panelControlesInscripciones.Visible = true;
             this.EnableForm(true);
 
 
@@ -184,13 +241,15 @@ namespace UI.Web
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/Inscripciones.aspx");
-            this.panelConfirmacion.Visible = false;
-            this.panelBotones.Visible = false;
+            this.panelControlesInscripciones.Visible = false;
+            this.panelGrillaInscripciones.Visible = false;
         }
 
         protected void grvInscripciones_SelectedIndexChanged(object sender, EventArgs e)
         {
-            this.SelectedID = (int)this.grvInscripciones.SelectedValue;
+            this.SelectedID = (int)this.grvAlumnos.SelectedValue;
+            panelGrillaInscripciones.Visible = true;
+
         }
 
         protected void ListBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -202,12 +261,8 @@ namespace UI.Web
             this.txtApellido.Text = pers.Apellido;
         }
 
-
         #endregion
 
-        protected void ddlCursos_SelectedIndexChanged(object sender, EventArgs e)
-        {
 
-        }
     }
 }

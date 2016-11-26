@@ -1,93 +1,97 @@
 ﻿<%@ Page Title="Inscripciones" Language="C#" MasterPageFile="~/Administrador/Site.Master" AutoEventWireup="true" CodeBehind="Inscripciones.aspx.cs" Inherits="UI.Web.Inscripciones" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="bodyContentPlaceHolder" runat="server">
-    <asp:GridView ID="grvInscripciones" runat="server" AutoGenerateColumns="False" BackColor="LightGoldenrodYellow" BorderColor="Tan" BorderWidth="1px" CellPadding="2" ForeColor="Black" GridLines="None" DataKeyNames="ID" OnSelectedIndexChanged="grvInscripciones_SelectedIndexChanged">
-        <AlternatingRowStyle BackColor="PaleGoldenrod" />
+    <asp:GridView ID="grvAlumnos" runat="server" align="center" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" DataKeyNames="ID" OnSelectedIndexChanged="grvInscripciones_SelectedIndexChanged">
+        <AlternatingRowStyle BackColor="White" />
         <Columns>
-            <asp:BoundField DataField="IdAlumno" HeaderText="ID Alumno" />
-            <asp:BoundField DataField="IdCurso" HeaderText="ID Curso" />
-            <asp:BoundField DataField="Condicion" HeaderText="Condicion" />
-            <asp:BoundField DataField="Nota" HeaderText="Nota" />
+            <asp:BoundField DataField="Legajo" HeaderText="Legajo" />
+            <asp:BoundField DataField="Nombre" HeaderText="Nombre" />
+            <asp:BoundField DataField="Apellido" HeaderText="Apellido" />
             <asp:CommandField ShowSelectButton="True" />
         </Columns>
-        <FooterStyle BackColor="Tan" />
-        <HeaderStyle BackColor="Tan" Font-Bold="True" />
-        <PagerStyle BackColor="PaleGoldenrod" ForeColor="DarkSlateBlue" HorizontalAlign="Center" />
-        <SelectedRowStyle BackColor="DarkSlateBlue" ForeColor="GhostWhite" />
-        <SortedAscendingCellStyle BackColor="#FAFAE7" />
-        <SortedAscendingHeaderStyle BackColor="#DAC09E" />
-        <SortedDescendingCellStyle BackColor="#E1DB9C" />
-        <SortedDescendingHeaderStyle BackColor="#C2A47B" />
+        <EditRowStyle BackColor="#7C6F57" />
+        <FooterStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
+        <HeaderStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
+        <PagerStyle BackColor="#666666" ForeColor="White" HorizontalAlign="Center" />
+        <RowStyle BackColor="#E3EAEB" />
+        <SelectedRowStyle BackColor="#C5BBAF" ForeColor="#333333" Font-Bold="True" />
+        <SortedAscendingCellStyle BackColor="#F8FAFA" />
+        <SortedAscendingHeaderStyle BackColor="#246B61" />
+        <SortedDescendingCellStyle BackColor="#D4DFE1" />
+        <SortedDescendingHeaderStyle BackColor="#15524A" />
     </asp:GridView>
-    <asp:Panel ID="panelABM" runat="server">
-        <asp:LinkButton ID="linkbtnNuevo" runat="server" OnClick="linkbtnNuevo_Click">Nuevo</asp:LinkButton>
-        <asp:LinkButton ID="linkbtnEditar" runat="server" OnClick="linkbtnEditar_Click">Editar</asp:LinkButton>
-        <asp:LinkButton ID="linkbtnEliminar" runat="server" OnClick="linkbtnEliminar_Click">Eliminar</asp:LinkButton>
+    <asp:Panel ID="panelCartelAlumnos" runat="server">
+        <asp:Label ID="lblInscripcion" runat="server" Text="Seleccione un alumno para ver sus inscripciones" ForeColor="Green"></asp:Label>
     </asp:Panel>
-    <asp:Panel ID="panelBotones" runat="server" Visible="False">
-        <table style="width:100%;">
-            <tr>
-                <td>
-                    <asp:Label ID="lblIDAlumno" runat="server" Text="ID Alumno"></asp:Label>
-                </td>
-                <td>
-                    <asp:DropDownList ID="ddlAlumno" runat="server" AutoPostBack="True">
-                    </asp:DropDownList>
-                </td>
-                <td>&nbsp;</td>
-            </tr>
-            <tr>
-                <td>
-                    <asp:Label ID="lblNombre" runat="server" Text="Nombre"></asp:Label>
-                </td>
-                <td>
-                    <asp:TextBox ID="txtNombre" runat="server"></asp:TextBox>
-                </td>
-                <td>&nbsp;</td>
-            </tr>
-            <tr>
-                <td>
-                    <asp:Label ID="lblApellido" runat="server" Text="Apellido"></asp:Label>
-                </td>
-                <td>
-                    <asp:TextBox ID="txtApellido" runat="server"></asp:TextBox>
-                </td>
-                <td>&nbsp;</td>
-            </tr>
-            <tr>
-                <td>
-                    <asp:Label ID="lblCurso" runat="server" Text="Curso"></asp:Label>
-                </td>
-                <td>
-                    <asp:DropDownList ID="ddlCursos" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlCursos_SelectedIndexChanged">
-                    </asp:DropDownList>
-                </td>
-                <td>&nbsp;</td>
-            </tr>
-            <tr>
-                <td>
-                    <asp:Label ID="lblCondicion" runat="server" Text="Condicion"></asp:Label>
-                </td>
-                <td>
-                    <asp:TextBox ID="txtCondicion" runat="server"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="rfvCondicion" runat="server" Display="None" ErrorMessage="No puede estar vacio Condicion" ControlToValidate="txtCondicion"></asp:RequiredFieldValidator>
-                </td>
-                <td>&nbsp;</td>
-            </tr>
-            <tr>
-                <td>
-                    <asp:Label ID="lblNota" runat="server" Text="Nota"></asp:Label>
-                </td>
-                <td>
-                    <asp:TextBox ID="txtNota" runat="server"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="rfvNota" runat="server" Display="None" ErrorMessage="No puede estar vacio la nota" ControlToValidate="txtNota"></asp:RequiredFieldValidator>
-                </td>
-                <td>&nbsp;</td>
-            </tr>
-        </table>
+    <asp:Panel ID="panelGrillaInscripciones" runat="server" Visible="False">
+        <asp:GridView ID="grvInscripciones" runat="server" AutoGenerateColumns="False" align="center" CellPadding="4" DataKeyNames="ID" ForeColor="#333333">
+            <AlternatingRowStyle BackColor="White" />
+            <Columns>
+                <asp:BoundField HeaderText="Comision" />
+                <asp:BoundField HeaderText="Materia" />
+                <asp:BoundField HeaderText="Condicion" DataField="Condicion" />
+                <asp:BoundField HeaderText="Nota" DataField="Nota" />
+                <asp:CommandField ShowSelectButton="True" />
+            </Columns>
+            <EditRowStyle BackColor="#7C6F57" />
+            <FooterStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
+            <HeaderStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
+            <PagerStyle BackColor="#666666" ForeColor="White" HorizontalAlign="Center" />
+            <RowStyle BackColor="#E3EAEB" />
+            <SelectedRowStyle BackColor="#C5BBAF" Font-Bold="True" ForeColor="#333333" />
+            <SortedAscendingCellStyle BackColor="#F8FAFA" />
+            <SortedAscendingHeaderStyle BackColor="#246B61" />
+            <SortedDescendingCellStyle BackColor="#D4DFE1" />
+            <SortedDescendingHeaderStyle BackColor="#15524A" />
+        </asp:GridView>
     </asp:Panel>
-    <asp:Panel ID="panelConfirmacion" runat="server" Visible="False">
-        <asp:Button ID="btnAceptar" runat="server" Text="Aceptar" OnClick="btnAceptar_Click" />
-        <asp:Button ID="btnCancelar" runat="server"  CausesValidation="false" Text="Cancelar" OnClick="btnCancelar_Click" />
+    <asp:Panel ID="panelControlesInscripciones" runat="server" Visible="False">
+        <asp:Button ID="btnAgregarInscripcion" runat="server" Text="Agregar" />
+        &nbsp;
+        <asp:Button ID="btnEditarInscripcion" runat="server" Text="Editar" />
+        &nbsp;
+        <asp:Button ID="btnEliminarInscripcion" runat="server" Text="Eliminar" />
+        <asp:Panel ID="panelGrillaCursos" runat="server" Visible="False">
+            <asp:Panel ID="panelABMInscripciones" runat="server" Visible="False">
+                <table id="tblABM" style="width:100%;">
+                    <tr>
+                        <td aria-autocomplete="both">
+                            <asp:Label ID="lblCondicion" runat="server" Text="Condicion"></asp:Label>
+                        </td>
+                        <td>
+                            <asp:DropDownList ID="ddlCondicion" runat="server" AutoPostBack="True">
+                            </asp:DropDownList>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <asp:Label ID="lblNota" runat="server" Text="Nota"></asp:Label>
+                        </td>
+                        <td>
+                            <asp:TextBox ID="txtNota" runat="server">0</asp:TextBox>
+                        </td>
+                    </tr>
+                </table>
+            </asp:Panel>
+            <asp:GridView ID="grvCursos" runat="server" AutoGenerateColumns="False" align="center" CellPadding="4" DataKeyNames="ID" ForeColor="#333333">
+                <AlternatingRowStyle BackColor="White" />
+                <Columns>
+                    <asp:BoundField HeaderText="Materia" DataField="Materia" />
+                    <asp:BoundField HeaderText="Comision" DataField="Comision" />
+                    <asp:BoundField HeaderText="Año calendario" DataField="AnioCalendario" />
+                    <asp:BoundField HeaderText="Cupo" DataField="Cupo" />
+                    <asp:CommandField ShowSelectButton="True" />
+                </Columns>
+                <EditRowStyle BackColor="#7C6F57" />
+                <FooterStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
+                <HeaderStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
+                <PagerStyle BackColor="#666666" ForeColor="White" HorizontalAlign="Center" />
+                <RowStyle BackColor="#E3EAEB" />
+                <SelectedRowStyle BackColor="#C5BBAF" Font-Bold="True" ForeColor="#333333" />
+                <SortedAscendingCellStyle BackColor="#F8FAFA" />
+                <SortedAscendingHeaderStyle BackColor="#246B61" />
+                <SortedDescendingCellStyle BackColor="#D4DFE1" />
+                <SortedDescendingHeaderStyle BackColor="#15524A" />
+            </asp:GridView>
+        </asp:Panel>
     </asp:Panel>
-    <asp:ValidationSummary ID="ValidationSummary1" runat="server" />
-</asp:Content>
+    </asp:Content>
