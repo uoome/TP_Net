@@ -105,6 +105,8 @@ namespace UI.Web
         {
             if(!IsPostBack)
             {
+                string si = "menuInscripciones";
+                Session["Menu"] = si;
                 this.LoadGrid();
             }
 

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Personas.aspx.cs" Inherits="UI.Web.Personas" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Administrador/Site.Master" AutoEventWireup="true" CodeBehind="Personas.aspx.cs" Inherits="UI.Web.Personas" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="bodyContentPlaceHolder" runat="server">
     <asp:GridView ID="grillaPersonas" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" DataKeyNames="ID" OnSelectedIndexChanged="grillaPersonas_SelectedIndexChanged">
         <AlternatingRowStyle BackColor="White" />
@@ -153,7 +153,7 @@
                     <asp:Label ID="lblTipoPers" runat="server" Text="Tipo Persona"></asp:Label>
                 </td>
                 <td>
-                    <asp:DropDownList ID="ddlTipoPers" runat="server" AutoPostBack="True">
+                    <asp:DropDownList ID="ddlTipoPers" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlTipoPers_SelectedIndexChanged">
                     </asp:DropDownList>
                     <asp:RequiredFieldValidator ID="rfvTipoPers" runat="server" ControlToValidate="ddlTipoPers" ErrorMessage="Debe seleccionar un tipo de persona" ForeColor="Red">*</asp:RequiredFieldValidator>
                 </td>

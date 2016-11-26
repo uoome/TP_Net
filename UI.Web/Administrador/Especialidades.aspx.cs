@@ -67,6 +67,8 @@ namespace UI.Web
         {
             if (!IsPostBack)
             {
+                string si = "menuEspecialidades";
+                Session["Menu"] = si;
                 this.LoadGrid();
             }
         }

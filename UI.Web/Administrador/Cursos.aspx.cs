@@ -107,6 +107,9 @@ namespace UI.Web
         }
         #endregion
 
+
+        
+        
         #region Eventos
         
         protected void btnAceptar_Click(object sender, EventArgs e)
@@ -193,6 +196,8 @@ namespace UI.Web
         {
             if (!IsPostBack)
             {
+                string si = "menuCursos";
+                Session["Menu"] = si;
                 this.LoadGrid();
                
             }

@@ -204,8 +204,11 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Administrador\Cursos.aspx" />
-    <Content Include="Default.aspx" />
+    <Content Include="Administrador\Default.aspx" />
     <Content Include="Administrador\Especialidades.aspx" />
+    <Content Include="Alumno\DefaultAlumnos.aspx" />
+    <Content Include="DefaultDocentes.aspx" />
+    <Content Include="Alumno\EstadoAcademicoAlumnos.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -257,7 +260,9 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
-    <Content Include="Site.Master" />
+    <Content Include="Alumno\SiteAlumnos.Master" />
+    <Content Include="SiteDocentes.Master" />
+    <Content Include="Administrador\Site.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -406,11 +411,11 @@
     <Compile Include="Administrador\Cursos.aspx.designer.cs">
       <DependentUpon>Cursos.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Default.aspx.cs">
+    <Compile Include="Administrador\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Default.aspx.designer.cs">
+    <Compile Include="Administrador\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="Administrador\Especialidades.aspx.cs">
@@ -419,6 +424,27 @@
     </Compile>
     <Compile Include="Administrador\Especialidades.aspx.designer.cs">
       <DependentUpon>Especialidades.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Alumno\DefaultAlumnos.aspx.cs">
+      <DependentUpon>DefaultAlumnos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Alumno\DefaultAlumnos.aspx.designer.cs">
+      <DependentUpon>DefaultAlumnos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DefaultDocentes.aspx.cs">
+      <DependentUpon>DefaultDocentes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DefaultDocentes.aspx.designer.cs">
+      <DependentUpon>DefaultDocentes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Alumno\EstadoAcademicoAlumnos.aspx.cs">
+      <DependentUpon>EstadoAcademicoAlumnos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Alumno\EstadoAcademicoAlumnos.aspx.designer.cs">
+      <DependentUpon>EstadoAcademicoAlumnos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -453,12 +479,26 @@
       <DependentUpon>Personas.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Site.Master.cs">
+    <Compile Include="Administrador\Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Site.Master.designer.cs">
+    <Compile Include="Administrador\Site.Master.designer.cs">
       <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Alumno\SiteAlumnos.Master.cs">
+      <DependentUpon>SiteAlumnos.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Alumno\SiteAlumnos.Master.designer.cs">
+      <DependentUpon>SiteAlumnos.Master</DependentUpon>
+    </Compile>
+    <Compile Include="SiteDocentes.Master.cs">
+      <DependentUpon>SiteDocentes.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SiteDocentes.Master.designer.cs">
+      <DependentUpon>SiteDocentes.Master</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
     <Compile Include="Administrador\Usuarios.aspx.cs">
@@ -477,7 +517,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Alumno\" />
     <Folder Include="App_Data\" />
     <Folder Include="Docente\" />
   </ItemGroup>

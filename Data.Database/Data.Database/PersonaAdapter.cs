@@ -196,7 +196,7 @@ namespace Data.Database
                 cmdInsert.Parameters.Add("@id_plan", SqlDbType.VarChar, 50).Value = pers.IDPlan;
                 cmdInsert.Parameters.Add("@fecha_nac", SqlDbType.VarChar, 50).Value = pers.FechaDeNacimiento;
                 cmdInsert.Parameters.Add("@legajo", SqlDbType.VarChar, 50).Value = pers.Legajo;
-                cmdInsert.Parameters.Add("@tipo_persona", SqlDbType.Int,32).Value = pers.TipoPersona;
+                cmdInsert.Parameters.Add("@tipo_persona", SqlDbType.Int).Value = pers.TipoPersona;
                 cmdInsert.Parameters.Add("@nomUs", SqlDbType.VarChar, 50).Value = pers.NombreUsuario;
                 cmdInsert.Parameters.Add("@clave", SqlDbType.VarChar, 50).Value=pers.Clave;
                 cmdInsert.Parameters.Add("@cambiaClave", SqlDbType.VarChar, 50).Value = pers.CambiaCLave;

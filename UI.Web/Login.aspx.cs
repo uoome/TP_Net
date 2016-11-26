@@ -13,6 +13,10 @@ namespace UI.Web
     {
         protected override void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                Session.Abandon();
+            }
 
         }
 
@@ -29,9 +33,34 @@ namespace UI.Web
                 {
                     if (per.Habilitado)
                     {
-                       
-                      
-                        Response.Redirect("~/Default.aspx");
+
+
+                        Session.Add("id_persona", per.ID);
+                        Session.Add("id_plan", per.IDPlan);
+                        Session.Add("apellido", per.Apellido);
+                        Session.Add("nombre", per.Nombre);
+                        Session.Add("tipo_persona", per.TipoPersona.ToString());
+                        Session.Add("id_usuario", per.ID);
+                        // Session.Timeout = 1;
+                        //Para probar que pasa si expira la session
+                        if (per.TipoPersona == Business.Entities.Personas.TiposPersonas.Alumno)
+                        {
+                            Response.Redirect("~/Administrador/Default.aspx");
+                        }
+                        else
+                        {
+                            if (per.TipoPersona == Business.Entities.Personas.TiposPersonas.Docente)
+                            {
+                                Response.Redirect("~/Docente/DefaultDocentes.aspx");
+                            }
+                            else
+                            {
+                                Response.Redirect("~/Administrador/Default.aspx");
+
+                            }
+                        }
+
+
                     }
 
                     else

@@ -16,6 +16,8 @@ namespace UI.Web
         {
             if (!Page.IsPostBack)
             {
+                string si = "menuPersonas";
+                Session["Menu"] = si;
                 this.LoadGrid();
             }
         }
