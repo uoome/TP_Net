@@ -10,22 +10,27 @@ using Business.Entities;
 namespace Data.Database
 {
      public class ComisionAdapter : Adapter
-    { public List<Comision> GetAll()
-        { List<Comision> ListaCom = new List<Comision>();
+    {
+        public List<Comision> GetAll()
+        {
+            List<Comision> ListaCom = new List<Comision>();
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdComision = new SqlCommand("select * from comisiones ", sqlConn);
-                SqlDataReader ComReader = cmdComision.ExecuteReader();
-                while(ComReader.Read())
+                SqlCommand cmdComision = new SqlCommand("SELECT * FROM comisiones ", sqlConn);
+                SqlDataReader drCom = cmdComision.ExecuteReader();
+
+                while(drCom.Read())
                 {
                     Comision Com = new Comision();
-                    Com.ID = (int)ComReader["id_comision"];
-                    Com.Descripcion = (string)ComReader["desc_comision"];
-                    Com.AnioEspecialidad = (int)ComReader["anio_especialidad"];
+                    Com.ID = (int)drCom["id_comision"];
+                    Com.Descripcion = (string)drCom["desc_comision"];
+                    Com.AnioEspecialidad = (int)drCom["anio_especialidad"];
+                    Com.IdPlan = (int)drCom["id_plan"];
                     ListaCom.Add(Com);
                 }
-                ComReader.Close();
+                drCom.Close();
+
              }
             catch (Exception ex)
             {
@@ -34,51 +39,55 @@ namespace Data.Database
             }
             finally
             {
-                CloseConnection();
+                this.CloseConnection();
             }
+
             return ListaCom;
 
-
         }
-       public Comision GetOne(int id)
+        public Comision GetOne(int id)
         {
-            try { this.OpenConnection();
-                Comision Com = new Comision();
+            Comision Com = new Comision();
 
-                SqlCommand CmdCom = new SqlCommand("select * from comisiones where id_comision = @id");
+            try
+            {
+                this.OpenConnection();
+                SqlCommand CmdCom = new SqlCommand("SELECT * FROM comisiones WHERE id_comision = @id",sqlConn);
                 CmdCom.Parameters.Add("@id", SqlDbType.Int).Value = id;
-                SqlDataReader comRed = CmdCom.ExecuteReader();
-                if (comRed.Read())
+                SqlDataReader drComi = CmdCom.ExecuteReader();
+                if (drComi.Read())
                 {
-                    Com.ID = (int)comRed["id_comision"];
-                    Com.Descripcion = (string)comRed["desc_comision"];
-                    Com.AnioEspecialidad = (int)comRed["anio_especialidad"];
-                   
-
+                    Com.ID = (int)drComi["id_comision"];
+                    Com.Descripcion = (string)drComi["desc_comision"];
+                    Com.AnioEspecialidad = (int)drComi["anio_especialidad"];
+                    Com.IdPlan = (int)drComi["id_plan"];
 
                 }
-                comRed.Close();
-                return Com;
+                drComi.Close();
             }
-            catch (Exception ex) { Exception ExManejada = new Exception("no se pudo obtener la comision" + ex.Message);
+            catch (Exception ex)
+            {
+                Exception ExManejada = new Exception("No se pudo obtener la comision" + ex.Message);
                 throw ExManejada;
             } 
             finally { this.CloseConnection(); }
 
+            return Com;
 
         }
         public void Delete(int id)
         {
-
-            try {
+            try
+            {
                 this.OpenConnection();
-                SqlCommand cmdCom = new SqlCommand("delete comisiones where id_comision = @id ");
+                SqlCommand cmdCom = new SqlCommand("DELETE comisiones WHERE id_comision = @id ");
                 cmdCom.Parameters.Add("@id", SqlDbType.Int).Value = id;
                 cmdCom.ExecuteNonQuery();
 
             }
             catch(Exception ex)
-            { Exception ExMan = new Exception("No se pudo eliminar la comison" + ex.Message);
+            {
+                Exception ExMan = new Exception("No se pudo eliminar la comison" + ex.Message);
                 throw ExMan;
             } 
             finally { this.CloseConnection(); }
@@ -107,16 +116,18 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand CmdCom = new SqlCommand("insert into comisiones(id_plan,desc_comision,anio_especialidad) " +
-                    "values(@idp,@desc,@anio)", sqlConn);
+                SqlCommand CmdCom = new SqlCommand(
+                    "INSERT INTO comisiones (id_plan,desc_comision,anio_especialidad) " +
+                    "VALUES (@idp,@desc,@anio)", sqlConn);
                 CmdCom.Parameters.Add("@idp", SqlDbType.Int).Value = com.IdPlan;
                 CmdCom.Parameters.Add("@desc", SqlDbType.VarChar, 50).Value = com.Descripcion;
                 CmdCom.Parameters.Add("@anio", SqlDbType.Int).Value = com.AnioEspecialidad;
                 CmdCom.ExecuteNonQuery();
 
-
             }
-            catch(Exception ex) { Exception ExMan = new Exception("No se pudo crear la comision" + ex.Message);
+            catch(Exception ex)
+            {
+                Exception ExMan = new Exception("No se pudo crear la comision" + ex.Message);
                 throw ExMan;
             }
             finally
@@ -126,19 +137,21 @@ namespace Data.Database
         }
         protected void Update(Comision com)
         {
-            try { this.OpenConnection();
-                SqlCommand CmdCom = new SqlCommand("update comisiones set id_plan = @idplan , anio_especialidades = @anio " +
-                     "desc_comision =  @com "+
-                     "where id_comision=@id", sqlConn);
+            try {
+                this.OpenConnection();
+                SqlCommand CmdCom = new SqlCommand(
+                    "UPDATE comisiones "+ 
+                    "SET id_plan=@idplan , anio_especialidades=@anio, desc_comision= @com "+
+                    "WJERE id_comision=@id", sqlConn);
+
                 CmdCom.Parameters.Add("@id", SqlDbType.Int).Value = com.ID;
-
                 CmdCom.Parameters.Add("@com", SqlDbType.VarChar, 50).Value = com.Descripcion;
-
                 CmdCom.Parameters.Add("@anio", SqlDbType.Int).Value = com.AnioEspecialidad;
-
                 CmdCom.Parameters.Add("@idplan", SqlDbType.Int).Value = com.IdPlan;
             } 
-            catch(Exception ex) { Exception ExM = new Exception("No se pudo actualizar la comision" + ex);
+            catch(Exception ex)
+            {
+                Exception ExM = new Exception("No se pudo actualizar la comision" + ex);
                 throw ExM;
             }
             finally { this.CloseConnection(); }

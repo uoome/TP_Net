@@ -146,6 +146,7 @@ namespace UI.Web
             {
                 string si = "menuPersonas";
                 Session["Menu"] = si;
+
                 EspecialidadLogic espe = new EspecialidadLogic();
                 List<Especialidad> listaEspeci = new List<Especialidad>();
                 listaEspeci = espe.GetAll();

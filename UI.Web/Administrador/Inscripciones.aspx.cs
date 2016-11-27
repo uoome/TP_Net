@@ -80,30 +80,24 @@ namespace UI.Web
         }
         private void SaveEntity(AlumnoInscripcion Alu)
         {
-
+            Entity.State = Estado;
+            //agregar datos a entity
         }
         private void LoadEntity(AlumnoInscripcion alu)
         {
-            
+            // no se uso todavia
         }
         private void DeleteEntity(int id)
         {
             this.InscLogic.Delete(id);
         }
-
         
-
-        private void LoadForm(int id)
-        {
-           
-        }
-
         protected void cargarCursos()
         {
             List<Object> lista = new List<Object>();
             MateriaLogic ml = new MateriaLogic();
             ComisionLogic coml = new ComisionLogic();
-
+            
             foreach (Curso c in Cursos)
             {
                 lista.Add(new
@@ -111,12 +105,12 @@ namespace UI.Web
                     materia = ml.GetOne(c.IDMateria).Descripcion,
                     comision = coml.GetOne(c.IDComision).Descripcion,
                     anio_curso = c.AnioCalendario.ToString(),
-                    cupo_curso = c.Cupo.ToString(),
+                    cupo_curso = c.Cupo.ToString()
                 });
             }
 
             grvCursos.DataSource = lista;
-            grvCursos.DataBind();
+            grvCursos.DataBind(); //No esta funcionando el dataBind, tira un error con el tipo anónimo
 
         }
 
@@ -157,6 +151,23 @@ namespace UI.Web
             grvInscripciones.DataSource = listaInscripciones;
             grvInscripciones.DataBind();
 
+        }
+
+        public void GuardarCambios()
+        {
+            if(FormMode == FormModes.Alta)
+            {
+                this.SaveEntity(Entity);
+            }
+            if (FormMode == FormModes.Modificacion)
+            {
+                Entity.State = Estado;
+                this.SaveEntity(Entity);
+            }
+            if (FormMode == FormModes.Baja)
+            {
+                this.DeleteEntity(Entity.ID);
+            }
         }
     
         #endregion
@@ -208,7 +219,7 @@ namespace UI.Web
 
         protected void grvInscripciones_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //elegis el alumno y lista las inscripciones que tiene
+            //Elegis el alumno y lista las inscripciones que tiene
             if (grvAlumnos.SelectedIndex != -1)
             {
                 cargaInscripciones(Alumnos[grvAlumnos.SelectedIndex].ID);
@@ -221,6 +232,7 @@ namespace UI.Web
         {
             if (grvAlumnos.SelectedIndex != -1)
             {
+                this.FormMode = FormModes.Alta;
                 panelABMInscripciones.Visible = true;
                 lblAlumno.Visible = false;
                 panelGrillaCursos.Visible = true;
@@ -237,6 +249,7 @@ namespace UI.Web
         {
             if (grvInscripciones.SelectedIndex != -1)
             {
+                this.FormMode = FormModes.Modificacion;
                 lblInscripcion.Visible = false;
                 panelGrillaCursos.Visible = true;
                 panelABMInscripciones.Visible = true;
@@ -254,6 +267,7 @@ namespace UI.Web
         {
             if (grvInscripciones.SelectedIndex != -1)
             {
+                this.FormMode = FormModes.Baja;
                 lblInscripcion.Visible = false;
                 panelABMInscripciones.Visible = true;
                 HabilitarControles(false);
@@ -276,12 +290,9 @@ namespace UI.Web
             this.panelControlesInscripciones.Visible = false;
         }
 
-
-        #endregion
-
         protected void btnAceptar_Click1(object sender, EventArgs e)
         {
-            if(grvCursos.SelectedIndex != -1)
+            if (grvCursos.SelectedIndex != -1)
             {
                 lblCurso.Visible = false;
                 //GuardarCambios();
@@ -291,5 +302,9 @@ namespace UI.Web
                 lblCurso.Visible = true;
             }
         }
+
+        #endregion
+
+
     }
 }
