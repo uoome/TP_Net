@@ -35,42 +35,52 @@
             this.lblIDCurso = new System.Windows.Forms.Label();
             this.lblCondicion = new System.Windows.Forms.Label();
             this.lblNota = new System.Windows.Forms.Label();
-            this.txtNota = new System.Windows.Forms.TextBox();
-            this.txtCondicion = new System.Windows.Forms.TextBox();
             this.txtID_Curso = new System.Windows.Forms.TextBox();
             this.txtID_Alumno = new System.Windows.Forms.TextBox();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
+            this.cbxCondiciones = new System.Windows.Forms.ComboBox();
+            this.cbxNotas = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.tlpInscripcionesDesktop.SuspendLayout();
             this.SuspendLayout();
             // 
             // tlpInscripcionesDesktop
             // 
             this.tlpInscripcionesDesktop.ColumnCount = 2;
-            this.tlpInscripcionesDesktop.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlpInscripcionesDesktop.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tlpInscripcionesDesktop.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tlpInscripcionesDesktop.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlpInscripcionesDesktop.Controls.Add(this.lblID, 0, 0);
             this.tlpInscripcionesDesktop.Controls.Add(this.txtID, 1, 0);
             this.tlpInscripcionesDesktop.Controls.Add(this.lblIDAlu, 0, 1);
-            this.tlpInscripcionesDesktop.Controls.Add(this.lblIDCurso, 0, 2);
-            this.tlpInscripcionesDesktop.Controls.Add(this.lblCondicion, 0, 3);
-            this.tlpInscripcionesDesktop.Controls.Add(this.lblNota, 0, 4);
-            this.tlpInscripcionesDesktop.Controls.Add(this.txtNota, 1, 4);
-            this.tlpInscripcionesDesktop.Controls.Add(this.txtCondicion, 1, 3);
-            this.tlpInscripcionesDesktop.Controls.Add(this.txtID_Curso, 1, 2);
             this.tlpInscripcionesDesktop.Controls.Add(this.txtID_Alumno, 1, 1);
-            this.tlpInscripcionesDesktop.Controls.Add(this.btnAceptar, 0, 5);
-            this.tlpInscripcionesDesktop.Controls.Add(this.btnCancelar, 1, 5);
+            this.tlpInscripcionesDesktop.Controls.Add(this.btnAceptar, 0, 7);
+            this.tlpInscripcionesDesktop.Controls.Add(this.btnCancelar, 1, 7);
+            this.tlpInscripcionesDesktop.Controls.Add(this.lblNota, 0, 6);
+            this.tlpInscripcionesDesktop.Controls.Add(this.cbxNotas, 1, 6);
+            this.tlpInscripcionesDesktop.Controls.Add(this.lblCondicion, 0, 5);
+            this.tlpInscripcionesDesktop.Controls.Add(this.cbxCondiciones, 1, 5);
+            this.tlpInscripcionesDesktop.Controls.Add(this.lblIDCurso, 0, 4);
+            this.tlpInscripcionesDesktop.Controls.Add(this.txtID_Curso, 1, 4);
+            this.tlpInscripcionesDesktop.Controls.Add(this.label1, 0, 2);
+            this.tlpInscripcionesDesktop.Controls.Add(this.label2, 0, 3);
+            this.tlpInscripcionesDesktop.Controls.Add(this.textBox1, 1, 2);
+            this.tlpInscripcionesDesktop.Controls.Add(this.textBox2, 1, 3);
             this.tlpInscripcionesDesktop.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpInscripcionesDesktop.Location = new System.Drawing.Point(0, 0);
             this.tlpInscripcionesDesktop.Name = "tlpInscripcionesDesktop";
-            this.tlpInscripcionesDesktop.RowCount = 6;
-            this.tlpInscripcionesDesktop.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlpInscripcionesDesktop.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlpInscripcionesDesktop.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 44F));
-            this.tlpInscripcionesDesktop.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 44F));
-            this.tlpInscripcionesDesktop.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 52F));
-            this.tlpInscripcionesDesktop.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
+            this.tlpInscripcionesDesktop.RowCount = 8;
+            this.tlpInscripcionesDesktop.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tlpInscripcionesDesktop.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tlpInscripcionesDesktop.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tlpInscripcionesDesktop.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tlpInscripcionesDesktop.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tlpInscripcionesDesktop.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tlpInscripcionesDesktop.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tlpInscripcionesDesktop.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.tlpInscripcionesDesktop.Size = new System.Drawing.Size(397, 261);
             this.tlpInscripcionesDesktop.TabIndex = 0;
             // 
@@ -85,16 +95,16 @@
             // 
             // txtID
             // 
-            this.txtID.Location = new System.Drawing.Point(201, 3);
+            this.txtID.Location = new System.Drawing.Point(84, 3);
             this.txtID.Name = "txtID";
             this.txtID.ReadOnly = true;
-            this.txtID.Size = new System.Drawing.Size(100, 20);
+            this.txtID.Size = new System.Drawing.Size(121, 20);
             this.txtID.TabIndex = 1;
             // 
             // lblIDAlu
             // 
             this.lblIDAlu.AutoSize = true;
-            this.lblIDAlu.Location = new System.Drawing.Point(3, 46);
+            this.lblIDAlu.Location = new System.Drawing.Point(3, 26);
             this.lblIDAlu.Name = "lblIDAlu";
             this.lblIDAlu.Size = new System.Drawing.Size(56, 13);
             this.lblIDAlu.TabIndex = 2;
@@ -103,7 +113,7 @@
             // lblIDCurso
             // 
             this.lblIDCurso.AutoSize = true;
-            this.lblIDCurso.Location = new System.Drawing.Point(3, 92);
+            this.lblIDCurso.Location = new System.Drawing.Point(3, 120);
             this.lblIDCurso.Name = "lblIDCurso";
             this.lblIDCurso.Size = new System.Drawing.Size(48, 13);
             this.lblIDCurso.TabIndex = 3;
@@ -112,7 +122,7 @@
             // lblCondicion
             // 
             this.lblCondicion.AutoSize = true;
-            this.lblCondicion.Location = new System.Drawing.Point(3, 136);
+            this.lblCondicion.Location = new System.Drawing.Point(3, 154);
             this.lblCondicion.Name = "lblCondicion";
             this.lblCondicion.Size = new System.Drawing.Size(54, 13);
             this.lblCondicion.TabIndex = 4;
@@ -121,43 +131,29 @@
             // lblNota
             // 
             this.lblNota.AutoSize = true;
-            this.lblNota.Location = new System.Drawing.Point(3, 180);
+            this.lblNota.Location = new System.Drawing.Point(3, 188);
             this.lblNota.Name = "lblNota";
             this.lblNota.Size = new System.Drawing.Size(30, 13);
             this.lblNota.TabIndex = 5;
             this.lblNota.Text = "Nota";
             // 
-            // txtNota
-            // 
-            this.txtNota.Location = new System.Drawing.Point(201, 183);
-            this.txtNota.Name = "txtNota";
-            this.txtNota.Size = new System.Drawing.Size(100, 20);
-            this.txtNota.TabIndex = 6;
-            // 
-            // txtCondicion
-            // 
-            this.txtCondicion.Location = new System.Drawing.Point(201, 139);
-            this.txtCondicion.Name = "txtCondicion";
-            this.txtCondicion.Size = new System.Drawing.Size(100, 20);
-            this.txtCondicion.TabIndex = 7;
-            // 
             // txtID_Curso
             // 
-            this.txtID_Curso.Location = new System.Drawing.Point(201, 95);
+            this.txtID_Curso.Location = new System.Drawing.Point(84, 123);
             this.txtID_Curso.Name = "txtID_Curso";
-            this.txtID_Curso.Size = new System.Drawing.Size(100, 20);
+            this.txtID_Curso.Size = new System.Drawing.Size(121, 20);
             this.txtID_Curso.TabIndex = 8;
             // 
             // txtID_Alumno
             // 
-            this.txtID_Alumno.Location = new System.Drawing.Point(201, 49);
+            this.txtID_Alumno.Location = new System.Drawing.Point(84, 29);
             this.txtID_Alumno.Name = "txtID_Alumno";
-            this.txtID_Alumno.Size = new System.Drawing.Size(100, 20);
+            this.txtID_Alumno.Size = new System.Drawing.Size(121, 20);
             this.txtID_Alumno.TabIndex = 9;
             // 
             // btnAceptar
             // 
-            this.btnAceptar.Location = new System.Drawing.Point(3, 235);
+            this.btnAceptar.Location = new System.Drawing.Point(3, 225);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(75, 23);
             this.btnAceptar.TabIndex = 10;
@@ -167,13 +163,61 @@
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(201, 235);
+            this.btnCancelar.Location = new System.Drawing.Point(84, 225);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
             this.btnCancelar.TabIndex = 11;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            // 
+            // cbxCondiciones
+            // 
+            this.cbxCondiciones.FormattingEnabled = true;
+            this.cbxCondiciones.Location = new System.Drawing.Point(84, 157);
+            this.cbxCondiciones.Name = "cbxCondiciones";
+            this.cbxCondiciones.Size = new System.Drawing.Size(121, 21);
+            this.cbxCondiciones.TabIndex = 12;
+            // 
+            // cbxNotas
+            // 
+            this.cbxNotas.FormattingEnabled = true;
+            this.cbxNotas.Location = new System.Drawing.Point(84, 191);
+            this.cbxNotas.Name = "cbxNotas";
+            this.cbxNotas.Size = new System.Drawing.Size(121, 21);
+            this.cbxNotas.TabIndex = 13;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(3, 52);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 14;
+            this.label1.Text = "label1";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(3, 86);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(35, 13);
+            this.label2.TabIndex = 15;
+            this.label2.Text = "label2";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(84, 55);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(121, 20);
+            this.textBox1.TabIndex = 16;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(84, 89);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(121, 20);
+            this.textBox2.TabIndex = 17;
             // 
             // AlumnoInscripcionDesktop
             // 
@@ -199,11 +243,15 @@
         private System.Windows.Forms.Label lblIDCurso;
         private System.Windows.Forms.Label lblCondicion;
         private System.Windows.Forms.Label lblNota;
-        private System.Windows.Forms.TextBox txtNota;
-        private System.Windows.Forms.TextBox txtCondicion;
         private System.Windows.Forms.TextBox txtID_Curso;
         private System.Windows.Forms.TextBox txtID_Alumno;
         private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.ComboBox cbxNotas;
+        private System.Windows.Forms.ComboBox cbxCondiciones;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox2;
     }
 }

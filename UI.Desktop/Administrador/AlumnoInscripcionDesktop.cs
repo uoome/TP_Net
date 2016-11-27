@@ -51,9 +51,9 @@ namespace UI.Desktop
         {
             txtID.Text = AlumnoInscripcion.ID.ToString();
             txtID_Alumno.Text = AlumnoInscripcion.IdAlumno.ToString();
-            txtNota.Text = AlumnoInscripcion.Nota.ToString();
+            //txtNota.Text = AlumnoInscripcion.Nota.ToString();
             txtID_Curso.Text = AlumnoInscripcion.IdCurso.ToString();
-            txtCondicion.Text = AlumnoInscripcion.Condicion;
+            //txtCondicion.Text = AlumnoInscripcion.Condicion.ToString();
 
                     
         }
@@ -68,8 +68,8 @@ namespace UI.Desktop
                 AlumnoInscripcion.ID = int.Parse(txtID.Text);
                 AlumnoInscripcion.IdAlumno = int.Parse(txtID_Alumno.Text);
                 AlumnoInscripcion.IdCurso = int.Parse(txtID_Curso.Text);
-                AlumnoInscripcion.Condicion = txtCondicion.Text;
-                AlumnoInscripcion.Nota = int.Parse(txtNota.Text);
+               // AlumnoInscripcion.Condicion = txtCondicion.Text;
+                //AlumnoInscripcion.Nota = int.Parse(txtNota.Text);
             
             
             }

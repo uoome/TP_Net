@@ -66,16 +66,17 @@ namespace UI.Web
 
 
         #region Metodos
-        private void EnableForm(bool enable)
-        {
-            ddlCondicion.Enabled = enable;
-            txtNota.Enabled = enable;
-        }
-
+        
         private void ClearForm()
         {
             ddlCondicion.SelectedIndex = -1;
-            txtNota.Text.Equals("0");
+            ddlNotas.SelectedIndex = -1;
+        }
+
+        private void HabilitarControles(bool condicion)
+        {
+            ddlCondicion.Enabled = condicion;
+            ddlNotas.Enabled = condicion;
         }
         private void SaveEntity(AlumnoInscripcion Alu)
         {
@@ -94,31 +95,6 @@ namespace UI.Web
 
         private void LoadForm(int id)
         {
-            this.Entity = InscLogic.GetOne(id);
-            this.txtCondicion.Text = this.Entity.Condicion;
-            this.ddlCursos.SelectedValue = this.Entity.IdCurso.ToString();
-            this.ddlAlumno.SelectedValue = this.Entity.IdAlumno.ToString();
-            this.txtNota.Text = this.Entity.Nota.ToString();
-
-            PersonaLogic per = new PersonaLogic();
-            CursoLogic cur = new CursoLogic();
-            List<Curso> curs = new List<Curso>();
-            List<Business.Entities.Personas> pers = new List<Business.Entities.Personas>();
-
-            curs = cur.GetAll();
-            foreach (Curso cu in curs)
-            {
-                ddlCursos.Items.Add(cu.ID.ToString());
-            }
-            pers = per.GetAll();
-
-            foreach (Business.Entities.Personas pe in pers)
-            {
-                if (pe.TipoPersona == Business.Entities.Personas.TiposPersonas.Alumno)
-                {
-                    this.ddlAlumno.Items.Add(pe.ID.ToString());
-                }
-            }
            
         }
 
@@ -144,7 +120,45 @@ namespace UI.Web
 
         }
 
+        protected void cargaInscripciones(int idAlu)
+        {
+            string mat = "", com = "", anio = "", cup = "";
+            MateriaLogic ml = new MateriaLogic();
+            ComisionLogic coml = new ComisionLogic();
+            AlumnoInscripcionLogic ail = new AlumnoInscripcionLogic();
+            List<Object> listaInscripciones = new List<Object>(); //será tipo anónimo
+            Inscrip = ail.GetAll(idAlu);
 
+            foreach (AlumnoInscripcion alumInsc in Inscrip)
+            {
+                foreach (Curso cur in Cursos) //recuperar datos del curso
+                {
+                    if (cur.ID == alumInsc.IdCurso)
+                    {
+                        mat = ml.GetOne(cur.IDMateria).Descripcion;
+                        com = coml.GetOne(cur.IDComision).Descripcion;
+                        anio = cur.AnioCalendario.ToString();
+                        cup = cur.Cupo.ToString();
+                        break;
+                    }
+                }
+                //Armo el tipo anónimo
+                listaInscripciones.Add(new
+                {
+                    nota = alumInsc.Nota.ToString(),
+                    materia = mat,
+                    comision = com,
+                    año = anio,
+                    condicion = alumInsc.Condicion,
+
+                });
+
+            }
+            grvInscripciones.DataSource = listaInscripciones;
+            grvInscripciones.DataBind();
+
+        }
+    
         #endregion
 
         #region Eventos
@@ -165,104 +179,117 @@ namespace UI.Web
                 Cursos = clog.GetAll();
                 cargarCursos();
 
+                ddlNotas.Items.Add("");
+                for (int i = 0; i <= 10; i++)
+                {
+                    ddlNotas.Items.Add(i.ToString());
+                }
+
+                ddlCondicion.Items.Add("");
+                ddlCondicion.Items.Add(AlumnoInscripcion.TiposCondiciones.Inscripto.ToString());
+                ddlCondicion.Items.Add(AlumnoInscripcion.TiposCondiciones.Cursando.ToString());
+                ddlCondicion.Items.Add(AlumnoInscripcion.TiposCondiciones.Regular.ToString());
+                ddlCondicion.Items.Add(AlumnoInscripcion.TiposCondiciones.Promocionado.ToString());
+                ddlCondicion.Items.Add(AlumnoInscripcion.TiposCondiciones.Aprobado.ToString());
+                ddlCondicion.Items.Add(AlumnoInscripcion.TiposCondiciones.Libre.ToString());
             }
 
         }
-        protected void btnAceptar_Click(object sender, EventArgs e)
-        {
-            switch (this.FormMode)
-            {
-                case ABM.FormModes.Alta:
-                    this.Entity = new AlumnoInscripcion();
-                    this.LoadEntity(this.Entity);
-                    this.Entity.State = BusinessEntity.States.New;
-                    this.SaveEntity(this.Entity);
-                    this.LoadGrid();
-                  
-                    break;
-
-                case ABM.FormModes.Baja:
-                    this.DeleteEntity(this.SelectedID);
-                    this.LoadGrid();
-                    break;
-
-                case FormModes.Modificacion:
-                    this.Entity = new AlumnoInscripcion();
-                    this.Entity.ID = this.SelectedID;
-                    this.Entity.State = BusinessEntity.States.Modified;
-                    this.LoadEntity(this.Entity);
-                    this.SaveEntity(this.Entity);
-                    this.LoadGrid();
-                    break;
-                default: break;
-                    
-            }
-            this.panelGrillaInscripciones.Visible = false;
-            this.panelControlesInscripciones.Visible = false;
-        }
-
-        protected void linkbtnEditar_Click(object sender, EventArgs e)
-        {
-           
-            if (this.IsEntitySelected)
-            {
-                EnableForm(true);
-                this.panelControlesInscripciones.Visible = true;
-                this.panelGrillaInscripciones.Visible = true;
-                this.FormMode = FormModes.Modificacion;
-                this.LoadForm(this.SelectedID);
-            }
-        }
-
-        protected void linkbtnEliminar_Click(object sender, EventArgs e)
-        {
-            if (this.IsEntitySelected)
-            {
-                this.panelControlesInscripciones.Visible = true;
-                this.panelGrillaInscripciones.Visible = true;
-                this.FormMode = FormModes.Baja;
-                this.EnableForm(false);
-                this.LoadForm(this.SelectedID);
-
-            }
-        }
-
-        protected void linkbtnNuevo_Click(object sender, EventArgs e)
-        {
-            this.panelGrillaInscripciones.Visible = true;
-            this.FormMode = FormModes.Alta;
-            this.ClearForm();
-            this.panelControlesInscripciones.Visible = true;
-            this.EnableForm(true);
-
-
-        }
-
+        
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Inscripciones.aspx");
+            Response.Redirect("~Administrador/Inscripciones.aspx");
             this.panelControlesInscripciones.Visible = false;
             this.panelGrillaInscripciones.Visible = false;
+            this.panelGrillaCursos.Visible = false;
+            this.panelControlesInscripciones.Visible = false;
+
         }
 
         protected void grvInscripciones_SelectedIndexChanged(object sender, EventArgs e)
         {
-            this.SelectedID = (int)this.grvAlumnos.SelectedValue;
-            panelGrillaInscripciones.Visible = true;
-
+            //elegis el alumno y lista las inscripciones que tiene
+            if (grvAlumnos.SelectedIndex != -1)
+            {
+                cargaInscripciones(Alumnos[grvAlumnos.SelectedIndex].ID);
+                panelGrillaInscripciones.Visible = true;
+            }
         }
+        
 
-        protected void ListBox1_SelectedIndexChanged(object sender, EventArgs e)
+        protected void btnAgregarInscripcion_Click(object sender, EventArgs e)
         {
-            Business.Entities.Personas pers = new Business.Entities.Personas();
-            PersonaLogic persL = new PersonaLogic();
-            pers = persL.GetOne(Convert.ToInt32(ddlAlumno.SelectedValue));
-            this.txtNombre.Text = pers.Nombre;
-            this.txtApellido.Text = pers.Apellido;
+            if (grvAlumnos.SelectedIndex != -1)
+            {
+                panelABMInscripciones.Visible = true;
+                lblAlumno.Visible = false;
+                panelGrillaCursos.Visible = true;
+                btnAceptar.Text = "Agregar";
+                Estado = BusinessEntity.States.New;
+            }
+            else {
+                lblInscripcion.Visible = true;
+                lblInscripcion.Text = "Debe seleccionar un alumno para agregar una inscripción";
+            }
         }
+
+        protected void btnEditarInscripcion_Click(object sender, EventArgs e)
+        {
+            if (grvInscripciones.SelectedIndex != -1)
+            {
+                lblInscripcion.Visible = false;
+                panelGrillaCursos.Visible = true;
+                panelABMInscripciones.Visible = true;
+                HabilitarControles(true);
+                btnAceptar.Text = "Guardar";
+                Estado = BusinessEntity.States.Modified;
+            }
+            else {
+                lblInscripcion.Visible = true;
+                lblInscripcion.Text = "Debe seleccionar una inscripción para editarla";
+            }
+        }
+
+        protected void btnEliminarInscripcion_Click(object sender, EventArgs e)
+        {
+            if (grvInscripciones.SelectedIndex != -1)
+            {
+                lblInscripcion.Visible = false;
+                panelABMInscripciones.Visible = true;
+                HabilitarControles(false);
+                btnAceptar.Text = "Eliminar";
+                Estado = BusinessEntity.States.Deleted;
+            }
+            else
+            {
+                panelABMInscripciones.Visible = false;
+                lblInscripcion.Text = "Debe selecionar una inscripción para eliminarla";
+            }
+        }
+
+        protected void btnCancelar_Click1(object sender, EventArgs e)
+        {
+            Response.Redirect("~Administrador/Inscripciones.aspx");
+            this.panelABMInscripciones.Visible = false;
+            this.panelGrillaInscripciones.Visible = false;
+            this.panelGrillaCursos.Visible = false;
+            this.panelControlesInscripciones.Visible = false;
+        }
+
 
         #endregion
 
-
+        protected void btnAceptar_Click1(object sender, EventArgs e)
+        {
+            if(grvCursos.SelectedIndex != -1)
+            {
+                lblCurso.Visible = false;
+                //GuardarCambios();
+            }
+            else
+            {
+                lblCurso.Visible = true;
+            }
+        }
     }
 }

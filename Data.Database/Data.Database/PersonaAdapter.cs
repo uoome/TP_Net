@@ -69,7 +69,7 @@ namespace Data.Database
                 cmdPersonas.Parameters.Add("@tipo_pers", SqlDbType.Int).Value = tipoPers;
                 SqlDataReader drPersonas = cmdPersonas.ExecuteReader();
 
-                if (drPersonas.Read())
+                while (drPersonas.Read())
                 {
                     Personas pers = new Personas();
                     pers.ID = (int)drPersonas["id_persona"];

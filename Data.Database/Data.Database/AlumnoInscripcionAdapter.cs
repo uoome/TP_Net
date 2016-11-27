@@ -19,7 +19,7 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand CmdAlumnosIns = new SqlCommand("SELECT * from alumnos_inscripciones", sqlConn);
+                SqlCommand CmdAlumnosIns = new SqlCommand("SELECT * FROM alumnos_inscripciones", sqlConn);
                 SqlDataReader drAlumnosIns = CmdAlumnosIns.ExecuteReader();
                 while (drAlumnosIns.Read())
                 {
@@ -28,7 +28,7 @@ namespace Data.Database
                     al.IdAlumno = (int)drAlumnosIns["id_alumno"];
                     al.IdCurso = (int)drAlumnosIns["id_curso"];
                     al.Nota = (int)drAlumnosIns["nota"];
-                    al.Condicion = (string)drAlumnosIns["condicion"];
+                    al.Condicion = (AlumnoInscripcion.TiposCondiciones)drAlumnosIns["condicion"];
                     Inscripciones.Add(al);
 
                 }
@@ -48,6 +48,44 @@ namespace Data.Database
 
 
         }
+
+        public List<AlumnoInscripcion> GetAll(int idAlu)
+        {
+            List<AlumnoInscripcion> listaInscrip = new List<AlumnoInscripcion>();
+
+            try
+            {
+                this.OpenConnection();
+                SqlCommand cmdAluInsc = new SqlCommand("SELECT * FROM alumnos_inscripciones WHERE id_alumno=@idAlu", sqlConn);
+                cmdAluInsc.Parameters.Add("@idAlu", SqlDbType.Int).Value = idAlu;
+                SqlDataReader drAluInsc = cmdAluInsc.ExecuteReader();
+
+                while (drAluInsc.Read())
+                {
+                    AlumnoInscripcion al = new AlumnoInscripcion();
+                    al.ID = (int)drAluInsc["id_inscripcion"];
+                    al.IdAlumno = (int)drAluInsc["id_alumno"];
+                    al.IdCurso = (int)drAluInsc["id_curso"];
+                    al.Nota = (int)drAluInsc["nota"];
+                    al.Condicion = (AlumnoInscripcion.TiposCondiciones)drAluInsc["condicion"];
+
+                    listaInscrip.Add(al);
+                    
+                }
+                drAluInsc.Close();
+            }
+            catch (Exception ex)
+            {
+                Exception exManejada = new Exception("Error al cargar la lista" + ex.Message);
+                throw exManejada;
+            }
+            finally
+            {
+                this.CloseConnection();
+            }
+
+            return listaInscrip;
+        }
         public AlumnoInscripcion GetOne (int ID)
         {
             AlumnoInscripcion al = new AlumnoInscripcion();
@@ -64,7 +102,7 @@ namespace Data.Database
                     al.IdAlumno = (int)drAlumnosIns["id_alumno"];
                     al.IdCurso = (int)drAlumnosIns["id_curso"];
                     al.Nota = (int)drAlumnosIns["nota"];
-                    al.Condicion = (string)drAlumnosIns["condicion"];
+                    al.Condicion = (AlumnoInscripcion.TiposCondiciones)drAlumnosIns["condicion"];
 
                 }
                 drAlumnosIns.Close();

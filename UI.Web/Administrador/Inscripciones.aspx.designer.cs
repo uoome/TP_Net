@@ -31,13 +31,13 @@ namespace UI.Web {
         protected global::System.Web.UI.WebControls.Panel panelCartelAlumnos;
         
         /// <summary>
-        /// Control lblInscripcion.
+        /// Control lblAlumno.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblInscripcion;
+        protected global::System.Web.UI.WebControls.Label lblAlumno;
         
         /// <summary>
         /// Control panelGrillaInscripciones.
@@ -94,6 +94,15 @@ namespace UI.Web {
         protected global::System.Web.UI.WebControls.Button btnEliminarInscripcion;
         
         /// <summary>
+        /// Control lblInscripcion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblInscripcion;
+        
+        /// <summary>
         /// Control panelGrillaCursos.
         /// </summary>
         /// <remarks>
@@ -101,6 +110,24 @@ namespace UI.Web {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel panelGrillaCursos;
+        
+        /// <summary>
+        /// Control grvCursos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView grvCursos;
+        
+        /// <summary>
+        /// Control lblCurso.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCurso;
         
         /// <summary>
         /// Control panelABMInscripciones.
@@ -139,21 +166,30 @@ namespace UI.Web {
         protected global::System.Web.UI.WebControls.Label lblNota;
         
         /// <summary>
-        /// Control txtNota.
+        /// Control ddlNotas.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNota;
+        protected global::System.Web.UI.WebControls.DropDownList ddlNotas;
         
         /// <summary>
-        /// Control grvCursos.
+        /// Control btnAceptar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView grvCursos;
+        protected global::System.Web.UI.WebControls.Button btnAceptar;
+        
+        /// <summary>
+        /// Control btnCancelar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCancelar;
     }
 }
