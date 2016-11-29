@@ -220,6 +220,7 @@
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Administrador\Inscripciones.aspx" />
+    <Content Include="Administrador\Planes.aspx" />
     <Content Include="UtilWeb\Login.aspx" />
     <Content Include="Administrador\Materias.aspx" />
     <Content Include="Administrador\Personas.aspx" />
@@ -463,6 +464,13 @@
     </Compile>
     <Compile Include="Administrador\Inscripciones.aspx.designer.cs">
       <DependentUpon>Inscripciones.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrador\Planes.aspx.cs">
+      <DependentUpon>Planes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrador\Planes.aspx.designer.cs">
+      <DependentUpon>Planes.aspx</DependentUpon>
     </Compile>
     <Compile Include="UtilWeb\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>

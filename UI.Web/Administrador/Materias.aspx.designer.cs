@@ -58,6 +58,15 @@ namespace UI.Web {
         protected global::System.Web.UI.WebControls.LinkButton linkbtnEliminar;
         
         /// <summary>
+        /// Control lblCartel.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCartel;
+        
+        /// <summary>
         /// Control panelLabels.
         /// </summary>
         /// <remarks>
@@ -65,15 +74,6 @@ namespace UI.Web {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel panelLabels;
-        
-        /// <summary>
-        /// Control lblDescripcion.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDescripcion;
         
         /// <summary>
         /// Control txtDescripcion.
@@ -85,31 +85,49 @@ namespace UI.Web {
         protected global::System.Web.UI.WebControls.TextBox txtDescripcion;
         
         /// <summary>
-        /// Control RequiredFieldValidator1.
+        /// Control rfvDescripcion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvDescripcion;
         
         /// <summary>
-        /// Control lblIdPlan.
+        /// Control ddlEspecialidades.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblIdPlan;
+        protected global::System.Web.UI.WebControls.DropDownList ddlEspecialidades;
         
         /// <summary>
-        /// Control ddlIdPlan.
+        /// Control rfvEspecialidades.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlIdPlan;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvEspecialidades;
+        
+        /// <summary>
+        /// Control ddlPlanes.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlPlanes;
+        
+        /// <summary>
+        /// Control rfvPlan.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvPlan;
         
         /// <summary>
         /// Control lblHsSemanales.
@@ -130,13 +148,13 @@ namespace UI.Web {
         protected global::System.Web.UI.WebControls.TextBox txtHsSemanales;
         
         /// <summary>
-        /// Control RequiredFieldValidator2.
+        /// Control rfvHsSemanales.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvHsSemanales;
         
         /// <summary>
         /// Control lblhsTotales.
@@ -157,13 +175,13 @@ namespace UI.Web {
         protected global::System.Web.UI.WebControls.TextBox txtHsTotales;
         
         /// <summary>
-        /// Control RequiredFieldValidator3.
+        /// Control rfvHsTotales.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator3;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvHsTotales;
         
         /// <summary>
         /// Control panelConfirmacion.
@@ -193,12 +211,12 @@ namespace UI.Web {
         protected global::System.Web.UI.WebControls.Button btnCancelar;
         
         /// <summary>
-        /// Control ValidationSummary1.
+        /// Control vsMaterias.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary1;
+        protected global::System.Web.UI.WebControls.ValidationSummary vsMaterias;
     }
 }

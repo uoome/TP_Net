@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Administrador/Site.Master" AutoEventWireup="true" CodeBehind="Personas.aspx.cs" Inherits="UI.Web.Personas" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="bodyContentPlaceHolder" runat="server">
-    <asp:GridView ID="grillaPersonas" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" DataKeyNames="ID" OnSelectedIndexChanged="grillaPersonas_SelectedIndexChanged">
+    <asp:GridView ID="grillaPersonas" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" DataKeyNames="ID" OnSelectedIndexChanged="grillaPersonas_SelectedIndexChanged" CellSpacing="2">
         <AlternatingRowStyle BackColor="White" />
         <Columns>
             <asp:BoundField DataField="ID" HeaderText="ID Persona" ReadOnly="True" />

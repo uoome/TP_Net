@@ -11,16 +11,7 @@ namespace UI.Web
 {
     public partial class Materias : ABM
     {
-        protected override void Page_Load(object sender, EventArgs e)
-        {
-            if(!IsPostBack)
-            {
-                string si = "menuMaterias";
-                Session["Menu"] = si;
-                this.LoadGrid();
-            }
-        }
-
+        
         private MateriaLogic _mat;
         public MateriaLogic Materia
         {
@@ -38,8 +29,8 @@ namespace UI.Web
             set;
             get;
         }
-        #region Metodos
 
+        #region Metodos
 
         private void LoadGrid()
         {
@@ -51,7 +42,7 @@ namespace UI.Web
             ListaPlanes = PlLog.GetAll();
             foreach (Plan pe in ListaPlanes)
             {
-                ddlIdPlan.Items.Add(pe.ID.ToString());
+                ddlPlanes.Items.Add(pe.ID.ToString());
             }
             this.grvMaterias.DataBind();
         }
@@ -60,11 +51,11 @@ namespace UI.Web
             this.txtDescripcion.Text = string.Empty;
             this.txtHsSemanales.Text = string.Empty;
             this.txtHsTotales.Text = string.Empty;
-            this.ddlIdPlan.SelectedIndex = -1;
+            this.ddlPlanes.SelectedIndex = -1;
         }
         private void LoadEntity(Materia mt)
         {
-            mt.IDplan = int.Parse(this.ddlIdPlan.SelectedValue);
+            mt.IDplan = new PlanLogic().GetOne(ddlEspecialidades.Text, ddlPlanes.Text).ID;
             mt.HSSemanales = int.Parse(this.txtHsSemanales.Text);
             mt.HSTotales = int.Parse(this.txtHsTotales.Text);
             mt.Descripcion = this.txtDescripcion.Text;
@@ -84,20 +75,45 @@ namespace UI.Web
             txtDescripcion.Text = Entity.Descripcion;
             txtHsSemanales.Text = Entity.HSSemanales.ToString();
             txtHsTotales.Text = Entity.HSTotales.ToString();
-            ddlIdPlan.SelectedValue = Entity.IDplan.ToString();
+            Plan p = new Plan();
+            p = new PlanLogic().GetOne(Entity.IDplan);
+            ddlEspecialidades.Text = new EspecialidadLogic().GetOne(p.IDEspecialidad).Descripcion;
+            ddlPlanes.Text = p.Descripcion;
         }
         private void EnabledForm(bool enabled)
         {
             this.txtDescripcion.Enabled = enabled;
             this.txtHsSemanales.Enabled = enabled;
             this.txtHsTotales.Enabled = enabled;
-            this.ddlIdPlan.Enabled = enabled;
+            this.ddlPlanes.Enabled = enabled;
 
        }
 
 
         #endregion
+
         #region Eventos
+
+        protected override void Page_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                string si = "menuMaterias";
+                Session["Menu"] = si;
+
+                EspecialidadLogic espe = new EspecialidadLogic();
+                List<Especialidad> listaEspeci = new List<Especialidad>();
+                listaEspeci = espe.GetAll();
+
+                ddlEspecialidades.Items.Add("");
+                foreach (Especialidad x in listaEspeci)
+                {
+                    ddlEspecialidades.Items.Add(x.Descripcion);
+                }
+
+                this.LoadGrid();
+            }
+        }
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/Materias.aspx");
@@ -122,25 +138,28 @@ namespace UI.Web
         {
             if (this.IsEntitySelected)
             {
+                this.lblCartel.Visible = false;
                 this.panelConfirmacion.Visible = true;
                 this.panelLabels.Visible = true;
                 EnabledForm(true);
                 this.FormMode = FormModes.Modificacion;
                 LoadForm(SelectedID);
             }
+            else
+            {
+                lblCartel.Visible = true;
+                lblCartel.Text = "Debe seleccionar una materia de la lista";            }
         }
 
         protected void linkbtnNuevo_Click(object sender, EventArgs e)
         {
-
-           
-                this.panelConfirmacion.Visible = true;
-
-                this.panelLabels.Visible = true;
-                this.ClearForm();
-                EnabledForm(true);
-                this.FormMode = FormModes.Alta;
-                LoadForm(SelectedID);
+            
+            this.panelConfirmacion.Visible = true;
+            this.panelLabels.Visible = true;
+            this.ClearForm();
+            EnabledForm(true);
+            this.FormMode = FormModes.Alta;
+            LoadForm(SelectedID);
             
         }
 
@@ -180,11 +199,26 @@ namespace UI.Web
             this.SelectedID = (int)grvMaterias.SelectedValue;
         }
 
+
         #endregion
 
-        protected void ddlIdPlan_SelectedIndexChanged(object sender, EventArgs e)
+        protected void ddlEspecialidades_SelectedIndexChanged(object sender, EventArgs e)
         {
+            PlanLogic plan = new PlanLogic();
+            List<Plan> listaPlanes = new List<Plan>();
+            listaPlanes = plan.GetAll();
 
+            ddlPlanes.Items.Clear();
+            ddlPlanes.Items.Add("");
+            if (ddlEspecialidades.SelectedIndex > 0) //Si hay una especialidad del combo elegida
+            {
+                foreach (Plan p in listaPlanes)
+                {
+                    if (p.IDEspecialidad == ddlEspecialidades.SelectedIndex)
+                        ddlPlanes.Items.Add(p.Descripcion);
+                }
+                ddlPlanes.SelectedIndex = 0;
+            }
         }
     }
 }

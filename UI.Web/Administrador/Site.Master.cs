@@ -24,9 +24,8 @@ namespace UI.Web
 
         }
         private string MenuROjo;
-  public string Menu
+        public string Menu
         {
-          
             set
             {
                 MenuROjo = value;
@@ -59,6 +58,10 @@ namespace UI.Web
                     menuMaterias.Attributes["class"] = "active-menu";
                 }
                 if(MenuROjo == "menuEstadoAcademico")
+                {
+                    menuMaterias.Attributes["class"] = "active-menu";
+                }
+                if (MenuROjo == "menuPlanes")
                 {
                     menuMaterias.Attributes["class"] = "active-menu";
                 }

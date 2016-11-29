@@ -133,7 +133,7 @@ namespace Data.Database
                 this.OpenConnection();
                 SqlCommand cmdSave = new SqlCommand(
                     "UPDATE planes " +
-                    "SET id_especialidad=@esp, desc_plan=@desc, " +
+                    "SET id_especialidad=@esp, desc_plan=@desc " +
                     "WHERE id_plan=@id", sqlConn);
                 cmdSave.Parameters.Add("@id", SqlDbType.Int).Value = unplan.ID;
                 cmdSave.Parameters.Add("@desc", SqlDbType.VarChar, 50).Value = unplan.Descripcion;

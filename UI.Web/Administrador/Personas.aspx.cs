@@ -208,6 +208,7 @@ namespace UI.Web
 
         protected void lnkButtonNuevo_Click(object sender, EventArgs e)
         {
+            lblRegistro.Visible = false;
             this.panelFormulario.Visible = true;
             this.panelConfirmacion.Visible = true;
             this.FormMode = FormModes.Alta;

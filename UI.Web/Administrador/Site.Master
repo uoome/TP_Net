@@ -45,34 +45,31 @@ font-size: 16px;">
                 <ul class="nav" id="main-menu">
 				<li class="text-center">
                     <img src="assets/img/find_user.png" class="user-image img-responsive"/>
-					</li>
-				
-					
-                    <li>                                      
-                    <a   href="Default.aspx" runat="server" id="menuInicio">Inicio </a> 
-                    </li>
-                     <li>
-                        <a  runat="server" id="menuCursos" href="Cursos.aspx">   Cursos</a>                      
-                     </li>
-                    <li>
-                        <a runat="server" id="menuMaterias" href="Materias.aspx">Materias</a>
-                    </li>
-						   <li  >
-                        <a  runat="server" id="menuInscripciones" href="Inscripciones.aspx">Inscripciones</a>
-                    </li>	
-                      <li id="menurojo"  >
-                        <a     runat="server" href="Especialidades.aspx" id="activarrojo">Especialidades</a>
-                    </li>
-                 
-                    <li  >
-                        <a  href="Usuarios.aspx" runat="server" id="menuUsuarios">Usuarios</a></li>				
-			                              
-                    <li> 
-                        <a runat="server" href="Personas.aspx" id="menuPersonas"> Personas
+				</li>
+                <li>                                      
+                    <a href="Default.aspx" runat="server" id="menuInicio">Inicio </a> 
+                </li>
+                <li>
+                    <a runat="server" id="menuCursos" href="Cursos.aspx">Cursos</a>                      
+                </li>
+                <li>
+                    <a runat="server" id="menuMaterias" href="Materias.aspx">Materias</a>
+                </li>
+			    <li  >
+                    <a runat="server" id="menuInscripciones" href="Inscripciones.aspx">Inscripciones</a>
+                </li>	
+                <li id="menurojo"  >
+                     <a runat="server" href="Especialidades.aspx" id="activarrojo">Especialidades</a>
+                </li>
+                <li>
+                     <a  href="Usuarios.aspx" runat="server" id="menuUsuarios">Usuarios</a></li>				
+			    <li> 
+                     <a runat="server" href="Personas.aspx" id="menuPersonas">Personas</a>
+                </li>
+                <li> 
+                     <a runat="server" href="Planes.aspx" id="menuPlanes">Planes</a>
+                </li>
 
-                        </a>
-                                    
-                            </li>
             </div>
             
         </nav>  

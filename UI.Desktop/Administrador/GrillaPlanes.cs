@@ -17,18 +17,9 @@ namespace UI.Desktop
         public GrillaPlanes()
         {
             InitializeComponent();
-          dgvPlanes.AutoGenerateColumns = false;
+            dgvPlanes.AutoGenerateColumns = false;
         }
-
-        private void toolStripContainer1_TopToolStripPanel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void GrillaPlanes_Load(object sender, EventArgs e)
-        {
-            this.Listar();
-        }
+        
 
         #region Metodos
         public void Listar()
@@ -38,6 +29,12 @@ namespace UI.Desktop
         }
 
         #endregion
+
+        #region Eventos
+        private void GrillaPlanes_Load(object sender, EventArgs e)
+        {
+            this.Listar();
+        }
 
         private void btnActualizar_MouseClick(object sender, MouseEventArgs e)
         {
@@ -60,8 +57,8 @@ namespace UI.Desktop
         private void tsbEditar_Click(object sender, EventArgs e)
         {
             int ID = ((Plan)this.dgvPlanes.SelectedRows[0].DataBoundItem).ID;
-           PlanDesktop planDesk = new PlanDesktop(ID,ApplicationForm.ModoForm.Modificacion);
-          planDesk.ShowDialog();
+            PlanDesktop planDesk = new PlanDesktop(ID,ApplicationForm.ModoForm.Modificacion);
+            planDesk.ShowDialog();
             this.Listar();
         }
 
@@ -72,5 +69,7 @@ namespace UI.Desktop
             planDesk.ShowDialog();
             this.Listar();
         }
+
+        #endregion
     }
 }

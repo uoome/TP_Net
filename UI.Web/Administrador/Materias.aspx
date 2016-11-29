@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Administrador/Site.Master" AutoEventWireup="true" CodeBehind="Materias.aspx.cs" Inherits="UI.Web.Materias" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="bodyContentPlaceHolder" runat="server">
-    <asp:GridView ID="grvMaterias" runat="server" AutoGenerateColumns="False" BackColor="LightGoldenrodYellow" BorderColor="Tan" BorderWidth="1px" CellPadding="2" DataKeyNames="ID" ForeColor="Black" GridLines="None" OnSelectedIndexChanged="grvMaterias_SelectedIndexChanged">
+    <asp:GridView ID="grvMaterias" runat="server" AutoGenerateColumns="False" BackColor="LightGoldenrodYellow" BorderColor="Tan" BorderWidth="1px" CellPadding="2" DataKeyNames="ID" ForeColor="Black" OnSelectedIndexChanged="grvMaterias_SelectedIndexChanged" CellSpacing="2">
         <AlternatingRowStyle BackColor="PaleGoldenrod" />
         <Columns>
             <asp:BoundField DataField="IDplan" HeaderText="ID Plan" />
@@ -22,25 +22,34 @@
         <asp:LinkButton ID="linkbtnNuevo" runat="server" OnClick="linkbtnNuevo_Click">Nuevo</asp:LinkButton>
         <asp:LinkButton ID="linkbtnEditar" runat="server" OnClick="linkbtnEditar_Click">Editar</asp:LinkButton>
         <asp:LinkButton ID="linkbtnEliminar" runat="server" OnClick="linkbtnEliminar_Click">Eliminar</asp:LinkButton>
+        &nbsp;
+        <asp:Label ID="lblCartel" runat="server" ForeColor="Green" Text="Cartel" Visible="False"></asp:Label>
     </asp:Panel>
     <asp:Panel ID="panelLabels" runat="server" Visible="False">
         <table style="width:100%;">
             <tr>
                 <td>
-                    <asp:Label ID="lblDescripcion" runat="server" Text="Descripcion"></asp:Label>
-                </td>
+                    Descripcion</td>
                 <td>
                     <asp:TextBox ID="txtDescripcion" runat="server"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtDescripcion" Display="None" ErrorMessage="No puede estar vacio Descripcion"></asp:RequiredFieldValidator>
+                    <asp:RequiredFieldValidator ID="rfvDescripcion" runat="server" ControlToValidate="txtDescripcion" Display="None" ErrorMessage="No puede estar vacio Descripcion" ForeColor="Red">*</asp:RequiredFieldValidator>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <asp:Label ID="lblIdPlan" runat="server" Text="Id Plan"></asp:Label>
-                </td>
+                    Especialidad</td>
                 <td>
-                    <asp:DropDownList ID="ddlIdPlan" runat="server" OnSelectedIndexChanged="ddlIdPlan_SelectedIndexChanged">
+                    <asp:DropDownList ID="ddlEspecialidades" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlEspecialidades_SelectedIndexChanged">
                     </asp:DropDownList>
+                    <asp:RequiredFieldValidator ID="rfvEspecialidades" runat="server" ErrorMessage="Debe seleccionar una especialidad para elegir un plan" ForeColor="Red">*</asp:RequiredFieldValidator>
+                </td>
+            </tr>
+            <tr>
+                <td>Plan</td>
+                <td>
+                    <asp:DropDownList ID="ddlPlanes" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlIdPlan_SelectedIndexChanged">
+                    </asp:DropDownList>
+                    <asp:RequiredFieldValidator ID="rfvPlan" runat="server" ErrorMessage="Debe seleccionar un plan" ForeColor="Red">*</asp:RequiredFieldValidator>
                 </td>
             </tr>
             <tr>
@@ -49,7 +58,7 @@
                 </td>
                 <td>
                     <asp:TextBox ID="txtHsSemanales" runat="server"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtHsSemanales" Display="None" ErrorMessage="No puede estar vacio hs semanales"></asp:RequiredFieldValidator>
+                    <asp:RequiredFieldValidator ID="rfvHsSemanales" runat="server" ControlToValidate="txtHsSemanales" Display="None" ErrorMessage="No puede estar vacio hs semanales" ForeColor="Red">*</asp:RequiredFieldValidator>
                 </td>
             </tr>
             <tr>
@@ -58,7 +67,7 @@
                 </td>
                 <td>
                     <asp:TextBox ID="txtHsTotales" runat="server"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtHsTotales" Display="None" ErrorMessage="Las hs totales no pueden estar vacias"></asp:RequiredFieldValidator>
+                    <asp:RequiredFieldValidator ID="rfvHsTotales" runat="server" ControlToValidate="txtHsTotales" Display="None" ErrorMessage="Las hs totales no pueden estar vacias" ForeColor="Red">*</asp:RequiredFieldValidator>
                 </td>
             </tr>
         </table>
@@ -67,5 +76,5 @@
         <asp:Button ID="btnAceptar" runat="server" Text="Aceptar" OnClick="btnAceptar_Click" />
         <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" OnClick="btnCancelar_Click" />
     </asp:Panel>
-    <asp:ValidationSummary ID="ValidationSummary1" runat="server" />
+    <asp:ValidationSummary ID="vsMaterias" runat="server" ForeColor="Red" ShowValidationErrors="true"/>
 </asp:Content>
