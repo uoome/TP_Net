@@ -158,7 +158,7 @@ namespace Data.Database
                 this.OpenConnection();
                 SqlCommand cmdInsert = new SqlCommand(
                     "INSERT INTO planes (desc_plan, id_especialidad) " +
-                    "VALUES (@desc , @id_especialidad ", sqlConn);
+                    "VALUES (@desc , @id_especialidad)", sqlConn);
                 //El select recupera el id asignado automaticamente por la BD
 
                 cmdInsert.Parameters.Add("@desc", SqlDbType.VarChar, 50).Value = unplan.Descripcion;

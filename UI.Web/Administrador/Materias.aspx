@@ -18,14 +18,14 @@
         <SortedDescendingCellStyle BackColor="#E1DB9C" />
         <SortedDescendingHeaderStyle BackColor="#C2A47B" />
     </asp:GridView>
-    <asp:Panel ID="panelABM" runat="server">
-        <asp:LinkButton ID="linkbtnNuevo" runat="server" OnClick="linkbtnNuevo_Click">Nuevo</asp:LinkButton>
-        <asp:LinkButton ID="linkbtnEditar" runat="server" OnClick="linkbtnEditar_Click">Editar</asp:LinkButton>
-        <asp:LinkButton ID="linkbtnEliminar" runat="server" OnClick="linkbtnEliminar_Click">Eliminar</asp:LinkButton>
+    <asp:Panel ID="panelControles" runat="server">
+        <asp:LinkButton ID="linkbtnNuevo" runat="server" OnClick="linkbtnNuevo_Click" CausesValidation="false">Nuevo</asp:LinkButton>
+        <asp:LinkButton ID="linkbtnEditar" runat="server" OnClick="linkbtnEditar_Click" CausesValidation="false">Editar</asp:LinkButton>
+        <asp:LinkButton ID="linkbtnEliminar" runat="server" OnClick="linkbtnEliminar_Click" CausesValidation="false">Eliminar</asp:LinkButton>
         &nbsp;
         <asp:Label ID="lblCartel" runat="server" ForeColor="Green" Text="Cartel" Visible="False"></asp:Label>
     </asp:Panel>
-    <asp:Panel ID="panelLabels" runat="server" Visible="False">
+    <asp:Panel ID="panelFormulario" runat="server" Visible="False">
         <table style="width:100%;">
             <tr>
                 <td>
@@ -41,15 +41,15 @@
                 <td>
                     <asp:DropDownList ID="ddlEspecialidades" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlEspecialidades_SelectedIndexChanged">
                     </asp:DropDownList>
-                    <asp:RequiredFieldValidator ID="rfvEspecialidades" runat="server" ErrorMessage="Debe seleccionar una especialidad para elegir un plan" ForeColor="Red">*</asp:RequiredFieldValidator>
+                    <asp:RequiredFieldValidator ID="rfvEspecialidades" runat="server" ErrorMessage="Debe seleccionar una especialidad para elegir un plan" ForeColor="Red" ControlToValidate="ddlEspecialidades">*</asp:RequiredFieldValidator>
                 </td>
             </tr>
             <tr>
                 <td>Plan</td>
                 <td>
-                    <asp:DropDownList ID="ddlPlanes" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlIdPlan_SelectedIndexChanged">
+                    <asp:DropDownList ID="ddlPlanes" runat="server" AutoPostBack="True">
                     </asp:DropDownList>
-                    <asp:RequiredFieldValidator ID="rfvPlan" runat="server" ErrorMessage="Debe seleccionar un plan" ForeColor="Red">*</asp:RequiredFieldValidator>
+                    <asp:RequiredFieldValidator ID="rfvPlan" runat="server" ErrorMessage="Debe seleccionar un plan" ForeColor="Red" ControlToValidate="ddlPlanes">*</asp:RequiredFieldValidator>
                 </td>
             </tr>
             <tr>
@@ -74,7 +74,7 @@
     </asp:Panel>
     <asp:Panel ID="panelConfirmacion" runat="server" Visible="False">
         <asp:Button ID="btnAceptar" runat="server" Text="Aceptar" OnClick="btnAceptar_Click" />
-        <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" OnClick="btnCancelar_Click" />
+        <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" OnClick="btnCancelar_Click" CausesValidation="false"/>
     </asp:Panel>
     <asp:ValidationSummary ID="vsMaterias" runat="server" ForeColor="Red" ShowValidationErrors="true"/>
 </asp:Content>

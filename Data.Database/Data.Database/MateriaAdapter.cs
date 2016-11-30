@@ -141,14 +141,13 @@ namespace Data.Database
                 this.OpenConnection();
                 SqlCommand cmdInsertMateria = new SqlCommand(
                     "INSERT INTO materias (desc_materia,hs_semanales, hs_totales,id_plan) " +
-                    "VALUES(@id_materia, @desc_materia, @hs_sem, @hs_tot, @id_plan)",sqlConn);
-                cmdInsertMateria.Parameters.Add("@desc_materia", SqlDbType.VarChar,50).Value = materia.ID;
+                    "VALUES(@desc_materia, @hs_sem, @hs_tot, @id_plan)",sqlConn);
+                cmdInsertMateria.Parameters.Add("@desc_materia",SqlDbType.VarChar,50).Value=materia.Descripcion;
                 cmdInsertMateria.Parameters.Add("@hs_tot", SqlDbType.Int).Value = materia.HSTotales;
                 cmdInsertMateria.Parameters.Add("@hs_sem", SqlDbType.Int).Value = materia.HSSemanales;
                 cmdInsertMateria.Parameters.Add("@id_plan", SqlDbType.Int).Value = materia.IDplan;
 
                 cmdInsertMateria.ExecuteNonQuery();
-
 
             } 
             catch(Exception ex)

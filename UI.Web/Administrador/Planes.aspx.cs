@@ -61,6 +61,8 @@ namespace UI.Web
                     SaveEntity(Entity);
                     lblCartel.Visible = true;
                     lblCartel.Text = "Se ha agregado el nuevo Plan";
+                    this.LoadGrid();
+                    panelFormulario.Visible = false;
                     break;
 
                 case ABM.FormModes.Modificacion:
@@ -71,15 +73,19 @@ namespace UI.Web
                     this.SaveEntity(this.Entity);
                     lblCartel.Visible = true;
                     lblCartel.Text = "Se ha modificado el plan";
+                    this.LoadGrid();
+                    panelFormulario.Visible = false;
                     break;
 
                 case ABM.FormModes.Baja:
                     this.DeleteEntity(SelectedID);
                     lblCartel.Visible = true;
                     lblCartel.Text = "Se ha eliminado el plan";
-                    break;
-                default:
                     this.LoadGrid();
+                    panelFormulario.Visible = false;
+                    break;
+
+                default:
                     break;
 
             }
@@ -118,7 +124,7 @@ namespace UI.Web
         {
             if (!IsPostBack)
             {
-                string si = "menuMaterias";
+                string si = "menuPlanes";
                 Session["Menu"] = si;
 
                 EspecialidadLogic espe = new EspecialidadLogic();
@@ -155,20 +161,13 @@ namespace UI.Web
         
         protected void btnAgregar_Click(object sender, EventArgs e)
         {
-            if (IsEntitySelected)
-            {
                 lblCartel.Visible = false;
                 panelControles.Visible = true;
                 panelFormulario.Visible = true;
                 HabilitarControles(true);
                 LimparFormulario();
                 FormMode = FormModes.Alta;
-            }
-            else
-            {
-                lblCartel.Visible = true;
-                lblCartel.Text = "Debe seleccionar un plan de la lista";
-            }
+            
         }
 
         protected void btnEliminar_Click(object sender, EventArgs e)

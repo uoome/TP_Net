@@ -6,6 +6,6 @@
       <siteMapNode url="~/Administrador/Cursos.aspx" title="Cursos"  description="" />
       <siteMapNode url="~/Administrados/Materias.aspx" title="Materias"  description="" />
       <siteMapNode url="~/Administrador/Personas.aspx" title="Personas" description="" />
-      <siteMapNode url="~/Administrador/Planes.aspx" title="Personas" description="" />
+      <siteMapNode url="~/Administrador/Planes.aspx" title="Planes" description="" />
     </siteMapNode>
 </siteMap>

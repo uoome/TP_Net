@@ -22,13 +22,13 @@ namespace UI.Web {
         protected global::System.Web.UI.WebControls.GridView grvMaterias;
         
         /// <summary>
-        /// Control panelABM.
+        /// Control panelControles.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel panelABM;
+        protected global::System.Web.UI.WebControls.Panel panelControles;
         
         /// <summary>
         /// Control linkbtnNuevo.
@@ -67,13 +67,13 @@ namespace UI.Web {
         protected global::System.Web.UI.WebControls.Label lblCartel;
         
         /// <summary>
-        /// Control panelLabels.
+        /// Control panelFormulario.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel panelLabels;
+        protected global::System.Web.UI.WebControls.Panel panelFormulario;
         
         /// <summary>
         /// Control txtDescripcion.

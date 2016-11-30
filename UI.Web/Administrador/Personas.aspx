@@ -168,5 +168,5 @@
         &nbsp;
         <asp:Button ID="btnCancelar" runat="server" OnClick="btnCancelar_Click" CausesValidation="false" Text="Cancelar" />
     </asp:Panel>
-    <asp:ValidationSummary ID="vsumaryPersonas" runat="server" ForeColor="Red" ShowValidationErrors="True" />
+    <asp:ValidationSummary ID="vsumaryPersonas" runat="server" ForeColor="Red" ShowValidationErrors="True"  />
     </asp:Content>

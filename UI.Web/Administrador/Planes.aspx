@@ -22,10 +22,10 @@
                 <SortedDescendingHeaderStyle BackColor="#15524A" />
             </asp:GridView>
         </asp:Panel>
-        <asp:Button ID="btnAgregar" runat="server" Text="Agregar" OnClick="btnAgregar_Click" />
-        &nbsp;&nbsp;<asp:Button ID="btnEditar" runat="server" Text="Editar" OnClick="btnEditar_Click" />
+        <asp:Button ID="btnAgregar" runat="server" Text="Agregar" OnClick="btnAgregar_Click" CausesValidation="false"/>
+        &nbsp;&nbsp;<asp:Button ID="btnEditar" runat="server" Text="Editar" OnClick="btnEditar_Click" CausesValidation="false"/>
 &nbsp;
-        <asp:Button ID="btnEliminar" runat="server" OnClick="btnEliminar_Click" Text="Eliminar" />
+        <asp:Button ID="btnEliminar" runat="server" OnClick="btnEliminar_Click" Text="Eliminar" CausesValidation="false"/>
         &nbsp;&nbsp;
         <asp:Label ID="lblCartel" runat="server" ForeColor="Green" Text="Cartel" Visible="False"></asp:Label>
         <asp:Panel ID="panelFormulario" runat="server" Height="197px" Visible="False">
@@ -58,7 +58,7 @@
                         <br />
                     </td>
                     <td>
-                        <asp:Button ID="btnCancelar" runat="server" OnClick="btnCancelar_Click" Text="Cancelar" />
+                        <asp:Button ID="btnCancelar" runat="server" OnClick="btnCancelar_Click" Text="Cancelar" CausesValidation="false"/>
                         <br />
                         <br />
                     </td>
