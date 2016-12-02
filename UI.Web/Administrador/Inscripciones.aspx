@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="Inscripciones" Language="C#" MasterPageFile="~/Administrador/Site.Master" AutoEventWireup="true" CodeBehind="Inscripciones.aspx.cs" Inherits="UI.Web.Inscripciones" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="bodyContentPlaceHolder" runat="server">
-    <asp:GridView ID="grvAlumnos" runat="server" align="center" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" DataKeyNames="ID" OnSelectedIndexChanged="grvInscripciones_SelectedIndexChanged">
+    <asp:GridView ID="grvAlumnos" runat="server" align="center" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" DataKeyNames="ID" OnSelectedIndexChanged="grvAlumnos_SelectedIndexChanged">
         <AlternatingRowStyle BackColor="White" />
         <Columns>
             <asp:BoundField DataField="Legajo" HeaderText="Legajo" />
@@ -19,18 +19,19 @@
         <SortedDescendingCellStyle BackColor="#D4DFE1" />
         <SortedDescendingHeaderStyle BackColor="#15524A" />
     </asp:GridView>
-    <asp:Panel ID="panelCartelAlumnos" runat="server">
+    <br />
         <asp:Label ID="lblAlumno" runat="server" Text="Seleccione un alumno para ver sus inscripciones" ForeColor="Green"></asp:Label>
+    <asp:Panel ID="panelGrillaInscripciones" runat="server" Visible="True">
     </asp:Panel>
-    <asp:Panel ID="panelGrillaInscripciones" runat="server" Visible="False">
-        <asp:GridView ID="grvInscripciones" runat="server" AutoGenerateColumns="False" align="center" CellPadding="4" DataKeyNames="ID" ForeColor="#333333">
+    <asp:Panel ID="panelControlesInscripciones" runat="server" Visible="False">
+        <asp:GridView ID="grvInscripciones" runat="server" align="center" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="ID" ForeColor="#333333" OnSelectedIndexChanged="grvInscripciones_SelectedIndexChanged">
             <AlternatingRowStyle BackColor="White" />
             <Columns>
-                <asp:BoundField HeaderText="Comision" DataField="comision" />
-                <asp:BoundField HeaderText="Materia" DataField="materia" />
+                <asp:BoundField DataField="comisionDesc" HeaderText="Comision" />
+                <asp:BoundField DataField="materiaDesc" HeaderText="Materia" />
                 <asp:BoundField DataField="año" HeaderText="Año Curso" />
-                <asp:BoundField HeaderText="Condicion" DataField="condicion" />
-                <asp:BoundField HeaderText="Nota" DataField="nota" />
+                <asp:BoundField DataField="condicion" HeaderText="Condicion" />
+                <asp:BoundField DataField="nota" HeaderText="Nota" />
                 <asp:CommandField ShowSelectButton="True" />
             </Columns>
             <EditRowStyle BackColor="#7C6F57" />
@@ -44,8 +45,6 @@
             <SortedDescendingCellStyle BackColor="#D4DFE1" />
             <SortedDescendingHeaderStyle BackColor="#15524A" />
         </asp:GridView>
-    </asp:Panel>
-    <asp:Panel ID="panelControlesInscripciones" runat="server" Visible="False">
         <asp:Button ID="btnAgregarInscripcion" runat="server" Text="Agregar" OnClick="btnAgregarInscripcion_Click" />
         &nbsp;
         <asp:Button ID="btnEditarInscripcion" runat="server" Text="Editar" OnClick="btnEditarInscripcion_Click" />

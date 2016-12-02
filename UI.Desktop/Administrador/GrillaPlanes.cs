@@ -26,6 +26,7 @@ namespace UI.Desktop
         {
             PlanLogic PlanLog = new PlanLogic();
             this.dgvPlanes.DataSource = PlanLog.GetAll();
+
         }
 
         #endregion

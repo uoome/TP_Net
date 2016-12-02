@@ -78,6 +78,7 @@ namespace UI.Web
             ddlCondicion.Enabled = condicion;
             ddlNotas.Enabled = condicion;
         }
+
         private void SaveEntity(AlumnoInscripcion Alu)
         {
             Entity.State = Estado;
@@ -97,26 +98,28 @@ namespace UI.Web
             List<Object> lista = new List<Object>();
             MateriaLogic ml = new MateriaLogic();
             ComisionLogic coml = new ComisionLogic();
-            
+
             foreach (Curso c in Cursos)
             {
-                lista.Add(new
+                Object obj = new
                 {
+                    ID = c.ID,
                     materia = ml.GetOne(c.IDMateria).Descripcion,
                     comision = coml.GetOne(c.IDComision).Descripcion,
                     anio_curso = c.AnioCalendario.ToString(),
                     cupo_curso = c.Cupo.ToString()
-                });
+                    
+                };
+                lista.Add(obj);
+                
             }
-
             grvCursos.DataSource = lista;
-            grvCursos.DataBind(); //No esta funcionando el dataBind, tira un error con el tipo anónimo
+            grvCursos.DataBind(); 
 
         }
 
         protected void cargaInscripciones(int idAlu)
         {
-            string mat = "", com = "", anio = "", cup = "";
             MateriaLogic ml = new MateriaLogic();
             ComisionLogic coml = new ComisionLogic();
             AlumnoInscripcionLogic ail = new AlumnoInscripcionLogic();
@@ -129,24 +132,19 @@ namespace UI.Web
                 {
                     if (cur.ID == alumInsc.IdCurso)
                     {
-                        mat = ml.GetOne(cur.IDMateria).Descripcion;
-                        com = coml.GetOne(cur.IDComision).Descripcion;
-                        anio = cur.AnioCalendario.ToString();
-                        cup = cur.Cupo.ToString();
+                        //Armo el tipo anonimo
+                        listaInscripciones.Add(new
+                        {
+                            ID = alumInsc.ID,
+                            materiaDesc = ml.GetOne(cur.IDMateria).Descripcion,
+                            año = cur.AnioCalendario,
+                            comisionDesc = coml.GetOne(cur.IDComision).Descripcion,
+                            condicion = alumInsc.Condicion,
+                            nota= alumInsc.Nota
+                        });
                         break;
                     }
                 }
-                //Armo el tipo anónimo
-                listaInscripciones.Add(new
-                {
-                    nota = alumInsc.Nota.ToString(),
-                    materia = mat,
-                    comision = com,
-                    año = anio,
-                    condicion = alumInsc.Condicion,
-
-                });
-
             }
             grvInscripciones.DataSource = listaInscripciones;
             grvInscripciones.DataBind();
@@ -217,16 +215,27 @@ namespace UI.Web
 
         }
 
-        protected void grvInscripciones_SelectedIndexChanged(object sender, EventArgs e)
+        protected void grvAlumnos_SelectedIndexChanged(object sender, EventArgs e)
         {
             //Elegis el alumno y lista las inscripciones que tiene
             if (grvAlumnos.SelectedIndex != -1)
             {
+                this.panelGrillaInscripciones.Visible = true;
                 cargaInscripciones(Alumnos[grvAlumnos.SelectedIndex].ID);
-                panelGrillaInscripciones.Visible = true;
+                this.panelControlesInscripciones.Visible = true;
+                lblAlumno.Visible = false;
             }
         }
-        
+
+        protected void grvInscripciones_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //Trae datos del curso
+            if (grvInscripciones.SelectedIndex != -1)
+            {
+                panelGrillaCursos.Visible = true;
+                this.cargarCursos();
+            }
+        }
 
         protected void btnAgregarInscripcion_Click(object sender, EventArgs e)
         {
@@ -234,12 +243,13 @@ namespace UI.Web
             {
                 this.FormMode = FormModes.Alta;
                 panelABMInscripciones.Visible = true;
-                lblAlumno.Visible = false;
                 panelGrillaCursos.Visible = true;
                 btnAceptar.Text = "Agregar";
+                lblInscripcion.Visible = false;
                 Estado = BusinessEntity.States.New;
             }
-            else {
+            else
+            {
                 lblInscripcion.Visible = true;
                 lblInscripcion.Text = "Debe seleccionar un alumno para agregar una inscripción";
             }
@@ -257,7 +267,8 @@ namespace UI.Web
                 btnAceptar.Text = "Guardar";
                 Estado = BusinessEntity.States.Modified;
             }
-            else {
+            else
+            {
                 lblInscripcion.Visible = true;
                 lblInscripcion.Text = "Debe seleccionar una inscripción para editarla";
             }
@@ -283,7 +294,7 @@ namespace UI.Web
 
         protected void btnCancelar_Click1(object sender, EventArgs e)
         {
-            Response.Redirect("~Administrador/Inscripciones.aspx");
+            Response.Redirect("~/Administrador/Inscripciones.aspx");
             this.panelABMInscripciones.Visible = false;
             this.panelGrillaInscripciones.Visible = false;
             this.panelGrillaCursos.Visible = false;
@@ -302,9 +313,10 @@ namespace UI.Web
                 lblCurso.Visible = true;
             }
         }
+        
 
         #endregion
 
-
+        
     }
 }

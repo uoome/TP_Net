@@ -45,5 +45,19 @@ namespace Business.Entities
             get { return _Nota; }
             set { _Nota = value; }
         }
+        public TiposCondiciones StringACondicion(string s) {
+            //s=s.ToLower();
+            TiposCondiciones tipoCond=AlumnoInscripcion.TiposCondiciones.Libre;
+            switch (s) {
+                case "Inscripto": tipoCond = AlumnoInscripcion.TiposCondiciones.Inscripto; break;
+                case "Cursando": tipoCond = AlumnoInscripcion.TiposCondiciones.Cursando; break;
+                case "Regular": tipoCond = AlumnoInscripcion.TiposCondiciones.Regular; break;
+                case "Promocionado": tipoCond = AlumnoInscripcion.TiposCondiciones.Promocionado; break;
+                case "Aprobado": tipoCond = AlumnoInscripcion.TiposCondiciones.Aprobado; break;
+                case "Libre": tipoCond = AlumnoInscripcion.TiposCondiciones.Libre; break;
+
+            }
+            return tipoCond;
+        }
     }
 }

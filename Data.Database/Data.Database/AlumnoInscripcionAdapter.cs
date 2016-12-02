@@ -67,7 +67,7 @@ namespace Data.Database
                     al.IdAlumno = (int)drAluInsc["id_alumno"];
                     al.IdCurso = (int)drAluInsc["id_curso"];
                     al.Nota = (int)drAluInsc["nota"];
-                    al.Condicion = (AlumnoInscripcion.TiposCondiciones)drAluInsc["condicion"];
+                    al.Condicion = al.StringACondicion((string)drAluInsc["condicion"]);
 
                     listaInscrip.Add(al);
                     
