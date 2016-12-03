@@ -57,6 +57,7 @@ namespace UI.Web
             {
                 string si = "menuEstadoAcademico";
                 Session["Menu"] = si;
+
                 AlumnoInscripcionLogic ail = new AlumnoInscripcionLogic();
                 listaInscripciones = ail.GetAll();
                 MateriaLogic ml = new MateriaLogic();
@@ -71,7 +72,7 @@ namespace UI.Web
         protected void gvEstadoAcademico_Load(object sender, EventArgs e)
         {
             {
-                string c, p, n;
+                string c, p, n, est;
                 listaGrilla = new List<Object>();
                 foreach (Materia materia in listaMaterias)
                 {
@@ -80,6 +81,7 @@ namespace UI.Web
                         c = "";
                         p = "";
                         n = "";
+                        est = "";
                         foreach (Plan plan in listaPlanes)
                         {
                             if (plan.ID == materia.IDplan)
@@ -103,11 +105,14 @@ namespace UI.Web
                                 }
                             }
                         }
+                        if (c.Equals(AlumnoInscripcion.TiposCondiciones.Cursando) || c.Equals(AlumnoInscripcion.TiposCondiciones.Libre))
+                            est = c;
+                        else est = c + "con " + n;
                         listaGrilla.Add(new
                         {
-                            año = 2005,
+                            año = 2016,
                             desc_materia = materia.Descripcion,
-                            estado = c + " con " + n,
+                            estado= est,
                             desc_plan = p
                         });
                     }
