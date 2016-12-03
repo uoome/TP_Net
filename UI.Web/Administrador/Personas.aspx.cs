@@ -175,6 +175,7 @@ namespace UI.Web
                     this.LoadEntity(Entity);
                     Entity.State = BusinessEntity.States.New;
                     this.SaveEntity(Entity);
+                    lblResultado.Text = "Se ha agregado la persona";
                     this.LoadGrid();
                     break;
 
@@ -184,11 +185,13 @@ namespace UI.Web
                     Entity.State = BusinessEntity.States.Modified;
                     this.LoadEntity(Entity);
                     this.SaveEntity(Entity);
+                    lblResultado.Text = "Se ha modificado el registro";
                     this.LoadGrid();
                     break;
 
                 case FormModes.Baja:
                     this.DeleteEntity(SelectedID);
+                    lblResultado.Text = "Se ha elimado el registro";
                     this.LoadGrid();
                     break;
 
@@ -197,6 +200,7 @@ namespace UI.Web
             
             this.panelFormulario.Visible = false;
             this.panelConfirmacion.Visible = false;
+            lblResultado.Visible = true;
         }
 
         protected void btnCancelar_Click(object sender, EventArgs e)
@@ -209,6 +213,7 @@ namespace UI.Web
         protected void lnkButtonNuevo_Click(object sender, EventArgs e)
         {
             lblRegistro.Visible = false;
+            lblResultado.Visible = false;
             this.panelFormulario.Visible = true;
             this.panelConfirmacion.Visible = true;
             this.FormMode = FormModes.Alta;
@@ -222,6 +227,7 @@ namespace UI.Web
             if (this.IsEntitySelected)
             {
                 lblRegistro.Visible = false;
+                lblResultado.Visible = false;
                 this.panelFormulario.Visible = true;
                 this.panelConfirmacion.Visible = true;
                 this.FormMode = FormModes.Modificacion;
@@ -234,6 +240,7 @@ namespace UI.Web
 
         protected void lnkButtonEliminar_Click(object sender, EventArgs e)
         {
+            lblResultado.Visible = false;
             if (this.IsEntitySelected)
             {
                 this.lblRegistro.Visible = false;

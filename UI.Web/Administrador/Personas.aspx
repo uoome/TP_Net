@@ -37,6 +37,8 @@
         <asp:LinkButton ID="lnkButtonEliminar" runat="server" OnClick="lnkButtonEliminar_Click" CausesValidation="false">Eliminar</asp:LinkButton>
         &nbsp;
         <asp:Label ID="lblRegistro" runat="server" ForeColor="Red" Text="Debe seleccionar un registro" Visible="False"></asp:Label>
+        <br />
+        <asp:Label ID="lblResultado" runat="server" ForeColor="Green" Text="Resultado" Visible="False"></asp:Label>
     </asp:Panel>
     <asp:Panel ID="panelFormulario" runat="server" Visible="False">
         <table style="width:100%;">

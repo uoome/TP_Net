@@ -12,14 +12,6 @@ namespace UI.Web
     public partial class Inscripciones : ABM
     {
 
-        private BusinessEntity.States _estado;
-
-        public BusinessEntity.States Estado
-        {
-            get { return _estado; }
-            set { _estado = value; }
-        }
-
         private static List<Business.Entities.Personas> _alumnos = new List<Business.Entities.Personas>();
 
         public List<Business.Entities.Personas> Alumnos
@@ -81,12 +73,14 @@ namespace UI.Web
 
         private void SaveEntity(AlumnoInscripcion Alu)
         {
-            Entity.State = Estado;
-            //agregar datos a entity
+            this.InscLogic.Save(Alu);
         }
-        private void LoadEntity(AlumnoInscripcion alu)
+        private void LoadEntity(AlumnoInscripcion Alu)
         {
-            // no se uso todavia
+            Alu.IdAlumno = Alumnos[grvAlumnos.SelectedIndex].ID;
+            Alu.IdCurso = Cursos[grvCursos.SelectedIndex].ID;
+            Alu.Nota = int.Parse(ddlNotas.Text);
+            Alu.Condicion = (AlumnoInscripcion.TiposCondiciones)ddlCondicion.SelectedIndex;
         }
         private void DeleteEntity(int id)
         {
@@ -150,23 +144,7 @@ namespace UI.Web
             grvInscripciones.DataBind();
 
         }
-
-        public void GuardarCambios()
-        {
-            if(FormMode == FormModes.Alta)
-            {
-                this.SaveEntity(Entity);
-            }
-            if (FormMode == FormModes.Modificacion)
-            {
-                Entity.State = Estado;
-                this.SaveEntity(Entity);
-            }
-            if (FormMode == FormModes.Baja)
-            {
-                this.DeleteEntity(Entity.ID);
-            }
-        }
+        
     
         #endregion
 
@@ -246,7 +224,6 @@ namespace UI.Web
                 panelGrillaCursos.Visible = true;
                 btnAceptar.Text = "Agregar";
                 lblInscripcion.Visible = false;
-                Estado = BusinessEntity.States.New;
             }
             else
             {
@@ -265,7 +242,6 @@ namespace UI.Web
                 panelABMInscripciones.Visible = true;
                 HabilitarControles(true);
                 btnAceptar.Text = "Guardar";
-                Estado = BusinessEntity.States.Modified;
             }
             else
             {
@@ -283,7 +259,6 @@ namespace UI.Web
                 panelABMInscripciones.Visible = true;
                 HabilitarControles(false);
                 btnAceptar.Text = "Eliminar";
-                Estado = BusinessEntity.States.Deleted;
             }
             else
             {
@@ -303,15 +278,58 @@ namespace UI.Web
 
         protected void btnAceptar_Click1(object sender, EventArgs e)
         {
-            if (grvCursos.SelectedIndex != -1)
+            switch (FormMode)
             {
-                lblCurso.Visible = false;
-                //GuardarCambios();
+                case FormModes.Alta: 
+                    if(grvCursos.SelectedIndex != -1)
+                    {
+                        Entity = new AlumnoInscripcion();
+                        this.LoadEntity(Entity);
+                        Entity.State = BusinessEntity.States.New;
+                        this.SaveEntity(Entity);
+                        lblCurso.Visible = false;
+                        panelABMInscripciones.Visible = false;
+                        panelControlesInscripciones.Visible = false;
+                        panelGrillaInscripciones.Visible = false;
+                        panelGrillaCursos.Visible = false;
+                    }
+                    else
+                    {
+                        lblCurso.Visible = true;
+                    }
+                    break;
+
+                case FormModes.Modificacion:
+                    if (grvCursos.SelectedIndex != -1)
+                    {
+                        Entity = new AlumnoInscripcion();
+                        Entity.ID = SelectedID;
+                        Entity.State = BusinessEntity.States.Modified;
+                        this.SaveEntity(Entity);
+                        lblCurso.Visible = false;
+                        panelABMInscripciones.Visible = false;
+                        panelControlesInscripciones.Visible = false;
+                        panelGrillaInscripciones.Visible = false;
+                        panelGrillaCursos.Visible = false;
+                    }
+                    else
+                    {
+                        lblCurso.Visible = true;
+                    }
+                    break;
+
+                case FormModes.Baja:
+                    lblCurso.Visible = false;
+                    DeleteEntity(SelectedID);
+                    panelABMInscripciones.Visible = false;
+                    panelControlesInscripciones.Visible = false;
+                    panelGrillaInscripciones.Visible = false;
+                    panelGrillaCursos.Visible = false;
+                    break;
+
+                default: break;
             }
-            else
-            {
-                lblCurso.Visible = true;
-            }
+            
         }
         
 
