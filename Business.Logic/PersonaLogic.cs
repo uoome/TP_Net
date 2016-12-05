@@ -40,6 +40,10 @@ namespace Business.Logic
         {
             return PersonaData.GetOne(nombUs);
         }
+        public int TraerDocente(string nombreDocente)
+        {
+            return PersonaData.TraerDocente(nombreDocente);
+        }
         public void Delete(int ID)
         {
             PersonaData.Delete(ID);

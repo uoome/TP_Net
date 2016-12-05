@@ -3,12 +3,12 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:Panel ID="panelGrillaDictados" runat="server">
-        <asp:GridView ID="grvDictados" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" OnLoad="grvDictados_Load" OnSelectedIndexChanged="grvDictados_SelectedIndexChanged">
+        <asp:GridView ID="grvDictados" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" OnLoad="grvDictados_Load" OnSelectedIndexChanged="grvDictados_SelectedIndexChanged" DataKeyNames="ID">
             <AlternatingRowStyle BackColor="White" />
             <Columns>
-                <asp:BoundField HeaderText="Curso" />
-                <asp:BoundField HeaderText="Docente" />
-                <asp:BoundField HeaderText="Cargo" />
+                <asp:BoundField HeaderText="Curso" DataField="curso" />
+                <asp:BoundField HeaderText="Docente" DataField="docente" />
+                <asp:BoundField HeaderText="Cargo" DataField="cargo" />
                 <asp:CommandField ShowSelectButton="True" />
             </Columns>
             <EditRowStyle BackColor="#2461BF" />
@@ -35,19 +35,41 @@
     <asp:Panel ID="panelFormulario" runat="server">
         <table style="width:100%;">
             <tr>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
+                <td>ID Dictado</td>
+                <td>
+                    <asp:TextBox ID="txtIDdictado" runat="server"></asp:TextBox>
+                </td>
             </tr>
             <tr>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
+                <td>Curso</td>
+                <td>
+                    <asp:DropDownList ID="ddlCursos" runat="server" AutoPostBack="True">
+                    </asp:DropDownList>
+                </td>
             </tr>
             <tr>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
+                <td>Docente</td>
+                <td>
+                    <asp:DropDownList ID="ddlDocentes" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlDocentes_SelectedIndexChanged">
+                    </asp:DropDownList>
+                    &nbsp;&nbsp;
+                    <asp:TextBox ID="txtIDdocente" runat="server" Enabled="False" Width="64px"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td>Cargo</td>
+                <td>
+                    <asp:DropDownList ID="ddlCargos" runat="server" AutoPostBack="True">
+                    </asp:DropDownList>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <asp:Button ID="btnAceptar" runat="server" Text="Aceptar" />
+                </td>
+                <td>
+                    <asp:Button ID="btnCancelar" runat="server" OnClick="btnCancelar_Click" Text="Cancelar" />
+                </td>
             </tr>
         </table>
     </asp:Panel>

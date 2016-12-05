@@ -11,21 +11,20 @@ namespace UI.Web
 {
     public partial class Dictado : ABM
     {
-        private DocenteCurso _dictado;
+        private DocenteCursologic _dictado;
 
-        public DocenteCurso Dictados
+        public DocenteCursologic Dictados
         {
             get
             {
                 if (_dictado == null)
-                    _dictado = new DocenteCurso();
+                    _dictado = new DocenteCursologic();
                 return _dictado;
             }
             set { _dictado = value; }
         }
 
         private DocenteCurso _entity;
-
         public DocenteCurso Entity { get; set; }
 
         private List<DocenteCurso> _listaDictados;
@@ -46,6 +45,36 @@ namespace UI.Web
 
         #region Metodos
 
+        public void HabilitarControles(bool e)
+        {
+            ddlCargos.Enabled = e;
+            ddlCursos.Enabled = e;
+            ddlDocentes.Enabled = e;
+        }
+
+        public void LimpiarFormulario()
+        {
+            ddlDocentes.ClearSelection();
+            ddlCursos.ClearSelection();
+            ddlDocentes.ClearSelection();
+            txtIDdocente.Text = string.Empty;
+
+        }
+
+        public void LoadEntity(DocenteCurso dc)
+        {
+            dc.IdCurso = int.Parse(ddlCursos.Text);
+            dc.Cargo = (DocenteCurso.TiposCargos)ddlCargos.SelectedIndex;
+            dc.IdDocente = int.Parse(txtIDdocente.Text);
+        }
+
+        public void SaveEntity(DocenteCurso dc)
+        {
+            this.Dictados.Save(dc);
+        }
+
+        
+
         #endregion
 
         #region Eventos
@@ -63,34 +92,86 @@ namespace UI.Web
                 listaMaterias = marLog.GetAll();
                 ComisionLogic comLog = new ComisionLogic();
                 listaComi = comLog.GetAll();
-                //DocenteCursoLogic dictLog= new DocenteCursoLogic();
-                //listaDictados = dictLog.GetAll();
+                DocenteCursologic dictLog= new DocenteCursologic();
+                listaDictados = dictLog.GetAll();
+
+
+                ddlCursos.Items.Add("");
+                foreach (Curso c in listaCursos)
+                {
+                    ddlCursos.Items.Add(c.ID.ToString());
+                }
+
+                PersonaLogic plog = new PersonaLogic();
+                List<Business.Entities.Personas> listadoPersonas = plog.GetAll();
+                ddlDocentes.Items.Add("");
+                foreach(Business.Entities.Personas p in listadoPersonas)
+                {
+                    if(p.TipoPersona == Business.Entities.Personas.TiposPersonas.Docente)
+                    {
+                        ddlDocentes.Items.Add(p.Apellido + " " + p.Nombre);
+                    }
+                }
+
+                ddlCargos.Items.Add("");
+                ddlCargos.Items.Add(DocenteCurso.TiposCargos.Titular.ToString());
+                ddlCargos.Items.Add(DocenteCurso.TiposCargos.Auxiliar.ToString());
             }
 
         }
 
+        protected void grvDictados_Load(object sender, EventArgs e)
+        {
+            string doc = "";
+            listaGrilla = new List<Object>();
+
+            foreach (DocenteCurso dc in listaDictados) //Busco los cursos del docente logueado
+            {
+                if (dc.IdDocente == (int)Session["id_persona"])
+                {
+                    PersonaLogic plog = new PersonaLogic();
+                    Business.Entities.Personas p = plog.GetOne(dc.IdDocente);
+                    doc = p.Apellido + " " + p.Nombre;
+
+                    // Armo el tipo anonimo
+                    listaGrilla.Add(new
+                    {
+                        ID = dc.ID,
+                        cur = dc.IdCurso,
+                        docente = doc,
+                        cargo = dc.Cargo.ToString()
+                    });
+
+                }
+            }
+
+            grvDictados.DataSource = listaGrilla;
+            grvDictados.DataBind();
+
+        }
+        
         protected void grvDictados_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
 
-        #endregion
-
-        protected void grvDictados_Load(object sender, EventArgs e)
+        protected void ddlDocentes_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string comi = "", mat = "", anio = "", cupo = "";
-            listaGrilla = new List<Object>();
-
-            foreach(DocenteCurso dc in listaDictados)
-            {
-                if(dc.IdDocente == (int)Session["id_persona"])
-                {
-                    
-                }
-            }
-
-
+            PersonaLogic perlog = new PersonaLogic();
+            txtIDdocente.Text = perlog.TraerDocente(ddlDocentes.Text).ToString();
 
         }
+
+        protected void btnCancelar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Docente/Dictado.aspx");
+            panelFormulario.Visible = false;
+
+        }
+
+
+        #endregion
+
+        
     }
 }

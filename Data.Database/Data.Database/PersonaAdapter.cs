@@ -193,6 +193,32 @@ namespace Data.Database
             }
             return persona;
         }
+
+        public int TraerDocente(string nombreDocente)
+        {
+            int idDocente=-1;
+            try
+            {
+                this.OpenConnection();
+                SqlCommand cmdPersona = new SqlCommand(
+                    "SELECT id_persona FROM personas WHERE concat(apellido, ' ', nombre)in(@persona)", sqlConn);
+                cmdPersona.Parameters.Add("@persona", SqlDbType.VarChar, 50).Value = nombreDocente;
+                SqlDataReader drPersona = cmdPersona.ExecuteReader();
+
+                if(drPersona.Read())
+                    idDocente = (int)drPersona["id_persona"];
+
+                drPersona.Close();
+            }
+            catch (Exception ex)
+            {
+                Exception exManejada = new Exception("Error al traer el ID de la persona" +ex.Message);
+                throw exManejada;
+            }
+            finally { this.CloseConnection(); }
+
+            return idDocente;
+        }
         
         public void Save(Personas pers)
         {

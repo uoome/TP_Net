@@ -207,7 +207,8 @@
     <Content Include="Administrador\Default.aspx" />
     <Content Include="Administrador\Especialidades.aspx" />
     <Content Include="Alumno\DefaultAlumnos.aspx" />
-    <Content Include="DefaultDocentes.aspx" />
+    <Content Include="Docente\Dictado.aspx" />
+    <Content Include="Docente\DefaultDocentes.aspx" />
     <Content Include="Alumno\EstadoAcademicoAlumnos.aspx" />
     <Content Include="Administrador\FinalizoSession.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -263,7 +264,7 @@
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Alumno\SiteAlumnos.Master" />
-    <Content Include="SiteDocentes.Master" />
+    <Content Include="Docente\SiteDocentes.Master" />
     <Content Include="Administrador\Site.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -434,11 +435,18 @@
     <Compile Include="Alumno\DefaultAlumnos.aspx.designer.cs">
       <DependentUpon>DefaultAlumnos.aspx</DependentUpon>
     </Compile>
-    <Compile Include="DefaultDocentes.aspx.cs">
+    <Compile Include="Docente\Dictado.aspx.cs">
+      <DependentUpon>Dictado.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Docente\Dictado.aspx.designer.cs">
+      <DependentUpon>Dictado.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Docente\DefaultDocentes.aspx.cs">
       <DependentUpon>DefaultDocentes.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="DefaultDocentes.aspx.designer.cs">
+    <Compile Include="Docente\DefaultDocentes.aspx.designer.cs">
       <DependentUpon>DefaultDocentes.aspx</DependentUpon>
     </Compile>
     <Compile Include="Alumno\EstadoAcademicoAlumnos.aspx.cs">
@@ -509,11 +517,11 @@
     <Compile Include="Alumno\SiteAlumnos.Master.designer.cs">
       <DependentUpon>SiteAlumnos.Master</DependentUpon>
     </Compile>
-    <Compile Include="SiteDocentes.Master.cs">
+    <Compile Include="Docente\SiteDocentes.Master.cs">
       <DependentUpon>SiteDocentes.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="SiteDocentes.Master.designer.cs">
+    <Compile Include="Docente\SiteDocentes.Master.designer.cs">
       <DependentUpon>SiteDocentes.Master</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
@@ -534,7 +542,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Docente\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Business.Entities\Business.Entities\Business.Entities.csproj">
