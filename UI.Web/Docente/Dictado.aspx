@@ -26,11 +26,11 @@
         <br />
     </asp:Panel>
     <asp:Panel ID="panelBotonesABM" runat="server">
-        <asp:Button ID="btnAgregar" runat="server" Text="Agregar" />
+        <asp:Button ID="btnAgregar" runat="server" Text="Agregar" OnClick="btnAgregar_Click" CausesValidation="false"/>
         &nbsp;
-        <asp:Button ID="btnEditar" runat="server" Text="Editar" />
+        <asp:Button ID="btnEditar" runat="server" Text="Editar" OnClick="btnEditar_Click" CausesValidation="false"/>
         &nbsp;
-        <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" />
+        <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" OnClick="btnEliminar_Click" CausesValidation="false" />
     </asp:Panel>
     <asp:Panel ID="panelFormulario" runat="server">
         <table style="width:100%;">
@@ -45,6 +45,7 @@
                 <td>
                     <asp:DropDownList ID="ddlCursos" runat="server" AutoPostBack="True">
                     </asp:DropDownList>
+                    <asp:RequiredFieldValidator ID="rfvCurso" runat="server" ControlToValidate="ddlCursos" ErrorMessage="Debe seleccionar un curso" ForeColor="Red">*</asp:RequiredFieldValidator>
                 </td>
             </tr>
             <tr>
@@ -54,6 +55,7 @@
                     </asp:DropDownList>
                     &nbsp;&nbsp;
                     <asp:TextBox ID="txtIDdocente" runat="server" Enabled="False" Width="64px"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="rfvDocente" runat="server" ControlToValidate="ddlDocentes" ErrorMessage="Debe seleccionar un docente" ForeColor="Red">*</asp:RequiredFieldValidator>
                 </td>
             </tr>
             <tr>
@@ -61,18 +63,20 @@
                 <td>
                     <asp:DropDownList ID="ddlCargos" runat="server" AutoPostBack="True">
                     </asp:DropDownList>
+                    <asp:RequiredFieldValidator ID="rfvCargo" runat="server" ControlToValidate="ddlCargos" ErrorMessage="Debe seleccionar un cargo" ForeColor="Red">*</asp:RequiredFieldValidator>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <asp:Button ID="btnAceptar" runat="server" Text="Aceptar" />
+                    <asp:Button ID="btnAceptar" runat="server" Text="Aceptar" OnClick="btnAceptar_Click" />
                 </td>
                 <td>
-                    <asp:Button ID="btnCancelar" runat="server" OnClick="btnCancelar_Click" Text="Cancelar" />
+                    <asp:Button ID="btnCancelar" runat="server" OnClick="btnCancelar_Click" Text="Cancelar" CausesValidation="false" />
                 </td>
             </tr>
         </table>
     </asp:Panel>
     <asp:Panel ID="Panel4" runat="server">
+        <asp:ValidationSummary ID="ValidationSummary1" runat="server" ForeColor="Red" />
     </asp:Panel>
 </asp:Content>

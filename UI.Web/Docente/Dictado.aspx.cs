@@ -11,17 +11,17 @@ namespace UI.Web
 {
     public partial class Dictado : ABM
     {
-        private DocenteCursologic _dictado;
+        private DocenteCursologic _dictadoLog;
 
-        public DocenteCursologic Dictados
+        public DocenteCursologic DictadoLog
         {
             get
             {
-                if (_dictado == null)
-                    _dictado = new DocenteCursologic();
-                return _dictado;
+                if (_dictadoLog == null)
+                    _dictadoLog = new DocenteCursologic();
+                return _dictadoLog;
             }
-            set { _dictado = value; }
+            set { _dictadoLog = value; }
         }
 
         private DocenteCurso _entity;
@@ -54,11 +54,24 @@ namespace UI.Web
 
         public void LimpiarFormulario()
         {
+            txtIDdictado.Text = string.Empty;
             ddlDocentes.ClearSelection();
             ddlCursos.ClearSelection();
             ddlDocentes.ClearSelection();
             txtIDdocente.Text = string.Empty;
 
+        }
+
+        public void LoadForm(int ID)
+        {
+            Entity = DictadoLog.GetOne(ID);
+            txtIDdictado.Text = Entity.ID.ToString();
+            ddlCargos.Text = Entity.Cargo.ToString();
+            ddlCursos.Text = Entity.IdCurso.ToString();
+            PersonaLogic plog = new PersonaLogic();
+            Business.Entities.Personas p = plog.GetOne(Entity.IdDocente);
+            ddlDocentes.Text = p.Apellido + " " + p.Nombre;
+            txtIDdocente.Text = Entity.IdDocente.ToString();
         }
 
         public void LoadEntity(DocenteCurso dc)
@@ -70,7 +83,7 @@ namespace UI.Web
 
         public void SaveEntity(DocenteCurso dc)
         {
-            this.Dictados.Save(dc);
+            this.DictadoLog.Save(dc);
         }
 
         
@@ -152,7 +165,7 @@ namespace UI.Web
         
         protected void grvDictados_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            this.SelectedID = (int)this.grvDictados.SelectedValue;
         }
 
         protected void ddlDocentes_SelectedIndexChanged(object sender, EventArgs e)
@@ -160,6 +173,50 @@ namespace UI.Web
             PersonaLogic perlog = new PersonaLogic();
             txtIDdocente.Text = perlog.TraerDocente(ddlDocentes.Text).ToString();
 
+        }
+
+        protected void btnAgregar_Click(object sender, EventArgs e)
+        {
+            HabilitarControles(true);
+            FormMode = FormModes.Alta;
+            lblCartel.Visible = false;
+            LimpiarFormulario();
+            panelFormulario.Visible = true;
+
+        }
+
+        protected void btnEditar_Click(object sender, EventArgs e)
+        {
+            if (IsEntitySelected)
+            {
+                HabilitarControles(true);
+                FormMode = FormModes.Modificacion;
+                lblCartel.Visible = false;
+                panelFormulario.Visible = true;
+                LoadForm(this.SelectedID);
+            }
+            else
+            {
+                lblCartel.Visible = true;
+                lblCartel.Text = "Debe seleccionar un dictado para modificarlo";
+            }
+        }
+
+        protected void btnEliminar_Click(object sender, EventArgs e)
+        {
+            if (IsEntitySelected)
+            {
+                HabilitarControles(false);
+                FormMode = FormModes.Baja;
+                LoadForm(this.SelectedID);
+                panelFormulario.Visible = true;
+                lblCartel.Visible = false;
+            }
+            else
+            {
+                lblCartel.Visible = true;
+                lblCartel.Text = "Debe seleccionar un dictado para eliminarlo";
+            }
         }
 
         protected void btnCancelar_Click(object sender, EventArgs e)
@@ -170,8 +227,49 @@ namespace UI.Web
         }
 
 
+
+
+
+
         #endregion
 
-        
+        protected void btnAceptar_Click(object sender, EventArgs e)
+        {
+            switch (FormMode)
+            {
+                case FormModes.Alta:
+                    Entity = new DocenteCurso();
+                    Entity.State = BusinessEntity.States.New;
+                    LoadEntity(Entity);
+                    SaveEntity(Entity);
+                    lblCartel.Visible = true;
+                    lblCartel.Text = "Se ha agregado el dictado";
+                    break;
+
+                case FormModes.Modificacion:
+                    Entity = new DocenteCurso();
+                    Entity.State = BusinessEntity.States.Modified;
+                    LoadEntity(Entity);
+                    SaveEntity(Entity);
+                    lblCartel.Visible = true;
+                    lblCartel.Text = "Se ha modificado el dictado";
+                    break;
+
+                case FormModes.Baja:
+                    //probando 2 formas
+                    //con el metodo Delete o usando el Save comun que nunca se usa
+
+                    //this.Delete(SelectedID);
+                    Entity = new DocenteCurso();
+                    Entity.State = BusinessEntity.States.Deleted;
+                    LoadEntity(Entity);
+                    SaveEntity(Entity);
+                    lblCartel.Visible = true;
+                    lblCartel.Text = "Se ha eliminado el dictado";
+                    break;
+            }
+
+            panelFormulario.Visible = false;
+        }
     }
 }

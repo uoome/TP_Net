@@ -103,6 +103,15 @@ namespace UI.Web {
         protected global::System.Web.UI.WebControls.DropDownList ddlCursos;
         
         /// <summary>
+        /// Control rfvCurso.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvCurso;
+        
+        /// <summary>
         /// Control ddlDocentes.
         /// </summary>
         /// <remarks>
@@ -121,6 +130,15 @@ namespace UI.Web {
         protected global::System.Web.UI.WebControls.TextBox txtIDdocente;
         
         /// <summary>
+        /// Control rfvDocente.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvDocente;
+        
+        /// <summary>
         /// Control ddlCargos.
         /// </summary>
         /// <remarks>
@@ -128,6 +146,15 @@ namespace UI.Web {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlCargos;
+        
+        /// <summary>
+        /// Control rfvCargo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvCargo;
         
         /// <summary>
         /// Control btnAceptar.
@@ -155,5 +182,14 @@ namespace UI.Web {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel Panel4;
+        
+        /// <summary>
+        /// Control ValidationSummary1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary1;
     }
 }
