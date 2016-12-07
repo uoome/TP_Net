@@ -195,10 +195,17 @@ namespace UI.Desktop
 
         #region Controles Docente
 
+        private void tsc_Docente_Dictado_Click(object sender, EventArgs e)
+        {
+            GrillaDictados grillaDict = new GrillaDictados();
+            grillaDict.Show();
+            grillaDict.Listar();
+        }
         private void tsc_Docente_Salir_Click(object sender, EventArgs e)
         {
             this.Dispose();
         }
+
 
         #endregion
 

@@ -38,6 +38,7 @@
             this.tsc_Admin_Cursos = new System.Windows.Forms.ToolStripMenuItem();
             this.tsc_Admin_Planes = new System.Windows.Forms.ToolStripMenuItem();
             this.tsc_Admin_Comisiones = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsc_Admin_AluInscp = new System.Windows.Forms.ToolStripMenuItem();
             this.tsc_Admin_Salir = new System.Windows.Forms.ToolStripMenuItem();
             this.menuAlumnos = new System.Windows.Forms.ToolStripMenuItem();
             this.tsc_Alumno_EstadoAcad = new System.Windows.Forms.ToolStripMenuItem();
@@ -45,13 +46,12 @@
             this.tsc_Alumno_InscCursado = new System.Windows.Forms.ToolStripMenuItem();
             this.tsc_Alumno_Salir = new System.Windows.Forms.ToolStripMenuItem();
             this.menuDocentes = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsc_Docente_InscDictado = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsc_Docente_Dictado = new System.Windows.Forms.ToolStripMenuItem();
             this.tsc_Docente_ActNotas = new System.Windows.Forms.ToolStripMenuItem();
             this.tsc_Docente_Salir = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblMensajeSesion = new System.Windows.Forms.Label();
             this.btnSesion = new System.Windows.Forms.Button();
-            this.tsc_Admin_AluInscp = new System.Windows.Forms.ToolStripMenuItem();
             this.mnsPrincipal.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -140,6 +140,13 @@
             this.tsc_Admin_Comisiones.Text = "Comisiones";
             this.tsc_Admin_Comisiones.Click += new System.EventHandler(this.tsc_Admin_Comisiones_Click);
             // 
+            // tsc_Admin_AluInscp
+            // 
+            this.tsc_Admin_AluInscp.Name = "tsc_Admin_AluInscp";
+            this.tsc_Admin_AluInscp.Size = new System.Drawing.Size(191, 22);
+            this.tsc_Admin_AluInscp.Text = "Alumno_Inscripciones";
+            this.tsc_Admin_AluInscp.Click += new System.EventHandler(this.tsc_Admin_AluInscp_Click);
+            // 
             // tsc_Admin_Salir
             // 
             this.tsc_Admin_Salir.Name = "tsc_Admin_Salir";
@@ -186,18 +193,19 @@
             // menuDocentes
             // 
             this.menuDocentes.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsc_Docente_InscDictado,
+            this.tsc_Docente_Dictado,
             this.tsc_Docente_ActNotas,
             this.tsc_Docente_Salir});
             this.menuDocentes.Name = "menuDocentes";
             this.menuDocentes.Size = new System.Drawing.Size(50, 20);
             this.menuDocentes.Text = "Menu";
             // 
-            // tsc_Docente_InscDictado
+            // tsc_Docente_Dictado
             // 
-            this.tsc_Docente_InscDictado.Name = "tsc_Docente_InscDictado";
-            this.tsc_Docente_InscDictado.Size = new System.Drawing.Size(180, 22);
-            this.tsc_Docente_InscDictado.Text = "Inscribirse a Dictado";
+            this.tsc_Docente_Dictado.Name = "tsc_Docente_Dictado";
+            this.tsc_Docente_Dictado.Size = new System.Drawing.Size(160, 22);
+            this.tsc_Docente_Dictado.Text = "Dictados";
+            this.tsc_Docente_Dictado.Click += new System.EventHandler(this.tsc_Docente_Dictado_Click);
             // 
             // tsc_Docente_ActNotas
             // 
@@ -241,13 +249,6 @@
             this.btnSesion.Text = "Sesion";
             this.btnSesion.UseVisualStyleBackColor = true;
             this.btnSesion.Click += new System.EventHandler(this.btnSesion_Click);
-            // 
-            // tsc_Admin_AluInscp
-            // 
-            this.tsc_Admin_AluInscp.Name = "tsc_Admin_AluInscp";
-            this.tsc_Admin_AluInscp.Size = new System.Drawing.Size(191, 22);
-            this.tsc_Admin_AluInscp.Text = "Alumno_Inscripciones";
-            this.tsc_Admin_AluInscp.Click += new System.EventHandler(this.tsc_Admin_AluInscp_Click);
             // 
             // formMain
             // 
@@ -295,7 +296,7 @@
         private System.Windows.Forms.ToolStripMenuItem tsc_Alumno_EstadoAcad;
         private System.Windows.Forms.ToolStripMenuItem tsc_Alumno_MateriasPlan;
         private System.Windows.Forms.ToolStripMenuItem tsc_Alumno_InscCursado;
-        private System.Windows.Forms.ToolStripMenuItem tsc_Docente_InscDictado;
+        private System.Windows.Forms.ToolStripMenuItem tsc_Docente_Dictado;
         private System.Windows.Forms.ToolStripMenuItem tsc_Docente_ActNotas;
         private System.Windows.Forms.ToolStripMenuItem tsc_Admin_AluInscp;
     }

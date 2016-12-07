@@ -133,6 +133,18 @@
     <Compile Include="Administrador\PlanDesktop.Designer.cs">
       <DependentUpon>PlanDesktop.cs</DependentUpon>
     </Compile>
+    <Compile Include="Docente\DictadoDesktop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Docente\DictadoDesktop.Designer.cs">
+      <DependentUpon>DictadoDesktop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Docente\GrillaDictados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Docente\GrillaDictados.Designer.cs">
+      <DependentUpon>GrillaDictados.cs</DependentUpon>
+    </Compile>
     <Compile Include="Inicio\ApplicationForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -207,6 +219,12 @@
     <EmbeddedResource Include="Administrador\PlanDesktop.resx">
       <DependentUpon>PlanDesktop.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Docente\DictadoDesktop.resx">
+      <DependentUpon>DictadoDesktop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Docente\grillaDictados.resx">
+      <DependentUpon>GrillaDictados.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Inicio\ApplicationForm.resx">
       <DependentUpon>ApplicationForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -257,7 +275,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Alumno\" />
-    <Folder Include="Docente\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\agregar-planes.png" />

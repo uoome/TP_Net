@@ -86,8 +86,6 @@ namespace UI.Web
             this.DictadoLog.Save(dc);
         }
 
-        
-
         #endregion
 
         #region Eventos
@@ -226,13 +224,6 @@ namespace UI.Web
 
         }
 
-
-
-
-
-
-        #endregion
-
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
             switch (FormMode)
@@ -271,5 +262,9 @@ namespace UI.Web
 
             panelFormulario.Visible = false;
         }
+
+        #endregion
+
+
     }
 }

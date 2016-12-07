@@ -161,7 +161,6 @@
             this.cbxTipoPers.Name = "cbxTipoPers";
             this.cbxTipoPers.Size = new System.Drawing.Size(121, 21);
             this.cbxTipoPers.TabIndex = 1;
-            this.cbxTipoPers.SelectedIndexChanged += new System.EventHandler(this.cbxTipoPers_SelectedIndexChanged);
             // 
             // txtNombUs
             // 

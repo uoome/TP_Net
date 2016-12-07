@@ -72,7 +72,7 @@ namespace UI.Desktop
 
             this.txtLegajo.Text = PersonaActual.Legajo.ToString();
             this.txtNombre.Text = PersonaActual.Nombre;
-            this.txtApellido.Text = PersonaActual.Apellido;
+            this.txtApellido.Text = PersonaActual.Apellido; 
             this.txtNombUs.Text = PersonaActual.NombreUsuario;
             this.txtClave.Text = PersonaActual.Clave;
             this.txtCambiaClave.Text = PersonaActual.CambiaCLave;
@@ -88,6 +88,7 @@ namespace UI.Desktop
             this.cbxEspecialidades.Text = new EspecialidadLogic().GetOne(planPersona.IDEspecialidad).Descripcion;
             this.cbxPlanes.Text = planPersona.Descripcion;
         }
+
         public override void MapearADatos()
         {
             if (Modo == ModoForm.Alta)
@@ -128,6 +129,7 @@ namespace UI.Desktop
             }
 
         }
+
         public override void GuardarCambios()
         {
             this.MapearADatos();
@@ -308,6 +310,7 @@ namespace UI.Desktop
             }
 
         }
+
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -315,10 +318,5 @@ namespace UI.Desktop
 
 
         #endregion
-
-        private void cbxTipoPers_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }
