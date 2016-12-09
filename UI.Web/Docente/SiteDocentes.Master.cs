@@ -11,7 +11,48 @@ namespace UI.Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["id_persona"] != null)
+            {
 
+                Menu = Session["Menu"].ToString();
+            }
         }
-    }
+
+        private string MenuROjo;
+        public string Menu
+        {
+            set
+            {
+                MenuROjo = value;
+                if (MenuROjo == "menuDictado")
+                {
+                   menuDictado.Attributes["class"] = "active-menu";
+                }
+                if (MenuROjo == "menuInicio")
+                {
+                   menuInicio.Attributes["class"] = "active-menu";
+                }
+
+            }
+        }
+      
+protected void lblPersona_Init(object sender, EventArgs e)
+        {
+            if (Session["id_persona"] != null)
+            {
+
+                lblPersona.Text = Session["nombre"].ToString() + " " + Session["apellido"].ToString();
+                lblPersona.Visible = true;
+            }
+            else
+            {
+                Response.Redirect("~/Administrador/FinalizoSession.aspx");
+            }
+
+         }
+   
+          
+        
+
+       }
 }

@@ -55,7 +55,7 @@ namespace UI.Web
 
             if (!Page.IsPostBack)
             {
-                string si = "menuEstadoAcademico";
+                string si = "menuEstado";
                 Session["Menu"] = si;
 
                 AlumnoInscripcionLogic ail = new AlumnoInscripcionLogic();

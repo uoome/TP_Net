@@ -1,7 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Docente/SiteDocentes.Master" AutoEventWireup="true" CodeBehind="Dictado.aspx.cs" Inherits="UI.Web.Dictado" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-</asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
+<asp:Content ID="Content2" ContentPlaceHolderID="bodyContentPlaceHolder" runat="server">
     <asp:Panel ID="panelGrillaDictados" runat="server">
         <asp:GridView ID="grvDictados" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" OnLoad="grvDictados_Load" OnSelectedIndexChanged="grvDictados_SelectedIndexChanged" DataKeyNames="ID">
             <AlternatingRowStyle BackColor="White" />

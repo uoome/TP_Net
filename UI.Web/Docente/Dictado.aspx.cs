@@ -13,6 +13,8 @@ namespace UI.Web
     {
         private DocenteCursologic _dictadoLog;
 
+   //     <asp:Content ID = "Content1" ContentPlaceHolderID="head" runat="server">
+ //</asp:Content> LO SAQUE DE LA MASTER CREO Q ERA EL ERROR PERO LO GUARDO POR Las dudas
         public DocenteCursologic DictadoLog
         {
             get
@@ -94,7 +96,7 @@ namespace UI.Web
         {
             if (!IsPostBack)
             {
-                string si = "menuDictados";
+                string si = "menuDictado";
                 Session["Menu"] = si;
 
                 CursoLogic curLog = new CursoLogic();

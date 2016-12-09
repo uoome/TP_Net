@@ -18,6 +18,22 @@ namespace UI.Web
                 } */
             }
         }
+        private string MenuROjo;
+        public string Menu
+        {
+            set
+            {
+                MenuROjo = value;
+                if (MenuROjo == "menuInicio")
+                {
+                    menuInicio.Attributes["class"] = "active-menu";
+                }
+                if (MenuROjo == "menuEstado")
+                {
+                    menuEstado.Attributes["class"] = "active-menu";
+                }
+            }
+        }
 
         protected void lblPersona_Init(object sender, EventArgs e)
         {
@@ -30,7 +46,7 @@ namespace UI.Web
             }
             else
             {
-                Response.Redirect("~/Login.aspx");
+                Response.Redirect("~/Administrador/FinalizoSession.aspx");
             }
         }
     }
