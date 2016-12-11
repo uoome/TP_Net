@@ -2,10 +2,10 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="bodyContentPlaceHolder" runat="server">
     <asp:Panel ID="panelGrillaDictados" runat="server">
-        <asp:GridView ID="grvDictados" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" OnLoad="grvDictados_Load" OnSelectedIndexChanged="grvDictados_SelectedIndexChanged" DataKeyNames="ID">
+        <asp:GridView ID="grvDictados" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" OnSelectedIndexChanged="grvDictados_SelectedIndexChanged" DataKeyNames="ID">
             <AlternatingRowStyle BackColor="White" />
             <Columns>
-                <asp:BoundField HeaderText="Curso" DataField="curso" />
+                <asp:BoundField HeaderText="Curso" DataField="cur" />
                 <asp:BoundField HeaderText="Docente" DataField="docente" />
                 <asp:BoundField HeaderText="Cargo" DataField="cargo" />
                 <asp:CommandField ShowSelectButton="True" />

@@ -30,17 +30,53 @@ namespace UI.Web
         public DocenteCurso Entity { get; set; }
 
         private List<DocenteCurso> _listaDictados;
-        public List<DocenteCurso> listaDictados { get { return _listaDictados; } set { _listaDictados = value; } }
+        public List<DocenteCurso> listaDictados
+        {
+            get
+            {
+                if (_listaDictados == null)
+                    _listaDictados = new List<DocenteCurso>();
+                return _listaDictados;
+            }
+            set { _listaDictados = value; }
+        }
 
         private List<Curso> _listaCursos;
-        public List<Curso> listaCursos { get { return _listaCursos; } set { _listaCursos = value; } }
+        public List<Curso> listaCursos
+        {
+            get
+            {
+                if (_listaCursos == null)
+                    _listaCursos = new List<Curso>();
+                return _listaCursos;
+            }
+            set { _listaCursos = value; }
+        }
 
         private List<Materia> _listaMaterias;
-        public List<Materia> listaMaterias { get { return _listaMaterias; } set { _listaMaterias = value; } }
+        public List<Materia> listaMaterias
+        {
+            get
+            {
+                if (_listaMaterias == null)
+                    _listaMaterias = new List<Materia>();
+                return _listaMaterias;
+            }
+            set { _listaMaterias = value; }
+        }
 
         private List<Comision> _listaComi;
-        public List<Comision> listaComi { get { return _listaComi; } set { _listaComi = value; } }
-        
+        public List<Comision> listaComi
+        {
+            get
+            {
+                if (_listaComi == null)
+                    _listaComi = new List<Comision>();
+                return _listaComi;
+            }
+            set { _listaComi = value; }
+        }
+
         private List<Object> _listaGrilla;
         public List<Object> listaGrilla { get { return _listaGrilla; } set { _listaGrilla = value; } }
 
@@ -88,6 +124,36 @@ namespace UI.Web
             this.DictadoLog.Save(dc);
         }
 
+        public void CargarGrilla()
+        {
+            string doc = "";
+            listaGrilla = new List<Object>();
+
+            foreach (DocenteCurso dc in listaDictados) //Busco los cursos del docente logueado
+            {
+                if (dc.IdDocente == (int)Session["id_persona"])
+                {
+                    PersonaLogic plog = new PersonaLogic();
+                    Business.Entities.Personas p = plog.GetOne(dc.IdDocente);
+                    doc = p.Apellido + " " + p.Nombre;
+
+                    // Armo el tipo anonimo
+                    listaGrilla.Add(new
+                    {
+                        ID = dc.ID,
+                        cur = dc.IdCurso,
+                        docente = doc,
+                        cargo = dc.Cargo.ToString()
+                    });
+
+                }
+            }
+
+            grvDictados.DataSource = listaGrilla;
+            grvDictados.DataBind();
+
+        }
+
         #endregion
 
         #region Eventos
@@ -98,6 +164,8 @@ namespace UI.Web
             {
                 string si = "menuDictado";
                 Session["Menu"] = si;
+
+                panelFormulario.Visible = false;
 
                 CursoLogic curLog = new CursoLogic();
                 listaCursos = curLog.GetAll();
@@ -129,39 +197,12 @@ namespace UI.Web
                 ddlCargos.Items.Add("");
                 ddlCargos.Items.Add(DocenteCurso.TiposCargos.Titular.ToString());
                 ddlCargos.Items.Add(DocenteCurso.TiposCargos.Auxiliar.ToString());
+
+                this.CargarGrilla();
             }
 
         }
-
-        protected void grvDictados_Load(object sender, EventArgs e)
-        {
-            string doc = "";
-            listaGrilla = new List<Object>();
-
-            foreach (DocenteCurso dc in listaDictados) //Busco los cursos del docente logueado
-            {
-                if (dc.IdDocente == (int)Session["id_persona"])
-                {
-                    PersonaLogic plog = new PersonaLogic();
-                    Business.Entities.Personas p = plog.GetOne(dc.IdDocente);
-                    doc = p.Apellido + " " + p.Nombre;
-
-                    // Armo el tipo anonimo
-                    listaGrilla.Add(new
-                    {
-                        ID = dc.ID,
-                        cur = dc.IdCurso,
-                        docente = doc,
-                        cargo = dc.Cargo.ToString()
-                    });
-
-                }
-            }
-
-            grvDictados.DataSource = listaGrilla;
-            grvDictados.DataBind();
-
-        }
+        
         
         protected void grvDictados_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -263,10 +304,11 @@ namespace UI.Web
             }
 
             panelFormulario.Visible = false;
+            this.CargarGrilla();
         }
 
+
         #endregion
-
-
+        
     }
 }

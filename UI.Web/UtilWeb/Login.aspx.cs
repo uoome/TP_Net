@@ -43,8 +43,8 @@ namespace UI.Web
                         //Para probar que pasa si expira la session
 
                         if (per.TipoPersona == Business.Entities.Personas.TiposPersonas.Alumno)
-                            // Response.Redirect("~/Alumno/DefaultAlumnos.aspx");
-                            Response.Redirect("~/Administrador/Default.aspx");
+                            Response.Redirect("~/Alumno/DefaultAlumnos.aspx");
+                            //Response.Redirect("~/Administrador/Default.aspx");
 
                         else
                         {
