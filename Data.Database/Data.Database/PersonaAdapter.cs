@@ -56,7 +56,42 @@ namespace Data.Database
             }
             return personas;
         }
+        public List<Object> GetAllEstados(int ID)
+        {
+            List<Object> listaGrilla = new List<Object>();
 
+            try
+            {
+                this.OpenConnection();
+                SqlCommand cmdEstados = new SqlCommand("select cur.cupo,mat.desc_materia,alu.condicion, pl.desc_plan from alumnos_inscripciones alu inner join personas per on alu.id_alumno = per.id_persona inner join cursos cur on cur.id_curso = alu.id_curso inner join materias mat on mat.id_materia = cur.id_materia and mat.id_plan = per.id_plan inner join planes pl on pl.id_plan=mat.id_plan  where per.id_persona=@idPersona", sqlConn);
+
+                cmdEstados.Parameters.Add("@idPersona", SqlDbType.Int).Value = ID;
+                SqlDataReader drEstados = cmdEstados.ExecuteReader();
+                while (drEstados.Read())
+                {
+                    listaGrilla.Add(new
+                    {
+                        año = 2016,
+                        desc_materia = (string)drEstados["desc_materia"],
+                        estado = (int)drEstados["condicion"],
+                        desc_plan = (string)drEstados["desc_plan"],
+                    });
+                }
+                drEstados.Close();
+
+
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al cargar la lista de Estados" + Ex.Message, Ex);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                this.CloseConnection();
+            }
+            return listaGrilla;
+        }
         public List<Personas> GetAll(Personas.TiposPersonas tipoPers)
         {
             List<Personas> listaPers = new List<Personas>();
@@ -106,6 +141,7 @@ namespace Data.Database
             return listaPers;
 
         }
+       
         public Personas GetOne(int ID)
         {
             Personas persona= new Personas();

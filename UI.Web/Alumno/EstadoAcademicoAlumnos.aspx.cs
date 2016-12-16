@@ -10,7 +10,7 @@ namespace UI.Web
 {
     public partial class EstadoAcademicoAlumnos : ABM
     {
-        private static List<AlumnoInscripcion> _listaInscripciones;
+      /*  private static List<AlumnoInscripcion> _listaInscripciones;
         public List<AlumnoInscripcion> listaInscripciones
         {
             get { return _listaInscripciones; }
@@ -44,6 +44,7 @@ namespace UI.Web
             get { return _listaGrilla; }
             set { _listaGrilla = value; }
         }
+        */
         public void LoadGrid(List<Object> lista)
         {
             gvEstadoAcademico.DataSource = lista;
@@ -58,7 +59,7 @@ namespace UI.Web
                 string si = "menuEstado";
                 Session["Menu"] = si;
 
-                AlumnoInscripcionLogic ail = new AlumnoInscripcionLogic();
+                 /*AlumnoInscripcionLogic ail = new AlumnoInscripcionLogic();
                 listaInscripciones = ail.GetAll();
                 MateriaLogic ml = new MateriaLogic();
                 listaMaterias = ml.GetAll();
@@ -66,12 +67,16 @@ namespace UI.Web
                 listaPlanes = pl.GetAll();
                 CursoLogic cl = new CursoLogic();
                 listaCursos = cl.GetAll();
-            }
+            */
+                }
         }
 
         protected void gvEstadoAcademico_Load(object sender, EventArgs e)
-        {
-            {
+        { List <Object> Listaa = new List<Object>();
+            PersonaLogic perlog = new PersonaLogic();
+            Listaa = perlog.GetAllEstados((int)Session["id_persona"]);
+
+           /* {
                 string c, p, n, est;
                 listaGrilla = new List<Object>();
                 foreach (Materia materia in listaMaterias)
@@ -120,8 +125,9 @@ namespace UI.Web
                         });
                     }
                 }
-                this.LoadGrid(listaGrilla);
+                */
+               this.LoadGrid(Listaa);
             }
         }
-    }
+    
 }
