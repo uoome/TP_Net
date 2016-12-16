@@ -79,7 +79,7 @@ namespace UI.Web
             }
             else
             {
-                Response.Redirect("~/Administrador/FinalizoSession.aspx");
+                Response.Redirect("~/UtilWeb/Login.aspx");
             }
         }
 

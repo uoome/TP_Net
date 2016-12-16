@@ -30,6 +30,7 @@ namespace Data.Database
                     al.Nota = (int)drAlumnosIns["nota"];
                     al.Condicion = (AlumnoInscripcion.TiposCondiciones)drAlumnosIns["condicion"];
                     Inscripciones.Add(al);
+                    
 
                 }
                 drAlumnosIns.Close();

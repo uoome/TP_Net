@@ -10,13 +10,15 @@ namespace UI.Web
     public partial class SiteAlumnos : System.Web.UI.MasterPage
     {
         protected void Page_Load(object sender, EventArgs e)
-        {  if (!IsPostBack)
-            {
-              /*  if (Session.Timeout > 2)
+        {  
+            
+                if (Session["id_persona"] != null)
                 {
-                    Response.Redirect("~/Login.aspx");
-                } */
-            }
+
+                    Menu = Session["Menu"].ToString();
+                }
+
+            
         }
         private string MenuROjo;
         public string Menu
@@ -46,7 +48,7 @@ namespace UI.Web
             }
             else
             {
-                Response.Redirect("~/Administrador/FinalizoSession.aspx");
+                Response.Redirect("~/UtilWeb/Login.aspx");
             }
         }
     }

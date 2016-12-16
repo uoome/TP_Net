@@ -20,7 +20,7 @@ namespace UI.Web
 
         protected void btnIniciarSession_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~UtilWeb/Login.aspx");
+            Response.Redirect("~/UtilWeb/Login.aspx");
         }
     }
 }

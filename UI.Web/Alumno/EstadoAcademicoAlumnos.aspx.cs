@@ -104,10 +104,13 @@ namespace UI.Web
                                     }
                                 }
                             }
+                            if (c.Equals(AlumnoInscripcion.TiposCondiciones.Cursando) || c.Equals(AlumnoInscripcion.TiposCondiciones.Libre))
+                                est = c;
+                            else est = c + "con " + n;
+
                         }
-                        if (c.Equals(AlumnoInscripcion.TiposCondiciones.Cursando) || c.Equals(AlumnoInscripcion.TiposCondiciones.Libre))
-                            est = c;
-                        else est = c + "con " + n;
+
+
                         listaGrilla.Add(new
                         {
                             año = 2016,

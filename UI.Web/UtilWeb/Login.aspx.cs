@@ -39,12 +39,12 @@ namespace UI.Web
                         Session.Add("nombre", per.Nombre);
                         Session.Add("tipo_persona", per.TipoPersona.ToString());
                         Session.Add("id_usuario", per.ID);
-                        Session.Timeout = 1;
+                        Session.Timeout = 10;
                         //Para probar que pasa si expira la session
 
                         if (per.TipoPersona == Business.Entities.Personas.TiposPersonas.Alumno)
-                            Response.Redirect("~/Alumno/DefaultAlumnos.aspx");
-                            //Response.Redirect("~/Administrador/Default.aspx");
+                              Response.Redirect("~/Alumno/DefaultAlumnos.aspx");
+                            
 
                         else
                         {

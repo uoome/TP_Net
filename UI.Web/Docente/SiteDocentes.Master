@@ -38,7 +38,7 @@ padding: 15px 50px 5px 50px;
 float: right;
 font-size: 16px;"> 
 &nbsp;&nbsp;&nbsp;&nbsp; scess : 3<asp:Label ID="lblFecha" runat="server"></asp:Label>
-      0 M14 &nbsp; <a class="btn btn-danger square-btn-adjust" href="Login.aspx">Logout</a> </div>
+      0 M14 &nbsp; <a class="btn btn-danger square-btn-adjust" href="/UtilWeb/Login.aspx">Logout</a> </div>
         </nav>   
            <!-- /. NAV TOP  -->
                 <nav class="navbar-default navbar-side" role="navigation">

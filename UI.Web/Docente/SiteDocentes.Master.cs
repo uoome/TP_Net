@@ -46,7 +46,7 @@ protected void lblPersona_Init(object sender, EventArgs e)
             }
             else
             {
-                Response.Redirect("~/Administrador/FinalizoSession.aspx");
+                Response.Redirect("~/UtilWeb/Login.aspx");
             }
 
          }
