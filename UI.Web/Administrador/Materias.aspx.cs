@@ -44,6 +44,7 @@ namespace UI.Web
             this.txtHsTotales.Text = string.Empty;
             this.ddlPlanes.SelectedIndex = -1;
             this.ddlEspecialidades.SelectedIndex = -1;
+            this.txtAnio.Text = string.Empty;
         }
         private void LoadEntity(Materia mt)
         {
@@ -51,6 +52,7 @@ namespace UI.Web
             mt.HSSemanales = int.Parse(this.txtHsSemanales.Text);
             mt.HSTotales = int.Parse(this.txtHsTotales.Text);
             mt.Descripcion = this.txtDescripcion.Text;
+            mt.Anio = int.Parse(txtAnio.Text);
 
         }
         private void DeleteEntity(int id)
@@ -64,6 +66,7 @@ namespace UI.Web
         private void LoadForm(int id)
         {
             Entity = Materia.GetOne(id);
+            txtAnio.Text = Entity.Anio.ToString();
             txtDescripcion.Text = Entity.Descripcion;
             txtHsSemanales.Text = Entity.HSSemanales.ToString();
             txtHsTotales.Text = Entity.HSTotales.ToString();
@@ -80,6 +83,7 @@ namespace UI.Web
             this.txtHsTotales.Enabled = enabled;
             this.ddlPlanes.Enabled = enabled;
             this.ddlEspecialidades.Enabled = enabled;
+            this.txtAnio.Enabled = enabled;
        }
 
 

@@ -94,6 +94,33 @@ namespace UI.Web {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvDescripcion;
         
         /// <summary>
+        /// Control lblAnio.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblAnio;
+        
+        /// <summary>
+        /// Control txtAnio.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtAnio;
+        
+        /// <summary>
+        /// Control rfvAnio.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvAnio;
+        
+        /// <summary>
         /// Control ddlEspecialidades.
         /// </summary>
         /// <remarks>

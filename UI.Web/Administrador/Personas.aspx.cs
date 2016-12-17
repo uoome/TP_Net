@@ -130,8 +130,10 @@ namespace UI.Web
             ddlTipoPers.Text = Entity.TipoPersona.ToString();
             PlanLogic pl = new PlanLogic();
             Plan planPersona = pl.GetOne(Entity.IDPlan);
-            ddlEspecialidades.Text = new EspecialidadLogic().GetOne(planPersona.IDEspecialidad).Descripcion;
+           ddlEspecialidades.Text = new EspecialidadLogic().GetOne(planPersona.IDEspecialidad).Descripcion;
+            ddlPlanes.Items.Add(planPersona.Descripcion);
             ddlPlanes.Text = planPersona.Descripcion;
+
             
         }
 
@@ -240,15 +242,19 @@ namespace UI.Web
 
         protected void lnkButtonEliminar_Click(object sender, EventArgs e)
         {
-            lblResultado.Visible = false;
+           
             if (this.IsEntitySelected)
             {
+                lblResultado.Visible = false;
+                panelFormulario.Visible = true;
                 this.lblRegistro.Visible = false;
                 this.panelConfirmacion.Visible = true;
                 this.panelConfirmacion.Visible = true;
-                this.EnableForm(false);
                 this.FormMode = FormModes.Baja;
                 this.LoadForm(this.SelectedID);
+                this.EnableForm(false);
+               
+               
                 
             }
             else lblRegistro.Visible = true; 
@@ -257,6 +263,7 @@ namespace UI.Web
         protected void grillaPersonas_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.SelectedID = (int)this.grillaPersonas.SelectedValue;
+            panelFormulario.Visible = false;
         }
 
         protected void ddlEspecialidades_SelectedIndexChanged(object sender, EventArgs e)

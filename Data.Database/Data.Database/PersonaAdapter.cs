@@ -63,7 +63,7 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdEstados = new SqlCommand("select cur.cupo,mat.desc_materia,alu.condicion, pl.desc_plan from alumnos_inscripciones alu inner join personas per on alu.id_alumno = per.id_persona inner join cursos cur on cur.id_curso = alu.id_curso inner join materias mat on mat.id_materia = cur.id_materia and mat.id_plan = per.id_plan inner join planes pl on pl.id_plan=mat.id_plan  where per.id_persona=@idPersona", sqlConn);
+                SqlCommand cmdEstados = new SqlCommand("select mat.anio,mat.desc_materia,alu.condicion, pl.desc_plan from alumnos_inscripciones alu inner join personas per on alu.id_alumno = per.id_persona inner join cursos cur on cur.id_curso = alu.id_curso inner join materias mat on mat.id_materia = cur.id_materia and mat.id_plan = per.id_plan inner join planes pl on pl.id_plan=mat.id_plan  where per.id_persona=@idPersona", sqlConn);
 
                 cmdEstados.Parameters.Add("@idPersona", SqlDbType.Int).Value = ID;
                 SqlDataReader drEstados = cmdEstados.ExecuteReader();
@@ -71,7 +71,7 @@ namespace Data.Database
                 {
                     listaGrilla.Add(new
                     {
-                        año = 2016,
+                        año = (int)drEstados["anio"],
                         desc_materia = (string)drEstados["desc_materia"],
                         estado = (int)drEstados["condicion"],
                         desc_plan = (string)drEstados["desc_plan"],

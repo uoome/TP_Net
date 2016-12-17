@@ -7,6 +7,7 @@
             <asp:BoundField DataField="Descripcion" HeaderText="Descripcion de la Materia" />
             <asp:BoundField DataField="HSSemanales" HeaderText="Horas semanales" />
             <asp:BoundField DataField="HSTotales" HeaderText="Horas totales" />
+            <asp:BoundField DataField="Anio" HeaderText="Año de la materia" />
             <asp:CommandField ShowSelectButton="True" />
         </Columns>
         <FooterStyle BackColor="Tan" />
@@ -33,6 +34,15 @@
                 <td>
                     <asp:TextBox ID="txtDescripcion" runat="server"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="rfvDescripcion" runat="server" ControlToValidate="txtDescripcion" Display="None" ErrorMessage="No puede estar vacio Descripcion" ForeColor="Red">*</asp:RequiredFieldValidator>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <asp:Label ID="lblAnio" runat="server" Text="Año de la materia"></asp:Label>
+                </td>
+                <td>
+                    <asp:TextBox ID="txtAnio" runat="server"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="rfvAnio" runat="server" ControlToValidate="txtAnio" Display="None" ErrorMessage="No puede estar vacio el año" ForeColor="Red">*</asp:RequiredFieldValidator>
                 </td>
             </tr>
             <tr>

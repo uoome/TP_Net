@@ -31,6 +31,7 @@ namespace Data.Database
                     unaMateria.Descripcion = (string)drMaterias["desc_materia"];
                     unaMateria.HSSemanales = (int)drMaterias["hs_semanales"];
                     unaMateria.HSTotales = (int)drMaterias["hs_totales"];
+                    unaMateria.Anio = (int)drMaterias["anio"];
 
                     listadoMaterias.Add(unaMateria);
                 }
@@ -65,6 +66,7 @@ namespace Data.Database
                     unaMateria.HSTotales = (int)drMateria["hs_totales"];
                     unaMateria.IDplan = (int)drMateria["id_plan"];
                     unaMateria.ID = (int)drMateria["id_materia"];
+                    unaMateria.Anio = (int)drMateria["anio"];
 
                 }
                 drMateria.Close();
@@ -99,6 +101,7 @@ namespace Data.Database
                     mate.HSSemanales = (int)drMateria["hs_semanales"];
                     mate.HSTotales = (int)drMateria["hs_totales"];
                     mate.IDplan = (int)drMateria["id_plan"];
+                    mate.Anio = (int)drMateria["anio"];
                 }
                 drMateria.Close();
 
@@ -140,12 +143,13 @@ namespace Data.Database
             {
                 this.OpenConnection();
                 SqlCommand cmdInsertMateria = new SqlCommand(
-                    "INSERT INTO materias (desc_materia,hs_semanales, hs_totales,id_plan) " +
-                    "VALUES(@desc_materia, @hs_sem, @hs_tot, @id_plan)",sqlConn);
+                    "INSERT INTO materias (desc_materia,hs_semanales, hs_totales,id_plan,anio) " +
+                    "VALUES(@desc_materia, @hs_sem, @hs_tot, @id_plan, @ani)",sqlConn);
                 cmdInsertMateria.Parameters.Add("@desc_materia",SqlDbType.VarChar,50).Value=materia.Descripcion;
                 cmdInsertMateria.Parameters.Add("@hs_tot", SqlDbType.Int).Value = materia.HSTotales;
                 cmdInsertMateria.Parameters.Add("@hs_sem", SqlDbType.Int).Value = materia.HSSemanales;
                 cmdInsertMateria.Parameters.Add("@id_plan", SqlDbType.Int).Value = materia.IDplan;
+               cmdInsertMateria.Parameters.Add("@ani", SqlDbType.Int).Value = materia.Anio;
 
                 cmdInsertMateria.ExecuteNonQuery();
 
@@ -169,13 +173,14 @@ namespace Data.Database
                 this.OpenConnection();
                 SqlCommand cmdUpdateMateria = new SqlCommand(
                     "UPDATE materias " +
-                    "SET id_plan=@idplan, desc_materia=@desc, hs_totales=@hstot, hs_semanales=@hssem "+
+                    "SET id_plan=@idplan, desc_materia=@desc, hs_totales=@hstot, anio=@ani , hs_semanales=@hssem "+
                     "WHERE id_materia=@id", sqlConn);
                 cmdUpdateMateria.Parameters.Add("@id", SqlDbType.Int).Value = materia.ID;
                 cmdUpdateMateria.Parameters.Add("@desc", SqlDbType.VarChar,50).Value = materia.Descripcion;
                 cmdUpdateMateria.Parameters.Add("@hssem", SqlDbType.Int).Value = materia.HSSemanales;
                 cmdUpdateMateria.Parameters.Add("@hstot", SqlDbType.Int).Value = materia.HSTotales;
                 cmdUpdateMateria.Parameters.Add("@idplan", SqlDbType.Int).Value = materia.IDplan;
+                cmdUpdateMateria.Parameters.Add("@ani", SqlDbType.Int).Value = materia.Anio;
 
                 cmdUpdateMateria.ExecuteNonQuery();
 

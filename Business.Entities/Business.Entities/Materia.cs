@@ -11,13 +11,18 @@ namespace Business.Entities
         private int _HSSemanales;
         private int _HSTotales;
         private int _IDPlan;
+        private int _Anio;
 
         public string Descripcion
         {
             get { return _Descripcion; }
             set { _Descripcion = value; }
         }
-
+        public int Anio
+        {
+            set { _Anio = value; }
+            get { return _Anio; }
+        } 
         public int HSSemanales
         {
             get { return _HSSemanales; }
