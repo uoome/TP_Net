@@ -207,6 +207,7 @@ namespace UI.Web
         protected void grvDictados_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.SelectedID = (int)this.grvDictados.SelectedValue;
+            panelFormulario.Visible = false;
         }
 
         protected void ddlDocentes_SelectedIndexChanged(object sender, EventArgs e)

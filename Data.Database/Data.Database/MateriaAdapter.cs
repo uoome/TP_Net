@@ -101,7 +101,7 @@ namespace Data.Database
                     mate.HSSemanales = (int)drMateria["hs_semanales"];
                     mate.HSTotales = (int)drMateria["hs_totales"];
                     mate.IDplan = (int)drMateria["id_plan"];
-                    mate.Anio = (int)drMateria["anio"];
+                   mate.Anio = (int)drMateria["anio"];
                 }
                 drMateria.Close();
 
@@ -150,7 +150,7 @@ namespace Data.Database
                 cmdInsertMateria.Parameters.Add("@hs_sem", SqlDbType.Int).Value = materia.HSSemanales;
                 cmdInsertMateria.Parameters.Add("@id_plan", SqlDbType.Int).Value = materia.IDplan;
                cmdInsertMateria.Parameters.Add("@ani", SqlDbType.Int).Value = materia.Anio;
-
+            
                 cmdInsertMateria.ExecuteNonQuery();
 
             } 
@@ -180,7 +180,7 @@ namespace Data.Database
                 cmdUpdateMateria.Parameters.Add("@hssem", SqlDbType.Int).Value = materia.HSSemanales;
                 cmdUpdateMateria.Parameters.Add("@hstot", SqlDbType.Int).Value = materia.HSTotales;
                 cmdUpdateMateria.Parameters.Add("@idplan", SqlDbType.Int).Value = materia.IDplan;
-                cmdUpdateMateria.Parameters.Add("@ani", SqlDbType.Int).Value = materia.Anio;
+               cmdUpdateMateria.Parameters.Add("@ani", SqlDbType.Int).Value = materia.Anio;
 
                 cmdUpdateMateria.ExecuteNonQuery();
 

@@ -73,8 +73,10 @@ namespace UI.Web
             Plan p = new Plan();
             p = new PlanLogic().GetOne(Entity.IDplan);
             ddlEspecialidades.Text = new EspecialidadLogic().GetOne(p.IDEspecialidad).Descripcion;
+            ddlPlanes.Items.Add(p.Descripcion);
             ddlPlanes.Text = p.Descripcion;
             //No se muestra la descripcion del plan en el ddl al ejecutar.
+            //ARREGLADO
         }
         private void EnabledForm(bool enabled)
         {
@@ -202,6 +204,8 @@ namespace UI.Web
 
         protected void grvMaterias_SelectedIndexChanged(object sender, EventArgs e)
         {
+            panelFormulario.Visible = false;
+            panelConfirmacion.Visible = false;
             this.SelectedID = (int)grvMaterias.SelectedValue;
         }
 

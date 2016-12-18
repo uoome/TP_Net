@@ -201,6 +201,7 @@ namespace UI.Web
         protected void grvPlanes_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.SelectedID = (int)grvPlanes.SelectedValue;
+            panelFormulario.Visible = false;
         }
 
         #endregion

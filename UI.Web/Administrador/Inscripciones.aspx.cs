@@ -200,8 +200,9 @@ namespace UI.Web
             {
                 this.panelGrillaInscripciones.Visible = true;
                 cargaInscripciones(Alumnos[grvAlumnos.SelectedIndex].ID);
-                this.panelControlesInscripciones.Visible = true;
+                //this.panelControlesInscripciones.Visible = true;
                 lblAlumno.Visible = false;
+                grvInscripciones.Visible = true;
             }
         }
 

@@ -151,7 +151,7 @@ namespace Data.Database
                     + "VALUES (@id_materia, @id_comision, @cupo, @anio_calendario)", sqlConn);
                 cmdInsertCurso.Parameters.Add("@id_materia", SqlDbType.Int).Value = cur.IDMateria;
                 cmdInsertCurso.Parameters.Add("@id_comision", SqlDbType.Int).Value = cur.IDComision;
-                cmdInsertCurso.Parameters.Add("@id_cupo", SqlDbType.Int).Value = cur.Cupo;
+                cmdInsertCurso.Parameters.Add("@cupo", SqlDbType.Int).Value = cur.Cupo;
                 cmdInsertCurso.Parameters.Add("@anio_calendario", SqlDbType.Int).Value = cur.AnioCalendario;
                 cmdInsertCurso.ExecuteNonQuery();
 

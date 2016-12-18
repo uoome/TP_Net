@@ -7,7 +7,6 @@
             <asp:BoundField DataField="AnioCalendario" HeaderText="Año Calendario" />
             <asp:BoundField DataField="IDComision" HeaderText="ID Comision" />
             <asp:BoundField DataField="IDMateria" HeaderText="ID Materia" />
-            <asp:BoundField DataField="Descripcion" HeaderText="Descripcion" />
             <asp:CommandField ShowSelectButton="True" />
         </Columns>
         <FooterStyle BackColor="Tan" />
@@ -55,7 +54,7 @@
                     <asp:Label ID="lblIDComision" runat="server" Text="ID Comision"></asp:Label>
                 </td>
                 <td>
-                    <asp:ListBox ID="ddlComision" runat="server" AutoPostBack="True"></asp:ListBox>
+                    <asp:ListBox ID="ddlComision" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlComision_SelectedIndexChanged"></asp:ListBox>
                 </td>
             </tr>
             <tr>

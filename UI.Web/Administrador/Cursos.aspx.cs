@@ -39,15 +39,15 @@ namespace UI.Web
             this.grvCursos.DataBind();
          
             MateriaLogic mat = new MateriaLogic();
-           // ComisionLogic com = new ComisionLogic();
-            // Business.Logic.ComisionLogic cl = new ComisionLogic();
+            ComisionLogic com = new ComisionLogic();
+             Business.Logic.ComisionLogic cl = new ComisionLogic();
                
-              //  List<Comision> listacursos = new List<Comision>();
-               // listacursos = cl.GetAll();
-                //foreach (Comision comi in listacursos)
-                //{
-                  //  ddlComision.Items.Add(comi.ID.ToString());
-                //} FALTA HACER LOGIC Y BD 
+                List<Comision> listacursos = new List<Comision>();
+                listacursos = cl.GetAll();
+                foreach (Comision comi in listacursos)
+                {
+                    ddlComision.Items.Add(comi.ID.ToString());
+                }  
              
 
                 List<Materia> listaMateria = new List<Materia>();
@@ -63,7 +63,14 @@ namespace UI.Web
             this.Entity = CurLog.GetOne(id);
             this.txtAnioCalendario.Text = this.Entity.AnioCalendario.ToString();
             this.txtCupo.Text = this.Entity.Cupo.ToString();
-            this.txtDescripcion.Text = this.Entity.Descripcion;
+        
+          
+         Materia mat = new Materia();
+            MateriaLogic matl = new MateriaLogic();
+            mat = matl.GetOne(Entity.IDMateria);
+            this.txtDescripcion.Text = mat.Descripcion;
+
+
             this.ddlComision.SelectedValue = this.Entity.IDComision.ToString();
             this.ddlMateria.SelectedValue = this.Entity.IDMateria.ToString();
         }
@@ -168,7 +175,8 @@ namespace UI.Web
         protected void grvCursos_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.SelectedID = (int)this.grvCursos.SelectedValue;
-
+            panelControles.Visible = false;
+            panelConfirmacion.Visible = false;
         }
 
         protected void ddlMateria_SelectedIndexChanged(object sender, EventArgs e)
@@ -212,5 +220,9 @@ namespace UI.Web
         }
         #endregion
 
+        protected void ddlComision_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

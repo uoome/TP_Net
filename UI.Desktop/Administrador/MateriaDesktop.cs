@@ -69,6 +69,7 @@ namespace UI.Desktop
             txbHSSemanales.Text = MateriaActual.HSSemanales.ToString();
             txbHSTotales.Text = MateriaActual.HSTotales.ToString();
             txbId_Plan.Text = MateriaActual.IDplan.ToString();
+            txtAnio.Text = MateriaActual.Anio.ToString();
 
         }
         public override void MapearADatos()
@@ -85,6 +86,7 @@ namespace UI.Desktop
                 MateriaActual.HSSemanales = Convert.ToInt32(txbHSSemanales.Text.Trim());
                 MateriaActual.HSTotales = Convert.ToInt32(txbHSTotales.Text.Trim());
                 MateriaActual.IDplan = Convert.ToInt32(txbId_Plan.Text.Trim());
+                MateriaActual.Anio = Convert.ToInt32(txtAnio.Text.Trim());
             }
 
             //Siendo Alta no tiene ID inicial, por eso 
@@ -116,6 +118,8 @@ namespace UI.Desktop
                 msj += "Las horas semanales no pueden estar vacías \n";
             if (txbHSTotales.Text.Trim().Equals(""))
                 msj += "Las horas totales no pueden estar vacías \n";
+            if (txtAnio.Text.Trim().Equals(""))
+                msj += "El año no puede estar vacías \n";
             //Validar combo-box
 
             if (string.IsNullOrEmpty(msj))

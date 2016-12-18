@@ -87,6 +87,8 @@ namespace UI.Web
         protected void grvEspecialidades_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.SelectedID = (int)this.grvEspecialidades.SelectedValue;
+            panelConformacion.Visible = false;
+            panelControles.Visible = false;
         }
 
         protected void linkbtnEditar_Click(object sender, EventArgs e)
