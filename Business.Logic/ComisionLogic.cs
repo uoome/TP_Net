@@ -21,7 +21,11 @@ namespace Business.Logic
             get { return _comAdap; }
         }
 
+        public List<Object> GetAllComisionesMaterias()
+        {
+            return ComAdap.GetAllComisionesMaterias();
 
+        }
         public void Save(Comision com)
         {
             ComAdap.Save(com);

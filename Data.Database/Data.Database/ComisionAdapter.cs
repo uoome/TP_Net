@@ -11,6 +11,39 @@ namespace Data.Database
 {
      public class ComisionAdapter : Adapter
     {
+        public List<Object> GetAllComisionesMaterias()
+        {
+            List<Object> listaGrillaComision = new List<Object>();
+            try
+            {
+                this.OpenConnection();
+                SqlCommand cmdComisiones = new SqlCommand("select mat.desc_materia, mat.anio , com.desc_comision, cur.anio_calendario, cur.cupo from comisiones com inner join materias mat on com.id_plan = mat.id_plan inner join cursos cur on cur.id_materia = mat.id_materia", sqlConn);
+                SqlDataReader drComi = cmdComisiones.ExecuteReader();
+                while(drComi.Read())
+                {
+                    listaGrillaComision.Add(new
+                    {
+                       
+                        desc_materia = (string)drComi["desc_materia"],
+                        anio = (int)drComi["anio"],
+                       desc_comi = (string)drComi["desc_comision"],
+                       anio_calend = (int)drComi["anio_calendario"],
+                       cupo = (int)drComi["cupo"],                  
+                    });
+                }
+                drComi.Close();
+            }
+            catch (Exception ex)
+            {
+                Exception ExManejada = new Exception("No se pudo obtener la lista de comisiones y materias " + ex.Message);
+                throw ExManejada;
+            }
+            finally
+            {
+                this.CloseConnection();
+            }
+            return listaGrillaComision;
+        }
         public List<Comision> GetAll()
         {
             List<Comision> ListaCom = new List<Comision>();

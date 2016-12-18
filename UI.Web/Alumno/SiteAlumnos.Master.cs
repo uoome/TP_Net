@@ -34,6 +34,10 @@ namespace UI.Web
                 {
                     menuEstado.Attributes["class"] = "active-menu";
                 }
+                if (MenuROjo == "menuInscripcionCursado")
+                {
+                    InscripcionCursado.Attributes["class"] = "active-menu";
+                }
             }
         }
 

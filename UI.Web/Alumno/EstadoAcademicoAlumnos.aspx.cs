@@ -128,6 +128,11 @@ namespace UI.Web
                 */
                this.LoadGrid(Listaa);
             }
+
+        protected void gvEstadoAcademico_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
+    }
     
 }

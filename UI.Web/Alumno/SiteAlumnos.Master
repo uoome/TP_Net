@@ -56,10 +56,10 @@ font-size: 16px;">
                       
                          Cursos</a></li>
                     <li>
-                        <a    href="Inscripciones.aspx">Inscripcion a cursado</a>
+                        <a   runat="server" href="InscripcionACurso.aspx" id="InscripcionCursado">Inscripcion a cursado</a>
                     </li>
 						   <li  >
-                        <a   runat="server" href="EstadoAcademicoAlumnos.aspx" id="menuEstado">EstadoAcademico</a>
+                        <a   runat="server" href="EstadoAcademicoAlumnos.aspx" id="menuEstado">Estado Academico</a>
                     </li>	
                       <li  >
                         <a  href="Especialidades.aspx">Especialidades</a>

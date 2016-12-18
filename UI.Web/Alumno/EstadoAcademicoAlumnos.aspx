@@ -4,7 +4,7 @@
 
     <asp:GridView ID="gvEstadoAcademico" runat="server" AutoGenerateColumns="False" 
         CellPadding="4" ForeColor="#333333" GridLines="None" 
-        onload="gvEstadoAcademico_Load" Width="615px">
+        onload="gvEstadoAcademico_Load" Width="615px" OnSelectedIndexChanged="gvEstadoAcademico_SelectedIndexChanged">
         <AlternatingRowStyle BackColor="White" />
         <Columns>
             <asp:BoundField DataField="año" HeaderText="Año" />

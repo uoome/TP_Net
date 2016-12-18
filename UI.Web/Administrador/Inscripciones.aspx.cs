@@ -200,7 +200,7 @@ namespace UI.Web
             {
                 this.panelGrillaInscripciones.Visible = true;
                 cargaInscripciones(Alumnos[grvAlumnos.SelectedIndex].ID);
-                //this.panelControlesInscripciones.Visible = true;
+                this.panelControlesInscripciones.Visible = true;
                 lblAlumno.Visible = false;
                 grvInscripciones.Visible = true;
             }
@@ -238,7 +238,7 @@ namespace UI.Web
             if (grvInscripciones.SelectedIndex != -1)
             {
                 this.FormMode = FormModes.Modificacion;
-                lblInscripcion.Visible = false;
+             //   lblInscripcion.Visible = false;
                 panelGrillaCursos.Visible = true;
                 panelABMInscripciones.Visible = true;
                 HabilitarControles(true);

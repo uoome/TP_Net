@@ -7,72 +7,54 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace UI.Web {
+namespace UI.Web.Alumno {
     
     
-    public partial class SiteAlumnos {
+    public partial class InscripcionACurso {
         
         /// <summary>
-        /// Control lblFecha.
+        /// Control panelGrillaCursos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblFecha;
+        protected global::System.Web.UI.WebControls.Panel panelGrillaCursos;
         
         /// <summary>
-        /// Control menuInicio.
+        /// Control grvComisiones.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor menuInicio;
+        protected global::System.Web.UI.WebControls.GridView grvComisiones;
         
         /// <summary>
-        /// Control InscripcionCursado.
+        /// Control btnInscribirse.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor InscripcionCursado;
+        protected global::System.Web.UI.WebControls.Button btnInscribirse;
         
         /// <summary>
-        /// Control menuEstado.
+        /// Control Label1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor menuEstado;
+        protected global::System.Web.UI.WebControls.Label Label1;
         
         /// <summary>
-        /// Control bodyForm.
+        /// Control lblCurso.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm bodyForm;
-        
-        /// <summary>
-        /// Control lblPersona.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblPersona;
-        
-        /// <summary>
-        /// Control bodyContentPlaceHolder.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder bodyContentPlaceHolder;
+        protected global::System.Web.UI.WebControls.Label lblCurso;
     }
 }
