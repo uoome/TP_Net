@@ -179,7 +179,7 @@ namespace Data.Database
                                                        "values (@varId_alu,@varId_curso, @varCond, @varNota)", sqlConn);
                 CmdInsert.Parameters.Add("@varId_alu", SqlDbType.Int).Value = Alu.IdAlumno;
                 CmdInsert.Parameters.Add("@varId_curso", SqlDbType.Int).Value = Alu.IdCurso;
-                CmdInsert.Parameters.Add("@varCond ", SqlDbType.VarChar,50).Value = Alu.Condicion;
+                CmdInsert.Parameters.Add("@varCond ", SqlDbType.Int).Value = Alu.Condicion;
                 CmdInsert.Parameters.Add("@varNota", SqlDbType.VarChar,50).Value = Alu.Nota;
                 CmdInsert.ExecuteNonQuery();
             }

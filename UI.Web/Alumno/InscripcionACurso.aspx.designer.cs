@@ -22,6 +22,24 @@ namespace UI.Web.Alumno {
         protected global::System.Web.UI.WebControls.Panel panelGrillaCursos;
         
         /// <summary>
+        /// Control grvMaterias.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView grvMaterias;
+        
+        /// <summary>
+        /// Control panelComisiones.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel panelComisiones;
+        
+        /// <summary>
         /// Control grvComisiones.
         /// </summary>
         /// <remarks>

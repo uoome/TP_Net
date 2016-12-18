@@ -11,23 +11,21 @@ namespace Data.Database
 {
      public class ComisionAdapter : Adapter
     {
-        public List<Object> GetAllComisionesMaterias()
+        public List<Object> GetAllComisionesMaterias(int Id)
         {
             List<Object> listaGrillaComision = new List<Object>();
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdComisiones = new SqlCommand("select mat.desc_materia, mat.anio , com.desc_comision, cur.anio_calendario, cur.cupo from comisiones com inner join materias mat on com.id_plan = mat.id_plan inner join cursos cur on cur.id_materia = mat.id_materia", sqlConn);
+                SqlCommand cmdComisiones = new SqlCommand("select cur.id_curso, com.desc_comision, cur.cupo from comisiones com inner join materias mat on com.id_plan = mat.id_plan inner join cursos cur on cur.id_materia = mat.id_materia where mat.id_materia = @id_mat ", sqlConn);
+                cmdComisiones.Parameters.Add("@id_mat", SqlDbType.Int).Value = Id;
                 SqlDataReader drComi = cmdComisiones.ExecuteReader();
                 while(drComi.Read())
                 {
                     listaGrillaComision.Add(new
                     {
-                       
-                        desc_materia = (string)drComi["desc_materia"],
-                        anio = (int)drComi["anio"],
-                       desc_comi = (string)drComi["desc_comision"],
-                       anio_calend = (int)drComi["anio_calendario"],
+                       id_cur = (int)drComi["id_curso"],                      
+                       desc_comi = (string)drComi["desc_comision"],  
                        cupo = (int)drComi["cupo"],                  
                     });
                 }
