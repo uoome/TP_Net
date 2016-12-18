@@ -10,6 +10,7 @@
             <asp:BoundField DataField="año" HeaderText="Año" />
             <asp:BoundField DataField="desc_materia" HeaderText="Materia" />
             <asp:BoundField DataField="estado" HeaderText="Estado" />
+            <asp:BoundField DataField="nota" HeaderText="Nota" />
             <asp:BoundField DataField="desc_plan" HeaderText="Plan" />
         </Columns>
         <EditRowStyle BackColor="#2461BF" />
