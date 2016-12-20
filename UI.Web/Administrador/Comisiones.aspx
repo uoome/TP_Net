@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Administrador/Site.Master" AutoEventWireup="true" CodeBehind="Comisiones.aspx.cs" Inherits="UI.Web.Administrador.Comisiones" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="bodyContentPlaceHolder" runat="server">
     <asp:Panel ID="panelGrilla" runat="server">
-    <asp:GridView ID="grvComisiones" runat="server" AutoGenerateColumns="False" OnSelectedIndexChanged="grvComisiones_SelectedIndexChanged" DataKeyNames="ID">
+    <asp:GridView ID="grvComisiones" runat="server" AutoGenerateColumns="False" OnSelectedIndexChanged="grvComisiones_SelectedIndexChanged" DataKeyNames="ID" BackColor="White" BorderColor="#CC9966" BorderWidth="1px" CellPadding="4" BorderStyle="None">
         <Columns>
             <asp:BoundField DataField="ID" HeaderText="Id Comision" />
             <asp:BoundField DataField="Descripcion" HeaderText="Descripcion comision" />
@@ -9,6 +9,15 @@
             <asp:BoundField DataField="IdPlan" HeaderText="Id Plan" />
             <asp:CommandField ShowSelectButton="True" />
         </Columns>
+        <FooterStyle BackColor="#FFFFCC" ForeColor="#330099" />
+        <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="#FFFFCC" />
+        <PagerStyle BackColor="#FFFFCC" ForeColor="#330099" HorizontalAlign="Center" />
+        <RowStyle BackColor="White" ForeColor="#330099" />
+        <SelectedRowStyle BackColor="#FFCC66" ForeColor="#663399" Font-Bold="True" />
+        <SortedAscendingCellStyle BackColor="#FEFCEB" />
+        <SortedAscendingHeaderStyle BackColor="#AF0101" />
+        <SortedDescendingCellStyle BackColor="#F6F0C0" />
+        <SortedDescendingHeaderStyle BackColor="#7E0000" />
     </asp:GridView>
     <asp:Panel ID="Panel2" runat="server">
         <asp:LinkButton ID="linkNuevo" runat="server" OnClick="linkNuevo_Click">Nuevo</asp:LinkButton>

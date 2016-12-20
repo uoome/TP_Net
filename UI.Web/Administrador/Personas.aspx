@@ -1,7 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Administrador/Site.Master" AutoEventWireup="true" CodeBehind="Personas.aspx.cs" Inherits="UI.Web.Personas" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="bodyContentPlaceHolder" runat="server">
-    <asp:GridView ID="grillaPersonas" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" DataKeyNames="ID" OnSelectedIndexChanged="grillaPersonas_SelectedIndexChanged" CellSpacing="2">
-        <AlternatingRowStyle BackColor="White" />
+    <asp:GridView ID="grillaPersonas" runat="server" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="ID" OnSelectedIndexChanged="grillaPersonas_SelectedIndexChanged" BackColor="White" BorderColor="#CC9966" BorderStyle="None" BorderWidth="1px">
         <Columns>
             <asp:BoundField DataField="ID" HeaderText="ID Persona" ReadOnly="True" />
             <asp:BoundField DataField="TipoPersona" HeaderText="Tipo Persona" />
@@ -18,16 +17,15 @@
             <asp:CheckBoxField DataField="Habilitado" HeaderText="Habilitado" />
             <asp:CommandField ShowSelectButton="True" />
         </Columns>
-        <EditRowStyle BackColor="#7C6F57" />
-        <FooterStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
-        <HeaderStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
-        <PagerStyle BackColor="#666666" ForeColor="White" HorizontalAlign="Center" />
-        <RowStyle BackColor="#E3EAEB" />
-        <SelectedRowStyle BackColor="#C5BBAF" Font-Bold="True" ForeColor="#333333" />
-        <SortedAscendingCellStyle BackColor="#F8FAFA" />
-        <SortedAscendingHeaderStyle BackColor="#246B61" />
-        <SortedDescendingCellStyle BackColor="#D4DFE1" />
-        <SortedDescendingHeaderStyle BackColor="#15524A" />
+        <FooterStyle BackColor="#FFFFCC" ForeColor="#330099" />
+        <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="#FFFFCC" />
+        <PagerStyle BackColor="#FFFFCC" ForeColor="#330099" HorizontalAlign="Center" />
+        <RowStyle BackColor="White" ForeColor="#330099" />
+        <SelectedRowStyle BackColor="#FFCC66" Font-Bold="True" ForeColor="#663399" />
+        <SortedAscendingCellStyle BackColor="#FEFCEB" />
+        <SortedAscendingHeaderStyle BackColor="#AF0101" />
+        <SortedDescendingCellStyle BackColor="#F6F0C0" />
+        <SortedDescendingHeaderStyle BackColor="#7E0000" />
     </asp:GridView>
     <asp:Panel ID="panelToolStrip" runat="server">
         <asp:LinkButton ID="lnkButtonNuevo" runat="server" OnClick="lnkButtonNuevo_Click" CausesValidation="false">Nuevo</asp:LinkButton>

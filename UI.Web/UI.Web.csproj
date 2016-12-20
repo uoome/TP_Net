@@ -259,6 +259,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Administrador\Usuarios.aspx" />
+    <Content Include="UtilWeb\LoginAcademia.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
@@ -268,6 +269,7 @@
     <Content Include="Alumno\SiteAlumnos.Master" />
     <Content Include="Docente\SiteDocentes.Master" />
     <Content Include="Administrador\Site.Master" />
+    <Content Include="UtilWeb\SiteLogin.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -547,6 +549,20 @@
     </Compile>
     <Compile Include="Administrador\Usuarios.aspx.designer.cs">
       <DependentUpon>Usuarios.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UtilWeb\LoginAcademia.aspx.cs">
+      <DependentUpon>LoginAcademia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UtilWeb\LoginAcademia.aspx.designer.cs">
+      <DependentUpon>LoginAcademia.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UtilWeb\SiteLogin.Master.cs">
+      <DependentUpon>SiteLogin.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UtilWeb\SiteLogin.Master.designer.cs">
+      <DependentUpon>SiteLogin.Master</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>

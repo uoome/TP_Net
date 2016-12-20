@@ -60,9 +60,11 @@ namespace UI.Web.Administrador
             PlanLogic pl = new PlanLogic();
             Plan plan = new Plan();
             plan = pl.GetOne(Entity.IdPlan);
-          ddlPlanes.Items.Add(plan.ID.ToString());
-            ddlPlanes.Text = plan.Descripcion;
-            //HAY UN ERROR CON SELECTEDVALUE EN EDITAR Y ELIMINAR
+         
+
+            this.ddlPlanes.SelectedValue = this.Entity.IdPlan.ToString();
+            this.txtDescripcionPlan.Text = plan.Descripcion;
+        
         }
         private void EnabledForm(bool enable)
         {

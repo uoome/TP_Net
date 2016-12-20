@@ -1,7 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Administrador/Site.Master" AutoEventWireup="true" CodeBehind="Cursos.aspx.cs" Inherits="UI.Web.Cursos" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="bodyContentPlaceHolder" runat="server">
-    <asp:GridView ID="grvCursos" runat="server" AutoGenerateColumns="False" BackColor="LightGoldenrodYellow" BorderColor="Tan" BorderWidth="1px" CellPadding="2" DataKeyNames="ID" ForeColor="Black" GridLines="None" OnSelectedIndexChanged="grvCursos_SelectedIndexChanged">
-        <AlternatingRowStyle BackColor="PaleGoldenrod" />
+    <asp:GridView ID="grvCursos" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#CC9966" BorderWidth="1px" CellPadding="4" DataKeyNames="ID" OnSelectedIndexChanged="grvCursos_SelectedIndexChanged" BorderStyle="None">
         <Columns>
             <asp:BoundField DataField="Cupo" HeaderText="Cupo" SortExpression="Cupo" />
             <asp:BoundField DataField="CupoDis" HeaderText="Cupos disnponibles" />
@@ -10,14 +9,15 @@
             <asp:BoundField DataField="IDMateria" HeaderText="ID Materia" />
             <asp:CommandField ShowSelectButton="True" />
         </Columns>
-        <FooterStyle BackColor="Tan" />
-        <HeaderStyle BackColor="Tan" Font-Bold="True" />
-        <PagerStyle BackColor="PaleGoldenrod" ForeColor="DarkSlateBlue" HorizontalAlign="Center" />
-        <SelectedRowStyle BackColor="Black" ForeColor="White" />
-        <SortedAscendingCellStyle BackColor="#FAFAE7" />
-        <SortedAscendingHeaderStyle BackColor="#DAC09E" />
-        <SortedDescendingCellStyle BackColor="#E1DB9C" />
-        <SortedDescendingHeaderStyle BackColor="#C2A47B" />
+        <FooterStyle BackColor="#FFFFCC" ForeColor="#330099" />
+        <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="#FFFFCC" />
+        <PagerStyle BackColor="#FFFFCC" ForeColor="#330099" HorizontalAlign="Center" />
+        <RowStyle BackColor="White" ForeColor="#330099" />
+        <SelectedRowStyle BackColor="#FFCC66" ForeColor="#663399" Font-Bold="True" />
+        <SortedAscendingCellStyle BackColor="#FEFCEB" />
+        <SortedAscendingHeaderStyle BackColor="#AF0101" />
+        <SortedDescendingCellStyle BackColor="#F6F0C0" />
+        <SortedDescendingHeaderStyle BackColor="#7E0000" />
     </asp:GridView>
     <asp:Panel ID="panelABM" runat="server">
         <asp:LinkButton ID="linkBtnNuevo" runat="server" OnClick="linkBtnNuevo_Click">Nuevo</asp:LinkButton>
