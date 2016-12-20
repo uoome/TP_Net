@@ -30,44 +30,18 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="Default.aspx">Alumno</a> 
+                <a class="navbar-brand" href="LoginAcademia.aspx">Academia</a> 
             </div>
-  <div style="color: white;
-padding: 15px 50px 5px 50px;
-float: right;
-font-size: 16px;"> 
-&nbsp;&nbsp;&nbsp;&nbsp; scess : 3<asp:Label ID="lblFecha" runat="server"></asp:Label>
-      0 M14 &nbsp; <a class="btn btn-danger square-btn-adjust" href="/UtilWeb/Login.aspx">Logout</a> </div>
         </nav>   
            <!-- /. NAV TOP  -->
                 <nav class="navbar-default navbar-side" role="navigation">
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
 				<li class="text-center">
-                    <img src="assets/img/find_user.png" class="user-image img-responsive"/>
+                    <img src="assets/img/descargaUtn.png" class="user-image img-responsive"/>
 					</li>
 				
 					
-                    <li>
-                        <a runat="server"  href="DefaultDocentes.aspx" id="menuInicio">Inicio</a>
-                    </li>
-                     <li>
-                        <a  runat="server"  href="Dictado.aspx" id="menuDictado">  
-                      
-                         Dictado</a></li>
-                    <li>
-                        <a    href="Inscripciones.aspx">Inscripcion a cursado</a>
-                    </li>
-						   <li  >
-                        <a   href="EstadoAcademicoAlumnos.aspx">EstadoAcademico</a>
-                    </li>	
-                      <li  >
-                        <a  href="Especialidades.aspx">Especialidades</a>
-                    </li>
-                    <li  >
-                        <a  href="Usuarios.aspx">Usuarios</a>
-
-                    </li>				                                       
                 </ul>
                
             </div>
@@ -78,13 +52,7 @@ font-size: 16px;">
             <div id="page-inner">
                 <div class="row">
                     <div class="col-md-12">
-                     <h2>Academia</h2>   
                         <form id="bodyForm" runat="server">
-        
-                        <h5>
-                           &nbsp;Bienvenido&nbsp; 
-                            <asp:Label ID="lblPersona" runat="server" OnInit="lblPersona_Init"></asp:Label>
-                        </h5>
         
     <div>
         <asp:ContentPlaceHolder ID="bodyContentPlaceHolder" runat="server">

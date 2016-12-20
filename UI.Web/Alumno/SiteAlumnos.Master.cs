@@ -52,7 +52,7 @@ namespace UI.Web
             }
             else
             {
-                Response.Redirect("~/UtilWeb/Login.aspx");
+                Response.Redirect("~/UtilWeb/LoginAcademia.aspx");
             }
         }
     }

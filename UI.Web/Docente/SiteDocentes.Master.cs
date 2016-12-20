@@ -46,7 +46,7 @@ protected void lblPersona_Init(object sender, EventArgs e)
             }
             else
             {
-                Response.Redirect("~/UtilWeb/Login.aspx");
+                Response.Redirect("~/UtilWeb/LoginAcademia.aspx");
             }
 
          }
