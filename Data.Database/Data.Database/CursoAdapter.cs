@@ -11,6 +11,17 @@ namespace Data.Database
 {
     public class CursoAdapter: Adapter
     {
+        public bool validarCupo(Curso curso)
+        {
+            if(curso.Cupo > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
         public List<Curso> GetAll()
         {
             List<Curso> listaCursos = new List<Curso>();
@@ -30,7 +41,7 @@ namespace Data.Database
                     unCurso.IDComision = (int)drCursos["id_comision"];
                     unCurso.AnioCalendario = (int)drCursos["anio_calendario"];
                     unCurso.Cupo = (int)drCursos["cupo"];
-
+                    unCurso.CupoDis = (int)drCursos["cupos_disponibles"];
                     //unCurso.Descripcion no esta en la BD ¿se agrega?
                     listaCursos.Add(unCurso);
                    
@@ -70,6 +81,7 @@ namespace Data.Database
                     cur.AnioCalendario = (int)drCurso["anio_calendario"];
                     cur.IDMateria = (int)drCurso["id_materia"];
                     cur.IDComision = (int)drCurso["id_comision"];
+                    cur.CupoDis = (int)drCurso["cupos_disponibles"];
 
 
                 }
@@ -79,7 +91,7 @@ namespace Data.Database
             catch(Exception ex)
 
             {
-                Exception ExcepcionManejada = new Exception("Error al cargar el curso", ex);
+                Exception ExcepcionManejada = new Exception("Error al cargar el curso" + ex.Message, ex);
                 throw ExcepcionManejada;
 
 
@@ -105,7 +117,7 @@ namespace Data.Database
             }
             catch(Exception ex)
             {
-                Exception ExcepcionManejada = new Exception("Error al eliminar el curso", ex);
+                Exception ExcepcionManejada = new Exception("Error al eliminar el curso" + ex.Message, ex);
                 throw ExcepcionManejada;
             }
             finally
@@ -121,19 +133,21 @@ namespace Data.Database
                 this.OpenConnection();
                 SqlCommand cmdUpdateCurso = new SqlCommand(
                     "UPDATE cursos "+
-                    "SET id_materia=@id_materia, id_comision@id_comision, anio_calendario=@anio_calendario, cupo=@cupo "+
+                    "SET id_materia=@id_materia, id_comision@id_comision, anio_calendario=@anio_calendario, cupo=@cupo, cupos_disponibles=@cupdis "+
                     "WHERE id_curso=@id", sqlConn);
+                cmdUpdateCurso.Parameters.Add("@id", SqlDbType.Int).Value = cur.ID;
                 cmdUpdateCurso.Parameters.Add("@id_materia", SqlDbType.Int).Value = cur.IDMateria;
-                cmdUpdateCurso.Parameters.Add("id_comision", SqlDbType.Int).Value = cur.IDComision;
-                cmdUpdateCurso.Parameters.Add("anio_calendario", SqlDbType.Int).Value = cur.AnioCalendario;
-                cmdUpdateCurso.Parameters.Add("cupo", SqlDbType.Int).Value = cur.Cupo;
-               // cmdUpdateCurso.Parameters.Add("descripcion", SqlDbType.String).Value = cur.Descripcion;
-
+                cmdUpdateCurso.Parameters.Add("@id_comision", SqlDbType.Int).Value = cur.IDComision;
+                cmdUpdateCurso.Parameters.Add("@anio_calendario", SqlDbType.Int).Value = cur.AnioCalendario;
+                cmdUpdateCurso.Parameters.Add("@cupo", SqlDbType.Int).Value = cur.Cupo;
+                // cmdUpdateCurso.Parameters.Add("descripcion", SqlDbType.String).Value = cur.Descripcion;
+                cmdUpdateCurso.Parameters.Add("@cupdis", SqlDbType.Int).Value = cur.CupoDis;
                 cmdUpdateCurso.ExecuteNonQuery();
             }
+          
             catch (Exception ex)
             {
-                Exception ExcepcionManejada = new Exception("Error al modificar el curso", ex);
+                Exception ExcepcionManejada = new Exception("Error al modificar el curso" + ex.Message , ex);
                 throw ExcepcionManejada;
             }
             finally
@@ -147,18 +161,21 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdInsertCurso = new SqlCommand("INSERT into cursos (id_materia, id_comision, cupo, anio_calendario)"
-                    + "VALUES (@id_materia, @id_comision, @cupo, @anio_calendario)", sqlConn);
+                SqlCommand cmdInsertCurso = new SqlCommand("INSERT into cursos (id_materia, id_comision, cupo, anio_calendario, cupos_disponibles)"
+                    + "VALUES (@id_materia, @id_comision, @cupo, @anio_calendario, @cupdis)", sqlConn);
                 cmdInsertCurso.Parameters.Add("@id_materia", SqlDbType.Int).Value = cur.IDMateria;
                 cmdInsertCurso.Parameters.Add("@id_comision", SqlDbType.Int).Value = cur.IDComision;
                 cmdInsertCurso.Parameters.Add("@cupo", SqlDbType.Int).Value = cur.Cupo;
                 cmdInsertCurso.Parameters.Add("@anio_calendario", SqlDbType.Int).Value = cur.AnioCalendario;
+                cmdInsertCurso.Parameters.Add("@cupdis", SqlDbType.Int).Value = cur.CupoDis;
+
+
                 cmdInsertCurso.ExecuteNonQuery();
 
             }
             catch (Exception ex)
             {
-                Exception ExManejada = new Exception("Error al crear el curso", ex);
+                Exception ExManejada = new Exception("Error al crear el curso" + ex.Message , ex);
                 throw ExManejada;
 
             }

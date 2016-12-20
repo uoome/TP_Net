@@ -20,7 +20,7 @@ namespace Business.Entities
         private TiposCondiciones _condicion;
         private int _IdAlumno;
         private int _IdCurso;
-        private int _Nota;
+        private string _Nota;
 
         public TiposCondiciones Condicion
         {
@@ -40,7 +40,7 @@ namespace Business.Entities
             set { _IdCurso = value; }
         }
 
-        public int Nota
+        public string Nota
         {
             get { return _Nota; }
             set { _Nota = value; }

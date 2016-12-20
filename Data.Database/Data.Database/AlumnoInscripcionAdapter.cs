@@ -27,7 +27,7 @@ namespace Data.Database
                     al.ID = (int)drAlumnosIns["id_inscripcion"];
                     al.IdAlumno = (int)drAlumnosIns["id_alumno"];
                     al.IdCurso = (int)drAlumnosIns["id_curso"];
-                    al.Nota = (int)drAlumnosIns["nota"];
+                    al.Nota = (string)drAlumnosIns["nota"];
                     al.Condicion = (AlumnoInscripcion.TiposCondiciones)drAlumnosIns["condicion"];
                     Inscripciones.Add(al);
                     
@@ -67,7 +67,7 @@ namespace Data.Database
                     al.ID = (int)drAluInsc["id_inscripcion"];
                     al.IdAlumno = (int)drAluInsc["id_alumno"];
                     al.IdCurso = (int)drAluInsc["id_curso"];
-                    al.Nota = (int)drAluInsc["nota"];
+                    al.Nota = (string)drAluInsc["nota"];
                     //al.Condicion = al.StringACondicion((string)drAluInsc["condicion"]);
                     al.Condicion = (AlumnoInscripcion.TiposCondiciones)drAluInsc["condicion"];
 
@@ -103,7 +103,7 @@ namespace Data.Database
                     al.ID = (int)drAlumnosIns["id_inscripcion"];
                     al.IdAlumno = (int)drAlumnosIns["id_alumno"];
                     al.IdCurso = (int)drAlumnosIns["id_curso"];
-                    al.Nota = (int)drAlumnosIns["nota"];
+                    al.Nota = (string)drAlumnosIns["nota"];
                     al.Condicion = (AlumnoInscripcion.TiposCondiciones)drAlumnosIns["condicion"];
 
                 }
@@ -180,8 +180,10 @@ namespace Data.Database
                 CmdInsert.Parameters.Add("@varId_alu", SqlDbType.Int).Value = Alu.IdAlumno;
                 CmdInsert.Parameters.Add("@varId_curso", SqlDbType.Int).Value = Alu.IdCurso;
                 CmdInsert.Parameters.Add("@varCond ", SqlDbType.Int).Value = Alu.Condicion;
-                CmdInsert.Parameters.Add("@varNota", SqlDbType.VarChar,50).Value = Alu.Nota;
-                CmdInsert.ExecuteNonQuery();
+               
+                    CmdInsert.Parameters.Add("@varNota", SqlDbType.VarChar, 50).Value = Alu.Nota;
+                
+                    CmdInsert.ExecuteNonQuery();
             }
         
             catch (Exception ex)

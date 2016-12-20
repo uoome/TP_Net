@@ -79,7 +79,7 @@ namespace UI.Web
         {
             Alu.IdAlumno = Alumnos[grvAlumnos.SelectedIndex].ID;
             Alu.IdCurso = Cursos[grvCursos.SelectedIndex].ID;
-            Alu.Nota = int.Parse(ddlNotas.Text);
+            Alu.Nota = ddlNotas.Text ;
             Alu.Condicion = (AlumnoInscripcion.TiposCondiciones)ddlCondicion.SelectedIndex;
         }
         private void DeleteEntity(int id)

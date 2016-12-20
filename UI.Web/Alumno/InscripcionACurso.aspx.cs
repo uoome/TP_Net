@@ -41,6 +41,7 @@ namespace UI.Web.Alumno
             grvComisiones.DataBind();
 
         }
+        
 
         protected void grvComisiones_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -49,16 +50,32 @@ namespace UI.Web.Alumno
         }
 
         protected void btnInscribirse_Click(object sender, EventArgs e)
-        {
-            AlumnoInscripcion Alu = new AlumnoInscripcion();
-            Alu.IdAlumno = (int)Session["id_persona"];
-            Alu.IdCurso = SelectedID;
-            Alu.Condicion = AlumnoInscripcion.TiposCondiciones.Inscripto;
-            Alu.Nota = 0;
-            AlumnoInscripcionLogic Allog = new AlumnoInscripcionLogic();
-            Alu.State = BusinessEntity.States.New;
-            Allog.Save(Alu);
-            lblCurso.Visible = true;
+        { 
+            Curso Cur = new Curso();
+            CursoLogic curlog = new CursoLogic();
+            Cur = curlog.GetOne(SelectedID);
+            if ( curlog.validarCupo(Cur) )
+            {
+                AlumnoInscripcion Alu = new AlumnoInscripcion();
+                Alu.IdAlumno = (int)Session["id_persona"];
+                Alu.IdCurso = SelectedID;
+                Alu.Condicion = AlumnoInscripcion.TiposCondiciones.Inscripto;
+                Alu.Nota = "Sin nota";
+                AlumnoInscripcionLogic Allog = new AlumnoInscripcionLogic();
+                Alu.State = BusinessEntity.States.New;
+                Allog.Save(Alu);
+                Cur.CupoDis = Cur.CupoDis - 1;
+                Cur.State = BusinessEntity.States.Modified;
+                // curlog.Save(Cur);
+                // Me tira un error de sintaxis en el update 
+                lblCurso.Text = "Inscripcion registrada";
+                lblCurso.Visible = true;
+            }
+            else
+            {
+                lblCurso.Text = "No hay cupos disponibles";
+                lblCurso.Visible = true;
+            }
 
         }
     }

@@ -63,6 +63,7 @@ namespace UI.Web
             this.Entity = CurLog.GetOne(id);
             this.txtAnioCalendario.Text = this.Entity.AnioCalendario.ToString();
             this.txtCupo.Text = this.Entity.Cupo.ToString();
+            this.txtCupoDis.Text = this.Entity.CupoDis.ToString();
         
           
          Materia mat = new Materia();
@@ -80,6 +81,7 @@ namespace UI.Web
             this.txtAnioCalendario.Enabled = enable;
             this.txtCupo.Enabled = enable;
             this.txtDescripcion.Enabled = enable;
+            this.txtCupoDis.Enabled = enable;
             this.ddlComision.Enabled = enable;
             this.ddlMateria.Enabled = enable;
 
@@ -89,6 +91,7 @@ namespace UI.Web
             Cur.AnioCalendario = int.Parse(this.txtAnioCalendario.Text);
             Cur.Cupo = int.Parse(this.txtCupo.Text);
             Cur.Descripcion = this.txtDescripcion.Text;
+            Cur.CupoDis = int.Parse(this.txtCupoDis.Text);
             Cur.IDComision = int.Parse(this.ddlComision.SelectedValue);
             Cur.IDMateria = int.Parse(this.ddlMateria.SelectedValue);
         }
@@ -105,6 +108,7 @@ namespace UI.Web
             this.txtDescripcion.Text = string.Empty;
             this.ddlComision.SelectedIndex = -1;
             this.ddlMateria.SelectedIndex = -1;
+            this.txtCupoDis.Text = string.Empty;
         }
 
 

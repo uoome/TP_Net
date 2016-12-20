@@ -12,11 +12,16 @@ namespace Business.Entities
         private string _Descripcion;
         private int _IdComision;
         private int _IdMateria;
-
+        private int _CupoDis;
         public int AnioCalendario
         {
             get { return _AnioCalendario; }
             set { _AnioCalendario = value; }
+        }
+        public int CupoDis
+        {
+            set { _CupoDis = value; }
+            get { return _CupoDis; }
         }
         public int Cupo
         {

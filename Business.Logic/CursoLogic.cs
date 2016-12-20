@@ -8,7 +8,7 @@ using Data.Database;
 
 namespace Business.Logic
 {
-    public class CursoLogic: BusinessLogic
+    public class CursoLogic : BusinessLogic
     {
         private CursoAdapter _cursoData;
 
@@ -42,6 +42,10 @@ namespace Business.Logic
         {
             CursoData.Save(curso);
         }
+        public bool validarCupo(Curso Cur)
+        {
+            return CursoData.validarCupo(Cur);
 
+        }
     }
 }

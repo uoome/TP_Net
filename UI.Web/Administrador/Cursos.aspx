@@ -4,6 +4,7 @@
         <AlternatingRowStyle BackColor="PaleGoldenrod" />
         <Columns>
             <asp:BoundField DataField="Cupo" HeaderText="Cupo" SortExpression="Cupo" />
+            <asp:BoundField DataField="CupoDis" HeaderText="Cupos disnponibles" />
             <asp:BoundField DataField="AnioCalendario" HeaderText="Año Calendario" />
             <asp:BoundField DataField="IDComision" HeaderText="ID Comision" />
             <asp:BoundField DataField="IDMateria" HeaderText="ID Materia" />
@@ -39,6 +40,14 @@
                 </td>
                 <td>
                     <asp:TextBox ID="txtCupo" runat="server"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 289px">
+                    <asp:Label ID="lblCupoDis" runat="server" Text="Cupo disponible"></asp:Label>
+                </td>
+                <td>
+                    <asp:TextBox ID="txtCupoDis" runat="server"></asp:TextBox>
                 </td>
             </tr>
             <tr>

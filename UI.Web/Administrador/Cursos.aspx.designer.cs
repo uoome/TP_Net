@@ -103,6 +103,24 @@ namespace UI.Web {
         protected global::System.Web.UI.WebControls.TextBox txtCupo;
         
         /// <summary>
+        /// Control lblCupoDis.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCupoDis;
+        
+        /// <summary>
+        /// Control txtCupoDis.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCupoDis;
+        
+        /// <summary>
         /// Control lblIDMateria.
         /// </summary>
         /// <remarks>

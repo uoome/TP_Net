@@ -69,16 +69,17 @@ namespace UI.Desktop
             txbID_Curso.Text = CursoActual.ID.ToString();
             txbAnioCalendario.Text = CursoActual.AnioCalendario.ToString();
             txbCupo.Text = CursoActual.Cupo.ToString();
-            txbDescripcion.Text = CursoActual.Descripcion;
+            //txbDescripcion.Text = CursoActual.Descripcion;
+            txtCuposDis.Text = CursoActual.CupoDis.ToString();
 
             MateriaLogic ml = new MateriaLogic();
             Materia m = ml.GetOne(CursoActual.IDMateria);
             cbxMaterias.Text = m.Descripcion;
-            /*
+            
             ComisionLogic cl = new ComisionLogic();
             Comision c = cl.GetOne(CursoActual.IDComision);
             cbxComisiones.Text = c.Descripcion;
-            */
+            
 
         }
         public override void MapearADatos()
@@ -98,6 +99,7 @@ namespace UI.Desktop
             {
                 CursoActual.Descripcion = txbDescripcion.Text;
                 CursoActual.Cupo = int.Parse(txbCupo.Text.Trim());
+                CursoActual.CupoDis = int.Parse(txtCuposDis.Text);
                 CursoActual.AnioCalendario = int.Parse(txbAnioCalendario.Text.Trim());
                 CursoActual.IDMateria = new MateriaLogic().GetOne(cbxMaterias.Text).ID;
                 //CursoActual.IDComision = new ComsionLogic().GetOne(cbxComisiones.Text).ID;
@@ -149,7 +151,7 @@ namespace UI.Desktop
 
             //Cargo combo de comisiones
             //Quitar comentarios cuando esten cargadas las clases ComisionAdapter y ComisionLogic
-            /*
+            
             ComisionLogic cl = new ComisionLogic();
             listaComisiones = cl.GetAll();
 
@@ -158,7 +160,7 @@ namespace UI.Desktop
             {
                 cbxComisiones.Items.Add(c.Descripcion);
             }
-            */  
+              
         }
 
         #endregion
