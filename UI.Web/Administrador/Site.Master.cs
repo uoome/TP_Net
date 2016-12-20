@@ -33,9 +33,9 @@ namespace UI.Web
                 {
                     activarrojo.Attributes["class"] = "active-menu";
                 } 
-                if(MenuROjo =="menuUsuarios")
+                if(MenuROjo =="menuComisiones")
                 {
-                    menuUsuarios.Attributes["class"] = "active-menu";
+                    menuComisiones.Attributes["class"] = "active-menu";
                 }
                 if (MenuROjo == "menuInicio")
                 { 

@@ -68,7 +68,7 @@ namespace UI.Web.Alumno
                 Cur.State = BusinessEntity.States.Modified;
                 // curlog.Save(Cur);
                 // Me tira un error de sintaxis en el update 
-                lblCurso.Text = "Inscripcion registrada";
+                lblCurso.Text = Cur.CupoDis.ToString();
                 lblCurso.Visible = true;
             }
             else

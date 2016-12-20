@@ -132,22 +132,23 @@ namespace Data.Database
             {
                 this.OpenConnection();
                 SqlCommand cmdUpdateCurso = new SqlCommand(
-                    "UPDATE cursos "+
-                    "SET id_materia=@id_materia, id_comision@id_comision, anio_calendario=@anio_calendario, cupo=@cupo, cupos_disponibles=@cupdis "+
-                    "WHERE id_curso=@id", sqlConn);
+                    "UPDATE cursos " +
+                    "SET id_materia=@id_materia, id_comision@id_comision, cupos_disponibles=@cupdis , anio_calendario=@anio_calendario, cupo=@cupo WHERE id_curso = @id", sqlConn);
+
+
                 cmdUpdateCurso.Parameters.Add("@id", SqlDbType.Int).Value = cur.ID;
                 cmdUpdateCurso.Parameters.Add("@id_materia", SqlDbType.Int).Value = cur.IDMateria;
                 cmdUpdateCurso.Parameters.Add("@id_comision", SqlDbType.Int).Value = cur.IDComision;
                 cmdUpdateCurso.Parameters.Add("@anio_calendario", SqlDbType.Int).Value = cur.AnioCalendario;
                 cmdUpdateCurso.Parameters.Add("@cupo", SqlDbType.Int).Value = cur.Cupo;
-                // cmdUpdateCurso.Parameters.Add("descripcion", SqlDbType.String).Value = cur.Descripcion;
-                cmdUpdateCurso.Parameters.Add("@cupdis", SqlDbType.Int).Value = cur.CupoDis;
+               
+               cmdUpdateCurso.Parameters.Add("@cupdis", SqlDbType.Int).Value = cur.CupoDis;
                 cmdUpdateCurso.ExecuteNonQuery();
             }
           
             catch (Exception ex)
             {
-                Exception ExcepcionManejada = new Exception("Error al modificar el curso" + ex.Message , ex);
+                Exception ExcepcionManejada = new Exception("Error al modificar el curso " + ex.Message , ex);
                 throw ExcepcionManejada;
             }
             finally

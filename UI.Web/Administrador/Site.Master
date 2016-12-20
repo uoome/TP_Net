@@ -62,7 +62,7 @@ font-size: 16px;">
                      <a runat="server" href="Especialidades.aspx" id="activarrojo">Especialidades</a>
                 </li>
                 <li>
-                     <a  href="Usuarios.aspx" runat="server" id="menuUsuarios">Usuarios</a></li>				
+                     <a  href="Comisiones.aspx" runat="server" id="menuComisiones">Comisiones</a></li>				
 			    <li> 
                      <a runat="server" href="Personas.aspx" id="menuPersonas">Personas</a>
                 </li>
