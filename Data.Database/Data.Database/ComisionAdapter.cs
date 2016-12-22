@@ -20,13 +20,13 @@ namespace Data.Database
                 SqlCommand cmdComisiones = new SqlCommand("select cur.id_curso, com.desc_comision, cur.cupo from comisiones com inner join materias mat on com.id_plan = mat.id_plan inner join cursos cur on cur.id_materia = mat.id_materia where mat.id_materia = @id_mat ", sqlConn);
                 cmdComisiones.Parameters.Add("@id_mat", SqlDbType.Int).Value = Id;
                 SqlDataReader drComi = cmdComisiones.ExecuteReader();
-                while(drComi.Read())
+                while (drComi.Read())
                 {
                     listaGrillaComision.Add(new
                     {
-                       id_cur = (int)drComi["id_curso"],                      
-                       desc_comi = (string)drComi["desc_comision"],  
-                       cupo = (int)drComi["cupo"],                  
+                        id_cur = (int)drComi["id_curso"],
+                        desc_comi = (string)drComi["desc_comision"],
+                        cupo = (int)drComi["cupo"],
                     });
                 }
                 drComi.Close();

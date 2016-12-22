@@ -46,6 +46,7 @@ namespace UI.Web.Alumno
         protected void grvComisiones_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.SelectedID = (int)grvComisiones.SelectedValue;
+            lblCurso.Text = SelectedID.ToString();
           
         }
 
@@ -54,7 +55,7 @@ namespace UI.Web.Alumno
             Curso Cur = new Curso();
             CursoLogic curlog = new CursoLogic();
             Cur = curlog.GetOne(SelectedID);
-            if ( curlog.validarCupo(Cur) )
+            if ( curlog.validarCupo(Cur)  )
             {
                 AlumnoInscripcion Alu = new AlumnoInscripcion();
                 Alu.IdAlumno = (int)Session["id_persona"];
@@ -66,10 +67,12 @@ namespace UI.Web.Alumno
                 Allog.Save(Alu);
                 Cur.CupoDis = Cur.CupoDis - 1;
                 Cur.State = BusinessEntity.States.Modified;
-                // curlog.Save(Cur);
-                // Me tira un error de sintaxis en el update 
-                lblCurso.Text = Cur.CupoDis.ToString();
+                 curlog.Save(Cur);
+            
+            /*    lblCurso.Text = Cur.CupoDis.ToString();
                 lblCurso.Visible = true;
+                PARA SABER CUANTOS CUPOS DISPONIBLES QUEDAN
+                */
             }
             else
             {

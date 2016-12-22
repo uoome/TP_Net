@@ -200,6 +200,7 @@
     <Content Include="Account\TwoFactorAuthenticationSignIn.aspx" />
     <Content Include="Account\VerifyPhoneNumber.aspx" />
     <Content Include="Administrador\Comisiones.aspx" />
+    <Content Include="Administrador\Inscripciones.aspx" />
     <Content Include="Alumno\InscripcionACurso.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap.css" />
@@ -212,7 +213,6 @@
     <Content Include="Docente\Dictado.aspx" />
     <Content Include="Docente\DefaultDocentes.aspx" />
     <Content Include="Alumno\EstadoAcademicoAlumnos.aspx" />
-    <Content Include="Administrador\FinalizoSession.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -222,7 +222,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Administrador\Inscripciones.aspx" />
     <Content Include="Administrador\Planes.aspx" />
     <Content Include="UtilWeb\Login.aspx" />
     <Content Include="Administrador\Materias.aspx" />
@@ -400,6 +399,13 @@
     <Compile Include="Administrador\Comisiones.aspx.designer.cs">
       <DependentUpon>Comisiones.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Administrador\Inscripciones.aspx.cs">
+      <DependentUpon>Inscripciones.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrador\Inscripciones.aspx.designer.cs">
+      <DependentUpon>Inscripciones.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Alumno\InscripcionACurso.aspx.cs">
       <DependentUpon>InscripcionACurso.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -474,22 +480,8 @@
     <Compile Include="Alumno\EstadoAcademicoAlumnos.aspx.designer.cs">
       <DependentUpon>EstadoAcademicoAlumnos.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Administrador\FinalizoSession.aspx.cs">
-      <DependentUpon>FinalizoSession.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Administrador\FinalizoSession.aspx.designer.cs">
-      <DependentUpon>FinalizoSession.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
-    <Compile Include="Administrador\Inscripciones.aspx.cs">
-      <DependentUpon>Inscripciones.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Administrador\Inscripciones.aspx.designer.cs">
-      <DependentUpon>Inscripciones.aspx</DependentUpon>
     </Compile>
     <Compile Include="Administrador\Planes.aspx.cs">
       <DependentUpon>Planes.aspx</DependentUpon>
@@ -583,6 +575,10 @@
     <ProjectReference Include="..\Business.Logic\Business.Logic.csproj">
       <Project>{38b6d2fd-c10d-488b-a701-175d3ebec09a}</Project>
       <Name>Business.Logic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Util\Util.csproj">
+      <Project>{e210b627-82c6-40bc-9990-764e3bb24d85}</Project>
+      <Name>Util</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

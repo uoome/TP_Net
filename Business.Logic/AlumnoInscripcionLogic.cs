@@ -43,7 +43,14 @@ namespace Business.Logic
         {
             AlumnoInscripcionData.Save(alu);
         }
-
+        public int GetID(int idCur, int idPer)
+        {
+            return AlumnoInscripcionData.GetID(idCur, idPer);
+        }
+        public void UpdateInscr(AlumnoInscripcion docCurso)
+        {
+            AlumnoInscripcionData.UpdateInscr(docCurso);
+        }
 
 
 

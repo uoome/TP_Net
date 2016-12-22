@@ -12,6 +12,63 @@ namespace Data.Database
 {
    public class AlumnoInscripcionAdapter :Adapter 
     {
+        public int GetID(int idcur, int idper)
+        {
+            AlumnoInscripcion Alu = new AlumnoInscripcion();
+            try
+            {
+                this.OpenConnection();
+                SqlCommand cmdAlu = new SqlCommand("select alu.id_inscripcion from personas per inner join alumnos_inscripciones alu on alu.id_alumno = per.id_persona inner join cursos cur on cur.id_curso = alu.id_curso where per.id_persona = @idper and cur.id_curso = @idcur ", sqlConn);
+                cmdAlu.Parameters.Add("@idper", SqlDbType.Int).Value = idper;
+                cmdAlu.Parameters.Add("@idcur", SqlDbType.Int).Value = idcur;
+                SqlDataReader drAlu = cmdAlu.ExecuteReader();
+                if (drAlu.Read())
+                {
+
+                    Alu.ID = (int)drAlu["id_inscripcion"];
+
+                }
+                drAlu.Close();
+
+
+
+            }
+            catch (Exception ex)
+            {
+                Exception ExManejada = new Exception("Error al recuperar el id inscripciones" + ex.Message, ex);
+                throw ExManejada;
+            }
+            finally
+            {
+                this.CloseConnection();
+            }
+            return Alu.ID;
+        }
+        public void UpdateInscr(AlumnoInscripcion docCurso)
+        {
+            try
+            {
+                OpenConnection();
+                SqlCommand cmdSave = new SqlCommand
+                ("UPDATE alumnos_inscripciones SET nota=@nota,condicion=@condicion " +
+
+                "WHERE id_inscripcion=@id", sqlConn);
+
+                cmdSave.Parameters.Add("@id", SqlDbType.Int).Value = docCurso.ID;
+                cmdSave.Parameters.Add("@nota", SqlDbType.VarChar, 50).Value = docCurso.Nota;
+                cmdSave.Parameters.Add("@condicion", SqlDbType.Int).Value = (int)docCurso.Condicion;
+                cmdSave.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                Exception excepcionManejada = new Exception("Error al modificar datos de la inscripcion: " + ex.Message, ex);
+                throw excepcionManejada;
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
         public List<AlumnoInscripcion> GetAll ()
         {
             List<AlumnoInscripcion> Inscripciones = new List<AlumnoInscripcion>() ;

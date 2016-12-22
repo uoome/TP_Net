@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Business.Entities;
 using Data.Database;
+using Util;
 
 namespace Business.Logic
 {
@@ -44,8 +45,12 @@ namespace Business.Logic
         }
         public bool validarCupo(Curso Cur)
         {
-            return CursoData.validarCupo(Cur);
+            return ValidacionCurso.validarCupo(Cur);
 
+        }
+        public List<Object> GetAllEstadosCursos(int id)
+        {
+            return CursoData.GetAllEstadosCursos(id);
         }
     }
 }

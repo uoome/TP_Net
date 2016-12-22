@@ -26,6 +26,7 @@ namespace Business.Logic
             return ComAdap.GetAllComisionesMaterias(id);
 
         }
+     
         public void Save(Comision com)
         {
             ComAdap.Save(com);

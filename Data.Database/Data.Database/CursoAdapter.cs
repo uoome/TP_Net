@@ -11,17 +11,7 @@ namespace Data.Database
 {
     public class CursoAdapter: Adapter
     {
-        public bool validarCupo(Curso curso)
-        {
-            if(curso.Cupo > 0)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
+       
         public List<Curso> GetAll()
         {
             List<Curso> listaCursos = new List<Curso>();
@@ -61,6 +51,61 @@ namespace Data.Database
             }
 
             return listaCursos;
+        }
+        public List<Object> GetAllEstadosCursos(int ID)
+        {
+            List<Object> listaGrilla = new List<Object>();
+
+            try
+            {
+                this.OpenConnection();
+                SqlCommand cmdEstados = new SqlCommand("select distinct cur.id_curso, com.id_comision, mat.anio, mat.desc_materia, alu.condicion, alu.nota, pl.desc_plan from alumnos_inscripciones alu inner join personas per on alu.id_alumno = per.id_persona inner join cursos cur on cur.id_curso = alu.id_curso inner join materias mat on mat.id_materia = cur.id_materia inner join planes pl on pl.id_plan = mat.id_plan inner join comisiones com on com.id_comision = cur.id_comision where alu.id_alumno=@idPersona", sqlConn);
+
+                cmdEstados.Parameters.Add("@idPersona", SqlDbType.Int).Value = ID;
+                SqlDataReader drEstados = cmdEstados.ExecuteReader();
+                while (drEstados.Read())
+                {
+                    if (drEstados["nota"].ToString() == "")
+                    {
+                        listaGrilla.Add(new
+                        {
+                            curs = (int)drEstados["id_curso"],
+                            com = (int)drEstados["id_comision"],
+                            año = (int)drEstados["anio"],
+                            desc_materia = (string)drEstados["desc_materia"],
+                            estado = (AlumnoInscripcion.TiposCondiciones)drEstados["condicion"],
+                            nota = "Sin nota",
+                            desc_plan = (string)drEstados["desc_plan"],
+                        });
+                    }
+                    else
+                    {
+                        listaGrilla.Add(new
+                        {
+                            curs = (int)drEstados["id_curso"],
+                            com = (int)drEstados["id_comision"],
+                            año = (int)drEstados["anio"],
+                            desc_materia = (string)drEstados["desc_materia"],
+                            estado = (AlumnoInscripcion.TiposCondiciones)drEstados["condicion"],
+                            nota = (string)drEstados["nota"],
+                            desc_plan = (string)drEstados["desc_plan"],
+                        });
+                    }
+                }
+                drEstados.Close();
+
+
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al cargar la lista de Estados" + Ex.Message, Ex);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                this.CloseConnection();
+            }
+            return listaGrilla;
         }
 
         public Curso GetOne(int ID)
@@ -126,34 +171,29 @@ namespace Data.Database
             }
         }
 
-        protected void Update(Curso cur)
+        protected void Update(Curso curso)
         {
             try
             {
-                this.OpenConnection();
-                SqlCommand cmdUpdateCurso = new SqlCommand(
-                    "UPDATE cursos " +
-                    "SET id_materia=@id_materia, id_comision@id_comision, cupos_disponibles=@cupdis , anio_calendario=@anio_calendario, cupo=@cupo WHERE id_curso = @id", sqlConn);
-
-
-                cmdUpdateCurso.Parameters.Add("@id", SqlDbType.Int).Value = cur.ID;
-                cmdUpdateCurso.Parameters.Add("@id_materia", SqlDbType.Int).Value = cur.IDMateria;
-                cmdUpdateCurso.Parameters.Add("@id_comision", SqlDbType.Int).Value = cur.IDComision;
-                cmdUpdateCurso.Parameters.Add("@anio_calendario", SqlDbType.Int).Value = cur.AnioCalendario;
-                cmdUpdateCurso.Parameters.Add("@cupo", SqlDbType.Int).Value = cur.Cupo;
-               
-               cmdUpdateCurso.Parameters.Add("@cupdis", SqlDbType.Int).Value = cur.CupoDis;
-                cmdUpdateCurso.ExecuteNonQuery();
+                OpenConnection();
+                SqlCommand cmdSave = new SqlCommand
+                ("UPDATE cursos SET id_materia=@id_materia,id_comision=@id_comision,anio_calendario=@anio_calendario,cupo=@cupo, cupos_disponibles=@cupodis WHERE id_curso=@id", sqlConn);
+                cmdSave.Parameters.Add("@id", SqlDbType.Int).Value = curso.ID;
+                cmdSave.Parameters.Add("@id_materia", SqlDbType.Int).Value = curso.IDMateria;
+                cmdSave.Parameters.Add("@id_comision", SqlDbType.Int).Value = curso.IDComision;
+                cmdSave.Parameters.Add("@anio_calendario", SqlDbType.Int).Value = curso.AnioCalendario;
+                cmdSave.Parameters.Add("@cupo", SqlDbType.Int).Value = curso.Cupo;
+                cmdSave.Parameters.Add("@cupodis", SqlDbType.Int).Value = curso.CupoDis;
+                cmdSave.ExecuteNonQuery();
             }
-          
             catch (Exception ex)
             {
-                Exception ExcepcionManejada = new Exception("Error al modificar el curso " + ex.Message , ex);
-                throw ExcepcionManejada;
+                Exception excepcionManejada = new Exception("Error al modificar datos del  usuario: " + ex.Message, ex);
+                throw excepcionManejada;
             }
             finally
             {
-                this.CloseConnection();
+                CloseConnection();
             }
         }
 
