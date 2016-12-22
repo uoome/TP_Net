@@ -13,8 +13,8 @@ namespace UI.Web
     {
         private DocenteCursologic _dictadoLog;
 
-   //     <asp:Content ID = "Content1" ContentPlaceHolderID="head" runat="server">
- //</asp:Content> LO SAQUE DE LA MASTER CREO Q ERA EL ERROR PERO LO GUARDO POR Las dudas
+       // <asp:Content ID = "Content1" ContentPlaceHolderID="head" runat="server">
+       // </asp:Content> LO SAQUE DE LA MASTER CREO Q ERA EL ERROR PERO LO GUARDO POR Las dudas
         public DocenteCursologic DictadoLog
         {
             get
@@ -26,7 +26,6 @@ namespace UI.Web
             set { _dictadoLog = value; }
         }
 
-        private DocenteCurso _entity;
         public DocenteCurso Entity { get; set; }
 
         private List<DocenteCurso> _listaDictados;

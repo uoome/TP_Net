@@ -29,13 +29,13 @@ namespace UI.Web
         }
 
         protected void gvEstadoAcademico_Load(object sender, EventArgs e)
-        { List <Object> Listaa = new List<Object>();
+        {
+            List <Object> Listaa = new List<Object>();
             PersonaLogic perlog = new PersonaLogic();
             Listaa = perlog.GetAllEstados((int)Session["id_persona"]);
-               this.LoadGrid(Listaa);
-            }
+            this.LoadGrid(Listaa);
 
-        
+        }
     }
     
 }

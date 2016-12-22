@@ -40,23 +40,25 @@ namespace UI.Web
          
             MateriaLogic mat = new MateriaLogic();
             ComisionLogic com = new ComisionLogic();
-             Business.Logic.ComisionLogic cl = new ComisionLogic();
+            Business.Logic.ComisionLogic cl = new ComisionLogic();
                
-                List<Comision> listacursos = new List<Comision>();
-                listacursos = cl.GetAll();
-                foreach (Comision comi in listacursos)
-                {
-                    ddlComision.Items.Add(comi.ID.ToString());
-                }  
+            List<Comision> listacursos = new List<Comision>();
+            listacursos = cl.GetAll();
+            ddlComision.Items.Add("");
+            foreach (Comision comi in listacursos)
+            {
+                ddlComision.Items.Add(comi.ID.ToString());
+            }  
              
 
-                List<Materia> listaMateria = new List<Materia>();
-                listaMateria = mat.GetAll();
-                foreach (Materia mate in listaMateria)
-                {
-                    ddlMateria.Items.Add(mate.ID.ToString());
-                }
+            List<Materia> listaMateria = new List<Materia>();
+            listaMateria = mat.GetAll();
+            ddlMateria.Items.Add("");
+            foreach (Materia mate in listaMateria)
+            {
+                ddlMateria.Items.Add(mate.ID.ToString());
             }
+        }
 
         private void LoadForm(int id)
         {
@@ -66,7 +68,7 @@ namespace UI.Web
             this.txtCupoDis.Text = this.Entity.CupoDis.ToString();
         
           
-         Materia mat = new Materia();
+            Materia mat = new Materia();
             MateriaLogic matl = new MateriaLogic();
             mat = matl.GetOne(Entity.IDMateria);
             this.txtDescripcion.Text = mat.Descripcion;
@@ -106,8 +108,8 @@ namespace UI.Web
             //Dudas sobre el Empty con campo entero
             this.txtCupo.Text = string.Empty;
             this.txtDescripcion.Text = string.Empty;
-            this.ddlComision.SelectedIndex = -1;
-            this.ddlMateria.SelectedIndex = -1;
+            this.ddlComision.SelectedIndex = 0;
+            this.ddlMateria.SelectedIndex = 0;
             this.txtCupoDis.Text = string.Empty;
         }
 
@@ -116,10 +118,8 @@ namespace UI.Web
         {
             CurLog.Delete(id);
         }
+
         #endregion
-
-
-        
         
         #region Eventos
         
@@ -190,7 +190,6 @@ namespace UI.Web
             mat = matL.GetOne(Convert.ToInt32(ddlMateria.SelectedValue));
             this.txtDescripcion.Text = mat.Descripcion;
         }
-        
 
         protected void linkBtnEditar_Click(object sender, EventArgs e)
         {
@@ -222,11 +221,8 @@ namespace UI.Web
             this.ClearForm();
             Enable(true);
         }
+
         #endregion
-
-        protected void ddlComision_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 }

@@ -55,7 +55,16 @@
                     <asp:Label ID="lblIDMateria" runat="server" Text="ID Materia"></asp:Label>
                 </td>
                 <td>
-                    <asp:ListBox ID="ddlMateria" runat="server" OnSelectedIndexChanged="ddlMateria_SelectedIndexChanged" AutoPostBack="True"></asp:ListBox>
+                    <asp:DropDownList ID="ddlMateria" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlMateria_SelectedIndexChanged">
+                    </asp:DropDownList>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 289px">
+                    <asp:Label ID="lblDescripcion0" runat="server" Text="Descripcion"></asp:Label>
+                </td>
+                <td>
+                    <asp:TextBox ID="txtDescripcion" runat="server"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -63,15 +72,8 @@
                     <asp:Label ID="lblIDComision" runat="server" Text="ID Comision"></asp:Label>
                 </td>
                 <td>
-                    <asp:ListBox ID="ddlComision" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlComision_SelectedIndexChanged"></asp:ListBox>
-                </td>
-            </tr>
-            <tr>
-                <td style="width: 289px">
-                    <asp:Label ID="lblDescripcion" runat="server" Text="Descripcion"></asp:Label>
-                </td>
-                <td>
-                    <asp:TextBox ID="txtDescripcion" runat="server"></asp:TextBox>
+                    <asp:DropDownList ID="ddlComision" runat="server" AutoPostBack="True">
+                    </asp:DropDownList>
                 </td>
             </tr>
         </table>

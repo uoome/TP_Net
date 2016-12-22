@@ -23,6 +23,32 @@ namespace UI.Desktop
         public DictadoDesktop()
         {
             InitializeComponent();
+
+            //esta orcion de codigo iria en el evento Load
+            lblIDdocente.Visible = false;
+
+            CursoLogic curLog = new CursoLogic();
+            List<Curso> listaCursos = curLog.GetAll();
+            cbxCursos.Items.Add("");
+            foreach (Curso c in listaCursos)
+            {
+                cbxCursos.Items.Add(c.ID.ToString());
+            }
+
+            PersonaLogic plog = new PersonaLogic();
+            List<Personas> listadoPersonas = plog.GetAll();
+            cbxDocentes.Items.Add("");
+            foreach (Personas p in listadoPersonas)
+            {
+                if (p.TipoPersona == Personas.TiposPersonas.Docente)
+                {
+                    cbxDocentes.Items.Add(p.Apellido + " " + p.Nombre);
+                }
+            }
+
+            cbxCargos.Items.Add("");
+            cbxCargos.Items.Add(DocenteCurso.TiposCargos.Titular);
+            cbxCargos.Items.Add(DocenteCurso.TiposCargos.Auxiliar);
         }
 
         public DictadoDesktop(ApplicationForm.ModoForm modo): this()
@@ -41,7 +67,7 @@ namespace UI.Desktop
         public DictadoDesktop(ApplicationForm.ModoForm modo, int ID): this()
         {
             Modo = modo;
-            if (Modo == ModoForm.Alta || Modo == ModoForm.Modificacion)
+            if (Modo == ModoForm.Modificacion)
             {
                 this.btnAceptar.Text = "Guardar";
             }
@@ -52,8 +78,8 @@ namespace UI.Desktop
 
             DocenteCursologic dlog = new DocenteCursologic();
             DictadoActual = dlog.GetOne(ID);
-            //this.MapearDeDatos();
 
+            MapearDeDatos();
         }
 
         #endregion
@@ -161,7 +187,7 @@ namespace UI.Desktop
 
         #region Eventos
 
-        private void DictadoDesktop_Load(object sender, EventArgs e)
+        /*private void DictadoDesktop_Load(object sender, EventArgs e)
         {
             lblIDdocente.Visible = false;
 
@@ -188,7 +214,7 @@ namespace UI.Desktop
             cbxCargos.Items.Add(DocenteCurso.TiposCargos.Titular);
             cbxCargos.Items.Add(DocenteCurso.TiposCargos.Auxiliar);
         }
-
+        */
         private void cbxDocentes_SelectedIndexChanged(object sender, EventArgs e)
         {
             PersonaLogic perlog = new PersonaLogic();

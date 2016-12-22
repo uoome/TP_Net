@@ -63,7 +63,14 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdEstados = new SqlCommand("select mat.anio, mat.desc_materia, alu.condicion, alu.nota,pla.desc_plan from alumnos_inscripciones alu inner join personas per on alu.id_alumno = per.id_persona inner join cursos cur on cur.id_curso = alu.id_curso inner join materias mat on mat.id_materia = cur.id_materia inner join planes pla on pla.id_plan = mat.id_plan where alu.id_alumno = @idPersona", sqlConn);
+                SqlCommand cmdEstados = new SqlCommand(
+                    "SELECET mat.anio, mat.desc_materia, alu.condicion, alu.nota, pla.desc_plan " + 
+                    "FROM alumnos_inscripciones alu "+
+                    "INNER JOIN personas per ON alu.id_alumno = per.id_persona "+
+                    "INNER JOIN cursos cur on cur.id_curso = alu.id_curso "+
+                    "INNER JOIN materias mat on mat.id_materia = cur.id_materia "+
+                    "INNER JOIN planes pla on pla.id_plan = mat.id_plan "+
+                    "WHERE alu.id_alumno = @idPersona", sqlConn);
 
                 cmdEstados.Parameters.Add("@idPersona", SqlDbType.Int).Value = ID;
                 SqlDataReader drEstados = cmdEstados.ExecuteReader();

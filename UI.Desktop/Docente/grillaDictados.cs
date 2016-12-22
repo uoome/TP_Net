@@ -81,7 +81,9 @@ namespace UI.Desktop
 
         private void tsbEditar_Click(object sender, EventArgs e)
         {
-            int ID = ((DocenteCurso)dgvDictados.SelectedRows[0].DataBoundItem).ID;
+            int ID = (int)dgvDictados.SelectedRows[0].Cells[0].Value;
+            //Se reemplaza la linea de codigo inferior por la superior por el tipo anonimo
+            //int ID = ((DocenteCurso)dgvDictados.SelectedRows[0].DataBoundItem).ID;
             DictadoDesktop dicDesk = new DictadoDesktop(ApplicationForm.ModoForm.Modificacion, ID);
             dicDesk.ShowDialog();
             this.Listar();
@@ -89,7 +91,7 @@ namespace UI.Desktop
 
         private void tsbEliminar_Click(object sender, EventArgs e)
         {
-            int ID = ((DocenteCurso)dgvDictados.SelectedRows[0].DataBoundItem).ID;
+            int ID = (int)dgvDictados.SelectedRows[0].Cells[0].Value;
             DictadoDesktop dicDesk = new DictadoDesktop(ApplicationForm.ModoForm.Eliminar, ID);
             dicDesk.ShowDialog();
             this.Listar();

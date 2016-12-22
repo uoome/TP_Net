@@ -31,8 +31,7 @@ namespace Data.Database
                     unCurso.IDComision = (int)drCursos["id_comision"];
                     unCurso.AnioCalendario = (int)drCursos["anio_calendario"];
                     unCurso.Cupo = (int)drCursos["cupo"];
-                    unCurso.CupoDis = (int)drCursos["cupos_disponibles"];
-                    //unCurso.Descripcion no esta en la BD ¿se agrega?
+                    //unCurso.CupoDis = (int)drCursos["cupos_disponibles"];
                     listaCursos.Add(unCurso);
                    
                 }

@@ -25,6 +25,7 @@ namespace Data.Database
                 {
                     DocenteCurso dc = new DocenteCurso();
 
+                    dc.ID = (int)drDictado["id_dictado"];
                     dc.IdCurso = (int)drDictado["id_curso"];
                     dc.IdDocente = (int)drDictado["id_docente"];
                     dc.Cargo = (DocenteCurso.TiposCargos)drDictado["cargo"];
@@ -57,6 +58,7 @@ namespace Data.Database
 
                 if (drDictado.Read())
                 {
+                    dc.ID = (int)drDictado["id_dictado"];
                     dc.IdCurso = (int)drDictado["id_curso"];
                     dc.IdDocente = (int)drDictado["id_docente"];
                     dc.Cargo = (DocenteCurso.TiposCargos)drDictado["cargo"];
