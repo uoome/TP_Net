@@ -19,6 +19,7 @@ namespace UI.Desktop
             InitializeComponent();
             grvComisiones.AutoGenerateColumns = false;
         }
+
         #region Metodos
         public void Listar()
         {
@@ -26,7 +27,8 @@ namespace UI.Desktop
             this.grvComisiones.DataSource = ComLog.GetAll();
         }
         #endregion
-        #region eventos
+
+        #region Eventos
         private void btnActualizar_Click(object sender, EventArgs e)
         {
             this.Listar();

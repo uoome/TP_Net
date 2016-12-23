@@ -68,6 +68,7 @@ namespace UI.Web
             this.ddlMateria.Enabled = enable;
 
         }
+
         private void LoadEntity(Curso Cur)
         {
             Cur.AnioCalendario = int.Parse(this.txtAnioCalendario.Text);
@@ -77,10 +78,12 @@ namespace UI.Web
             Cur.IDComision = int.Parse(this.ddlComision.SelectedValue);
             Cur.IDMateria = int.Parse(this.ddlMateria.SelectedValue);
         }
+
         private void SaveEntity(Curso cur)
         {
             this.CurLog.Save(cur);
         }
+
         private void ClearForm()
         {
             this.txtAnioCalendario.Text = string.Empty;
@@ -91,6 +94,7 @@ namespace UI.Web
             this.ddlMateria.SelectedIndex = 0;
             this.txtCupoDis.Text = string.Empty;
         }
+
         private void DeleteEntity(int id)
         {
             CurLog.Delete(id);

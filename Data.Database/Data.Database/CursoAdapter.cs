@@ -50,7 +50,8 @@ namespace Data.Database
             }
 
             return listaCursos;
-        }
+        } //Este metodo ya no sirve pq usamos directamente la consulta sql
+
         public List<Object> GetAllEstadosCursos(int ID)
         {
             List<Object> listaGrilla = new List<Object>();
@@ -92,8 +93,7 @@ namespace Data.Database
                     }
                 }
                 drEstados.Close();
-
-
+                
             }
             catch (Exception Ex)
             {
@@ -175,8 +175,11 @@ namespace Data.Database
             try
             {
                 OpenConnection();
-                SqlCommand cmdSave = new SqlCommand
-                ("UPDATE cursos SET id_materia=@id_materia,id_comision=@id_comision,anio_calendario=@anio_calendario,cupo=@cupo, cupos_disponibles=@cupodis WHERE id_curso=@id", sqlConn);
+                SqlCommand cmdSave = new SqlCommand(
+                    "UPDATE cursos "+
+                    "SET id_materia=@id_materia,id_comision=@id_comision,anio_calendario=@anio_calendario,cupo=@cupo, cupos_disponibles=@cupodis "+
+                    "WHERE id_curso=@id", sqlConn);
+
                 cmdSave.Parameters.Add("@id", SqlDbType.Int).Value = curso.ID;
                 cmdSave.Parameters.Add("@id_materia", SqlDbType.Int).Value = curso.IDMateria;
                 cmdSave.Parameters.Add("@id_comision", SqlDbType.Int).Value = curso.IDComision;
@@ -196,20 +199,20 @@ namespace Data.Database
             }
         }
 
-        protected void Insert(Curso cur)
+        protected void Insert(Curso cur)    
         {
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdInsertCurso = new SqlCommand("INSERT into cursos (id_materia, id_comision, cupo, anio_calendario, cupos_disponibles)"
-                    + "VALUES (@id_materia, @id_comision, @cupo, @anio_calendario, @cupdis)", sqlConn);
+                SqlCommand cmdInsertCurso = new SqlCommand(
+                    "INSERT INTO cursos (id_materia, id_comision, cupo, anio_calendario, cupos_disponibles) "+ 
+                    "VALUES (@id_materia, @id_comision, @cupo, @anio_calendario, @cupdis)", sqlConn);
                 cmdInsertCurso.Parameters.Add("@id_materia", SqlDbType.Int).Value = cur.IDMateria;
                 cmdInsertCurso.Parameters.Add("@id_comision", SqlDbType.Int).Value = cur.IDComision;
                 cmdInsertCurso.Parameters.Add("@cupo", SqlDbType.Int).Value = cur.Cupo;
                 cmdInsertCurso.Parameters.Add("@anio_calendario", SqlDbType.Int).Value = cur.AnioCalendario;
                 cmdInsertCurso.Parameters.Add("@cupdis", SqlDbType.Int).Value = cur.CupoDis;
-
-
+                
                 cmdInsertCurso.ExecuteNonQuery();
 
             }

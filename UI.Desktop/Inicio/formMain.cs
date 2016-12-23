@@ -192,6 +192,14 @@ namespace UI.Desktop
             estAcad.Show();
             estAcad.Listar();
         }
+
+        private void tsc_Alumno_InscCursado_Click(object sender, EventArgs e)
+        {
+            frmInscripcion_Curso formInscripcion = new frmInscripcion_Curso();
+            formInscripcion.Show();
+            formInscripcion.Listar();
+        }
+
         private void tsc_Alumno_Salir_Click(object sender, EventArgs e)
         {
             this.Dispose();
@@ -211,6 +219,7 @@ namespace UI.Desktop
         {
             this.Dispose();
         }
+
 
 
 

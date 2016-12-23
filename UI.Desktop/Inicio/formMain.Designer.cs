@@ -183,6 +183,7 @@
             this.tsc_Alumno_InscCursado.Name = "tsc_Alumno_InscCursado";
             this.tsc_Alumno_InscCursado.Size = new System.Drawing.Size(183, 22);
             this.tsc_Alumno_InscCursado.Text = "Inscribirse a Cursado";
+            this.tsc_Alumno_InscCursado.Click += new System.EventHandler(this.tsc_Alumno_InscCursado_Click);
             // 
             // tsc_Alumno_Salir
             // 

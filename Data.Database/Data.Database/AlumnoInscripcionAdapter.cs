@@ -18,20 +18,22 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdAlu = new SqlCommand("select alu.id_inscripcion from personas per inner join alumnos_inscripciones alu on alu.id_alumno = per.id_persona inner join cursos cur on cur.id_curso = alu.id_curso where per.id_persona = @idper and cur.id_curso = @idcur ", sqlConn);
+                SqlCommand cmdAlu = new SqlCommand(
+                    "SELECT alu.id_inscripcion "+
+                    "FROM personas per "+
+                    "INNER JOIN alumnos_inscripciones alu ON alu.id_alumno = per.id_persona "+
+                    "INNR JOIN cursos cur ON cur.id_curso = alu.id_curso "+
+                    "WHERE per.id_persona = @idper and cur.id_curso = @idcur ", sqlConn);
+
                 cmdAlu.Parameters.Add("@idper", SqlDbType.Int).Value = idper;
                 cmdAlu.Parameters.Add("@idcur", SqlDbType.Int).Value = idcur;
                 SqlDataReader drAlu = cmdAlu.ExecuteReader();
-                if (drAlu.Read())
-                {
 
+                if (drAlu.Read())
                     Alu.ID = (int)drAlu["id_inscripcion"];
 
-                }
                 drAlu.Close();
-
-
-
+                
             }
             catch (Exception ex)
             {
@@ -44,19 +46,19 @@ namespace Data.Database
             }
             return Alu.ID;
         }
+
         public void UpdateInscr(AlumnoInscripcion docCurso)
         {
             try
             {
                 OpenConnection();
-                SqlCommand cmdSave = new SqlCommand
-                ("UPDATE alumnos_inscripciones SET nota=@nota,condicion=@condicion " +
-
-                "WHERE id_inscripcion=@id", sqlConn);
+                SqlCommand cmdSave = new SqlCommand(
+                    "UPDATE alumnos_inscripciones SET nota=@nota,condicion=@condicion " +
+                    "WHERE id_inscripcion=@id", sqlConn);
 
                 cmdSave.Parameters.Add("@id", SqlDbType.Int).Value = docCurso.ID;
                 cmdSave.Parameters.Add("@nota", SqlDbType.VarChar, 50).Value = docCurso.Nota;
-                cmdSave.Parameters.Add("@condicion", SqlDbType.Int).Value = (int)docCurso.Condicion;
+                cmdSave.Parameters.Add("@condicion", SqlDbType.Int).Value = docCurso.Condicion;
                 cmdSave.ExecuteNonQuery();
             }
             catch (Exception ex)
@@ -69,6 +71,7 @@ namespace Data.Database
                 CloseConnection();
             }
         }
+
         public List<AlumnoInscripcion> GetAll ()
         {
             List<AlumnoInscripcion> Inscripciones = new List<AlumnoInscripcion>() ;
@@ -103,7 +106,6 @@ namespace Data.Database
             }
 
             return Inscripciones;
-
 
         }
 
@@ -145,6 +147,7 @@ namespace Data.Database
 
             return listaInscrip;
         }
+
         public AlumnoInscripcion GetOne (int ID)
         {
             AlumnoInscripcion al = new AlumnoInscripcion();
@@ -180,6 +183,7 @@ namespace Data.Database
             return al;
 
             }
+
         public void Delete (int ID)
         {
             try
@@ -200,14 +204,16 @@ namespace Data.Database
             }
                         
         }
+
         protected void Update(AlumnoInscripcion Alu )
         {
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdUpdateAlu = new SqlCommand("Update alumnos_inscripciones set " +
-                                                         "condicion = @cond, id_alumno@id_alu, id_curso = @ id_cur , nota= @nota " +
-                                                         "where id_inscripcion = @id ", sqlConn);
+                SqlCommand cmdUpdateAlu = new SqlCommand(
+                    "Update alumnos_inscripciones set " +
+                    "condicion = @cond, id_alumno@id_alu, id_curso = @ id_cur , nota= @nota " +
+                    "where id_inscripcion = @id ", sqlConn);
                 cmdUpdateAlu.Parameters.Add("@id", SqlDbType.Int).Value = Alu.ID;
                 cmdUpdateAlu.Parameters.Add("@cond", SqlDbType.VarChar, 50).Value = Alu.Condicion;
                 cmdUpdateAlu.Parameters.Add("@id_alu", SqlDbType.Int).Value = Alu.IdAlumno;
@@ -227,26 +233,27 @@ namespace Data.Database
             }
             
         }
+
         protected void Insert(AlumnoInscripcion Alu)
         {
             try
             {
                 this.OpenConnection();
-                SqlCommand CmdInsert = new SqlCommand("insert into alumnos_inscripciones(id_alumno, id_curso, condicion, nota)" +
-                                                       "values (@varId_alu,@varId_curso, @varCond, @varNota)", sqlConn);
+                SqlCommand CmdInsert = new SqlCommand(
+                    "INSERT INTO alumnos_inscripciones(id_alumno, id_curso, condicion, nota)" +
+                    "VALUES (@varId_alu,@varId_curso, @varCond, @varNota)", sqlConn);
+
                 CmdInsert.Parameters.Add("@varId_alu", SqlDbType.Int).Value = Alu.IdAlumno;
                 CmdInsert.Parameters.Add("@varId_curso", SqlDbType.Int).Value = Alu.IdCurso;
                 CmdInsert.Parameters.Add("@varCond ", SqlDbType.Int).Value = Alu.Condicion;
-               
-                    CmdInsert.Parameters.Add("@varNota", SqlDbType.VarChar, 50).Value = Alu.Nota;
-                
-                    CmdInsert.ExecuteNonQuery();
+                CmdInsert.Parameters.Add("@varNota", SqlDbType.VarChar, 50).Value = Alu.Nota;
+                CmdInsert.ExecuteNonQuery();
             }
         
             catch (Exception ex)
             {
                 Exception ExManejada = new Exception("No se pudo crear la inscripcion" + ex.Message, ex);
-                    throw ExManejada;
+                throw ExManejada;
             }
             finally
             {
@@ -255,15 +262,15 @@ namespace Data.Database
             
             
         }
+
         public void Save(AlumnoInscripcion Alu)
         {
             if (Alu.State == BusinessEntity.States.Deleted)
-            { this.Delete(Alu.ID); } else
-                if (Alu.State == BusinessEntity.States.New)
-            {
+                this.Delete(Alu.ID); 
+            else if (Alu.State == BusinessEntity.States.New)
                 this.Insert(Alu);
-            } else if (Alu.State == BusinessEntity.States.Modified)
-            { this.Update(Alu); }
+            else if (Alu.State == BusinessEntity.States.Modified)
+                this.Update(Alu); 
             else Alu.State = BusinessEntity.States.Unmodified;
         } 
 

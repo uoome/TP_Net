@@ -139,6 +139,12 @@
     <Compile Include="Alumno\frmGrillaEstadoAcademico.Designer.cs">
       <DependentUpon>frmGrillaEstadoAcademico.cs</DependentUpon>
     </Compile>
+    <Compile Include="Alumno\frmInscripcion_Curso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Alumno\frmInscripcion_Curso.Designer.cs">
+      <DependentUpon>frmInscripcion_Curso.cs</DependentUpon>
+    </Compile>
     <Compile Include="Docente\DictadoDesktop.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -227,6 +233,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Alumno\frmGrillaEstadoAcademico.resx">
       <DependentUpon>frmGrillaEstadoAcademico.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Alumno\frmInscripcion_Curso.resx">
+      <DependentUpon>frmInscripcion_Curso.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Docente\DictadoDesktop.resx">
       <DependentUpon>DictadoDesktop.cs</DependentUpon>

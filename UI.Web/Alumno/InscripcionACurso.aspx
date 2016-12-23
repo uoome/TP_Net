@@ -49,7 +49,7 @@
             <asp:Label ID="Label1" runat="server" BackColor="White" BorderColor="Red" ForeColor="Red" Text="Una vez realizada la inscripcion no podra eliminarse"></asp:Label>
             <br />
             <br />
-            <asp:Label ID="lblCurso" runat="server" ForeColor="Red"></asp:Label>
+            <asp:Label ID="lblCurso" runat="server" ForeColor="Green"></asp:Label>
         </asp:Panel>
     </asp:Panel>
 </asp:Content>

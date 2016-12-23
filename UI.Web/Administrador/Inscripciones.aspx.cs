@@ -151,8 +151,6 @@ namespace UI.Web
             {
                 cargaInscripciones(Alumnos[grvAlumnos.SelectedIndex].ID);
                 this.panelControlesInscripciones.Visible = true;
-            
-                
             }
         }
 
@@ -213,7 +211,6 @@ namespace UI.Web
         {
           if (grvInscripciones.SelectedIndex != -1)
             {
-              
                 this.FormMode = FormModes.Baja;
                 ddlNotas.Items.Add(Nota);
                 ddlNotas.Text = Nota;
@@ -243,34 +240,30 @@ namespace UI.Web
            switch(this.FormMode)
             {  
                 case FormModes.Modificacion:
+                    Entity = new AlumnoInscripcion();
+                    AlumnoInscripcionLogic aluLog = new AlumnoInscripcionLogic();
+                    Entity.ID = aluLog.GetID(SelectedID, Alumnos[grvAlumnos.SelectedIndex].ID);
+                    Entity.State = BusinessEntity.States.Modified;
+                    Entity.Condicion = (AlumnoInscripcion.TiposCondiciones)ddlCondicion.SelectedIndex;
+                    Entity.Nota = (ddlNotas.SelectedIndex - 1).ToString();
+                    Entity.IdAlumno = Alumnos[grvAlumnos.SelectedIndex].ID;
+                    aluLog.UpdateInscr(Entity);
+                    // this.SaveEntity(Entity);
+                    // TUVE QUE HACER UN NUEVO UPDAT E PORQUE ME TIRABA ERROR CON FK EN ID_CURSO (PERO NO MODIFICABA NI SIQUIERA EL CURSO, NO SE PORQUE)
+                    panelABMInscripciones.Visible = false;
+                    panelControlesInscripciones.Visible = false;                      
+                    break;
 
-                    {
-                        Entity = new AlumnoInscripcion();
-                        AlumnoInscripcionLogic aluLog = new AlumnoInscripcionLogic();
-                        Entity.ID = aluLog.GetID(SelectedID, Alumnos[grvAlumnos.SelectedIndex].ID);
-                        Entity.State = BusinessEntity.States.Modified;
-                        Entity.Condicion = (AlumnoInscripcion.TiposCondiciones)ddlCondicion.SelectedIndex;
-                        Entity.Nota = (ddlNotas.SelectedIndex - 1).ToString();
-                        Entity.IdAlumno = Alumnos[grvAlumnos.SelectedIndex].ID;
-                        aluLog.UpdateInscr(Entity);
-                  //    this.SaveEntity(Entity);
-                  // TUVE QUE HACER UN NUEVO UPDAT E PORQUE ME TIRABA ERROR CON FK EN ID_CURSO (PERO NO MODIFICABA NI SIQUIERA EL CURSO, NO SE PORQUE)
-                        panelABMInscripciones.Visible = false;
-                        panelControlesInscripciones.Visible = false;                      
-                        break;
-                    }
                 case FormModes.Baja:
-                    {
-                        int x;
-                        x = InscLogic.GetID(SelectedID, Alumnos[grvAlumnos.SelectedIndex].ID );
+                    int x;
+                    x = InscLogic.GetID(SelectedID, Alumnos[grvAlumnos.SelectedIndex].ID );
 
-                        DeleteEntity(x);
-                        panelABMInscripciones.Visible = false;
-                        panelControlesInscripciones.Visible = false;
-                        panelGrillaInscripciones.Visible = false;
-                       
-                        break;
-                    }
+                    DeleteEntity(x);
+                    panelABMInscripciones.Visible = false;
+                    panelControlesInscripciones.Visible = false;
+                    panelGrillaInscripciones.Visible = false;
+                    break;
+
                 default: break;
             }
             

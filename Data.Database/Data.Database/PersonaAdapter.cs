@@ -295,6 +295,7 @@ namespace Data.Database
             }
             else pers.State = BusinessEntity.States.Unmodified;
         }
+
         public void Delete(int ID)
         {
             try
@@ -314,6 +315,7 @@ namespace Data.Database
                 this.CloseConnection();
             }
         }
+
         protected void Insert(Personas pers)
         {
             try
@@ -351,6 +353,7 @@ namespace Data.Database
                 this.CloseConnection();
             }
         }
+
         protected void Update(Personas pers)
         {
             try
