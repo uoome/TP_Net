@@ -24,7 +24,6 @@ namespace Business.Logic
         public List<Object> GetAllComisionesMaterias(int id)
         {
             return ComAdap.GetAllComisionesMaterias(id);
-
         }
      
         public void Save(Comision com)
@@ -42,7 +41,11 @@ namespace Business.Logic
         public Comision GetOne(int id)
         {
             return ComAdap.GetOne(id);
-         }
+        }
+        public Comision GetOne(string descrip)
+        {
+            return ComAdap.GetOne(descrip);
+        }
 
     }
 }

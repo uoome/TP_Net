@@ -106,6 +106,37 @@ namespace Data.Database
             return Com;
 
         }
+
+        public Comision GetOne(string d)
+        {
+            Comision Com = new Comision();
+
+            try
+            {
+                this.OpenConnection();
+                SqlCommand CmdCom = new SqlCommand("SELECT * FROM comisiones WHERE desc_comision = @descrip", sqlConn);
+                CmdCom.Parameters.Add("@descrip", SqlDbType.VarChar,50).Value = d;
+                SqlDataReader drComi = CmdCom.ExecuteReader();
+                if (drComi.Read())
+                {
+                    Com.ID = (int)drComi["id_comision"];
+                    Com.Descripcion = (string)drComi["desc_comision"];
+                    Com.AnioEspecialidad = (int)drComi["anio_especialidad"];
+                    Com.IdPlan = (int)drComi["id_plan"];
+
+                }
+                drComi.Close();
+            }
+            catch (Exception ex)
+            {
+                Exception ExManejada = new Exception("No se pudo obtener la comision" + ex.Message);
+                throw ExManejada;
+            }
+            finally { this.CloseConnection(); }
+
+            return Com;
+
+        }
         public void Delete(int id)
         {
             try

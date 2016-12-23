@@ -69,7 +69,6 @@ namespace UI.Desktop
             txbID_Curso.Text = CursoActual.ID.ToString();
             txbAnioCalendario.Text = CursoActual.AnioCalendario.ToString();
             txbCupo.Text = CursoActual.Cupo.ToString();
-            //txbDescripcion.Text = CursoActual.Descripcion;
             txtCuposDis.Text = CursoActual.CupoDis.ToString();
 
             MateriaLogic ml = new MateriaLogic();
@@ -79,9 +78,8 @@ namespace UI.Desktop
             ComisionLogic cl = new ComisionLogic();
             Comision c = cl.GetOne(CursoActual.IDComision);
             cbxComisiones.Text = c.Descripcion;
-            
-
         }
+
         public override void MapearADatos()
         {
             if (Modo == ModoForm.Alta)
@@ -97,13 +95,11 @@ namespace UI.Desktop
             }
             if (Modo==ModoForm.Alta || Modo == ModoForm.Modificacion)
             {
-                CursoActual.Descripcion = txbDescripcion.Text;
                 CursoActual.Cupo = int.Parse(txbCupo.Text.Trim());
                 CursoActual.CupoDis = int.Parse(txtCuposDis.Text);
                 CursoActual.AnioCalendario = int.Parse(txbAnioCalendario.Text.Trim());
                 CursoActual.IDMateria = new MateriaLogic().GetOne(cbxMaterias.Text).ID;
-                //CursoActual.IDComision = new ComsionLogic().GetOne(cbxComisiones.Text).ID;
-                
+                CursoActual.IDComision = new ComisionLogic().GetOne(cbxComisiones.Text).ID;
             }
             if (Modo == ModoForm.Eliminar)
             {
@@ -115,14 +111,56 @@ namespace UI.Desktop
             this.MapearADatos();
             CursoLogic cursLog = new CursoLogic();
             cursLog.Save(CursoActual);
-
         }
-        public override bool Validar() { return false; }
+
+        public override bool Validar()
+        {
+            string msj = "";
+
+            if (txbCupo.Text.Trim().Equals(""))
+            {
+                msj += "El cupo no puede estar vacío \n";
+                txbCupo.BackColor = Color.Red;
+            }
+            else { txbCupo.BackColor = Color.White; }
+                
+            if (txbAnioCalendario.Text.Trim().Equals(""))
+            {
+                msj += "El año no puede estar vacío \n";
+                txbAnioCalendario.BackColor = Color.Red;
+            }
+            else { txbAnioCalendario.BackColor = Color.White; }
+                
+            if (cbxComisiones.SelectedIndex == 0)
+            {
+                msj += "Debe seleccionar una comisión \n";
+                cbxComisiones.BackColor = Color.Red;
+            }
+            else { cbxComisiones.BackColor = Color.White; }
+                
+            if (cbxMaterias.SelectedIndex==0)
+            {
+                msj += "Debe seleccionar una materia \n";
+                cbxMaterias.BackColor = Color.Red;
+            }
+            else { cbxMaterias.BackColor = Color.White; }
+
+            if (msj.Trim().Equals(""))
+                return true;
+            else
+            {
+                this.Notificar("Datos incorrectos", msj, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            
+        }
+
         public new void Notificar(string titulo, string mensaje, MessageBoxButtons
         botones, MessageBoxIcon icono)
         {
             MessageBox.Show(mensaje, titulo, botones, icono);
         }
+
         public new void Notificar(string mensaje, MessageBoxButtons botones,
         MessageBoxIcon icono)
         {
@@ -150,8 +188,6 @@ namespace UI.Desktop
             }
 
             //Cargo combo de comisiones
-            //Quitar comentarios cuando esten cargadas las clases ComisionAdapter y ComisionLogic
-            
             ComisionLogic cl = new ComisionLogic();
             listaComisiones = cl.GetAll();
 
@@ -163,6 +199,22 @@ namespace UI.Desktop
               
         }
 
+        private void btnAceptar_Click(object sender, EventArgs e)
+        {
+            if (this.Validar())
+            {
+                this.GuardarCambios();
+                this.Close();
+            }
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
         #endregion
+
+
     }
 }

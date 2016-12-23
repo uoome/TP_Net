@@ -36,5 +36,25 @@ namespace UI.Desktop
         {
             this.Listar();
         }
+
+        private void tsbNuevo_Click(object sender, EventArgs e)
+        {
+            CursoDesktop curDesk = new CursoDesktop(ApplicationForm.ModoForm.Alta);
+            curDesk.ShowDialog();
+        }
+
+        private void tsbEditar_Click(object sender, EventArgs e)
+        {
+            int ID= ((Curso)dgvCursos.SelectedRows[0].DataBoundItem).ID;
+            CursoDesktop curDek = new CursoDesktop(ID, ApplicationForm.ModoForm.Modificacion);
+            curDek.ShowDialog();
+        }
+
+        private void tsbEliminar_Click(object sender, EventArgs e)
+        {
+            int ID = ((Curso)dgvCursos.SelectedRows[0].DataBoundItem).ID;
+            CursoDesktop curDesk = new CursoDesktop(ID, ApplicationForm.ModoForm.Eliminar);
+            curDesk.ShowDialog();
+        }
     }
 }
