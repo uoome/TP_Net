@@ -223,8 +223,19 @@ namespace UI.Desktop
 
 
 
+
         #endregion
 
-        
+        private void reporteCursosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ReporteCursos Rep = new ReporteCursos();
+            Rep.ShowDialog();
+        }
+
+        private void reportePlanesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ReportePlanes rep = new ReportePlanes();
+            rep.ShowDialog();
+        }
     }
 }

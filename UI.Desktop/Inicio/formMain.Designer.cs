@@ -39,6 +39,8 @@
             this.tsc_Admin_Planes = new System.Windows.Forms.ToolStripMenuItem();
             this.tsc_Admin_Comisiones = new System.Windows.Forms.ToolStripMenuItem();
             this.tsc_Admin_AluInscp = new System.Windows.Forms.ToolStripMenuItem();
+            this.reportesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reporteCursosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsc_Admin_Salir = new System.Windows.Forms.ToolStripMenuItem();
             this.menuAlumnos = new System.Windows.Forms.ToolStripMenuItem();
             this.tsc_Alumno_EstadoAcad = new System.Windows.Forms.ToolStripMenuItem();
@@ -52,6 +54,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblMensajeSesion = new System.Windows.Forms.Label();
             this.btnSesion = new System.Windows.Forms.Button();
+            this.reportePlanesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnsPrincipal.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -80,6 +83,7 @@
             this.tsc_Admin_Planes,
             this.tsc_Admin_Comisiones,
             this.tsc_Admin_AluInscp,
+            this.reportesToolStripMenuItem,
             this.tsc_Admin_Salir});
             this.menuAdministrador.Name = "menuAdministrador";
             this.menuAdministrador.Size = new System.Drawing.Size(50, 20);
@@ -146,6 +150,22 @@
             this.tsc_Admin_AluInscp.Size = new System.Drawing.Size(191, 22);
             this.tsc_Admin_AluInscp.Text = "Alumno_Inscripciones";
             this.tsc_Admin_AluInscp.Click += new System.EventHandler(this.tsc_Admin_AluInscp_Click);
+            // 
+            // reportesToolStripMenuItem
+            // 
+            this.reportesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.reporteCursosToolStripMenuItem,
+            this.reportePlanesToolStripMenuItem});
+            this.reportesToolStripMenuItem.Name = "reportesToolStripMenuItem";
+            this.reportesToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.reportesToolStripMenuItem.Text = "Reportes";
+            // 
+            // reporteCursosToolStripMenuItem
+            // 
+            this.reporteCursosToolStripMenuItem.Name = "reporteCursosToolStripMenuItem";
+            this.reporteCursosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.reporteCursosToolStripMenuItem.Text = "Reporte cursos";
+            this.reporteCursosToolStripMenuItem.Click += new System.EventHandler(this.reporteCursosToolStripMenuItem_Click);
             // 
             // tsc_Admin_Salir
             // 
@@ -252,6 +272,13 @@
             this.btnSesion.UseVisualStyleBackColor = true;
             this.btnSesion.Click += new System.EventHandler(this.btnSesion_Click);
             // 
+            // reportePlanesToolStripMenuItem
+            // 
+            this.reportePlanesToolStripMenuItem.Name = "reportePlanesToolStripMenuItem";
+            this.reportePlanesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.reportePlanesToolStripMenuItem.Text = "Reporte planes";
+            this.reportePlanesToolStripMenuItem.Click += new System.EventHandler(this.reportePlanesToolStripMenuItem_Click);
+            // 
             // formMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -301,5 +328,8 @@
         private System.Windows.Forms.ToolStripMenuItem tsc_Docente_Dictado;
         private System.Windows.Forms.ToolStripMenuItem tsc_Docente_ActNotas;
         private System.Windows.Forms.ToolStripMenuItem tsc_Admin_AluInscp;
+        private System.Windows.Forms.ToolStripMenuItem reportesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem reporteCursosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem reportePlanesToolStripMenuItem;
     }
 }
