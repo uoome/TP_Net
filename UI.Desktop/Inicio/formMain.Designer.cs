@@ -170,6 +170,7 @@
             this.tsc_Alumno_EstadoAcad.Name = "tsc_Alumno_EstadoAcad";
             this.tsc_Alumno_EstadoAcad.Size = new System.Drawing.Size(183, 22);
             this.tsc_Alumno_EstadoAcad.Text = "Estado Académico";
+            this.tsc_Alumno_EstadoAcad.Click += new System.EventHandler(this.tsc_Alumno_EstadoAcad_Click);
             // 
             // tsc_Alumno_MateriasPlan
             // 
@@ -210,13 +211,13 @@
             // tsc_Docente_ActNotas
             // 
             this.tsc_Docente_ActNotas.Name = "tsc_Docente_ActNotas";
-            this.tsc_Docente_ActNotas.Size = new System.Drawing.Size(180, 22);
+            this.tsc_Docente_ActNotas.Size = new System.Drawing.Size(160, 22);
             this.tsc_Docente_ActNotas.Text = "Actualizar Notas";
             // 
             // tsc_Docente_Salir
             // 
             this.tsc_Docente_Salir.Name = "tsc_Docente_Salir";
-            this.tsc_Docente_Salir.Size = new System.Drawing.Size(180, 22);
+            this.tsc_Docente_Salir.Size = new System.Drawing.Size(160, 22);
             this.tsc_Docente_Salir.Text = "Salir";
             this.tsc_Docente_Salir.Click += new System.EventHandler(this.tsc_Docente_Salir_Click);
             // 

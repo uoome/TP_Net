@@ -25,7 +25,7 @@ namespace UI.Web
                 string si = "menuEstado";
                 Session["Menu"] = si;
 
-                }
+            }
         }
 
         protected void gvEstadoAcademico_Load(object sender, EventArgs e)

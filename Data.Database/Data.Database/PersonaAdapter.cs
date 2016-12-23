@@ -64,16 +64,17 @@ namespace Data.Database
             {
                 this.OpenConnection();
                 SqlCommand cmdEstados = new SqlCommand(
-                    "SELECET mat.anio, mat.desc_materia, alu.condicion, alu.nota, pla.desc_plan " + 
+                    "SELECT mat.anio, mat.desc_materia, alu.condicion, alu.nota, pla.desc_plan "+ 
                     "FROM alumnos_inscripciones alu "+
                     "INNER JOIN personas per ON alu.id_alumno = per.id_persona "+
-                    "INNER JOIN cursos cur on cur.id_curso = alu.id_curso "+
-                    "INNER JOIN materias mat on mat.id_materia = cur.id_materia "+
-                    "INNER JOIN planes pla on pla.id_plan = mat.id_plan "+
+                    "INNER JOIN cursos cur ON cur.id_curso = alu.id_curso "+
+                    "INNER JOIN materias mat ON mat.id_materia = cur.id_materia "+
+                    "INNER JOIN planes pla ON pla.id_plan = mat.id_plan "+
                     "WHERE alu.id_alumno = @idPersona", sqlConn);
 
                 cmdEstados.Parameters.Add("@idPersona", SqlDbType.Int).Value = ID;
                 SqlDataReader drEstados = cmdEstados.ExecuteReader();
+
                 while (drEstados.Read())
                 {
                     if (drEstados["nota"].ToString() == "")
@@ -82,7 +83,7 @@ namespace Data.Database
                         {
                             año = (int)drEstados["anio"],
                             desc_materia = (string)drEstados["desc_materia"],
-                            estado = (AlumnoInscripcion.TiposCondiciones)drEstados["condicion"],
+                            estado = (string)drEstados["condicion"],
                             nota = "Sin nota",
                             desc_plan = (string)drEstados["desc_plan"],
                         });
@@ -93,21 +94,21 @@ namespace Data.Database
                         {
                             año = (int)drEstados["anio"],
                             desc_materia = (string)drEstados["desc_materia"],
-                            estado = (AlumnoInscripcion.TiposCondiciones)drEstados["condicion"],
+                            estado = (string)drEstados["condicion"],
                             nota = (string)drEstados["nota"],
                             desc_plan = (string)drEstados["desc_plan"],
                         });
                     }
                 }
                 drEstados.Close();
-
-
             }
+
             catch (Exception Ex)
             {
-                Exception ExcepcionManejada = new Exception("Error al cargar la lista de Estados" + Ex.Message, Ex);
+                Exception ExcepcionManejada = new Exception("Error al cargar la lista de Estados " + Ex.Message, Ex);
                 throw ExcepcionManejada;
             }
+
             finally
             {
                 this.CloseConnection();

@@ -23,6 +23,7 @@
         <asp:LinkButton ID="linkBtnNuevo" runat="server" OnClick="linkBtnNuevo_Click">Nuevo</asp:LinkButton>
         <asp:LinkButton ID="linkBtnEditar" runat="server" OnClick="linkBtnEditar_Click">Editar</asp:LinkButton>
         <asp:LinkButton ID="linkBtnEliminar" runat="server" OnClick="linkBtnEliminar_Click">Eliminar</asp:LinkButton>
+        &nbsp;<asp:Label ID="lblCartel" runat="server" ForeColor="Green" Text="Cartel" Visible="False"></asp:Label>
     </asp:Panel>
     <asp:Panel ID="panelControles" runat="server" Visible="False">
         <table style="width:100%;">

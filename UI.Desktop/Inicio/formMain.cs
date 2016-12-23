@@ -186,6 +186,12 @@ namespace UI.Desktop
 
         #region Controles Alumno
 
+        private void tsc_Alumno_EstadoAcad_Click(object sender, EventArgs e)
+        {
+            frmGrillaEstadoAcademico estAcad = new frmGrillaEstadoAcademico();
+            estAcad.Show();
+            estAcad.Listar();
+        }
         private void tsc_Alumno_Salir_Click(object sender, EventArgs e)
         {
             this.Dispose();
@@ -205,6 +211,7 @@ namespace UI.Desktop
         {
             this.Dispose();
         }
+
 
 
         #endregion

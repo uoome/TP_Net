@@ -38,26 +38,6 @@ namespace UI.Web
             this.grvCursos.DataSource = CurLog.GetAll();
             this.grvCursos.DataBind();
          
-            MateriaLogic mat = new MateriaLogic();
-            ComisionLogic com = new ComisionLogic();
-            Business.Logic.ComisionLogic cl = new ComisionLogic();
-               
-            List<Comision> listacursos = new List<Comision>();
-            listacursos = cl.GetAll();
-            ddlComision.Items.Add("");
-            foreach (Comision comi in listacursos)
-            {
-                ddlComision.Items.Add(comi.ID.ToString());
-            }  
-             
-
-            List<Materia> listaMateria = new List<Materia>();
-            listaMateria = mat.GetAll();
-            ddlMateria.Items.Add("");
-            foreach (Materia mate in listaMateria)
-            {
-                ddlMateria.Items.Add(mate.ID.ToString());
-            }
         }
 
         private void LoadForm(int id)
@@ -101,7 +81,6 @@ namespace UI.Web
         {
             this.CurLog.Save(cur);
         }
-
         private void ClearForm()
         {
             this.txtAnioCalendario.Text = string.Empty;
@@ -112,8 +91,6 @@ namespace UI.Web
             this.ddlMateria.SelectedIndex = 0;
             this.txtCupoDis.Text = string.Empty;
         }
-
-
         private void DeleteEntity(int id)
         {
             CurLog.Delete(id);
@@ -133,6 +110,8 @@ namespace UI.Web
                     this.Entity.State = BusinessEntity.States.New;
                     this.SaveEntity(Entity);
                     this.LoadGrid();
+                    lblCartel.Text = "Se ha agregado un nuevo curso";
+                    lblCartel.Visible = true;
                     break;
 
                 case FormModes.Modificacion:
@@ -142,11 +121,15 @@ namespace UI.Web
                     this.LoadEntity(Entity);
                     this.SaveEntity(Entity);
                     this.LoadGrid();
+                    lblCartel.Text = "Se ha agregado modificado el curso";
+                    lblCartel.Visible = true;
                     break;
 
                 case FormModes.Baja:
                     this.DeleteEntity(this.SelectedID);
                     this.LoadGrid();
+                    lblCartel.Text = "Se ha eliminado el curso";
+                    lblCartel.Visible = true;
                     break;
 
                 default:
@@ -166,6 +149,12 @@ namespace UI.Web
                 this.FormMode = FormModes.Baja;
                 this.LoadForm(this.SelectedID);
                 this.Enable(false);
+                lblCartel.Visible = false;
+            }
+            else
+            {
+                lblCartel.Visible = true;
+                lblCartel.Text = "Debe seleccionar un curso para poder eliminarlo";
             }
         }
 
@@ -201,6 +190,11 @@ namespace UI.Web
                 this.LoadForm(this.SelectedID);
                 this.Enable(true);
             }
+            else
+            {
+                lblCartel.Visible = true;
+                lblCartel.Text = "Debe seleccionar un curso para poder modificarlo";
+            }
         }
 
         protected override void Page_Load(object sender, EventArgs e)
@@ -210,9 +204,30 @@ namespace UI.Web
                 string si = "menuCursos";
                 Session["Menu"] = si;
                 this.LoadGrid();
-               
+
+                MateriaLogic mat = new MateriaLogic();
+                ComisionLogic com = new ComisionLogic();
+                Business.Logic.ComisionLogic cl = new ComisionLogic();
+
+                List<Comision> listacursos = new List<Comision>();
+                listacursos = cl.GetAll();
+                ddlComision.Items.Add("");
+                foreach (Comision comi in listacursos)
+                {
+                    ddlComision.Items.Add(comi.ID.ToString());
+                }
+
+                List<Materia> listaMateria = new List<Materia>();
+                listaMateria = mat.GetAll();
+                ddlMateria.Items.Add("");
+                foreach (Materia mate in listaMateria)
+                {
+                    ddlMateria.Items.Add(mate.ID.ToString());
+                }
+
             }
         }
+
         protected void linkBtnNuevo_Click(object sender, EventArgs e)
         {
             this.panelControles.Visible = true;

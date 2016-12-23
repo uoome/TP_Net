@@ -133,6 +133,12 @@
     <Compile Include="Administrador\PlanDesktop.Designer.cs">
       <DependentUpon>PlanDesktop.cs</DependentUpon>
     </Compile>
+    <Compile Include="Alumno\frmGrillaEstadoAcademico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Alumno\frmGrillaEstadoAcademico.Designer.cs">
+      <DependentUpon>frmGrillaEstadoAcademico.cs</DependentUpon>
+    </Compile>
     <Compile Include="Docente\DictadoDesktop.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -219,6 +225,9 @@
     <EmbeddedResource Include="Administrador\PlanDesktop.resx">
       <DependentUpon>PlanDesktop.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Alumno\frmGrillaEstadoAcademico.resx">
+      <DependentUpon>frmGrillaEstadoAcademico.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Docente\DictadoDesktop.resx">
       <DependentUpon>DictadoDesktop.cs</DependentUpon>
     </EmbeddedResource>
@@ -273,9 +282,7 @@
       <Name>Business.Logic</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Alumno\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="Resources\agregar-planes.png" />
     <Content Include="Resources\eliminar.gif" />
