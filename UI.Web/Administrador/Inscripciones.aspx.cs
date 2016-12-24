@@ -11,18 +11,8 @@ namespace UI.Web
 {
     public partial class Inscripciones : ABM
     {
-        private string _nota;
-        private string _cond;
-        public string Cond
-        {
-            get { return _cond; }
-            set { _cond = value; }
-        }
-        public string Nota
-        {
-            get { return _nota; }
-            set { _nota = value; }
-        }
+      
+     
         private static List<Business.Entities.Personas> _alumnos = new List<Business.Entities.Personas>();
 
         public List<Business.Entities.Personas> Alumnos
@@ -62,7 +52,16 @@ namespace UI.Web
 
         #region Metodos
         
-        private void ClearForm()
+    
+
+    public void LoadGridComisiones(int id)
+    {
+       ComisionLogic com = new ComisionLogic();
+            grvComisionesMat.DataSource = com.GetAllComisionesMaterias(id);
+            grvComisionesMat.DataBind();
+    }
+
+    private void ClearForm()
         {
             ddlCondicion.ClearSelection();
             ddlNotas.ClearSelection();
@@ -149,8 +148,13 @@ namespace UI.Web
             //Elegis el alumno y lista las inscripciones que tiene
             if (grvAlumnos.SelectedIndex != -1)
             {
+            
+                lblAlumno.Visible = true;
+               
                 cargaInscripciones(Alumnos[grvAlumnos.SelectedIndex].ID);
                 this.panelControlesInscripciones.Visible = true;
+                panelInsertCursos.Visible = false;
+                panelInsertMateria.Visible = false;
             }
         }
 
@@ -159,36 +163,35 @@ namespace UI.Web
             //Trae datos del curso
             if (grvInscripciones.SelectedIndex != -1)
             {
+                panelABMInscripciones.Visible = false;
                 SelectedID = (int)grvInscripciones.SelectedValue;
-                //panelGrillaCursos.Visible = true;               
-                int m;
+                          
+              /*  int m;
                 m = grvInscripciones.SelectedIndex;
                
-             //   lblInscripcion2.Text = grvInscripciones.Rows[m].Cells[4].Text;
+              lblInscripcion2.Text = grvInscripciones.Rows[m].Cells[4].Text;
               Nota = grvInscripciones.Rows[m].Cells[5].Text;
                 Cond = grvInscripciones.Rows[m].Cells[4].Text;
-                //  PARA SELECCIONAR EL VALOR DE LAS COLUMNAS DE UNA FILA    
-                lblInscripcion.Text = Nota;
-                lblInscripcion2.Text = Cond;
-                //FALTA TERMINAR
+                 PARA SELECCIONAR EL VALOR DE LAS COLUMNAS DE UNA FILA    
+              fUE UNA PRUEBA, NO BORRAR POR SI NECESITAMOS CONOCER EL VALOR DE LAS COLUMNAS DE LA GRILLA*/
             }
         }
 
         protected void btnAgregarInscripcion_Click(object sender, EventArgs e)
         {
-          /*  if (grvAlumnos.SelectedIndex != -1)
+            if (grvAlumnos.SelectedIndex != -1)
             {
-                this.FormMode = FormModes.Alta;
-                panelABMInscripciones.Visible = true;
-                panelGrillaCursos.Visible = true;
-                btnAceptar.Text = "Agregar";
-                lblInscripcion.Visible = false;
+              
+                MateriaLogic Mat = new MateriaLogic();
+                grvMaterias.DataSource = Mat.GetAll();
+                grvMaterias.DataBind();
+                this.panelInsertMateria.Visible = true;
             }
             else
             {
                 lblInscripcion.Visible = true;
                 lblInscripcion.Text = "Debe seleccionar un alumno para agregar una inscripción";
-            }*/
+            }
         }
 
         protected void btnEditarInscripcion_Click(object sender, EventArgs e)
@@ -211,11 +214,16 @@ namespace UI.Web
         {
           if (grvInscripciones.SelectedIndex != -1)
             {
+               int idAlu;
+                AlumnoInscripcion Alu = new AlumnoInscripcion();
+                AlumnoInscripcionLogic AlLog = new AlumnoInscripcionLogic();
+                idAlu = AlLog.GetID(SelectedID, Alumnos[grvAlumnos.SelectedIndex].ID);
+                Alu = AlLog.GetOne(idAlu); 
                 this.FormMode = FormModes.Baja;
-                ddlNotas.Items.Add(Nota);
-                ddlNotas.Text = Nota;
-                ddlCondicion.Items.Add(Cond);
-                ddlCondicion.Text = Cond;
+                ddlNotas.Items.Add(Alu.Nota);
+                ddlNotas.Text = Alu.Nota;
+               ddlCondicion.Items.Add(Alu.Condicion.ToString());
+                 ddlCondicion.Text = Alu.Condicion.ToString();
                 // NO APARECEN EN EL DDL
                 panelABMInscripciones.Visible = true;
                 HabilitarControles(false);
@@ -268,10 +276,59 @@ namespace UI.Web
             }
             
         }
-        
 
+
+        protected void grvComisionesMat_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            this.SelectedID = (int)grvComisionesMat.SelectedValue;
+          
+        }
+
+        protected void grvMaterias_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.SelectedID = (int)grvMaterias.SelectedValue;
+            panelInsertCursos.Visible = true;
+            this.LoadGridComisiones(this.SelectedID);
+        }
+
+        protected void btnInscripcion_Click(object sender, EventArgs e)
+        {
+            Curso Cur = new Curso();
+            CursoLogic curlog = new CursoLogic();
+            Cur = curlog.GetOne(SelectedID);
+            
+
+            if (curlog.validarCupo(Cur))
+            {
+                AlumnoInscripcion Alu = new AlumnoInscripcion();
+                Alu.IdAlumno = Alumnos[grvAlumnos.SelectedIndex].ID;
+                Alu.IdCurso = SelectedID;
+                Alu.Condicion = AlumnoInscripcion.TiposCondiciones.Inscripto;
+                Alu.Nota = "Sin nota";
+                AlumnoInscripcionLogic Allog = new AlumnoInscripcionLogic();
+                Alu.State = BusinessEntity.States.New;
+                Allog.Save(Alu);
+                Cur.CupoDis = Cur.CupoDis - 1;
+                Cur.State = BusinessEntity.States.Modified;
+                curlog.Save(Cur);
+
+                lblCurso.Visible = true;
+                lblCurso.Text = "Se ha inscripto al curso";
+                /* 
+                lblCurso.Text = Cur.CupoDis.ToString();
+                lblCurso.Visible = true;
+                PARA SABER CUANTOS CUPOS DISPONIBLES QUEDAN
+                */
+            }
+            else
+            {
+                lblCurso.Text = "No hay cupos disponibles";
+                lblCurso.Visible = true;
+            }
+
+        
+         }
         #endregion
-
-        
     }
 }

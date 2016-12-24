@@ -35,7 +35,7 @@ namespace UI.Web.UtilWeb
                         Session.Add("tipo_persona", per.TipoPersona.ToString());
                         Session.Add("id_usuario", per.ID);
                         Session.Timeout = 10;
-                        //Para probar que pasa si expira la session
+                        // La session expira despues de 10m y te redirecciona al Login.
 
                         if (per.TipoPersona == Business.Entities.Personas.TiposPersonas.Alumno)
                             Response.Redirect("~/Alumno/DefaultAlumnos.aspx");
@@ -58,7 +58,8 @@ namespace UI.Web.UtilWeb
 
         protected void linkOlvideClave_Click(object sender, EventArgs e)
         {
-            lblLogin.Text = "Intente recordar, por el momento no contamos con servicio de recuperacion de contraseña";
+            lblLogin.Text = "Comuniquese con el servicio de mantenimiento. " +
+                           " SupportAcademia@gmail.com ";
             lblLogin.Visible = true;
         }
     }

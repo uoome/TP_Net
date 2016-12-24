@@ -83,7 +83,7 @@ namespace Data.Database
                         {
                             año = (int)drEstados["anio"],
                             desc_materia = (string)drEstados["desc_materia"],
-                            estado = (string)drEstados["condicion"],
+                            estado = (int)drEstados["condicion"],
                             nota = "Sin nota",
                             desc_plan = (string)drEstados["desc_plan"],
                         });
@@ -94,7 +94,7 @@ namespace Data.Database
                         {
                             año = (int)drEstados["anio"],
                             desc_materia = (string)drEstados["desc_materia"],
-                            estado = (string)drEstados["condicion"],
+                            estado = (int)drEstados["condicion"],
                             nota = (string)drEstados["nota"],
                             desc_plan = (string)drEstados["desc_plan"],
                         });

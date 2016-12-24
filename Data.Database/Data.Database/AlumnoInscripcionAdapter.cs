@@ -18,19 +18,13 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdAlu = new SqlCommand(
-                    "SELECT alu.id_inscripcion "+
-                    "FROM personas per "+
-                    "INNER JOIN alumnos_inscripciones alu ON alu.id_alumno = per.id_persona "+
-                    "INNR JOIN cursos cur ON cur.id_curso = alu.id_curso "+
-                    "WHERE per.id_persona = @idper and cur.id_curso = @idcur ", sqlConn);
-
+                SqlCommand cmdAlu = new SqlCommand("SELECT alu.id_inscripcion FROM personas per INNER JOIN alumnos_inscripciones alu ON alu.id_alumno = per.id_persona INNeR JOIN cursos cur ON cur.id_curso = alu.id_curso  WHERE per.id_persona = @idper and cur.id_curso = @idcur ", sqlConn);
                 cmdAlu.Parameters.Add("@idper", SqlDbType.Int).Value = idper;
                 cmdAlu.Parameters.Add("@idcur", SqlDbType.Int).Value = idcur;
                 SqlDataReader drAlu = cmdAlu.ExecuteReader();
 
                 if (drAlu.Read())
-                    Alu.ID = (int)drAlu["id_inscripcion"];
+                { Alu.ID = (int)drAlu["id_inscripcion"]; }
 
                 drAlu.Close();
                 
