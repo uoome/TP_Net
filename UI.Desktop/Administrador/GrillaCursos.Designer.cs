@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tscGrillaCursos = new System.Windows.Forms.ToolStripContainer();
             this.tlpGrillaCursos = new System.Windows.Forms.TableLayoutPanel();
             this.btnActualizar = new System.Windows.Forms.Button();
@@ -110,8 +110,8 @@
             // 
             // dgvCursos
             // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.dgvCursos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.dgvCursos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvCursos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCursos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id_Curso,
@@ -214,7 +214,7 @@
             this.Controls.Add(this.tscGrillaCursos);
             this.Name = "GrillaCursos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "GrillaCursos";
+            this.Text = "Cursos";
             this.tscGrillaCursos.ContentPanel.ResumeLayout(false);
             this.tscGrillaCursos.TopToolStripPanel.ResumeLayout(false);
             this.tscGrillaCursos.TopToolStripPanel.PerformLayout();

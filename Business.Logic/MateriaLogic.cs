@@ -41,5 +41,9 @@ namespace Business.Logic
         {
             MateriaData.Save(materia);
         }
+        public int TraerSiguienteID()
+        {
+            return MateriaData.TraerSiguienteID();
+        }
     }
 }

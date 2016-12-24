@@ -187,6 +187,7 @@
             this.Name = "DictadoDesktop";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Dictado";
+            this.Load += new System.EventHandler(this.DictadoDesktop_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);

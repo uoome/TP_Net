@@ -106,6 +106,7 @@ namespace UI.Desktop
                 CursoActual.State = BusinessEntity.States.Deleted;
             }
         }
+
         public override void GuardarCambios()
         {
             this.MapearADatos();

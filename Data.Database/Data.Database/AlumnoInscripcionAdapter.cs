@@ -18,13 +18,19 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdAlu = new SqlCommand("SELECT alu.id_inscripcion FROM personas per INNER JOIN alumnos_inscripciones alu ON alu.id_alumno = per.id_persona INNeR JOIN cursos cur ON cur.id_curso = alu.id_curso  WHERE per.id_persona = @idper and cur.id_curso = @idcur ", sqlConn);
+                SqlCommand cmdAlu = new SqlCommand(
+                    "SELECT alu.id_inscripcion "+
+                    "FROM personas per "+
+                    "INNER JOIN alumnos_inscripciones alu ON alu.id_alumno = per.id_persona "+
+                    "INNER JOIN cursos cur ON cur.id_curso = alu.id_curso  "+
+                    "WHERE per.id_persona = @idper and cur.id_curso = @idcur ", sqlConn);
+
                 cmdAlu.Parameters.Add("@idper", SqlDbType.Int).Value = idper;
                 cmdAlu.Parameters.Add("@idcur", SqlDbType.Int).Value = idcur;
                 SqlDataReader drAlu = cmdAlu.ExecuteReader();
 
                 if (drAlu.Read())
-                { Alu.ID = (int)drAlu["id_inscripcion"]; }
+                    Alu.ID = (int)drAlu["id_inscripcion"]; 
 
                 drAlu.Close();
                 
@@ -205,9 +211,9 @@ namespace Data.Database
             {
                 this.OpenConnection();
                 SqlCommand cmdUpdateAlu = new SqlCommand(
-                    "Update alumnos_inscripciones set " +
-                    "condicion = @cond, id_alumno@id_alu, id_curso = @ id_cur , nota= @nota " +
-                    "where id_inscripcion = @id ", sqlConn);
+                    "UPDATE alumnos_inscripciones "+
+                    "SET condicion = @cond, id_alumno@id_alu, id_curso = @ id_cur , nota= @nota " +
+                    "WHERE id_inscripcion = @id ", sqlConn);
                 cmdUpdateAlu.Parameters.Add("@id", SqlDbType.Int).Value = Alu.ID;
                 cmdUpdateAlu.Parameters.Add("@cond", SqlDbType.VarChar, 50).Value = Alu.Condicion;
                 cmdUpdateAlu.Parameters.Add("@id_alu", SqlDbType.Int).Value = Alu.IdAlumno;

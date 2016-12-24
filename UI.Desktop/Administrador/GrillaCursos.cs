@@ -56,5 +56,11 @@ namespace UI.Desktop
             CursoDesktop curDesk = new CursoDesktop(ID, ApplicationForm.ModoForm.Eliminar);
             curDesk.ShowDialog();
         }
+
+       /* private void GrillaCursos_Load(object sender, EventArgs e)
+        {
+            this.Listar();
+        }
+        */
     }
 }

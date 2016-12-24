@@ -30,12 +30,14 @@ namespace UI.Desktop
             InitializeComponent();
             dgvDictados.AutoGenerateColumns = false;
             
-            DocenteCursologic dcl = new DocenteCursologic();
-            listaDictados = dcl.GetAll();
         }
 
+        
         public void Listar()
         {
+            DocenteCursologic dcl = new DocenteCursologic();
+            listaDictados = dcl.GetAll();
+
             string doc = "";
             List<Object> listaGrilla = new List<Object>();
 
@@ -61,11 +63,7 @@ namespace UI.Desktop
             dgvDictados.DataSource = listaGrilla;
 
         }
-
-        #region Metodos
-
-        #endregion
-
+        
         #region Eventos
         private void GrillaDictados_Load(object sender, EventArgs e)
         {
@@ -101,12 +99,11 @@ namespace UI.Desktop
         {
             this.Listar();
         }
+
         private void btnSalir_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
-
 
         #endregion
 

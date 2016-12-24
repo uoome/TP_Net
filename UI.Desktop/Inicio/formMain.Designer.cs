@@ -30,10 +30,8 @@
         {
             this.mnsPrincipal = new System.Windows.Forms.MenuStrip();
             this.menuAdministrador = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsc_Admin_Usuarios = new System.Windows.Forms.ToolStripMenuItem();
             this.tsc_Admin_Personas = new System.Windows.Forms.ToolStripMenuItem();
             this.tsc_Admin_Epecialidades = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsc_Admin_Docentes = new System.Windows.Forms.ToolStripMenuItem();
             this.tsc_Admin_Materias = new System.Windows.Forms.ToolStripMenuItem();
             this.tsc_Admin_Cursos = new System.Windows.Forms.ToolStripMenuItem();
             this.tsc_Admin_Planes = new System.Windows.Forms.ToolStripMenuItem();
@@ -41,6 +39,7 @@
             this.tsc_Admin_AluInscp = new System.Windows.Forms.ToolStripMenuItem();
             this.reportesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reporteCursosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reportePlanesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsc_Admin_Salir = new System.Windows.Forms.ToolStripMenuItem();
             this.menuAlumnos = new System.Windows.Forms.ToolStripMenuItem();
             this.tsc_Alumno_EstadoAcad = new System.Windows.Forms.ToolStripMenuItem();
@@ -54,7 +53,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblMensajeSesion = new System.Windows.Forms.Label();
             this.btnSesion = new System.Windows.Forms.Button();
-            this.reportePlanesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnsPrincipal.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -74,10 +72,8 @@
             // menuAdministrador
             // 
             this.menuAdministrador.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsc_Admin_Usuarios,
             this.tsc_Admin_Personas,
             this.tsc_Admin_Epecialidades,
-            this.tsc_Admin_Docentes,
             this.tsc_Admin_Materias,
             this.tsc_Admin_Cursos,
             this.tsc_Admin_Planes,
@@ -88,13 +84,6 @@
             this.menuAdministrador.Name = "menuAdministrador";
             this.menuAdministrador.Size = new System.Drawing.Size(50, 20);
             this.menuAdministrador.Text = "Menu";
-            // 
-            // tsc_Admin_Usuarios
-            // 
-            this.tsc_Admin_Usuarios.Name = "tsc_Admin_Usuarios";
-            this.tsc_Admin_Usuarios.Size = new System.Drawing.Size(191, 22);
-            this.tsc_Admin_Usuarios.Text = "Usuarios";
-            this.tsc_Admin_Usuarios.Click += new System.EventHandler(this.tsc_Admin_Usuarios_Click);
             // 
             // tsc_Admin_Personas
             // 
@@ -109,12 +98,6 @@
             this.tsc_Admin_Epecialidades.Size = new System.Drawing.Size(191, 22);
             this.tsc_Admin_Epecialidades.Text = "Especialidades";
             this.tsc_Admin_Epecialidades.Click += new System.EventHandler(this.tsc_Admin_Epecialidades_Click);
-            // 
-            // tsc_Admin_Docentes
-            // 
-            this.tsc_Admin_Docentes.Name = "tsc_Admin_Docentes";
-            this.tsc_Admin_Docentes.Size = new System.Drawing.Size(191, 22);
-            this.tsc_Admin_Docentes.Text = "Docentes";
             // 
             // tsc_Admin_Materias
             // 
@@ -166,6 +149,13 @@
             this.reporteCursosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.reporteCursosToolStripMenuItem.Text = "Reporte cursos";
             this.reporteCursosToolStripMenuItem.Click += new System.EventHandler(this.reporteCursosToolStripMenuItem_Click);
+            // 
+            // reportePlanesToolStripMenuItem
+            // 
+            this.reportePlanesToolStripMenuItem.Name = "reportePlanesToolStripMenuItem";
+            this.reportePlanesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.reportePlanesToolStripMenuItem.Text = "Reporte planes";
+            this.reportePlanesToolStripMenuItem.Click += new System.EventHandler(this.reportePlanesToolStripMenuItem_Click);
             // 
             // tsc_Admin_Salir
             // 
@@ -272,13 +262,6 @@
             this.btnSesion.UseVisualStyleBackColor = true;
             this.btnSesion.Click += new System.EventHandler(this.btnSesion_Click);
             // 
-            // reportePlanesToolStripMenuItem
-            // 
-            this.reportePlanesToolStripMenuItem.Name = "reportePlanesToolStripMenuItem";
-            this.reportePlanesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.reportePlanesToolStripMenuItem.Text = "Reporte planes";
-            this.reportePlanesToolStripMenuItem.Click += new System.EventHandler(this.reportePlanesToolStripMenuItem_Click);
-            // 
             // formMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -307,8 +290,6 @@
         private System.Windows.Forms.MenuStrip mnsPrincipal;
         private System.Windows.Forms.ToolStripMenuItem menuAdministrador;
         private System.Windows.Forms.ToolStripMenuItem tsc_Admin_Salir;
-        private System.Windows.Forms.ToolStripMenuItem tsc_Admin_Docentes;
-        private System.Windows.Forms.ToolStripMenuItem tsc_Admin_Usuarios;
         private System.Windows.Forms.ToolStripMenuItem tsc_Admin_Cursos;
         private System.Windows.Forms.ToolStripMenuItem tsc_Admin_Materias;
         private System.Windows.Forms.ToolStripMenuItem tsc_Admin_Planes;

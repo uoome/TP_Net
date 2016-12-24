@@ -62,6 +62,11 @@ namespace Business.Logic
             return PersonaData.ValidarUsuario(nombUs);
         }
 
+        public int TraerSiguienteID()
+        {
+            return PersonaData.TraerSiguienteID();
+        }
+
         #endregion
     }
 }

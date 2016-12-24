@@ -57,11 +57,11 @@
             // toolStripContainer.ContentPanel
             // 
             this.toolStripContainer.ContentPanel.Controls.Add(this.tableLayoutPanel1);
-            this.toolStripContainer.ContentPanel.Size = new System.Drawing.Size(449, 265);
+            this.toolStripContainer.ContentPanel.Size = new System.Drawing.Size(449, 447);
             this.toolStripContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toolStripContainer.Location = new System.Drawing.Point(0, 0);
             this.toolStripContainer.Name = "toolStripContainer";
-            this.toolStripContainer.Size = new System.Drawing.Size(449, 290);
+            this.toolStripContainer.Size = new System.Drawing.Size(449, 472);
             this.toolStripContainer.TabIndex = 0;
             this.toolStripContainer.Text = "toolStripContainer1";
             // 
@@ -80,11 +80,11 @@
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 4;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(449, 265);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(449, 447);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // dgvMaterias
@@ -102,7 +102,7 @@
             this.dgvMaterias.Location = new System.Drawing.Point(3, 3);
             this.dgvMaterias.Name = "dgvMaterias";
             this.dgvMaterias.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvMaterias.Size = new System.Drawing.Size(443, 97);
+            this.dgvMaterias.Size = new System.Drawing.Size(443, 327);
             this.dgvMaterias.TabIndex = 0;
             // 
             // Materia
@@ -131,7 +131,7 @@
             // 
             // btnCerrar
             // 
-            this.btnCerrar.Location = new System.Drawing.Point(371, 106);
+            this.btnCerrar.Location = new System.Drawing.Point(371, 336);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Size = new System.Drawing.Size(75, 23);
             this.btnCerrar.TabIndex = 2;
@@ -148,10 +148,10 @@
             this.Comision,
             this.Cupo});
             this.tableLayoutPanel1.SetColumnSpan(this.dgvComisiones_Incrip, 2);
-            this.dgvComisiones_Incrip.Location = new System.Drawing.Point(53, 135);
+            this.dgvComisiones_Incrip.Location = new System.Drawing.Point(53, 365);
             this.dgvComisiones_Incrip.Name = "dgvComisiones_Incrip";
             this.dgvComisiones_Incrip.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvComisiones_Incrip.Size = new System.Drawing.Size(343, 97);
+            this.dgvComisiones_Incrip.Size = new System.Drawing.Size(343, 50);
             this.dgvComisiones_Incrip.TabIndex = 3;
             this.dgvComisiones_Incrip.Visible = false;
             // 
@@ -175,7 +175,7 @@
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(371, 238);
+            this.btnCancelar.Location = new System.Drawing.Point(371, 421);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
             this.btnCancelar.TabIndex = 5;
@@ -187,7 +187,7 @@
             // btnInscripcion
             // 
             this.btnInscripcion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnInscripcion.Location = new System.Drawing.Point(290, 106);
+            this.btnInscripcion.Location = new System.Drawing.Point(290, 336);
             this.btnInscripcion.Name = "btnInscripcion";
             this.btnInscripcion.Size = new System.Drawing.Size(75, 23);
             this.btnInscripcion.TabIndex = 1;
@@ -198,7 +198,7 @@
             // btnAceptar
             // 
             this.btnAceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAceptar.Location = new System.Drawing.Point(290, 238);
+            this.btnAceptar.Location = new System.Drawing.Point(290, 421);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(75, 23);
             this.btnAceptar.TabIndex = 6;
@@ -211,7 +211,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(449, 290);
+            this.ClientSize = new System.Drawing.Size(449, 472);
             this.Controls.Add(this.toolStripContainer);
             this.Name = "frmInscripcion_Curso";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

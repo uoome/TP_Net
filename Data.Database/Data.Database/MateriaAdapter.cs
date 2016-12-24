@@ -213,6 +213,32 @@ namespace Data.Database
             }
             else materia.State = BusinessEntity.States.Unmodified;
         }
+
+        public int TraerSiguienteID()
+        {
+            int siguiente = 0;
+
+            try
+            {
+                this.OpenConnection();
+                SqlCommand cmdMateria = new SqlCommand("SELECT max(m.id_materia) as ultimo_id " +
+                                                        "FROM materias m ", sqlConn);
+                SqlDataReader drMateria = cmdMateria.ExecuteReader();
+
+                if (drMateria.Read())
+                    siguiente = ((int)drMateria["ultimo_id"]) + 1;
+
+                drMateria.Close();
+            }
+            catch(Exception ex)
+            {
+                Exception ExManejada = new Exception("Error al traer el ultimo ID " + ex.Message, ex);
+                throw ExManejada;
+            }
+            finally { this.CloseConnection(); }
+
+            return siguiente;
+        }
    }
     
 }

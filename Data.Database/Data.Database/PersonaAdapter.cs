@@ -56,6 +56,7 @@ namespace Data.Database
             }
             return personas;
         }
+
         public List<Object> GetAllEstados(int ID)
         {
             List<Object> listaGrilla = new List<Object>();
@@ -75,26 +76,31 @@ namespace Data.Database
                 cmdEstados.Parameters.Add("@idPersona", SqlDbType.Int).Value = ID;
                 SqlDataReader drEstados = cmdEstados.ExecuteReader();
 
+               AlumnoInscripcion alinsc = new AlumnoInscripcion();
+               AlumnoInscripcion.TiposCondiciones condi;
+
                 while (drEstados.Read())
                 {
                     if (drEstados["nota"].ToString() == "")
                     {
+                        condi = alinsc.StringACondicion((int)drEstados["condicion"]);
                         listaGrilla.Add(new
                         {
                             año = (int)drEstados["anio"],
                             desc_materia = (string)drEstados["desc_materia"],
-                            estado = (int)drEstados["condicion"],
+                            estado = condi,
                             nota = "Sin nota",
                             desc_plan = (string)drEstados["desc_plan"],
                         });
                     }
                     else
                     {
+                        condi = alinsc.StringACondicion((int)drEstados["condicion"]);
                         listaGrilla.Add(new
                         {
                             año = (int)drEstados["anio"],
                             desc_materia = (string)drEstados["desc_materia"],
-                            estado = (int)drEstados["condicion"],
+                            estado = condi,
                             nota = (string)drEstados["nota"],
                             desc_plan = (string)drEstados["desc_plan"],
                         });
@@ -115,6 +121,7 @@ namespace Data.Database
             }
             return listaGrilla;
         }
+
         public List<Personas> GetAll(Personas.TiposPersonas tipoPers)
         {
             List<Personas> listaPers = new List<Personas>();
@@ -421,6 +428,31 @@ namespace Data.Database
             {
                 this.CloseConnection();
             }
+        }
+
+        public int TraerSiguienteID()
+        {
+            int siguiente=0;
+            try
+            {
+                this.OpenConnection();
+                SqlCommand cmdPersona = new SqlCommand(
+                    "SELECT max(p.id_persona) as ultimo_id " +
+                    "FROM personas p ", sqlConn);
+                SqlDataReader drPersona = cmdPersona.ExecuteReader();
+
+                if (drPersona.Read())
+                    siguiente = ((int)drPersona["ultimo_id"]) + 1;
+
+                drPersona.Close();
+            }
+            catch(Exception ex)
+            {
+                Exception ExManejada = new Exception("Error al traer el siguiente ID " + ex.Message, ex);
+                throw ExManejada;
+            }
+            finally { this.CloseConnection(); }
+            return siguiente;
         }
 
     }

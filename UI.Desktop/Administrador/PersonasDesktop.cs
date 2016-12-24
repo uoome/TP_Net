@@ -36,6 +36,8 @@ namespace UI.Desktop
             if (Modo == ModoForm.Alta || Modo == ModoForm.Modificacion)
             {
                 this.btnAceptar.Text = "Guardar";
+                PersonaLogic plog = new PersonaLogic();
+                txtID_Pers.Text = plog.TraerSiguienteID().ToString();
             }
             if (Modo == ModoForm.Eliminar)
             {
@@ -47,7 +49,7 @@ namespace UI.Desktop
         public PersonasDesktop(ApplicationForm.ModoForm modo, int ID) : this()
         {
             Modo = modo;
-            if (Modo == ModoForm.Alta || Modo == ModoForm.Modificacion)
+            if (Modo == ModoForm.Modificacion)
             {
                 this.btnAceptar.Text = "Guardar";
             }
@@ -68,8 +70,7 @@ namespace UI.Desktop
         {
             if(Modo != ModoForm.Alta)
                 this.txtID_Pers.Text = PersonaActual.ID.ToString();
-            else { this.txtID_Pers.Text = "-"; }
-
+            
             this.txtLegajo.Text = PersonaActual.Legajo.ToString();
             this.txtNombre.Text = PersonaActual.Nombre;
             this.txtApellido.Text = PersonaActual.Apellido; 

@@ -349,7 +349,7 @@
             this.txtID_Pers.Name = "txtID_Pers";
             this.txtID_Pers.ReadOnly = true;
             this.txtID_Pers.Size = new System.Drawing.Size(121, 20);
-            this.txtID_Pers.TabIndex = 15;
+            this.txtID_Pers.TabIndex = 0;
             this.txtID_Pers.TabStop = false;
             // 
             // txtNombre

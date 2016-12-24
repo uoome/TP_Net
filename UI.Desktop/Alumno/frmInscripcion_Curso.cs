@@ -82,11 +82,7 @@ namespace UI.Desktop
                 dgvComisiones_Incrip.Visible = false;
                 btnAceptar.Visible = false;
                 btnCancelar.Visible = false;
-                /* 
-                lblCurso.Text = Cur.CupoDis.ToString();
-                lblCurso.Visible = true;
-                PARA SABER CUANTOS CUPOS DISPONIBLES QUEDAN
-                */
+                
             }
             else
             {

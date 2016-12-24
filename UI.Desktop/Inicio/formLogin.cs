@@ -26,7 +26,7 @@ namespace UI.Desktop
 
             if (persLogic.ExisteUs(this.txtUsuario.Text))
             {
-                per= persLogic.GetOne(this.txtUsuario.Text);
+                per = persLogic.GetOne(this.txtUsuario.Text);
                 if (per.Clave == this.txtPass.Text)
                 {
                     if (per.Habilitado)
@@ -34,22 +34,17 @@ namespace UI.Desktop
                         Program.UsuarioSesion = per;
                         this.DialogResult = DialogResult.OK;
                     }
-                        
-                    else {
-                        MessageBox.Show("Usuario no habilitado", "Login", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                    else { MessageBox.Show("Usuario no habilitado", "Login", MessageBoxButtons.OK, MessageBoxIcon.Error); }
                 }
+                else { MessageBox.Show("Usuario y/o contraseña incorrectos", "Login", MessageBoxButtons.OK, MessageBoxIcon.Error); }
             }
-            else
-            {
-                MessageBox.Show("Usuario y/o contraseña incorrectos", "Login", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            else { MessageBox.Show("Usuario y/o contraseña incorrectos", "Login", MessageBoxButtons.OK, MessageBoxIcon.Error); }
 
         }
 
         private void lnkOlvidaPass_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            MessageBox.Show("Es Ud. un usuario muy descuidado, haga memoria", "Olvidé mi contraseña",
+            MessageBox.Show("Trate de recordar su clave, por el momento no contamos con el servicio de recuperación de clave", "Olvidé mi contraseña",
         MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
         }
