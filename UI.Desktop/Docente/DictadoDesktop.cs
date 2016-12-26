@@ -29,9 +29,11 @@ namespace UI.Desktop
         public DictadoDesktop(ApplicationForm.ModoForm modo): this()
         {
             Modo = modo;
-            if (Modo == ModoForm.Alta || Modo == ModoForm.Modificacion)
+            if (Modo == ModoForm.Alta)
             {
                 this.btnAceptar.Text = "Guardar";
+                DocenteCursologic diclog = new DocenteCursologic();
+                txtIDdictado.Text = diclog.TraerSiguienteID().ToString();
             }
             if (Modo == ModoForm.Eliminar)
             {
@@ -91,7 +93,6 @@ namespace UI.Desktop
         {
             if (Modo != ModoForm.Alta)
                 txtIDdictado.Text = DictadoActual.ID.ToString();
-            else { txtIDdictado.Text = "-"; }
 
             cbxCursos.Text = DictadoActual.IdCurso.ToString();
             cbxCargos.Text = DictadoActual.Cargo.ToString();

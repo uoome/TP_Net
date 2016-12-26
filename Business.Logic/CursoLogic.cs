@@ -29,6 +29,11 @@ namespace Business.Logic
             return CursoData.GetAll();
         }
 
+        public List<Object> GetAllNuevo()
+        {
+            return CursoData.GetAllNuevo();
+        }
+
         public Curso GetOne(int ID)
         {
             return CursoData.GetOne(ID);
@@ -51,6 +56,10 @@ namespace Business.Logic
         public List<Object> GetAllEstadosCursos(int id)
         {
             return CursoData.GetAllEstadosCursos(id);
+        }
+        public int TraerSiguienteID()
+        {
+            return CursoData.TraerSiguienteID();
         }
     }
 }

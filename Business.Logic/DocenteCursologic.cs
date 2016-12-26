@@ -43,5 +43,10 @@ namespace Business.Logic
             DocenteCursoData.Delete(ID);
         }
 
+        public int TraerSiguienteID()
+        {
+            return DocenteCursoData.TraerSiguienteID();
+        }
+
     }
 }

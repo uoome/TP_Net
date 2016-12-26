@@ -32,9 +32,11 @@ namespace UI.Desktop
         {
             Modo = modo;
 
-            if (Modo == ApplicationForm.ModoForm.Alta || Modo==ModoForm.Modificacion)
+            if (Modo == ModoForm.Alta)
             {
                 btnAceptar.Text = "Guardar";
+                CursoLogic curlog = new CursoLogic();
+                txbID_Curso.Text = curlog.TraerSiguienteID().ToString();
             }
             if (Modo == ModoForm.Eliminar)
             {
@@ -47,7 +49,7 @@ namespace UI.Desktop
         {
             Modo = modo;
 
-            if(Modo==ModoForm.Alta || Modo == ModoForm.Modificacion)
+            if(Modo == ModoForm.Modificacion)
             {
                 btnAceptar.Text = "Guardar";
             }

@@ -163,6 +163,30 @@ namespace Data.Database
                     break;
             }
         }
+
+        public int TraerSiguienteID()
+        {
+            int siguiente = 0;
+
+            try
+            {
+                this.OpenConnection();
+                SqlCommand cmdDictado = new SqlCommand("SELECT max(dc.id_dictado) as ultimo_id FROM docentes_cursos dc", sqlConn);
+                SqlDataReader drDictado = cmdDictado.ExecuteReader();
+
+                if (drDictado.Read())
+                    siguiente = ((int)drDictado["ultimo_id"]) + 1;
+
+                drDictado.Close();
+            }
+            catch(Exception ex)
+            {
+                Exception ExManejada = new Exception("Error al traer el ultimo ID " + ex.Message, ex);
+                throw ExManejada;
+            }
+            finally { this.CloseConnection(); }
+            return siguiente;
+        }
         
     }
 }

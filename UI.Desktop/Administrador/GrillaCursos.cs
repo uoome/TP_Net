@@ -23,8 +23,7 @@ namespace UI.Desktop
         public void Listar()
         {
             CursoLogic curLog = new CursoLogic();
-            this.dgvCursos.AutoGenerateColumns = false;
-            this.dgvCursos.DataSource= curLog.GetAll();
+            this.dgvCursos.DataSource= curLog.GetAllNuevo();
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
@@ -41,26 +40,28 @@ namespace UI.Desktop
         {
             CursoDesktop curDesk = new CursoDesktop(ApplicationForm.ModoForm.Alta);
             curDesk.ShowDialog();
+            this.Listar();
         }
 
         private void tsbEditar_Click(object sender, EventArgs e)
         {
-            int ID= ((Curso)dgvCursos.SelectedRows[0].DataBoundItem).ID;
+            int ID = (int)dgvCursos.SelectedRows[0].Cells[0].Value;
             CursoDesktop curDek = new CursoDesktop(ID, ApplicationForm.ModoForm.Modificacion);
             curDek.ShowDialog();
+            this.Listar();
         }
 
         private void tsbEliminar_Click(object sender, EventArgs e)
         {
-            int ID = ((Curso)dgvCursos.SelectedRows[0].DataBoundItem).ID;
+            int ID = (int)dgvCursos.SelectedRows[0].Cells[0].Value;
             CursoDesktop curDesk = new CursoDesktop(ID, ApplicationForm.ModoForm.Eliminar);
             curDesk.ShowDialog();
+            this.Listar();
         }
 
-       /* private void GrillaCursos_Load(object sender, EventArgs e)
+        private void GrillaCursos_Load(object sender, EventArgs e)
         {
             this.Listar();
         }
-        */
     }
 }

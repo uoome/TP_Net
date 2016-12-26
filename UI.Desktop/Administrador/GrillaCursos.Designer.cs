@@ -28,22 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tscGrillaCursos = new System.Windows.Forms.ToolStripContainer();
             this.tlpGrillaCursos = new System.Windows.Forms.TableLayoutPanel();
             this.btnActualizar = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
             this.dgvCursos = new System.Windows.Forms.DataGridView();
-            this.Id_Curso = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cupodisponible = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ID_Comision = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Id_Materia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cupo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Anio_Calendario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tsCursos = new System.Windows.Forms.ToolStrip();
             this.tsbNuevo = new System.Windows.Forms.ToolStripButton();
             this.tsbEditar = new System.Windows.Forms.ToolStripButton();
             this.tsbEliminar = new System.Windows.Forms.ToolStripButton();
+            this.id_curso = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.anio_calendario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cupo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cupo_disponible = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.comision = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.materia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tscGrillaCursos.ContentPanel.SuspendLayout();
             this.tscGrillaCursos.TopToolStripPanel.SuspendLayout();
             this.tscGrillaCursos.SuspendLayout();
@@ -110,16 +110,16 @@
             // 
             // dgvCursos
             // 
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.dgvCursos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.dgvCursos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvCursos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCursos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Id_Curso,
-            this.Cupodisponible,
-            this.ID_Comision,
-            this.Id_Materia,
+            this.id_curso,
+            this.anio_calendario,
             this.Cupo,
-            this.Anio_Calendario});
+            this.cupo_disponible,
+            this.comision,
+            this.materia});
             this.tlpGrillaCursos.SetColumnSpan(this.dgvCursos, 2);
             this.dgvCursos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvCursos.Location = new System.Drawing.Point(3, 3);
@@ -127,42 +127,6 @@
             this.dgvCursos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvCursos.Size = new System.Drawing.Size(643, 201);
             this.dgvCursos.TabIndex = 2;
-            // 
-            // Id_Curso
-            // 
-            this.Id_Curso.DataPropertyName = "ID";
-            this.Id_Curso.HeaderText = "ID Curso";
-            this.Id_Curso.Name = "Id_Curso";
-            // 
-            // Cupodisponible
-            // 
-            this.Cupodisponible.DataPropertyName = "CupoDis";
-            this.Cupodisponible.HeaderText = "Cupo Disponible";
-            this.Cupodisponible.Name = "Cupodisponible";
-            // 
-            // ID_Comision
-            // 
-            this.ID_Comision.DataPropertyName = "IDComision";
-            this.ID_Comision.HeaderText = "ID Comision";
-            this.ID_Comision.Name = "ID_Comision";
-            // 
-            // Id_Materia
-            // 
-            this.Id_Materia.DataPropertyName = "IDMateria";
-            this.Id_Materia.HeaderText = "ID Materia";
-            this.Id_Materia.Name = "Id_Materia";
-            // 
-            // Cupo
-            // 
-            this.Cupo.DataPropertyName = "Cupo";
-            this.Cupo.HeaderText = "Cupo";
-            this.Cupo.Name = "Cupo";
-            // 
-            // Anio_Calendario
-            // 
-            this.Anio_Calendario.DataPropertyName = "AnioCalendario";
-            this.Anio_Calendario.HeaderText = "Año Calendario";
-            this.Anio_Calendario.Name = "Anio_Calendario";
             // 
             // tsCursos
             // 
@@ -206,6 +170,42 @@
             this.tsbEliminar.Text = "Eliminar";
             this.tsbEliminar.Click += new System.EventHandler(this.tsbEliminar_Click);
             // 
+            // id_curso
+            // 
+            this.id_curso.DataPropertyName = "id_curso";
+            this.id_curso.HeaderText = "ID Curso";
+            this.id_curso.Name = "id_curso";
+            // 
+            // anio_calendario
+            // 
+            this.anio_calendario.DataPropertyName = "anio_calend";
+            this.anio_calendario.HeaderText = "Año ";
+            this.anio_calendario.Name = "anio_calendario";
+            // 
+            // Cupo
+            // 
+            this.Cupo.DataPropertyName = "cupo";
+            this.Cupo.HeaderText = "Cupo";
+            this.Cupo.Name = "Cupo";
+            // 
+            // cupo_disponible
+            // 
+            this.cupo_disponible.DataPropertyName = "cupo_disp";
+            this.cupo_disponible.HeaderText = "Cupo Disponible";
+            this.cupo_disponible.Name = "cupo_disponible";
+            // 
+            // comision
+            // 
+            this.comision.DataPropertyName = "comision";
+            this.comision.HeaderText = "Comision";
+            this.comision.Name = "comision";
+            // 
+            // materia
+            // 
+            this.materia.DataPropertyName = "materia";
+            this.materia.HeaderText = "Materia";
+            this.materia.Name = "materia";
+            // 
             // GrillaCursos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -215,6 +215,7 @@
             this.Name = "GrillaCursos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cursos";
+            this.Load += new System.EventHandler(this.GrillaCursos_Load);
             this.tscGrillaCursos.ContentPanel.ResumeLayout(false);
             this.tscGrillaCursos.TopToolStripPanel.ResumeLayout(false);
             this.tscGrillaCursos.TopToolStripPanel.PerformLayout();
@@ -239,11 +240,11 @@
         private System.Windows.Forms.ToolStripButton tsbNuevo;
         private System.Windows.Forms.ToolStripButton tsbEditar;
         private System.Windows.Forms.ToolStripButton tsbEliminar;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Id_Curso;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cupodisponible;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID_Comision;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Id_Materia;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id_curso;
+        private System.Windows.Forms.DataGridViewTextBoxColumn anio_calendario;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cupo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Anio_Calendario;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cupo_disponible;
+        private System.Windows.Forms.DataGridViewTextBoxColumn comision;
+        private System.Windows.Forms.DataGridViewTextBoxColumn materia;
     }
 }

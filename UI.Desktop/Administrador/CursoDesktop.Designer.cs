@@ -36,9 +36,9 @@
             this.lblMateria = new System.Windows.Forms.Label();
             this.lblComision = new System.Windows.Forms.Label();
             this.txbCupo = new System.Windows.Forms.TextBox();
-            this.txbAnioCalendario = new System.Windows.Forms.TextBox();
             this.lblCupo = new System.Windows.Forms.Label();
             this.lblAnioCalendario = new System.Windows.Forms.Label();
+            this.txbAnioCalendario = new System.Windows.Forms.TextBox();
             this.lblCupoDis = new System.Windows.Forms.Label();
             this.txtCuposDis = new System.Windows.Forms.TextBox();
             this.btnAceptar = new System.Windows.Forms.Button();
@@ -94,7 +94,7 @@
             this.txbID_Curso.Name = "txbID_Curso";
             this.txbID_Curso.ReadOnly = true;
             this.txbID_Curso.Size = new System.Drawing.Size(75, 20);
-            this.txbID_Curso.TabIndex = 8;
+            this.txbID_Curso.TabIndex = 0;
             this.txbID_Curso.TabStop = false;
             // 
             // cbxComisiones
@@ -140,13 +140,6 @@
             this.txbCupo.Size = new System.Drawing.Size(75, 20);
             this.txbCupo.TabIndex = 2;
             // 
-            // txbAnioCalendario
-            // 
-            this.txbAnioCalendario.Location = new System.Drawing.Point(237, 3);
-            this.txbAnioCalendario.Name = "txbAnioCalendario";
-            this.txbAnioCalendario.Size = new System.Drawing.Size(125, 20);
-            this.txbAnioCalendario.TabIndex = 3;
-            // 
             // lblCupo
             // 
             this.lblCupo.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -167,6 +160,13 @@
             this.lblAnioCalendario.TabIndex = 1;
             this.lblAnioCalendario.Text = "Año Calendario";
             // 
+            // txbAnioCalendario
+            // 
+            this.txbAnioCalendario.Location = new System.Drawing.Point(237, 3);
+            this.txbAnioCalendario.Name = "txbAnioCalendario";
+            this.txbAnioCalendario.Size = new System.Drawing.Size(125, 20);
+            this.txbAnioCalendario.TabIndex = 1;
+            // 
             // lblCupoDis
             // 
             this.lblCupoDis.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -182,7 +182,7 @@
             this.txtCuposDis.Location = new System.Drawing.Point(237, 29);
             this.txtCuposDis.Name = "txtCuposDis";
             this.txtCuposDis.Size = new System.Drawing.Size(125, 20);
-            this.txtCuposDis.TabIndex = 10;
+            this.txtCuposDis.TabIndex = 3;
             // 
             // btnAceptar
             // 
@@ -190,7 +190,7 @@
             this.btnAceptar.Location = new System.Drawing.Point(156, 94);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(75, 23);
-            this.btnAceptar.TabIndex = 11;
+            this.btnAceptar.TabIndex = 6;
             this.btnAceptar.Text = "Aceptar";
             this.btnAceptar.UseVisualStyleBackColor = true;
             this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
@@ -201,7 +201,7 @@
             this.btnCancelar.Location = new System.Drawing.Point(237, 94);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
-            this.btnCancelar.TabIndex = 12;
+            this.btnCancelar.TabIndex = 7;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);

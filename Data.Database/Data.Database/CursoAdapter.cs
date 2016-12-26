@@ -18,22 +18,63 @@ namespace Data.Database
 
             try
             {
+                OpenConnection();
+                SqlCommand cmdCurso = new SqlCommand("SELECT * FROM cursos", sqlConn);
+                SqlDataReader drCurso = cmdCurso.ExecuteReader();
+
+                while (drCurso.Read())
+                {
+                    Curso c = new Curso();
+
+                    c.ID = (int)drCurso["id_curso"];
+                    c.IDComision = (int)drCurso["id_comision"];
+                    c.IDMateria = (int)drCurso["id_materia"];
+                    c.AnioCalendario = (int)drCurso["anio_calendario"];
+                    c.Cupo = (int)drCurso["cupo"];
+                    c.CupoDis = (int)drCurso["cupos_disponibles"];
+
+                    listaCursos.Add(c);
+                }
+                drCurso.Close();
+
+            }
+            catch(Exception ex)
+            {
+                Exception ExManejada = new Exception("Error al traer la lista de cursos " + ex.Message, ex);
+                throw ExManejada;
+            }
+            finally { this.CloseConnection(); }
+
+            return listaCursos;
+
+        }
+
+        public List<Object> GetAllNuevo() //Se modifico el metodo utilizando nueva consulta sql para simplicidad de codigo en otras areas
+        {
+            List<Object> listaCursos = new List<Object>();
+
+            try
+            {
                 this.OpenConnection();
-                SqlCommand cmdCursos = new SqlCommand("SELECT * FROM cursos", sqlConn);
+                SqlCommand cmdCursos = new SqlCommand(
+                    "SELECT c.id_curso, c.anio_calendario, c.cupo, c.cupos_disponibles, com.desc_comision, m.desc_materia "+
+                    "FROM cursos c "+
+                    "INNER JOIN materias m on c.id_materia = m.id_materia "+
+                    "INNER JOIN comisiones com on com.id_comision = c.id_comision "+
+                    "ORDER BY c.id_curso", sqlConn);
                 SqlDataReader drCursos = cmdCursos.ExecuteReader();
 
                 while (drCursos.Read())
                 {
-                    Curso unCurso = new Curso();
-
-                    unCurso.ID = (int)drCursos["id_curso"];
-                    unCurso.IDMateria = (int)drCursos["id_materia"];
-                    unCurso.IDComision = (int)drCursos["id_comision"];
-                    unCurso.AnioCalendario = (int)drCursos["anio_calendario"];
-                    unCurso.Cupo = (int)drCursos["cupo"];
-                    unCurso.CupoDis = (int)drCursos["cupos_disponibles"];
-                    listaCursos.Add(unCurso);
-                   
+                    listaCursos.Add(new
+                    {
+                        id_curso = (int)drCursos["id_curso"],
+                        anio_calend = (int)drCursos["anio_calendario"],
+                        cupo = (int)drCursos["cupo"],
+                        cupo_disp = (int)drCursos["cupos_disponibles"],
+                        comision = (string)drCursos["desc_comision"],
+                        materia = (string)drCursos["desc_materia"],
+                    });
                 }
 
                 drCursos.Close();
@@ -50,7 +91,7 @@ namespace Data.Database
             }
 
             return listaCursos;
-        } //Este metodo ya no sirve pq usamos directamente la consulta sql
+        } 
 
         public List<Object> GetAllEstadosCursos(int ID)
         {
@@ -59,7 +100,15 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdEstados = new SqlCommand("select distinct cur.id_curso, com.id_comision, mat.anio, mat.desc_materia, alu.condicion, alu.nota, pl.desc_plan from alumnos_inscripciones alu inner join personas per on alu.id_alumno = per.id_persona inner join cursos cur on cur.id_curso = alu.id_curso inner join materias mat on mat.id_materia = cur.id_materia inner join planes pl on pl.id_plan = mat.id_plan inner join comisiones com on com.id_comision = cur.id_comision where alu.id_alumno=@idPersona", sqlConn);
+                SqlCommand cmdEstados = new SqlCommand(
+                   "SELECT DISTINCT cur.id_curso, com.id_comision, mat.anio, mat.desc_materia, alu.condicion, alu.nota, pl.desc_plan "+
+                   "FROM alumnos_inscripciones alu "+
+                   "INNER JOIN personas per ON alu.id_alumno = per.id_persona "+
+                   "INNER JOIN cursos cur ON cur.id_curso = alu.id_curso " +
+                   "INNER JOIN materias mat ON mat.id_materia = cur.id_materia " +
+                   "INNER JOIN planes pl ON pl.id_plan = mat.id_plan " +
+                   "INNER JOIN comisiones com ON com.id_comision = cur.id_comision " +
+                   "WHERE alu.id_alumno = 3", sqlConn);
 
                 cmdEstados.Parameters.Add("@idPersona", SqlDbType.Int).Value = ID;
                 SqlDataReader drEstados = cmdEstados.ExecuteReader();
@@ -244,6 +293,31 @@ namespace Data.Database
             }
             else cur.State = BusinessEntity.States.Unmodified;
 
+        }
+
+        public int TraerSiguienteID()
+        {
+            int siguiente = 0;
+
+            try
+            {
+                this.OpenConnection();
+                SqlCommand cmdCursos = new SqlCommand("select max(c.id_curso) as ultimo_id from cursos c", sqlConn);
+                SqlDataReader drCursos = cmdCursos.ExecuteReader();
+
+                if (drCursos.Read())
+                    siguiente = ((int)drCursos["ultimo_id"]) + 1;
+
+                drCursos.Close();
+            }
+            catch (Exception ex)
+            {
+                Exception ExManejada = new Exception("Error al recuperar el ultimo ID " + ex.Message, ex);
+                throw ExManejada;
+            }
+            finally { this.CloseConnection(); }
+
+            return siguiente;
         }
     }
 }
