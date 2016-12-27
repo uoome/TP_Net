@@ -78,6 +78,7 @@ namespace Data.Database
             return esp;
 
         }
+
         public Especialidad GetOne(string descrip)
         {
             Especialidad e = new Especialidad();
@@ -193,6 +194,31 @@ namespace Data.Database
             }
             else esp.State = BusinessEntity.States.Unmodified; 
 
+        }
+
+        public int TraerSiguienteID()
+        {
+            int siguiente = 0;
+
+            try
+            {
+                this.OpenConnection();
+                SqlCommand cmdEspe = new SqlCommand("SELECT max(e.id_especialidad) as ultimo_id FROM especialidades e", sqlConn);
+                SqlDataReader drEspe = cmdEspe.ExecuteReader();
+
+                if (drEspe.Read())
+                    siguiente = ((int)drEspe["ultimo_id"]) + 1;
+
+                drEspe.Close();
+            }
+            catch (Exception ex)
+            {
+                Exception ExManejada = new Exception("Error al traer el ultimo ID " + ex.Message, ex);
+                throw ExManejada;
+            }
+            finally { this.CloseConnection(); }
+
+            return siguiente;
         }
 
     }

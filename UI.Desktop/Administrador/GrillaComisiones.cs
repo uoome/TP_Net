@@ -26,6 +26,7 @@ namespace UI.Desktop
             ComisionLogic ComLog = new ComisionLogic();
             this.grvComisiones.DataSource = ComLog.GetAll();
         }
+
         #endregion
 
         #region Eventos
@@ -46,19 +47,20 @@ namespace UI.Desktop
 
         private void tsbNuevo_Click(object sender, EventArgs e)
         {
-            int ID = ((Comision)this.grvComisiones.SelectedRows[0].DataBoundItem).ID;
-            ComisionDesktop ComDs = new ComisionDesktop();
+            ComisionDesktop ComDs = new ComisionDesktop(ApplicationForm.ModoForm.Alta);
             ComDs.ShowDialog();
+            this.Listar();
         }
 
-        private void toolStripButton2_Click(object sender, EventArgs e)
+        private void tsbEditar_Click(object sender, EventArgs e)
         {
             int ID = ((Comision)this.grvComisiones.SelectedRows[0].DataBoundItem).ID;
-            ComisionDesktop ComDesk = new ComisionDesktop(ID,ApplicationForm.ModoForm.Modificacion);
+            ComisionDesktop ComDesk = new ComisionDesktop(ID, ApplicationForm.ModoForm.Modificacion);
             ComDesk.ShowDialog();
             this.Listar();
         }
-        private void toolStripButton3_Click(object sender, EventArgs e)
+
+        private void tsbEliminar_Click(object sender, EventArgs e)
         {
             int ID = ((Comision)this.grvComisiones.SelectedRows[0].DataBoundItem).ID;
             ComisionDesktop ComDesk = new ComisionDesktop(ID, ApplicationForm.ModoForm.Eliminar);

@@ -36,16 +36,18 @@ namespace UI.Desktop
             {
                 Modo = modo;
 
-                if (Modo == ModoForm.Alta || Modo == ModoForm.Modificacion)
-                {
-                    this.btnAceptar.Text = "Guardar";
-                }
+                this.btnAceptar.Text = "Guardar";
+                EspecialidadLogic elog = new EspecialidadLogic();
+                txtID_Especialidad.Text = elog.TraerSiguienteID().ToString();
             }
+
+            if (ModoForm.Eliminar == modo)
+                this.btnAceptar.Text = "Eliminar";
         }
         public EspecialidadDesktop(int ID, ModoForm modo):this()
         {
             Modo = modo;
-            if (Modo == ModoForm.Alta || Modo == ModoForm.Modificacion)
+            if (Modo == ModoForm.Modificacion)
             {
                 this.btnAceptar.Text = "Guardar";
             }

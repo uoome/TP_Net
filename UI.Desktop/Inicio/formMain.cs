@@ -167,7 +167,9 @@ namespace UI.Desktop
         
         private void tsc_Admin_Comisiones_Click(object sender, EventArgs e)
         {
-
+            GrillaComisiones grillaComi = new GrillaComisiones();
+            grillaComi.Show();
+            grillaComi.Listar();
         }
 
         private void tsc_Admin_AluInscp_Click(object sender, EventArgs e)

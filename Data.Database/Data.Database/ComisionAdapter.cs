@@ -57,7 +57,7 @@ namespace Data.Database
                     Com.ID = (int)drCom["id_comision"];
                     Com.Descripcion = (string)drCom["desc_comision"];
                     Com.AnioEspecialidad = (int)drCom["anio_especialidad"];
-                    Com.IdPlan = (int)drCom["id_plan"];
+                    Com.IDPlan = (int)drCom["id_plan"];
                     ListaCom.Add(Com);
                 }
                 drCom.Close();
@@ -91,7 +91,7 @@ namespace Data.Database
                     Com.ID = (int)drComi["id_comision"];
                     Com.Descripcion = (string)drComi["desc_comision"];
                     Com.AnioEspecialidad = (int)drComi["anio_especialidad"];
-                    Com.IdPlan = (int)drComi["id_plan"];
+                    Com.IDPlan = (int)drComi["id_plan"];
 
                 }
                 drComi.Close();
@@ -122,7 +122,7 @@ namespace Data.Database
                     Com.ID = (int)drComi["id_comision"];
                     Com.Descripcion = (string)drComi["desc_comision"];
                     Com.AnioEspecialidad = (int)drComi["anio_especialidad"];
-                    Com.IdPlan = (int)drComi["id_plan"];
+                    Com.IDPlan = (int)drComi["id_plan"];
 
                 }
                 drComi.Close();
@@ -142,14 +142,14 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdCom = new SqlCommand("DELETE comisiones WHERE id_comision = @id ");
+                SqlCommand cmdCom = new SqlCommand("DELETE comisiones WHERE id_comision = @id ",sqlConn);
                 cmdCom.Parameters.Add("@id", SqlDbType.Int).Value = id;
                 cmdCom.ExecuteNonQuery();
 
             }
             catch(Exception ex)
             {
-                Exception ExMan = new Exception("No se pudo eliminar la comison" + ex.Message);
+                Exception ExMan = new Exception("No se pudo eliminar la comison: " + ex.Message, ex);
                 throw ExMan;
             } 
             finally { this.CloseConnection(); }
@@ -181,7 +181,7 @@ namespace Data.Database
                 SqlCommand CmdCom = new SqlCommand(
                     "INSERT INTO comisiones (id_plan,desc_comision,anio_especialidad) " +
                     "VALUES (@idp,@desc,@anio)", sqlConn);
-                CmdCom.Parameters.Add("@idp", SqlDbType.Int).Value = com.IdPlan;
+                CmdCom.Parameters.Add("@idp", SqlDbType.Int).Value = com.IDPlan;
                 CmdCom.Parameters.Add("@desc", SqlDbType.VarChar, 50).Value = com.Descripcion;
                 CmdCom.Parameters.Add("@anio", SqlDbType.Int).Value = com.AnioEspecialidad;
                 CmdCom.ExecuteNonQuery();
@@ -197,6 +197,7 @@ namespace Data.Database
                 this.CloseConnection();
             }
         }
+
         protected void Update(Comision com)
         {
             try {
@@ -209,7 +210,7 @@ namespace Data.Database
                 CmdCom.Parameters.Add("@id", SqlDbType.Int).Value = com.ID;
                 CmdCom.Parameters.Add("@com", SqlDbType.VarChar, 50).Value = com.Descripcion;
                 CmdCom.Parameters.Add("@anio", SqlDbType.Int).Value = com.AnioEspecialidad;
-                CmdCom.Parameters.Add("@idplan", SqlDbType.Int).Value = com.IdPlan;
+                CmdCom.Parameters.Add("@idplan", SqlDbType.Int).Value = com.IDPlan;
             } 
             catch(Exception ex)
             {
@@ -219,5 +220,29 @@ namespace Data.Database
             finally { this.CloseConnection(); }
         }
 
+        public int TraerSiguienteID()
+        {
+            int siguiente = 0;
+            try
+            {
+                this.OpenConnection();
+                SqlCommand cmdComi = new SqlCommand(
+                    "SELECT max(c.id_comision) as ultimo_id " +
+                    "FROM comisiones c ", sqlConn);
+                SqlDataReader drComi = cmdComi.ExecuteReader();
+
+                if (drComi.Read())
+                    siguiente = ((int)drComi["ultimo_id"]) + 1;
+
+                drComi.Close();
+            }
+            catch (Exception ex)
+            {
+                Exception ExManejada = new Exception("Error al traer el siguiente ID " + ex.Message, ex);
+                throw ExManejada;
+            }
+            finally { this.CloseConnection(); }
+            return siguiente;
+        }
     }
 }

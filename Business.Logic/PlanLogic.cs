@@ -26,11 +26,12 @@ namespace Business.Logic
         {
             return PlanData.GetAll();
         }
+
         public Plan GetOne(int ID)
         {
             return PlanData.GetOne(ID); 
         }
-
+        
         public Plan GetOne(string de, string dp)
         {
             EspecialidadLogic el = new EspecialidadLogic();
@@ -45,6 +46,11 @@ namespace Business.Logic
         public void Save(Plan plan)
         {
             PlanData.Save(plan);
+        }
+
+        public int TraerSiguienteID()
+        {
+            return PlanData.TraerSiguienteID();
         }
     } 
 }

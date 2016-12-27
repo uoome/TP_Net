@@ -47,5 +47,9 @@ namespace Business.Logic
             return ComAdap.GetOne(descrip);
         }
 
+        public int TraerSiguienteID()
+        {
+            return ComAdap.TraerSiguienteID();
+        }
     }
 }

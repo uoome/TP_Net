@@ -41,11 +41,10 @@ namespace Business.Logic
             EspecialidadData.Save(esp);
         }
 
-
-
-
-
-
+        public int TraerSiguienteID()
+        {
+            return EspecialidadData.TraerSiguienteID();
+        }
 
     }
 }

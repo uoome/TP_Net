@@ -23,7 +23,7 @@ namespace Business.Entities
             set { _Descripcion = value; }
         }
 
-        public int IdPlan
+        public int IDPlan
         {
             get { return _IdPlan;  }
             set { _IdPlan = value; }

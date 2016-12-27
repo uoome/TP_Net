@@ -23,17 +23,32 @@ namespace UI.Desktop
             get { return _PlanActual; }
         }
 
+        private List<Especialidad> listaEspecialidades;
+
+        #region Constructores
         public PlanDesktop()
         {
             InitializeComponent();
+
+            //Cargo lista de especialidades
+            EspecialidadLogic esplog = new EspecialidadLogic();
+            listaEspecialidades = esplog.GetAll();
+
+            cbxEspecialidades.Items.Add("");
+            foreach (Especialidad e in listaEspecialidades)
+                cbxEspecialidades.Items.Add(e.Descripcion);
+
         }
         public PlanDesktop(ModoForm modo) : this()
         {
             Modo = modo;
-            if (Modo == ModoForm.Alta || Modo == ModoForm.Modificacion)
+            if (Modo == ModoForm.Alta)
             {
                 this.btnAceptar.Text = "Guardar";
+                PlanLogic plog = new PlanLogic();
+                txtID.Text = plog.TraerSiguienteID().ToString();
             }
+
             if (Modo == ModoForm.Eliminar)
             {
                 this.btnAceptar.Text = "Eliminar";
@@ -57,38 +72,51 @@ namespace UI.Desktop
             MapearDeDatos();
         }
 
+        #endregion
+
+        #region Metodos
         public override void MapearDeDatos()
         {
             txtID.Text = PlanActual.ID.ToString();
             txtDescripcion.Text = PlanActual.Descripcion;
+            EspecialidadLogic elog = new EspecialidadLogic();
+            cbxEspecialidades.Text = elog.GetOne(PlanActual.IDEspecialidad).Descripcion;
         }
+
         public override void MapearADatos()
         {
             if (Modo == ModoForm.Alta)
             {
-                PlanActual = new Plan();
+               PlanActual = new Plan();
                PlanActual.State = Especialidad.States.New;
             }
+
             if (Modo == ModoForm.Alta || Modo == ModoForm.Modificacion)
             {
-                this.PlanActual.Descripcion = txtDescripcion.Text;
+                if (Modo == ModoForm.Modificacion)
+                {
+                    this.PlanActual.ID = Convert.ToInt32(this.txtID.Text.Trim());
+                    PlanActual.State = Especialidad.States.Modified;
+                }
 
+                this.PlanActual.Descripcion = txtDescripcion.Text;
+                EspecialidadLogic elog = new EspecialidadLogic();
+                PlanActual.IDEspecialidad = elog.GetOne(cbxEspecialidades.Text).ID;
             }
-            if (Modo == ModoForm.Modificacion)
-            {
-                this.PlanActual.ID = Convert.ToInt32(this.txtID.Text.Trim());
-                PlanActual.State = Especialidad.States.Modified;
-            }
+
             if (Modo == ModoForm.Eliminar)
-            {PlanActual.State = Especialidad.States.Deleted;
+            {
+                PlanActual.State = Especialidad.States.Deleted;
             }
         }
+
         public override void GuardarCambios()
         {
             MapearADatos();
             PlanLogic planLog = new PlanLogic();
             planLog.Save(PlanActual);
         }
+
         public override bool Validar()
         {
             string msj = "";
@@ -96,7 +124,16 @@ namespace UI.Desktop
             if (txtDescripcion.Text.Trim().Equals(""))
             {
                 msj += "La descripcion no puede estar vacía \n";
+                txtDescripcion.BackColor = Color.Red;
             }
+            else { txtDescripcion.BackColor = Color.White; }
+
+            if (cbxEspecialidades.SelectedIndex == 0)
+            {
+                msj += "Debe seleccionar una especialidad \n";
+                cbxEspecialidades.BackColor = Color.Red;
+            }
+            else { cbxEspecialidades.BackColor = Color.White; }
 
             if (string.IsNullOrEmpty(msj))
             {
@@ -109,18 +146,22 @@ namespace UI.Desktop
             }
 
         }
+
         public new void Notificar(string titulo, string mensaje, MessageBoxButtons
         botones, MessageBoxIcon icono)
         {
             MessageBox.Show(mensaje, titulo, botones, icono);
         }
+
         public new void Notificar(string mensaje, MessageBoxButtons botones,
         MessageBoxIcon icono)
         {
             this.Notificar(this.Text, mensaje, botones, icono);
         }
 
-    
+        #endregion
+
+        #region Eventos
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             if (this.Validar())
@@ -135,5 +176,7 @@ namespace UI.Desktop
         {
             this.Close();
         }
+
+        #endregion
     }
 }

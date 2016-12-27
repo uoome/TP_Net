@@ -41,6 +41,7 @@ namespace Data.Database
             }
             return planes;
         }
+
         public Business.Entities.Plan GetOne(int ID)
         {
             Plan unPlan = new Plan();
@@ -105,6 +106,7 @@ namespace Data.Database
 
             return p;
         }
+
         public void Delete(int ID)
         {
             try
@@ -126,6 +128,7 @@ namespace Data.Database
                 this.CloseConnection();
             }
         }
+
         protected void Update(Plan unplan)
         {
             try
@@ -133,11 +136,11 @@ namespace Data.Database
                 this.OpenConnection();
                 SqlCommand cmdSave = new SqlCommand(
                     "UPDATE planes " +
-                    "SET id_especialidad=@esp, desc_plan=@desc " +
-                    "WHERE id_plan=@id", sqlConn);
-                cmdSave.Parameters.Add("@id", SqlDbType.Int).Value = unplan.ID;
+                    "SET id_especialidad=@id_esp, desc_plan=@desc " +
+                    "WHERE id_plan=@id_plan", sqlConn);
+                cmdSave.Parameters.Add("@id_plan", SqlDbType.Int).Value = unplan.ID;
                 cmdSave.Parameters.Add("@desc", SqlDbType.VarChar, 50).Value = unplan.Descripcion;
-                cmdSave.Parameters.Add("@esp", SqlDbType.Int).Value = unplan.ID;
+                cmdSave.Parameters.Add("@id_esp", SqlDbType.Int).Value = unplan.IDEspecialidad;
 
                 cmdSave.ExecuteNonQuery();
             }
@@ -151,6 +154,7 @@ namespace Data.Database
                 this.CloseConnection();
             }
         }
+
         protected void Insert(Plan unplan)
         {
             try
@@ -159,11 +163,9 @@ namespace Data.Database
                 SqlCommand cmdInsert = new SqlCommand(
                     "INSERT INTO planes (desc_plan, id_especialidad) " +
                     "VALUES (@desc , @id_especialidad)", sqlConn);
-                //El select recupera el id asignado automaticamente por la BD
 
                 cmdInsert.Parameters.Add("@desc", SqlDbType.VarChar, 50).Value = unplan.Descripcion;
                 cmdInsert.Parameters.Add("@id_especialidad", SqlDbType.Int).Value = unplan.IDEspecialidad;
-                //unplan.ID= Decimal.ToInt32((decimal)cmdInsert.ExecuteScalar());
 
                 cmdInsert.ExecuteNonQuery();
 
@@ -178,6 +180,7 @@ namespace Data.Database
                 this.CloseConnection();
             }
         }
+
         public void Save(Plan unplan)
         {
             if (unplan.State == BusinessEntity.States.Deleted)
@@ -195,6 +198,29 @@ namespace Data.Database
             else unplan.State = BusinessEntity.States.Unmodified;
         }
 
+        public int TraerSiguienteID()
+        {
+            int siguiente = 0;
+
+            try
+            {
+                this.OpenConnection();
+                SqlCommand cmdPlanes = new SqlCommand("SELECT max(p.id_plan) as ultimo_id FROM planes p", sqlConn);
+                SqlDataReader drPlanes = cmdPlanes.ExecuteReader();
+
+                if (drPlanes.Read())
+                    siguiente = ((int)drPlanes["ultimo_id"]) + 1;
+
+                drPlanes.Close();
+            }
+            catch(Exception ex)
+            {
+                Exception ExManejada = new Exception("Error al traer el ultimo ID " + ex.Message, ex);
+                throw ExManejada;
+            }
+            finally { this.CloseConnection(); }
+            return siguiente;
+        }
     }
 }
 
