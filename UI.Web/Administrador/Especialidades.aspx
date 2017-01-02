@@ -29,7 +29,7 @@
                 <td>&nbsp;</td>
                 <td>
                     <asp:TextBox ID="txtDescripcion" runat="server"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtDescripcion" Display="None" ErrorMessage="La descripcion no puede estar vacía"></asp:RequiredFieldValidator>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtDescripcion" Display="None" ErrorMessage="La descripcion no puede estar vacía" ForeColor="Red">*</asp:RequiredFieldValidator>
                 </td>
             </tr>
         </table>
@@ -37,5 +37,7 @@
     <asp:Panel ID="panelConformacion" runat="server" Visible="False">
         <asp:Button ID="btnAceptar" runat="server" Text="Aceptar" OnClick="btnAceptar_Click" />
         <asp:Button ID="btnCancelar" runat="server" OnClick="btnCancelar_Click" Text="Cancelar" />
+        <br />
+        <asp:ValidationSummary ID="ValidationSummary1" runat="server" ForeColor="Red" />
     </asp:Panel>
 </asp:Content>

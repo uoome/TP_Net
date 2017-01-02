@@ -239,5 +239,10 @@ namespace UI.Desktop
             ReportePlanes rep = new ReportePlanes();
             rep.ShowDialog();
         }
+
+        private void tsc_Alumno_MateriasPlan_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

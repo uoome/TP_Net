@@ -13,8 +13,10 @@ namespace UI.Web
         {
             if (Session["id_persona"] != null)
             {
+                DateTime FechA = DateTime.Today;
 
                 Menu = Session["Menu"].ToString();
+                lblFecha.Text = FechA.ToString("D");
             }
         }
 

@@ -18,7 +18,10 @@ namespace UI.Web
                     Menu = Session["Menu"].ToString();
                 }
 
-            
+            DateTime FechA = DateTime.Today;
+            lblFecha.Text = FechA.ToString("D");
+
+
         }
         private string MenuROjo;
         public string Menu

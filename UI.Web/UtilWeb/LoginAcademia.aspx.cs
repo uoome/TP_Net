@@ -13,7 +13,10 @@ namespace UI.Web.UtilWeb
     {
         protected override void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                Session.Abandon();
+            }
         }
 
         protected void btnIngresar_Click(object sender, EventArgs e)

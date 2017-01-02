@@ -187,6 +187,7 @@
             this.tsc_Alumno_MateriasPlan.Name = "tsc_Alumno_MateriasPlan";
             this.tsc_Alumno_MateriasPlan.Size = new System.Drawing.Size(183, 22);
             this.tsc_Alumno_MateriasPlan.Text = "Materias del Plan";
+            this.tsc_Alumno_MateriasPlan.Click += new System.EventHandler(this.tsc_Alumno_MateriasPlan_Click);
             // 
             // tsc_Alumno_InscCursado
             // 

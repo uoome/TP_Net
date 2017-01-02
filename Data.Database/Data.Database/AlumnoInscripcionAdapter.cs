@@ -84,11 +84,24 @@ namespace Data.Database
                 while (drAlumnosIns.Read())
                 {
                     AlumnoInscripcion al = new AlumnoInscripcion();
-                    al.ID = (int)drAlumnosIns["id_inscripcion"];
-                    al.IdAlumno = (int)drAlumnosIns["id_alumno"];
-                    al.IdCurso = (int)drAlumnosIns["id_curso"];
-                    al.Nota = (string)drAlumnosIns["nota"];
-                    al.Condicion = (AlumnoInscripcion.TiposCondiciones)drAlumnosIns["condicion"];
+                    if (drAlumnosIns["nota"].ToString() == "")
+                    {
+                        al.ID = (int)drAlumnosIns["id_inscripcion"];
+                        al.IdAlumno = (int)drAlumnosIns["id_alumno"];
+                        al.IdCurso = (int)drAlumnosIns["id_curso"];
+                        al.Nota = "Sin nota";
+                        al.Condicion = (AlumnoInscripcion.TiposCondiciones)drAlumnosIns["condicion"];
+                    }
+                    else
+                    {
+                        al.ID = (int)drAlumnosIns["id_inscripcion"];
+                        al.IdAlumno = (int)drAlumnosIns["id_alumno"];
+                        al.IdCurso = (int)drAlumnosIns["id_curso"];
+                        al.Nota = (string)drAlumnosIns["nota"];
+                        al.Condicion = (AlumnoInscripcion.TiposCondiciones)drAlumnosIns["condicion"];
+
+                    }
+                    
                     Inscripciones.Add(al);
                     
 

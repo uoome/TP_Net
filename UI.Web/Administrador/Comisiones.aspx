@@ -33,6 +33,7 @@
                 </td>
                 <td>
                     <asp:TextBox ID="txtDescripcion" runat="server"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtDescripcion" Display="None" ErrorMessage="No puede estar vacio la descripcion" ForeColor="Red">*</asp:RequiredFieldValidator>
                 </td>
             </tr>
             <tr>
@@ -41,6 +42,7 @@
                 </td>
                 <td style="height: 20px">
                     <asp:TextBox ID="txtAnio" runat="server"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtAnio" Display="None" ErrorMessage="RequiredFieldValidator" ForeColor="Red">*</asp:RequiredFieldValidator>
                 </td>
             </tr>
             <tr>
@@ -50,6 +52,7 @@
                 <td>
                     <asp:DropDownList ID="ddlPlanes" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlPlanes_SelectedIndexChanged">
                     </asp:DropDownList>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="ddlPlanes" Display="None" ErrorMessage="No puede estar vacio el id" ForeColor="Red">*</asp:RequiredFieldValidator>
                 </td>
             </tr>
             <tr>
@@ -58,12 +61,15 @@
                 </td>
                 <td>
                     <asp:TextBox ID="txtDescripcionPlan" runat="server"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtDescripcionPlan" Display="None" ErrorMessage="No puede estar vacia la descripcion del plan" ForeColor="Red">*</asp:RequiredFieldValidator>
                 </td>
             </tr>
             <tr>
                 <td>
                     <asp:Button ID="btnAceptar" runat="server" OnClick="btnAceptar_Click" Text="Aceptar" />
                     <asp:Button ID="btnCancelar" runat="server" OnClick="btnCancelar_Click" Text="Cancelar" />
+                    <br />
+                    <asp:ValidationSummary ID="ValidationSummary1" runat="server" ForeColor="Red" />
                 </td>
                 <td>&nbsp;</td>
             </tr>

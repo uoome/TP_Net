@@ -165,6 +165,8 @@ namespace UI.Web
             {
                 panelABMInscripciones.Visible = false;
                 SelectedID = (int)grvInscripciones.SelectedValue;
+                panelInsertCursos.Visible = false;
+                panelInsertMateria.Visible = false;
                           
               /*  int m;
                 m = grvInscripciones.SelectedIndex;

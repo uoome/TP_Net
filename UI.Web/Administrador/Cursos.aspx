@@ -33,6 +33,7 @@
                 </td>
                 <td>
                     <asp:TextBox ID="txtAnioCalendario" runat="server"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtAnioCalendario" Display="None" ErrorMessage="No puede estar vacío el año" ForeColor="Red">*</asp:RequiredFieldValidator>
                 </td>
             </tr>
             <tr>
@@ -41,6 +42,7 @@
                 </td>
                 <td>
                     <asp:TextBox ID="txtCupo" runat="server"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtCupo" Display="None" ErrorMessage="No puede estar vacio el cupo" ForeColor="Red">*</asp:RequiredFieldValidator>
                 </td>
             </tr>
             <tr>
@@ -49,6 +51,7 @@
                 </td>
                 <td>
                     <asp:TextBox ID="txtCupoDis" runat="server"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtCupoDis" Display="None" ErrorMessage="No puede estar vacio el cupo disponible" ForeColor="Red">*</asp:RequiredFieldValidator>
                 </td>
             </tr>
             <tr>
@@ -58,6 +61,7 @@
                 <td>
                     <asp:DropDownList ID="ddlMateria" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlMateria_SelectedIndexChanged">
                     </asp:DropDownList>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="ddlMateria" Display="None" ErrorMessage="No puede estar vacio el id materia" ForeColor="Red">*</asp:RequiredFieldValidator>
                 </td>
             </tr>
             <tr>
@@ -66,6 +70,7 @@
                 </td>
                 <td>
                     <asp:TextBox ID="txtDescripcion" runat="server"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="txtDescripcion" Display="None" ErrorMessage="No puede estar vacia la descripcion" ForeColor="Red">*</asp:RequiredFieldValidator>
                 </td>
             </tr>
             <tr>
@@ -75,6 +80,7 @@
                 <td>
                     <asp:DropDownList ID="ddlComision" runat="server" AutoPostBack="True">
                     </asp:DropDownList>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="ddlComision" Display="None" ErrorMessage="No puede estar vacio el id Comision" ForeColor="Red">*</asp:RequiredFieldValidator>
                 </td>
             </tr>
         </table>
@@ -82,5 +88,7 @@
     <asp:Panel ID="panelConfirmacion" runat="server" Visible="False">
         <asp:Button ID="btnAceptar" runat="server" Text="Aceptar" OnClick="btnAceptar_Click" />
         <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" OnClick="btnCancelar_Click" />
+        <br />
+        <asp:ValidationSummary ID="ValidationSummary1" runat="server" ForeColor="Red" />
     </asp:Panel>
 </asp:Content>

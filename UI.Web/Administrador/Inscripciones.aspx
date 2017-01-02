@@ -60,6 +60,7 @@
                         <td>
                             <asp:DropDownList ID="ddlCondicion" runat="server" AutoPostBack="True">
                             </asp:DropDownList>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="ddlCondicion" Display="None" ErrorMessage="No puede estar vacio" ForeColor="Red">*</asp:RequiredFieldValidator>
                         </td>
                     </tr>
                     <tr>
@@ -69,6 +70,7 @@
                         <td style="height: 26px">
                             <asp:DropDownList ID="ddlNotas" runat="server" AutoPostBack="True">
                             </asp:DropDownList>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="ddlNotas" Display="None" ErrorMessage="No puede estar vacio" ForeColor="Red">*</asp:RequiredFieldValidator>
                         </td>
                     </tr>
                     <tr>
@@ -81,6 +83,7 @@
                     </tr>
                 </table>
             </asp:Panel>
+            <asp:ValidationSummary ID="ValidationSummary1" runat="server" ForeColor="Red" />
             <br />
     <asp:Panel ID="panelInsertMateria" runat="server" Visible="False">
         <br />
