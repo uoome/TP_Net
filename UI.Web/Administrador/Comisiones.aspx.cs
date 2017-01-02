@@ -59,10 +59,10 @@ namespace UI.Web.Administrador
             this.txtAnio.Text = Entity.AnioEspecialidad.ToString();
             PlanLogic pl = new PlanLogic();
             Plan plan = new Plan();
-            plan = pl.GetOne(Entity.IdPlan);
+            plan = pl.GetOne(Entity.IDPlan);
          
 
-            this.ddlPlanes.SelectedValue = this.Entity.IdPlan.ToString();
+            this.ddlPlanes.SelectedValue = this.Entity.IDPlan.ToString();
             this.txtDescripcionPlan.Text = plan.Descripcion;
         
         }
@@ -82,7 +82,8 @@ namespace UI.Web.Administrador
         {
             com.Descripcion = txtDescripcion.Text;
             com.AnioEspecialidad = int.Parse(this.txtAnio.Text);
-            com.IdPlan = int.Parse(this.ddlPlanes.SelectedValue);
+            com.IDPlan = int.Parse(this.ddlPlanes.SelectedValue);
+            
 
 
 

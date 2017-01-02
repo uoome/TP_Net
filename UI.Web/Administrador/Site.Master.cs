@@ -13,8 +13,9 @@ namespace UI.Web
         {
             if (Session["id_persona"] != null)
             {
-
+                DateTime FechA = DateTime.Today;
                 Menu = Session["Menu"].ToString();
+                lblFecha.Text = FechA.ToString("D");
             }
 
         }
@@ -25,9 +26,9 @@ namespace UI.Web
         }
         private string MenuROjo;
         public string Menu
-        {
+        {  
             set
-            {
+            { 
                 MenuROjo = value;
                 if (MenuROjo == "menuEspecialidades")
                 {
@@ -65,6 +66,7 @@ namespace UI.Web
                 {
                     menuMaterias.Attributes["class"] = "active-menu";
                 }
+               
             }
         }
 
@@ -75,6 +77,7 @@ namespace UI.Web
                
                 lblPersona.Text = Session["nombre"].ToString() + " " + Session["apellido"].ToString();
                 lblPersona.Visible = true;
+                
 
             }
             else

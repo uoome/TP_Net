@@ -221,10 +221,14 @@ namespace UI.Web
             {
                 foreach (Plan p in listaPlanes)
                 {
+                  
+
                     if (p.IDEspecialidad == ddlEspecialidades.SelectedIndex)
                         ddlPlanes.Items.Add(p.Descripcion);
                 }
                 ddlPlanes.SelectedIndex = 0;
+                lblCartel.Visible = true;
+                lblCartel.Text = ddlEspecialidades.SelectedIndex.ToString();
             }
         }
 

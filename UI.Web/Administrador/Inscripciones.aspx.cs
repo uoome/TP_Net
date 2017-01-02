@@ -148,11 +148,11 @@ namespace UI.Web
             //Elegis el alumno y lista las inscripciones que tiene
             if (grvAlumnos.SelectedIndex != -1)
             {
-            
-                lblAlumno.Visible = true;
-               
-                cargaInscripciones(Alumnos[grvAlumnos.SelectedIndex].ID);
+
+                lblAlumno.Visible = false;
                 this.panelControlesInscripciones.Visible = true;
+                cargaInscripciones(Alumnos[grvAlumnos.SelectedIndex].ID);
+                
                 panelInsertCursos.Visible = false;
                 panelInsertMateria.Visible = false;
             }

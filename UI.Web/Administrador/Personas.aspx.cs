@@ -282,6 +282,7 @@ namespace UI.Web
                         ddlPlanes.Items.Add(p.Descripcion);
                 }
                 ddlPlanes.SelectedIndex = 0;
+                
             }
         }
 

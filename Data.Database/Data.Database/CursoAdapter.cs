@@ -108,7 +108,7 @@ namespace Data.Database
                    "INNER JOIN materias mat ON mat.id_materia = cur.id_materia " +
                    "INNER JOIN planes pl ON pl.id_plan = mat.id_plan " +
                    "INNER JOIN comisiones com ON com.id_comision = cur.id_comision " +
-                   "WHERE alu.id_alumno = 3", sqlConn);
+                   "WHERE alu.id_alumno = @idPersona", sqlConn);
 
                 cmdEstados.Parameters.Add("@idPersona", SqlDbType.Int).Value = ID;
                 SqlDataReader drEstados = cmdEstados.ExecuteReader();
