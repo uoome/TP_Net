@@ -32,15 +32,15 @@
             this.lblID = new System.Windows.Forms.Label();
             this.txtID = new System.Windows.Forms.TextBox();
             this.lblIDAlu = new System.Windows.Forms.Label();
-            this.lblIDCurso = new System.Windows.Forms.Label();
-            this.lblCondicion = new System.Windows.Forms.Label();
-            this.lblNota = new System.Windows.Forms.Label();
-            this.txtID_Curso = new System.Windows.Forms.TextBox();
             this.txtID_Alumno = new System.Windows.Forms.TextBox();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
-            this.cbxCondiciones = new System.Windows.Forms.ComboBox();
+            this.lblNota = new System.Windows.Forms.Label();
             this.cbxNotas = new System.Windows.Forms.ComboBox();
+            this.lblCondicion = new System.Windows.Forms.Label();
+            this.cbxCondiciones = new System.Windows.Forms.ComboBox();
+            this.lblIDCurso = new System.Windows.Forms.Label();
+            this.txtID_Curso = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -110,40 +110,6 @@
             this.lblIDAlu.TabIndex = 2;
             this.lblIDAlu.Text = "ID Alumno";
             // 
-            // lblIDCurso
-            // 
-            this.lblIDCurso.AutoSize = true;
-            this.lblIDCurso.Location = new System.Drawing.Point(3, 120);
-            this.lblIDCurso.Name = "lblIDCurso";
-            this.lblIDCurso.Size = new System.Drawing.Size(48, 13);
-            this.lblIDCurso.TabIndex = 3;
-            this.lblIDCurso.Text = "ID Curso";
-            // 
-            // lblCondicion
-            // 
-            this.lblCondicion.AutoSize = true;
-            this.lblCondicion.Location = new System.Drawing.Point(3, 154);
-            this.lblCondicion.Name = "lblCondicion";
-            this.lblCondicion.Size = new System.Drawing.Size(54, 13);
-            this.lblCondicion.TabIndex = 4;
-            this.lblCondicion.Text = "Condicion";
-            // 
-            // lblNota
-            // 
-            this.lblNota.AutoSize = true;
-            this.lblNota.Location = new System.Drawing.Point(3, 188);
-            this.lblNota.Name = "lblNota";
-            this.lblNota.Size = new System.Drawing.Size(30, 13);
-            this.lblNota.TabIndex = 5;
-            this.lblNota.Text = "Nota";
-            // 
-            // txtID_Curso
-            // 
-            this.txtID_Curso.Location = new System.Drawing.Point(84, 123);
-            this.txtID_Curso.Name = "txtID_Curso";
-            this.txtID_Curso.Size = new System.Drawing.Size(121, 20);
-            this.txtID_Curso.TabIndex = 8;
-            // 
             // txtID_Alumno
             // 
             this.txtID_Alumno.Location = new System.Drawing.Point(84, 29);
@@ -171,13 +137,14 @@
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
-            // cbxCondiciones
+            // lblNota
             // 
-            this.cbxCondiciones.FormattingEnabled = true;
-            this.cbxCondiciones.Location = new System.Drawing.Point(84, 157);
-            this.cbxCondiciones.Name = "cbxCondiciones";
-            this.cbxCondiciones.Size = new System.Drawing.Size(121, 21);
-            this.cbxCondiciones.TabIndex = 12;
+            this.lblNota.AutoSize = true;
+            this.lblNota.Location = new System.Drawing.Point(3, 188);
+            this.lblNota.Name = "lblNota";
+            this.lblNota.Size = new System.Drawing.Size(30, 13);
+            this.lblNota.TabIndex = 5;
+            this.lblNota.Text = "Nota";
             // 
             // cbxNotas
             // 
@@ -186,6 +153,39 @@
             this.cbxNotas.Name = "cbxNotas";
             this.cbxNotas.Size = new System.Drawing.Size(121, 21);
             this.cbxNotas.TabIndex = 13;
+            // 
+            // lblCondicion
+            // 
+            this.lblCondicion.AutoSize = true;
+            this.lblCondicion.Location = new System.Drawing.Point(3, 154);
+            this.lblCondicion.Name = "lblCondicion";
+            this.lblCondicion.Size = new System.Drawing.Size(54, 13);
+            this.lblCondicion.TabIndex = 4;
+            this.lblCondicion.Text = "Condicion";
+            // 
+            // cbxCondiciones
+            // 
+            this.cbxCondiciones.FormattingEnabled = true;
+            this.cbxCondiciones.Location = new System.Drawing.Point(84, 157);
+            this.cbxCondiciones.Name = "cbxCondiciones";
+            this.cbxCondiciones.Size = new System.Drawing.Size(121, 21);
+            this.cbxCondiciones.TabIndex = 12;
+            // 
+            // lblIDCurso
+            // 
+            this.lblIDCurso.AutoSize = true;
+            this.lblIDCurso.Location = new System.Drawing.Point(3, 120);
+            this.lblIDCurso.Name = "lblIDCurso";
+            this.lblIDCurso.Size = new System.Drawing.Size(48, 13);
+            this.lblIDCurso.TabIndex = 3;
+            this.lblIDCurso.Text = "ID Curso";
+            // 
+            // txtID_Curso
+            // 
+            this.txtID_Curso.Location = new System.Drawing.Point(84, 123);
+            this.txtID_Curso.Name = "txtID_Curso";
+            this.txtID_Curso.Size = new System.Drawing.Size(121, 20);
+            this.txtID_Curso.TabIndex = 8;
             // 
             // label1
             // 
@@ -226,7 +226,7 @@
             this.ClientSize = new System.Drawing.Size(397, 261);
             this.Controls.Add(this.tlpInscripcionesDesktop);
             this.Name = "AlumnoInscripcionDesktop";
-            this.Text = "AlumnoInscripcionDesktop";
+            this.Text = "Inscripcion";
             this.Load += new System.EventHandler(this.AlumnoInscripcionDesktop_Load);
             this.tlpInscripcionesDesktop.ResumeLayout(false);
             this.tlpInscripcionesDesktop.PerformLayout();

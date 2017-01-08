@@ -56,7 +56,7 @@ namespace UI.Web
 
     public void LoadGridComisiones(int id)
     {
-       ComisionLogic com = new ComisionLogic();
+            ComisionLogic com = new ComisionLogic();
             grvComisionesMat.DataSource = com.GetAllComisionesMaterias(id);
             grvComisionesMat.DataBind();
     }
@@ -88,9 +88,6 @@ namespace UI.Web
         {
             this.InscLogic.Delete(id);
         }
-        
-    
-
         protected void cargaInscripciones(int idAlu)
         {
           
@@ -168,14 +165,17 @@ namespace UI.Web
                 panelInsertCursos.Visible = false;
                 panelInsertMateria.Visible = false;
                           
-              /*  int m;
-                m = grvInscripciones.SelectedIndex;
+              /*  
+              int m;
+              m = grvInscripciones.SelectedIndex;
                
               lblInscripcion2.Text = grvInscripciones.Rows[m].Cells[4].Text;
               Nota = grvInscripciones.Rows[m].Cells[5].Text;
-                Cond = grvInscripciones.Rows[m].Cells[4].Text;
-                 PARA SELECCIONAR EL VALOR DE LAS COLUMNAS DE UNA FILA    
-              fUE UNA PRUEBA, NO BORRAR POR SI NECESITAMOS CONOCER EL VALOR DE LAS COLUMNAS DE LA GRILLA*/
+              Cond = grvInscripciones.Rows[m].Cells[4].Text;
+              
+              PARA SELECCIONAR EL VALOR DE LAS COLUMNAS DE UNA FILA    
+              FUE UNA PRUEBA, NO BORRAR POR SI NECESITAMOS CONOCER EL VALOR DE LAS COLUMNAS DE LA GRILLA
+              */
             }
         }
 

@@ -28,109 +28,105 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GrillaInscripciones));
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tlpInscripciones = new System.Windows.Forms.TableLayoutPanel();
             this.dgvInscripciones = new System.Windows.Forms.DataGridView();
-            this.btnActualizar = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nota = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ID_Alumno = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ID_Curso = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvAlumnos = new System.Windows.Forms.DataGridView();
+            this.btnAgregar = new System.Windows.Forms.Button();
+            this.btnEditar = new System.Windows.Forms.Button();
+            this.btnEliminar = new System.Windows.Forms.Button();
+            this.dgvCursos = new System.Windows.Forms.DataGridView();
+            this.btnInscripciones = new System.Windows.Forms.Button();
+            this.lblInscp = new System.Windows.Forms.Label();
+            this.Curso = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Comision = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cupo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Legajo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cur = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Mate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Plan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AñoMate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Comi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Condicion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tsbNuevo = new System.Windows.Forms.ToolStripButton();
-            this.tsbEditar = new System.Windows.Forms.ToolStripButton();
-            this.tsbEliminar = new System.Windows.Forms.ToolStripButton();
+            this.Nota = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
-            this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
-            this.toolStrip1.SuspendLayout();
             this.tlpInscripciones.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInscripciones)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAlumnos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCursos)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStripContainer1
             // 
             // 
-            // toolStripContainer1.tcInscripciones
+            // toolStripContainer1.ContentPanel
             // 
             this.toolStripContainer1.ContentPanel.Controls.Add(this.tlpInscripciones);
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(549, 236);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(687, 490);
             this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toolStripContainer1.Location = new System.Drawing.Point(0, 0);
             this.toolStripContainer1.Name = "toolStripContainer1";
-            this.toolStripContainer1.Size = new System.Drawing.Size(549, 261);
+            this.toolStripContainer1.Size = new System.Drawing.Size(687, 490);
             this.toolStripContainer1.TabIndex = 0;
             this.toolStripContainer1.Text = "toolStripContainer1";
             // 
-            // toolStripContainer1.TopToolStripPanel
-            // 
-            this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolStrip1);
-            // 
-            // toolStrip1
-            // 
-            this.toolStrip1.Dock = System.Windows.Forms.DockStyle.None;
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsbNuevo,
-            this.tsbEditar,
-            this.tsbEliminar});
-            this.toolStrip1.Location = new System.Drawing.Point(3, 0);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(112, 25);
-            this.toolStrip1.TabIndex = 0;
-            // 
             // tlpInscripciones
             // 
-            this.tlpInscripciones.ColumnCount = 2;
-            this.tlpInscripciones.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tlpInscripciones.ColumnCount = 3;
             this.tlpInscripciones.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tlpInscripciones.Controls.Add(this.dgvInscripciones, 0, 0);
-            this.tlpInscripciones.Controls.Add(this.btnActualizar, 0, 1);
+            this.tlpInscripciones.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tlpInscripciones.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tlpInscripciones.Controls.Add(this.dgvAlumnos, 0, 0);
+            this.tlpInscripciones.Controls.Add(this.btnAgregar, 0, 3);
+            this.tlpInscripciones.Controls.Add(this.btnEditar, 1, 3);
+            this.tlpInscripciones.Controls.Add(this.btnEliminar, 2, 3);
+            this.tlpInscripciones.Controls.Add(this.dgvCursos, 0, 4);
+            this.tlpInscripciones.Controls.Add(this.lblInscp, 2, 1);
             this.tlpInscripciones.Controls.Add(this.btnSalir, 1, 1);
+            this.tlpInscripciones.Controls.Add(this.btnInscripciones, 0, 1);
+            this.tlpInscripciones.Controls.Add(this.dgvInscripciones, 2, 2);
             this.tlpInscripciones.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpInscripciones.Location = new System.Drawing.Point(0, 0);
             this.tlpInscripciones.Name = "tlpInscripciones";
-            this.tlpInscripciones.RowCount = 2;
-            this.tlpInscripciones.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tlpInscripciones.RowCount = 5;
             this.tlpInscripciones.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpInscripciones.Size = new System.Drawing.Size(549, 236);
+            this.tlpInscripciones.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tlpInscripciones.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tlpInscripciones.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tlpInscripciones.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tlpInscripciones.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tlpInscripciones.Size = new System.Drawing.Size(687, 490);
             this.tlpInscripciones.TabIndex = 0;
             // 
             // dgvInscripciones
             // 
+            this.dgvInscripciones.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.dgvInscripciones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvInscripciones.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ID,
-            this.Nota,
-            this.ID_Alumno,
-            this.ID_Curso,
-            this.Condicion});
-            this.tlpInscripciones.SetColumnSpan(this.dgvInscripciones, 2);
-            this.dgvInscripciones.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvInscripciones.Location = new System.Drawing.Point(3, 3);
+            this.Cur,
+            this.Mate,
+            this.Plan,
+            this.AñoMate,
+            this.Comi,
+            this.Condicion,
+            this.Nota});
+            this.tlpInscripciones.SetColumnSpan(this.dgvInscripciones, 3);
+            this.dgvInscripciones.Location = new System.Drawing.Point(22, 188);
             this.dgvInscripciones.MultiSelect = false;
             this.dgvInscripciones.Name = "dgvInscripciones";
             this.dgvInscripciones.ReadOnly = true;
             this.dgvInscripciones.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvInscripciones.Size = new System.Drawing.Size(543, 201);
+            this.dgvInscripciones.Size = new System.Drawing.Size(643, 201);
             this.dgvInscripciones.TabIndex = 0;
-            // 
-            // btnActualizar
-            // 
-            this.btnActualizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnActualizar.Location = new System.Drawing.Point(390, 210);
-            this.btnActualizar.Name = "btnActualizar";
-            this.btnActualizar.Size = new System.Drawing.Size(75, 23);
-            this.btnActualizar.TabIndex = 1;
-            this.btnActualizar.Text = "Actualizar";
-            this.btnActualizar.UseVisualStyleBackColor = true;
-            this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
+            this.dgvInscripciones.Visible = false;
             // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(471, 210);
+            this.btnSalir.Location = new System.Drawing.Point(84, 159);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(75, 23);
             this.btnSalir.TabIndex = 2;
@@ -138,92 +134,181 @@
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
-            // ID
+            // dgvAlumnos
             // 
-            this.ID.DataPropertyName = "ID";
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
+            this.dgvAlumnos.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.dgvAlumnos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAlumnos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Legajo,
+            this.Apellido,
+            this.Nombre});
+            this.tlpInscripciones.SetColumnSpan(this.dgvAlumnos, 3);
+            this.dgvAlumnos.Location = new System.Drawing.Point(171, 3);
+            this.dgvAlumnos.Name = "dgvAlumnos";
+            this.dgvAlumnos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvAlumnos.Size = new System.Drawing.Size(344, 150);
+            this.dgvAlumnos.TabIndex = 3;
             // 
-            // Nota
+            // btnAgregar
             // 
-            this.Nota.DataPropertyName = "Nota";
-            this.Nota.HeaderText = "Nota";
-            this.Nota.Name = "Nota";
-            this.Nota.ReadOnly = true;
+            this.btnAgregar.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.btnAgregar.Location = new System.Drawing.Point(3, 419);
+            this.btnAgregar.Name = "btnAgregar";
+            this.btnAgregar.Size = new System.Drawing.Size(75, 23);
+            this.btnAgregar.TabIndex = 4;
+            this.btnAgregar.Text = "Agregar";
+            this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Visible = false;
             // 
-            // ID_Alumno
+            // btnEditar
             // 
-            this.ID_Alumno.DataPropertyName = "IdAlumno";
-            this.ID_Alumno.HeaderText = "ID_Alumno";
-            this.ID_Alumno.Name = "ID_Alumno";
-            this.ID_Alumno.ReadOnly = true;
+            this.btnEditar.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.btnEditar.Location = new System.Drawing.Point(84, 419);
+            this.btnEditar.Name = "btnEditar";
+            this.btnEditar.Size = new System.Drawing.Size(75, 23);
+            this.btnEditar.TabIndex = 5;
+            this.btnEditar.Text = "Editar";
+            this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEditar.Visible = false;
             // 
-            // ID_Curso
+            // btnEliminar
             // 
-            this.ID_Curso.DataPropertyName = "IdCurso";
-            this.ID_Curso.HeaderText = "ID_Curso";
-            this.ID_Curso.Name = "ID_Curso";
-            this.ID_Curso.ReadOnly = true;
+            this.btnEliminar.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.btnEliminar.Location = new System.Drawing.Point(165, 419);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(75, 23);
+            this.btnEliminar.TabIndex = 6;
+            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Visible = false;
+            // 
+            // dgvCursos
+            // 
+            this.dgvCursos.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.dgvCursos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCursos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Curso,
+            this.Comision,
+            this.Cupo});
+            this.tlpInscripciones.SetColumnSpan(this.dgvCursos, 3);
+            this.dgvCursos.Location = new System.Drawing.Point(171, 473);
+            this.dgvCursos.Name = "dgvCursos";
+            this.dgvCursos.Size = new System.Drawing.Size(344, 14);
+            this.dgvCursos.TabIndex = 7;
+            this.dgvCursos.Visible = false;
+            // 
+            // btnInscripciones
+            // 
+            this.btnInscripciones.Location = new System.Drawing.Point(3, 159);
+            this.btnInscripciones.Name = "btnInscripciones";
+            this.btnInscripciones.Size = new System.Drawing.Size(75, 23);
+            this.btnInscripciones.TabIndex = 8;
+            this.btnInscripciones.Text = "Ver Inscripciones";
+            this.btnInscripciones.UseVisualStyleBackColor = true;
+            this.btnInscripciones.Click += new System.EventHandler(this.btnInscripciones_Click);
+            // 
+            // lblInscp
+            // 
+            this.lblInscp.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lblInscp.AutoSize = true;
+            this.lblInscp.Location = new System.Drawing.Point(165, 164);
+            this.lblInscp.Name = "lblInscp";
+            this.lblInscp.Size = new System.Drawing.Size(237, 13);
+            this.lblInscp.TabIndex = 9;
+            this.lblInscp.Text = "Seleccione un alumno para ver sus inscripciones";
+            // 
+            // Curso
+            // 
+            this.Curso.HeaderText = "Curso";
+            this.Curso.Name = "Curso";
+            // 
+            // Comision
+            // 
+            this.Comision.HeaderText = "Comision";
+            this.Comision.Name = "Comision";
+            // 
+            // Cupo
+            // 
+            this.Cupo.HeaderText = "Cupo";
+            this.Cupo.Name = "Cupo";
+            // 
+            // Legajo
+            // 
+            this.Legajo.DataPropertyName = "Legajo";
+            this.Legajo.HeaderText = "Legajo";
+            this.Legajo.Name = "Legajo";
+            // 
+            // Apellido
+            // 
+            this.Apellido.DataPropertyName = "Apellido";
+            this.Apellido.HeaderText = "Apellido";
+            this.Apellido.Name = "Apellido";
+            // 
+            // Nombre
+            // 
+            this.Nombre.DataPropertyName = "Nombre";
+            this.Nombre.HeaderText = "Nombre";
+            this.Nombre.Name = "Nombre";
+            // 
+            // Cur
+            // 
+            this.Cur.HeaderText = "Curso";
+            this.Cur.Name = "Cur";
+            this.Cur.ReadOnly = true;
+            // 
+            // Mate
+            // 
+            this.Mate.HeaderText = "Materia";
+            this.Mate.Name = "Mate";
+            this.Mate.ReadOnly = true;
+            // 
+            // Plan
+            // 
+            this.Plan.HeaderText = "Plan";
+            this.Plan.Name = "Plan";
+            this.Plan.ReadOnly = true;
+            // 
+            // AñoMate
+            // 
+            this.AñoMate.HeaderText = "Año Materia";
+            this.AñoMate.Name = "AñoMate";
+            this.AñoMate.ReadOnly = true;
+            // 
+            // Comi
+            // 
+            this.Comi.HeaderText = "Comision";
+            this.Comi.Name = "Comi";
+            this.Comi.ReadOnly = true;
             // 
             // Condicion
             // 
-            this.Condicion.DataPropertyName = "Condicion";
             this.Condicion.HeaderText = "Condicion";
             this.Condicion.Name = "Condicion";
             this.Condicion.ReadOnly = true;
             // 
-            // tsbNuevo
+            // Nota
             // 
-            this.tsbNuevo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbNuevo.Image = ((System.Drawing.Image)(resources.GetObject("tsbNuevo.Image")));
-            this.tsbNuevo.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbNuevo.Name = "tsbNuevo";
-            this.tsbNuevo.Size = new System.Drawing.Size(23, 22);
-            this.tsbNuevo.Text = "toolStripButton1";
-            this.tsbNuevo.ToolTipText = "Nuevo";
-            this.tsbNuevo.Click += new System.EventHandler(this.tsbNuevo_Click);
-            // 
-            // tsbEditar
-            // 
-            this.tsbEditar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbEditar.Image = ((System.Drawing.Image)(resources.GetObject("tsbEditar.Image")));
-            this.tsbEditar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbEditar.Name = "tsbEditar";
-            this.tsbEditar.Size = new System.Drawing.Size(23, 22);
-            this.tsbEditar.Text = "toolStripButton2";
-            this.tsbEditar.ToolTipText = "Editar";
-            this.tsbEditar.Click += new System.EventHandler(this.tsbEditar_Click);
-            // 
-            // tsbEliminar
-            // 
-            this.tsbEliminar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbEliminar.Image = ((System.Drawing.Image)(resources.GetObject("tsbEliminar.Image")));
-            this.tsbEliminar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbEliminar.Name = "tsbEliminar";
-            this.tsbEliminar.Size = new System.Drawing.Size(23, 22);
-            this.tsbEliminar.Text = "toolStripButton3";
-            this.tsbEliminar.ToolTipText = "Eliminar";
-            this.tsbEliminar.Click += new System.EventHandler(this.tsbEliminar_Click);
+            this.Nota.HeaderText = "Nota";
+            this.Nota.Name = "Nota";
+            this.Nota.ReadOnly = true;
             // 
             // GrillaInscripciones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(549, 261);
+            this.ClientSize = new System.Drawing.Size(687, 490);
             this.Controls.Add(this.toolStripContainer1);
             this.Name = "GrillaInscripciones";
-            this.Text = "GrillaInscripciones";
+            this.Text = "Inscripciones";
             this.Load += new System.EventHandler(this.GrillaInscripciones_Load);
             this.toolStripContainer1.ContentPanel.ResumeLayout(false);
-            this.toolStripContainer1.TopToolStripPanel.ResumeLayout(false);
-            this.toolStripContainer1.TopToolStripPanel.PerformLayout();
             this.toolStripContainer1.ResumeLayout(false);
             this.toolStripContainer1.PerformLayout();
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
             this.tlpInscripciones.ResumeLayout(false);
+            this.tlpInscripciones.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInscripciones)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAlumnos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCursos)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -233,16 +318,26 @@
         private System.Windows.Forms.ToolStripContainer toolStripContainer1;
         private System.Windows.Forms.TableLayoutPanel tlpInscripciones;
         private System.Windows.Forms.DataGridView dgvInscripciones;
-        private System.Windows.Forms.Button btnActualizar;
         private System.Windows.Forms.Button btnSalir;
-        private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton tsbNuevo;
-        private System.Windows.Forms.ToolStripButton tsbEditar;
-        private System.Windows.Forms.ToolStripButton tsbEliminar;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Nota;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID_Alumno;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID_Curso;
+        private System.Windows.Forms.DataGridView dgvAlumnos;
+        private System.Windows.Forms.Button btnAgregar;
+        private System.Windows.Forms.Button btnEditar;
+        private System.Windows.Forms.Button btnEliminar;
+        private System.Windows.Forms.DataGridView dgvCursos;
+        private System.Windows.Forms.Label lblInscp;
+        private System.Windows.Forms.Button btnInscripciones;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Curso;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Comision;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Cupo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Legajo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Apellido;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Cur;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Mate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Plan;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AñoMate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Comi;
         private System.Windows.Forms.DataGridViewTextBoxColumn Condicion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nota;
     }
 }

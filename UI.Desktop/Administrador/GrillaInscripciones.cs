@@ -14,24 +14,50 @@ namespace UI.Desktop
 {
     public partial class GrillaInscripciones : Form
     {
+
+        private static List<Business.Entities.Personas> _alumnos = new List<Business.Entities.Personas>();
+
+        public List<Business.Entities.Personas> Alumnos
+        {
+            get { return _alumnos; }
+            set { _alumnos = value; }
+        }
+
         public GrillaInscripciones()
         {
             InitializeComponent();
             dgvInscripciones.AutoGenerateColumns = false;
+            PersonaLogic perLog = new PersonaLogic();
+            Alumnos = perLog.GetAll(Business.Entities.Personas.TiposPersonas.Alumno);
+
         }
+
         public void Listar()
         {
-            AlumnoInscripcionLogic AlLogic = new AlumnoInscripcionLogic();
-            dgvInscripciones.DataSource = AlLogic.GetAll();
+            dgvAlumnos.DataSource = Alumnos;
+        }
+        
+
+        public void CargarInscripciones(int idAlu)
+        {
+            CursoLogic cur = new CursoLogic();
+            List<Object> ListaCursos = new List<Object>();
+            ListaCursos = cur.GetAllEstadosCursos(idAlu);
+            dgvInscripciones.DataSource = ListaCursos;
+        }
+
+
+
+        #region Eventos
+
+        private void btnInscripciones_Click(object sender, EventArgs e)
+        {
+            dgvInscripciones.Visible = true;
+            CargarInscripciones(Alumnos[dgvAlumnos.SelectedColumns[0].Index].ID); //verificar
 
         }
 
         private void GrillaInscripciones_Load(object sender, EventArgs e)
-        {
-            this.Listar();
-        }
-
-        private void btnActualizar_Click(object sender, EventArgs e)
         {
             this.Listar();
         }
@@ -41,31 +67,6 @@ namespace UI.Desktop
             this.Close();
         }
 
-        private void tsbNuevo_Click(object sender, EventArgs e)
-        {
-            AlumnoInscripcionDesktop Desk = new AlumnoInscripcionDesktop(ApplicationForm.ModoForm.Alta);
-            Desk.ShowDialog();
-            this.Listar();
-
-        }
-
-        private void tsbEditar_Click(object sender, EventArgs e)
-        {
-            int ID = ((Business.Entities.AlumnoInscripcion)dgvInscripciones.SelectedRows[0].DataBoundItem).ID;
-            AlumnoInscripcionDesktop Desk = new AlumnoInscripcionDesktop(ApplicationForm.ModoForm.Modificacion);
-            Desk.ShowDialog();
-            this.Listar();
-
-        }
-
-        private void tsbEliminar_Click(object sender, EventArgs e)
-        {
-            int ID = ((Business.Entities.AlumnoInscripcion)dgvInscripciones.SelectedRows[0].DataBoundItem).ID;
-            AlumnoInscripcionDesktop Desk = new AlumnoInscripcionDesktop(ApplicationForm.ModoForm.Eliminar);
-            Desk.ShowDialog();
-            this.Listar();
-
-
-        }
+        #endregion
     }
 }
