@@ -125,7 +125,7 @@
                 <SortedDescendingHeaderStyle BackColor="#7E0000" />
             </asp:GridView>
             <br />
-            <asp:Button ID="btnInscripcion" runat="server" OnClick="btnInscripcion_Click" Text="Inscribirse" />
+            <asp:Button ID="btnInscripcion" runat="server" OnClick="btnInscripcion_Click" Text="Inscribir" />
             <br />
             <br />
             <asp:Label ID="lblCurso" runat="server" ForeColor="Red"></asp:Label>

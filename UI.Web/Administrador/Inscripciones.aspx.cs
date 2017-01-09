@@ -217,19 +217,19 @@ namespace UI.Web
           if (grvInscripciones.SelectedIndex != -1)
             {
                int idAlu;
-                AlumnoInscripcion Alu = new AlumnoInscripcion();
-                AlumnoInscripcionLogic AlLog = new AlumnoInscripcionLogic();
-                idAlu = AlLog.GetID(SelectedID, Alumnos[grvAlumnos.SelectedIndex].ID);
-                Alu = AlLog.GetOne(idAlu); 
-                this.FormMode = FormModes.Baja;
-                ddlNotas.Items.Add(Alu.Nota);
-                ddlNotas.Text = Alu.Nota;
+               AlumnoInscripcion Alu = new AlumnoInscripcion();
+               AlumnoInscripcionLogic AlLog = new AlumnoInscripcionLogic();
+               idAlu = AlLog.GetID(SelectedID, Alumnos[grvAlumnos.SelectedIndex].ID);
+               Alu = AlLog.GetOne(idAlu); 
+               this.FormMode = FormModes.Baja;
+               ddlNotas.Items.Add(Alu.Nota);
+               ddlNotas.Text = Alu.Nota;
                ddlCondicion.Items.Add(Alu.Condicion.ToString());
-                 ddlCondicion.Text = Alu.Condicion.ToString();
-                // NO APARECEN EN EL DDL
-                panelABMInscripciones.Visible = true;
-                HabilitarControles(false);
-                btnAceptar.Text = "Eliminar";
+               ddlCondicion.Text = Alu.Condicion.ToString();
+               // NO APARECEN EN EL DDL
+               panelABMInscripciones.Visible = true;
+               HabilitarControles(false);
+               btnAceptar.Text = "Eliminar";
             }
             else
             {
