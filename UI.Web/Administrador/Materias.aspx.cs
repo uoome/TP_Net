@@ -222,7 +222,6 @@ namespace UI.Web
                 foreach (Plan p in listaPlanes)
                 {
                   
-
                     if (p.IDEspecialidad == ddlEspecialidades.SelectedIndex)
                         ddlPlanes.Items.Add(p.Descripcion);
                 }

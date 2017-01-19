@@ -56,10 +56,7 @@ namespace UI.Desktop
         {
             dgvInscripciones.Visible = true;
             CargarInscripciones((int)dgvAlumnos.SelectedRows[0].Cells[0].Value);
-            btnAgregar.Visible = true;
-            btnEditar.Visible = true;
-            btnEliminar.Visible = true;
-        }
+         }
 
         private void GrillaInscripciones_Load(object sender, EventArgs e)
         {
@@ -73,30 +70,5 @@ namespace UI.Desktop
 
         #endregion
 
-        private void btnAgregar_Click(object sender, EventArgs e)
-        {
-            dgvMaterias.Visible = true;
-            dgvMaterias.AutoGenerateColumns = false;
-            dgvMaterias.DataSource = new MateriaLogic().GetAll();
-        }
-
-        private void tlpInscripciones_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void btnCupo_Click(object sender, EventArgs e)
-        {
-            if((int)dgvMaterias.SelectedRows[0].Cells[0].Value != -1)
-            {
-                dgvCursos.Visible = true;
-                dgvCursos.AutoGenerateColumns = false;
-                ComisionLogic com = new ComisionLogic();
-                //dgvCursos.DataSource = com.GetAllComisionesMaterias(); va un int
-                btnInscripcion.Visible = true;
-                
-                
-            }
-        }
     }
 }

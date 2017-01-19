@@ -49,7 +49,7 @@
             // toolStripContainer1.ContentPanel
             // 
             this.toolStripContainer1.ContentPanel.Controls.Add(this.tableLayoutPanel);
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(549, 261);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(549, 236);
             this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toolStripContainer1.Location = new System.Drawing.Point(0, 0);
             this.toolStripContainer1.Name = "toolStripContainer1";
@@ -70,7 +70,7 @@
             this.tableLayoutPanel.RowCount = 2;
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel.Size = new System.Drawing.Size(549, 261);
+            this.tableLayoutPanel.Size = new System.Drawing.Size(549, 236);
             this.tableLayoutPanel.TabIndex = 0;
             // 
             // dgvEstaAcademico
@@ -86,7 +86,8 @@
             this.dgvEstaAcademico.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvEstaAcademico.Location = new System.Drawing.Point(3, 3);
             this.dgvEstaAcademico.Name = "dgvEstaAcademico";
-            this.dgvEstaAcademico.Size = new System.Drawing.Size(543, 226);
+            this.dgvEstaAcademico.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvEstaAcademico.Size = new System.Drawing.Size(543, 201);
             this.dgvEstaAcademico.TabIndex = 0;
             // 
             // Año
@@ -122,7 +123,7 @@
             // btnCerrar
             // 
             this.btnCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCerrar.Location = new System.Drawing.Point(471, 235);
+            this.btnCerrar.Location = new System.Drawing.Point(471, 210);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Size = new System.Drawing.Size(75, 23);
             this.btnCerrar.TabIndex = 2;
